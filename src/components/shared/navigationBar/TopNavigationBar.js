@@ -4,7 +4,10 @@ import { Facebook, Instagram, Mail, Phone, Twitter } from "lucide-react";
 
 // SOCIAL MEDIA DATA
 const socialMediaData = [
-  { icon: <Facebook size={20} strokeWidth={1.5} />, url: "" },
+  {
+    icon: <Facebook size={20} strokeWidth={1.5} />,
+    url: "https://www.facebook.com/TrustNestStore",
+  },
   { icon: <Twitter size={20} strokeWidth={1.5} />, url: "" },
   { icon: <Instagram size={20} strokeWidth={1.5} />, url: "" },
   { icon: "", url: "" },
@@ -12,8 +15,11 @@ const socialMediaData = [
 
 // CONTACTS DATA
 const contacts = [
-  { icon: <Mail size={20} strokeWidth={1.5} />, text: "demo@gmail.com" },
-  { icon: <Phone size={20} strokeWidth={1.5} />, text: "1-800-123-4567" },
+  {
+    icon: <Mail size={20} strokeWidth={1.5} />,
+    text: "trustneststore@gmail.com",
+  },
+  { icon: <Phone size={20} strokeWidth={1.5} />, text: "+8801973239675" },
 ];
 
 function TopNavigationBar() {
@@ -25,7 +31,9 @@ function TopNavigationBar() {
         <div className="flex items-center gap-7">
           {socialMediaData.map((socialMedia, ind) => (
             <div key={ind}>
-              <Link href={socialMedia?.url}>{socialMedia?.icon}</Link>
+              <Link href={socialMedia?.url} target="_blank">
+                {socialMedia?.icon}
+              </Link>
             </div>
           ))}
         </div>
