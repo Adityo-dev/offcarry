@@ -16,6 +16,7 @@ const centerNavRightData = [
 function CenterNavigationBar() {
   return (
     <section className="container mx-auto px-4 flex justify-between">
+      {/* TRUST NEST STORE LOGO */}
       <Image
         src="/logo/trustNestStore.png"
         width={160}
@@ -23,6 +24,7 @@ function CenterNavigationBar() {
         alt="TrustNest Store Logo"
         className="max-w-[160px]"
       />
+      {/* SEARCH FIELD SECTION*/}
       <div className="max-w-[500px] w-full h-[50px] relative">
         <input
           type="search"
@@ -35,10 +37,10 @@ function CenterNavigationBar() {
           <Search size={22} strokeWidth={1.5} color="#888AA0" />
         </button>
       </div>
-
+      {/* WISHLIST AND ACCOUNT SECTION */}
       <div className="flex items-center">
         {centerNavRightData.map((data, ind) => (
-          <Link href={data?.url} key={ind} className="flex items-center gap-2">
+          <Link href={data?.url} key={ind} className="flex items-center gap-4">
             <p className="w-10 h-10 bg-[#EEF0F2] text-[#292B49] rounded-full flex items-center justify-center">
               {data?.icon}
             </p>
