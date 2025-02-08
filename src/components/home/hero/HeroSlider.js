@@ -21,7 +21,7 @@ const customButtonStyles =
 
 function HeroSlider({ sliderData }) {
   return (
-    <section className="relative w-full h-full rounded-lg overflow-hidden group ">
+    <main className="relative w-full h-full rounded-lg overflow-hidden group ">
       {/* CUSTOM SLIDER BUTTON  */}
       <div
         className={`${customButtonStyles} custom-heroSlider-button-prev -left-6 group-hover:left-0 rounded-l-lg `}
@@ -65,7 +65,7 @@ function HeroSlider({ sliderData }) {
           </SwiperSlide>
         ))}
       </Swiper>
-    </section>
+    </main>
   );
 }
 

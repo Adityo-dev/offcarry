@@ -15,7 +15,7 @@ function Banner4() {
       </div>
       <div className="col-span-4 w-full max-h-[400px]">
         <Image
-          src={"/images/banner4.png"}
+          src={"/images/banner2.png"}
           width={800}
           height={800}
           alt=""
