@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import CopyRight from "./CopyRight";
 import ContactInfo from "./ContactInfo";
+import Newsletter from "@/components/newsletter/Newsletter";
 
 const footerData = [
   {
@@ -49,7 +50,14 @@ const socialMediaData = [
 
 function Footer() {
   return (
-    <main className="w-full mt-16 pt-32 pb-10 bg-[#152327] text-white">
+    <main className="w-full mt-80 pt-40 pb-10 bg-[#152327] text-white relative">
+      {/* NEWS LETTER COMPONENTS */}
+      <section className="relative container mx-auto px-4">
+        <div className="w-full absolute -top-72">
+          <Newsletter />
+        </div>
+      </section>
+
       <section className="container mx-auto px-4 grid grid-cols-12 gap-20">
         <div className="col-span-4">
           {/* LOGO AND SUBTITLE */}
@@ -61,8 +69,8 @@ function Footer() {
             className="max-w-40 w-full"
           />
           <p className="mt-7 text-[#ACB5BD] leading-7">
-            Elegant pink origami design threedimensional view and decoration
-            co-exist.Great for adding a decorative touch toany room’s decor.
+            Elegant pink origami design three-dimensional view and decoration
+            co-exist. Great for adding a decorative touch to any room’s decor.
           </p>
           {/* SOCIAL MEDIA */}
           <div className="flex items-center gap-4 mt-7">
