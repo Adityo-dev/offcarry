@@ -1,3 +1,4 @@
+import { ImagePlus } from "lucide-react";
 import Image from "next/image";
 
 const inputFieldStyles =
@@ -63,14 +64,25 @@ function PreOrder() {
 
             {/* File Upload & Product Link */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <div>
-                <input
-                  type="file"
-                  id="file"
-                  name="file"
-                  className={inputFieldStyles}
-                />
+              {/* File Upload Section */}
+              <div className="relative flex items-center border border-gray-300 bg-[#E5E5E5] rounded-md h-12 overflow-hidden">
+                {/* Icon Section */}
+                <div className="w-[20%] h-full flex items-center justify-center bg-[#D8D8D8]">
+                  <ImagePlus
+                    size={24}
+                    strokeWidth={1.75}
+                    className="text-gray-500"
+                  />
+                </div>
+                {/* Input Section */}
+                <div className="w-[80%] px-4 text-sm text-gray-600">
+                  <label htmlFor="file" className="cursor-pointer block">
+                    No Image Added
+                  </label>
+                  <input type="file" id="file" name="file" className="hidden" />
+                </div>
               </div>
+
               <input
                 type="text"
                 name="link"
