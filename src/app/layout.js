@@ -1,6 +1,6 @@
+import MainNavigationBar from "@/components/shared/navigationBar/MainNavigationBar";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import MainNavigationBar from "@/components/shared/navigationBar/MainNavigationBar";
 import Footer from "@/components/shared/footer/Footer";
 
 const geistSans = Geist({

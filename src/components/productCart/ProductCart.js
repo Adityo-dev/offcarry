@@ -11,7 +11,7 @@ function ProductCart({ product }) {
           className="w-full h-52 flex justify-center items-center"
         >
           <Image
-            src={product?.image || "/default-image.png"}
+            src={product?.image}
             width={200}
             height={200}
             alt={`Image of ${product?.title || "Product"}`}
