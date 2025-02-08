@@ -1,4 +1,5 @@
 import Banner3 from "@/components/bannerGroup/Banner3";
+import Banner4 from "@/components/bannerGroup/Banner4";
 import BestSellers from "@/components/home/bestSellers/BestSellers";
 import FeaturedProducts from "@/components/home/featuredProducts/FeaturedProducts";
 import Hero from "@/components/home/hero/Hero";
@@ -13,6 +14,7 @@ export default function Home() {
       <FeaturedProducts />
       <Banner3 />
       <BestSellers />
+      <Banner4 />
       <Service />
     </main>
   );
