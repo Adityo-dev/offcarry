@@ -35,7 +35,7 @@ export default function CategorySlider({ sliderData }) {
       >
         {sliderData.map((category, ind) => (
           <SwiperSlide key={ind}>
-            <div className="max-w-[250px] w-full h-[100px] flex items-center justify-center rounded-md bg-white shadow-sm transition-all duration-300 hover:border hover:border-primary">
+            <div className="max-w-[250px] w-full h-[100px] flex items-center justify-center rounded-lg bg-white shadow-sm transition-all duration-300 hover:border hover:border-primary">
               <Link href={category?.url} className="flex items-center gap-3">
                 <Image
                   src={category?.image}
@@ -44,7 +44,9 @@ export default function CategorySlider({ sliderData }) {
                   alt=""
                   className="w-12 h-12 object-cover"
                 />
-                <p>{category?.title}</p>
+                <p className="font-semibold tracking-wider">
+                  {category?.title}
+                </p>
               </Link>
             </div>
           </SwiperSlide>
