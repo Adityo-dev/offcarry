@@ -8,7 +8,7 @@ import Service from "@/components/home/service/Service";
 
 export default function Home() {
   return (
-    <main className="space-y-24">
+    <main className="space-y-16">
       <Hero />
       <PreOrder />
       <FeaturedProducts />
