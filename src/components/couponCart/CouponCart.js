@@ -3,7 +3,7 @@ import Image from "next/image";
 
 function CouponCart({ product }) {
   return (
-    <div className="w-full  bg-white rounded-lg p-2 border z-10 border-gray-300 relative flex ">
+    <div className="w-full  bg-white  p-2 border z-10 border-gray-300 relative flex ">
       {/* LEFT SIDE INFO */}
       <div className="flex items-center w-2/3 p-4">
         {/* CART IMAGE */}
