@@ -1,12 +1,11 @@
 import { useLayoutEffect } from "react";
-import { AiOutlineClose } from "react-icons/ai";
+// import { AiOutlineClose } from "react-icons/ai";
 
 export default function RelativeModal({ setShowForm, title, children }) {
   // prevent scroll events
 
   useLayoutEffect(() => {
     const mainContainer = document.querySelector(".mainContainer");
-    // mainContainer.style.overflow = "hidden";
     return () => (mainContainer.style.overflow = "auto");
   }, []);
 
@@ -26,7 +25,7 @@ export default function RelativeModal({ setShowForm, title, children }) {
             onClick={() => setShowForm(false)}
             aria-label="Close form"
           >
-            <AiOutlineClose />
+            {/* <AiOutlineClose /> */}
           </span>
         </header>
 

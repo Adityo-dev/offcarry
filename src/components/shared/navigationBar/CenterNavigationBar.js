@@ -17,13 +17,15 @@ function CenterNavigationBar() {
   return (
     <section className="container mx-auto px-4 flex justify-between">
       {/* TRUST NEST STORE LOGO */}
-      <Image
-        src="/logo/trustNestStore.png"
-        width={160}
-        height={160}
-        alt="TrustNest Store Logo"
-        className="max-w-[160px]"
-      />
+      <Link href={"/"}>
+        <Image
+          src="/logo/trustNestStore.png"
+          width={160}
+          height={160}
+          alt="TrustNest Store Logo"
+          className="max-w-[160px]"
+        />
+      </Link>
       {/* SEARCH FIELD SECTION*/}
       <div className="max-w-[500px] w-full h-[50px] relative">
         <input
