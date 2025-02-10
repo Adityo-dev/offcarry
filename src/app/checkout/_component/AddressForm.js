@@ -5,13 +5,12 @@
 //   useUpdateBrandMutation,
 // } from "@/store/slices/brandApi";
 // import { useFetchCategoriesQuery } from "@/store/slices/CategoryApi";
-import { useForm } from "react-hook-form";
+// import { useForm } from "react-hook-form";
 // import { AiFillCloseCircle } from "react-icons/ai";
 // import { BiCloudUpload } from "react-icons/bi";
 // import { toast } from "react-toastify";
 
 const AddressForm = ({ brand, isEdit, setShowForm }) => {
-
   // const [
   //   addBrand,
   //   { isLoading: addLoading, isSuccess: addSuccess, isError: addError },
@@ -39,7 +38,6 @@ const AddressForm = ({ brand, isEdit, setShowForm }) => {
     },
   });
 
-
   // useEffect(() => {
   //   if (addSuccess) {
   //     toast.success("Brand added successfully!");
@@ -64,9 +62,9 @@ const AddressForm = ({ brand, isEdit, setShowForm }) => {
 
   const onSubmit = async (data) => {
     if (isEdit) {
-      updateBrand({ ...data, "id": brand.id });
+      updateBrand({ ...data, id: brand.id });
     } else {
-      addBrand({ ...data, "logo": "" });
+      addBrand({ ...data, logo: "" });
     }
   };
 
@@ -75,89 +73,87 @@ const AddressForm = ({ brand, isEdit, setShowForm }) => {
       onSubmit={handleSubmit(onSubmit)}
       className="space-y-4 px-10 text-left rounded-md min-w-[30rem] xs:min-w-full dark:text-gray-400"
     >
-
       <div className="grid grid-cols-2 gap-5">
         {/* Name Input */}
-      <div>
-        <label
-          htmlFor="name"
-          className="block text-sm font-bold text-gray-700"
-        >
-          Name
-        </label>
-        <input
-          id="name"
-          type="text"
-          placeholder="Enter your name"
-          {...register("name", { required: "Name is required" })}
-          className="mt-1 h-8 p-5 w-full border border-gray-300 rounded-md shadow-sm bg-inherit placeholder:text-gray-600 dark:placeholder:text-gray-500 sm:text-sm"
-        />
-        {errors.name && (
-          <span className="text-red-500">{errors?.name?.message}</span>
-        )}
-      </div>
+        <div>
+          <label
+            htmlFor="name"
+            className="block text-sm font-bold text-gray-700"
+          >
+            Name
+          </label>
+          <input
+            id="name"
+            type="text"
+            placeholder="Enter your name"
+            {...register("name", { required: "Name is required" })}
+            className="mt-1 h-8 p-5 w-full border border-gray-300 rounded-md shadow-sm bg-inherit placeholder:text-gray-600 dark:placeholder:text-gray-500 sm:text-sm"
+          />
+          {errors.name && (
+            <span className="text-red-500">{errors?.name?.message}</span>
+          )}
+        </div>
 
-      {/* Phone Input */}
-      <div>
-        <label
-          htmlFor="phone"
-          className="block text-sm font-bold text-gray-700"
-        >
-          Phone Number
-        </label>
-        <input
-          id="phone"
-          type="text"
-          placeholder="Your Number"
-          {...register("phone", { required: "Phone is required" })}
-          className="mt-1 h-8 p-5 w-full border border-gray-300 rounded-md shadow-sm bg-inherit placeholder:text-gray-600 dark:placeholder:text-gray-500 sm:text-sm"
-        />
-        {errors.phone && (
-          <span className="text-red-500">{errors?.phone?.message}</span>
-        )}
-      </div>
+        {/* Phone Input */}
+        <div>
+          <label
+            htmlFor="phone"
+            className="block text-sm font-bold text-gray-700"
+          >
+            Phone Number
+          </label>
+          <input
+            id="phone"
+            type="text"
+            placeholder="Your Number"
+            {...register("phone", { required: "Phone is required" })}
+            className="mt-1 h-8 p-5 w-full border border-gray-300 rounded-md shadow-sm bg-inherit placeholder:text-gray-600 dark:placeholder:text-gray-500 sm:text-sm"
+          />
+          {errors.phone && (
+            <span className="text-red-500">{errors?.phone?.message}</span>
+          )}
+        </div>
 
-      {/* Street Address Input */}
-      <div>
-        <label
-          htmlFor="address"
-          className="block text-sm font-bold text-gray-700"
-        >
-          Street Address
-        </label>
-        <input
-          id="address"
-          type="text"
-          placeholder="Your Address"
-          {...register("address", { required: "Address is required" })}
-          className="mt-1 h-8 p-5 w-full border border-gray-300 rounded-md shadow-sm bg-inherit placeholder:text-gray-600 dark:placeholder:text-gray-500 sm:text-sm"
-        />
-        {errors.address && (
-          <span className="text-red-500">{errors?.address?.message}</span>
-        )}
-      </div>
+        {/* Street Address Input */}
+        <div>
+          <label
+            htmlFor="address"
+            className="block text-sm font-bold text-gray-700"
+          >
+            Street Address
+          </label>
+          <input
+            id="address"
+            type="text"
+            placeholder="Your Address"
+            {...register("address", { required: "Address is required" })}
+            className="mt-1 h-8 p-5 w-full border border-gray-300 rounded-md shadow-sm bg-inherit placeholder:text-gray-600 dark:placeholder:text-gray-500 sm:text-sm"
+          />
+          {errors.address && (
+            <span className="text-red-500">{errors?.address?.message}</span>
+          )}
+        </div>
 
-      {/* Email Input */}
-      <div>
-        <label
-          htmlFor="email"
-          className="block text-sm font-bold text-gray-700"
-        >
-          Email
-        </label>
-        <input
-          id="email"
-          type="text"
-          placeholder="Your Email"
-          {...register("email", { required: "Email is required" })}
-          className="mt-1 h-8 p-5 w-full border border-gray-300 rounded-md shadow-sm bg-inherit placeholder:text-gray-600 dark:placeholder:text-gray-500 sm:text-sm"
-        />
-        {errors.email && (
-          <span className="text-red-500">{errors?.email?.message}</span>
-        )}
+        {/* Email Input */}
+        <div>
+          <label
+            htmlFor="email"
+            className="block text-sm font-bold text-gray-700"
+          >
+            Email
+          </label>
+          <input
+            id="email"
+            type="text"
+            placeholder="Your Email"
+            {...register("email", { required: "Email is required" })}
+            className="mt-1 h-8 p-5 w-full border border-gray-300 rounded-md shadow-sm bg-inherit placeholder:text-gray-600 dark:placeholder:text-gray-500 sm:text-sm"
+          />
+          {errors.email && (
+            <span className="text-red-500">{errors?.email?.message}</span>
+          )}
+        </div>
       </div>
-      </div>
-
 
       <button
         type="submit"
