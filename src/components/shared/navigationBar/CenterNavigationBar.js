@@ -7,7 +7,7 @@ const centerNavRightData = [
   { icon: <Heart size={22} strokeWidth={1} />, url: "#" },
   {
     icon: <UserPlus size={22} strokeWidth={1} />,
-    url: "#",
+    url: "/account/login",
     title: "Login or Register ",
     name: "My Account",
   },
