@@ -139,7 +139,7 @@ export function BottomNavigationBar() {
                         <NavigationMenuLink asChild>
                           <Link
                             className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                            href="/"
+                            href="/shop"
                           >
                             <div className="mb-2 mt-4 text-lg font-medium">
                               trust Next Store
@@ -152,15 +152,15 @@ export function BottomNavigationBar() {
                           </Link>
                         </NavigationMenuLink>
                       </li>
-                      <ListItem href="#" title="Page">
+                      <ListItem href="/shop" title="Page">
                         Simply dummy text of the printing and typesetting
                         industry.
                       </ListItem>
-                      <ListItem href="#" title="Special">
+                      <ListItem href="/shop" title="Special">
                         Simply dummy text of the printing and typesetting
                         industry.
                       </ListItem>
-                      <ListItem href="#" title="Trending">
+                      <ListItem href="/shop" title="Trending">
                         Simply dummy text of the printing and typesetting
                         industry.
                       </ListItem>

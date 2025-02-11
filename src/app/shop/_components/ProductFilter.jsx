@@ -93,7 +93,7 @@ export default function ProductFilters() {
   };
 
   return (
-    <div className="flex mt-20 ">
+    <div className="container mx-auto px-4 flex mt-20 ">
       {/* Left Sidebar */}
       <Filter
         resetFilters={resetFilters}

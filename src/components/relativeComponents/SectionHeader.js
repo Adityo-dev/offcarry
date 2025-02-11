@@ -2,30 +2,25 @@ import { HomeIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const Header = () => {
+const SectionHeader = ({ title, linkName }) => {
   return (
-    <div className="bg-[#D7FDEC] w-full px-6 py-8 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <header className="bg-[#D7FDEC] w-full h-40 flex items-center relative overflow-hidden">
+      <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           {/* Left side content */}
           <div className="space-y-4">
-            <h1 className="text-[#2d2517] text-4xl font-bold">
-              TrustNest Shop
-            </h1>
+            <h1 className="text-[#2d2517] text-4xl font-semibold">{title}</h1>
             <nav className="flex items-center gap-2 text-gray-600">
               <span>
-                <HomeIcon />
+                <HomeIcon size={20} strokeWidth={1.5} />
               </span>
               <Link href="/" className="hover:text-gray-900 transition-colors">
                 Home
               </Link>
               <span>/</span>
-              <a
-                href="/shop"
-                className="text-blue-600 hover:text-blue-700 transition-colors"
-              >
-                Shop
-              </a>
+              <span className="text-blue-600 hover:text-blue-700 transition-colors">
+                {linkName}
+              </span>
             </nav>
           </div>
 
@@ -41,8 +36,8 @@ const Header = () => {
           </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 
-export default Header;
+export default SectionHeader;
