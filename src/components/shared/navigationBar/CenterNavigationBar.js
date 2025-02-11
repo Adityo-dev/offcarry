@@ -4,10 +4,10 @@ import { Heart, Search, UserPlus } from "lucide-react";
 import Link from "next/link";
 // center nav right section data
 const centerNavRightData = [
-  { icon: <Heart size={22} strokeWidth={1} />, url: "#" },
+  { icon: <Heart size={22} strokeWidth={1} />, url: "/wishlist" },
   {
     icon: <UserPlus size={22} strokeWidth={1} />,
-    url: "#",
+    url: "/account/login",
     title: "Login or Register ",
     name: "My Account",
   },

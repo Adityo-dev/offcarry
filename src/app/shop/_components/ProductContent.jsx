@@ -1,4 +1,4 @@
-import ProductCard from "./Card";
+import ProductCart from "@/components/productCart/ProductCart";
 import NoProductsFound from "./NotFound";
 
 const ProductContent = ({ filteredProducts }) => {
@@ -18,10 +18,10 @@ const ProductContent = ({ filteredProducts }) => {
       </div>
       <hr className="my-6" />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {filteredProducts.length > 0 ? (
-          filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+          filteredProducts.map((product, ind) => (
+            <ProductCart key={ind} product={product} />
           ))
         ) : (
           <NoProductsFound />
