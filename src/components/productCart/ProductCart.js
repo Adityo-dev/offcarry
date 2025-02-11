@@ -7,7 +7,7 @@ function ProductCart({ product }) {
       {/* Product Image Section */}
       <div className="px-6 mt-6">
         <Link
-          href={"#"}
+          href={`/product/${product?.title}`}
           className="w-full h-52 flex justify-center items-center"
         >
           <Image

@@ -3,7 +3,7 @@
 import { Plus } from "lucide-react";
 import { useState } from "react";
 import AddressForm from "./_component/AddressForm";
-import RelativeModal from "./_component/RelativeModal";
+import RelativeModal from "../../components/relativeComponents/relativeModal/RelativeModal";
 import ShoppingCart from "./_component/ShoppingCart";
 import PaymentOptions from "./_component/PaymentOptions";
 import CheckoutCard from "./_component/CheckoutCard";
@@ -19,8 +19,8 @@ const CheckoutPage = () => {
     <div className="container mx-auto px-4 pt-6">
       <div className="grid grid-cols-12 gap-6">
         <div className="col-span-7">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 rounded-xl text-white">
-            <h1 className="text-2xl font-bold text-[#837F74] flex items-center gap-2">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 rounded-xl ">
+            <h1 className="text-2xl font-semibold flex items-center gap-2">
               Address Book
             </h1>
             <button
