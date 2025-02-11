@@ -1,7 +1,7 @@
 "use client";
 import { useForm } from "react-hook-form";
 
-const AddressForm = ({ setShowForm }) => {
+const AddressForm = () => {
   const {
     register,
     handleSubmit,
@@ -18,7 +18,6 @@ const AddressForm = ({ setShowForm }) => {
 
   const onSubmit = async (data) => {
     console.log("Submitted Data:", data);
-    setShowForm();
   };
 
   return (
@@ -101,8 +100,12 @@ const AddressForm = ({ setShowForm }) => {
             id="email"
             type="email"
             placeholder="Your Email"
+            {...register("email", { required: "Email is required" })}
             className="mt-2 h-12 p-4 w-full border border-gray-300 bg-white text-[#ACB5BD] rounded-lg placeholder:text-[#ACB5BD] text-sm outline-none transition-all duration-300 focus:border-primary"
           />
+          {errors.email && (
+            <span className="text-red-500">{errors.email.message}</span>
+          )}
         </div>
 
         {/* Zip Code Input */}
@@ -117,8 +120,12 @@ const AddressForm = ({ setShowForm }) => {
             id="zipCode"
             type="text"
             placeholder="Your Zip Code"
+            {...register("zipCode", { required: "Zip Code is required" })}
             className="mt-2 h-12 p-4 w-full border border-gray-300 bg-white text-[#ACB5BD] rounded-lg placeholder:text-[#ACB5BD] text-sm outline-none transition-all duration-300 focus:border-primary"
           />
+          {errors.zipCode && (
+            <span className="text-red-500">{errors.zipCode.message}</span>
+          )}
         </div>
       </div>
 
