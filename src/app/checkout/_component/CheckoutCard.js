@@ -21,7 +21,7 @@ export default function CheckoutCard() {
           placeholder="Coupon Code"
           value={coupon}
           onChange={(e) => setCoupon(e.target.value)}
-          className="w-full h-12 p-2 outline-none text-gray-700"
+          className="w-full h-12 p-4 outline-none text-gray-700"
         />
         <button
           className="w-16 h-12 flex items-center justify-center bg-teal-500  text-white"
