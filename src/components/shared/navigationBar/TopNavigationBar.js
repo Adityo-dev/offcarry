@@ -24,13 +24,11 @@ const contacts = [
 
 function TopNavigationBar() {
   return (
-    <section className="w-full h-[40px] flex items-center bg-[#282828] text-white">
+    <section className="w-full h-[40px] hidden sm:flex items-center bg-[#282828] text-white">
       <div className="container mx-auto px-4 flex items-center justify-between">
-        <p className="text-xs sm:text-sm">
-          Enjoy free shipping on orders up to $100
-        </p>
+        <p className="text-sm">Enjoy free shipping on orders up to $100</p>
         {/* SOCIAL MEDIA SECTION */}
-        <div className="flex items-center gap-3 sm:gap-7">
+        <div className="flex items-center gap-7">
           {socialMediaData.map((socialMedia, ind) => (
             <div key={ind}>
               <Link href={socialMedia?.url} target="_blank">
@@ -40,7 +38,7 @@ function TopNavigationBar() {
           ))}
         </div>
         {/* CONTACTS SECTION */}
-        <div className="hidden sm:flex items-center gap-7">
+        <div className="flex items-center gap-7">
           {contacts.map((contact, ind) => (
             <div
               key={ind}
