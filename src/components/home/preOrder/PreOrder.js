@@ -92,7 +92,7 @@ function PreOrder() {
             </div>
 
             {/* Submit Button */}
-            <button className="max-w-[250px] w-full h-11 rounded-md bg-gradient-primary text-white font-semibold shadow-md hover:opacity-90 transition-all">
+            <button className="sm:max-w-[250px] w-full h-11 rounded-md bg-gradient-primary text-white font-semibold shadow-md hover:opacity-90 transition-all">
               Order Now
             </button>
           </form>

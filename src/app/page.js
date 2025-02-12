@@ -12,7 +12,7 @@ import Newsletter from "@/components/newsletter/Newsletter";
 export default function Home() {
   return (
     <main className="space-y-16">
-      {/* <Hero /> */}
+      <Hero />
       <DealOfTheDay />
       <PreOrder />
       <FeaturedProducts />

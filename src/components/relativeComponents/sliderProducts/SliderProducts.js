@@ -49,7 +49,7 @@ export default function SliderProduct({ title, products }) {
           }}
           breakpoints={{
             0: {
-              slidesPerView: 2,
+              slidesPerView: 1,
               spaceBetween: 10,
             },
             320: {
@@ -57,14 +57,18 @@ export default function SliderProduct({ title, products }) {
               spaceBetween: 16,
             },
             640: {
+              slidesPerView: 3,
+              spaceBetween: 20,
+            },
+            1024: {
               slidesPerView: 4,
               spaceBetween: 20,
             },
-            768: {
+            1280: {
               slidesPerView: 5,
-              spaceBetween: 25,
+              spaceBetween: 24,
             },
-            1024: {
+            1536: {
               slidesPerView: 6,
               spaceBetween: 24,
             },

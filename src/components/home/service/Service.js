@@ -26,7 +26,7 @@ const serviceData = [
 
 function Service() {
   return (
-    <section className="container mx-auto px-4 grid grid-cols-2 sm:grid-cols-4 text-center gap-6">
+    <section className="container mx-auto px-4 grid grid-cols-2 sm:grid-cols-4 text-center sm:text-start gap-6">
       {serviceData.map((service, ind) => (
         <div
           key={ind}
