@@ -4,7 +4,7 @@ import CouponCart from "@/components/couponCart/CouponCart";
 
 const dealOfTheDayData = [
   {
-    image: "/images/products1.png",
+    image: "/images/product5.jpg",
     title: "August Gift Voucher",
     off: "10",
     hours: "20",
@@ -12,7 +12,7 @@ const dealOfTheDayData = [
     active: true,
   },
   {
-    image: "/images/products2.png",
+    image: "/images/product6.jpg",
     title: "August Gift Voucher",
     off: "20",
     hours: "20",
@@ -20,7 +20,7 @@ const dealOfTheDayData = [
     active: true,
   },
   {
-    image: "/images/products1.png",
+    image: "/images/product7.jpg",
     title: "August Gift Voucher",
     off: "5",
     hours: "20",
@@ -28,7 +28,7 @@ const dealOfTheDayData = [
     active: true,
   },
   {
-    image: "/images/products2.png",
+    image: "/images/products3.png",
     title: "August Gift Voucher",
     off: "30",
     hours: "20",

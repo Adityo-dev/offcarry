@@ -9,34 +9,52 @@ const tabsData = [
     label: "Smart Phone",
     products: [
       {
-        name: "iPhone 14 Pro Max",
-        image: "/images/products1.png",
+        title: "TWS Loop Wireless Headphones with charging",
+        image: "/images/product5.jpg",
         currentPrice: "1,30,000",
         oldPrice: "1,50,000",
+
+        stock: "10",
       },
       {
-        name: "iPhone 14 Pro Max",
-        image: "/images/products1.png",
+        title: "iPhone 14 Pro Max",
+        image: "/images/product6.jpg",
         currentPrice: "1,30,000",
         oldPrice: "1,50,000",
+
+        stock: "5",
       },
       {
-        name: "Samsung Galaxy S23 Ultra",
-        image: "/images/products1.png",
+        title: "Samsung Galaxy S23 Ultra",
+        image: "/images/product7.jpg",
         currentPrice: "1,20,000",
         oldPrice: "1,35,000",
+
+        stock: "0",
       },
       {
-        name: "Google Pixel 7 Pro",
-        image: "/images/products1.png",
+        title: "Google Pixel 7 Pro",
+        image: "/images/product8.jpg",
         currentPrice: "85,000",
         oldPrice: "95,000",
+
+        stock: "20",
       },
       {
-        name: "OnePlus 11R",
-        image: "/images/products1.png",
+        title: "OnePlus 11R",
+        image: "/images/product9.jpg",
         currentPrice: "65,000",
         oldPrice: "75,000",
+
+        stock: "10",
+      },
+      {
+        title: "iPhone 14 Pro Max",
+        image: "/images/product6.jpg",
+        currentPrice: "1,30,000",
+        oldPrice: "1,50,000",
+
+        stock: "0",
       },
     ],
   },
@@ -45,28 +63,36 @@ const tabsData = [
     label: "Laptop",
     products: [
       {
-        name: 'MacBook Pro 16"',
-        image: "/images/products2.png",
+        title: 'MacBook Pro 16"',
+        image: "/images/product6.jpg",
         currentPrice: "2,50,000",
         oldPrice: "2,80,000",
+
+        stock: "0",
       },
       {
-        name: "Dell XPS 15",
-        image: "/images/products2.png",
+        title: "Dell XPS 15",
+        image: "/images/product11.jpg",
         currentPrice: "2,20,000",
         oldPrice: "2,50,000",
+
+        stock: "5",
       },
       {
-        name: "HP Spectre x360",
-        image: "/images/products2.png",
+        title: "HP Spectre x360",
+        image: "/images/product9.jpg",
         currentPrice: "1,80,000",
         oldPrice: "2,00,000",
+
+        stock: "10",
       },
       {
-        name: "Asus ZenBook Duo",
-        image: "/images/products2.png",
+        title: "Asus ZenBook Duo",
+        image: "/images/product10.jpg",
         currentPrice: "1,70,000",
         oldPrice: "1,90,000",
+
+        stock: "10",
       },
     ],
   },
@@ -75,10 +101,12 @@ const tabsData = [
     label: "Watch",
     products: [
       {
-        name: "Apple Watch Series 8",
-        image: "/images/products2.png",
+        title: "Apple Watch Series 8",
+        image: "/images/product7.jpg",
         currentPrice: "50,000",
         oldPrice: "55,000",
+
+        stock: "3",
       },
     ],
   },
@@ -87,10 +115,12 @@ const tabsData = [
     label: "Accessories",
     products: [
       {
-        name: "AirPods Pro",
-        image: "/images/products2.png",
+        title: "AirPods Pro",
+        image: "/images/product5.jpg",
         currentPrice: "25,000",
         oldPrice: "30,000",
+
+        stock: "10",
       },
     ],
   },
@@ -115,7 +145,7 @@ function BestSellers() {
         {/* TABS CONTAINER */}
         {tabsData.map((tab) => (
           <TabsContent key={tab.value} value={tab.value} className="w-full">
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
               {tab.products.map((product, index) => (
                 // PRODUCTS CART
                 <ProductCart product={product} key={index} />
