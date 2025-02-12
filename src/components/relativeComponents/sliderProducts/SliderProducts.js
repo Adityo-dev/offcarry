@@ -19,10 +19,10 @@ export default function SliderProduct({ title, products }) {
   const value = title?.split(" ")?.join("");
 
   return (
-    <main className="relative container mx-auto group space-y-7">
+    <main className="relative container mx-auto group space-y-4 sm:space-y-7">
       {/* Custom Navigation Buttons */}
       <header>
-        <h2 className="text-4xl">{title}</h2>
+        <h2 className="text-2xl sm:text-4xl">{title}</h2>
       </header>
       <section>
         <div className="absolute xl:static -bottom-16 sm:-bottom-20  flex gap-6 left-1/2 xl:left-auto transform xl:transform-none -translate-x-1/2">
@@ -49,22 +49,26 @@ export default function SliderProduct({ title, products }) {
           }}
           breakpoints={{
             0: {
-              slidesPerView: 2,
+              slidesPerView: 1,
               spaceBetween: 10,
             },
             320: {
-              slidesPerView: 3,
-              spaceBetween: 10,
+              slidesPerView: 2,
+              spaceBetween: 16,
             },
             640: {
+              slidesPerView: 3,
+              spaceBetween: 20,
+            },
+            1024: {
               slidesPerView: 4,
               spaceBetween: 20,
             },
-            768: {
+            1280: {
               slidesPerView: 5,
-              spaceBetween: 25,
+              spaceBetween: 24,
             },
-            1024: {
+            1536: {
               slidesPerView: 6,
               spaceBetween: 24,
             },

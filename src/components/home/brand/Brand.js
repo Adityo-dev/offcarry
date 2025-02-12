@@ -23,12 +23,12 @@ const brandData = [
 
 const Brand = () => {
   return (
-    <div className="relative w-full space-y-6 overflow-hidden">
+    <div className="relative w-full space-y-4 sm:space-y-6 overflow-hidden">
       {/*  BRAND MARQUEE LEFT */}
       <Marquee className="w-full mx-auto" pauseOnHover="true">
         {brandData.map((data, ind) => (
           <div
-            className="w-64 h-36 border flex items-center justify-center rounded-lg ml-6 cursor-pointer"
+            className="w-40 sm:w-64 h-20 sm:h-36 border flex items-center justify-center rounded-lg ml-4 sm:ml-6 cursor-pointer"
             key={ind}
           >
             <Image
@@ -36,7 +36,7 @@ const Brand = () => {
               width={400}
               height={400}
               alt=""
-              className="w-36"
+              className="w-20 sm:w-36"
             />
           </div>
         ))}
@@ -45,7 +45,7 @@ const Brand = () => {
       <Marquee className="w-full mx-auto" pauseOnHover="true" direction="right">
         {brandData.map((data, ind) => (
           <div
-            className="w-64 h-36 border flex items-center justify-center rounded-lg ml-6 cursor-pointer"
+            className="w-40 sm:w-64 h-20 sm:h-36 border flex items-center justify-center rounded-lg ml-4 sm:ml-6 cursor-pointer"
             key={ind}
           >
             <Image
@@ -53,7 +53,7 @@ const Brand = () => {
               width={400}
               height={400}
               alt=""
-              className="w-36"
+              className="w-20 sm:w-36"
             />
           </div>
         ))}

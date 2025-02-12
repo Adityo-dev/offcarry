@@ -27,12 +27,17 @@ export default function Login() {
     "absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400";
 
   return (
-    <section className="flex items-center justify-center py-20">
-      <div className="bg-white p-8 shadow-2xl rounded-lg max-w-lg w-full text-center">
+    <section className="flex items-center justify-center py-20 px-4">
+      <div className="bg-white p-6 sm:p-8 shadow-2xl rounded-lg max-w-lg w-full text-center">
         <h2 className="text-3xl font-semibold mb-2">Hello Again</h2>
-        <p>Enter your credentials to access your account.</p>
+        <p className="text-sm sm:text-base">
+          Enter your credentials to access your account.
+        </p>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 mt-6">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="space-y-3 sm:space-y-4 mt-4 sm:mt-6"
+        >
           <div>
             <div className="relative">
               <User size={20} className={formInputFieldIconStyles} />
