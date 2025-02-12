@@ -1,11 +1,28 @@
 "use client";
+import { User } from "lucide-react";
 import { useState } from "react";
 
 export default function ProductReviews() {
   const [reviews, setReviews] = useState([
     {
       id: 1,
-      name: "sinan",
+      name: "Aditto Dev Barmon (koushik)",
+      date: "November 30, 2022",
+      comment:
+        "Sed perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
+      rating: 4,
+    },
+    {
+      id: 2,
+      name: "Aditto Dev Barmon (koushik)",
+      date: "November 30, 2022",
+      comment:
+        "Sed perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
+      rating: 4,
+    },
+    {
+      id: 3,
+      name: "Aditto Dev Barmon (koushik)",
       date: "November 30, 2022",
       comment:
         "Sed perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
@@ -53,27 +70,44 @@ export default function ProductReviews() {
     setRating(1);
   };
 
+  // FORM INPUT FIELD STYLES
+  const formInputFieldStyles =
+    "w-full h-12 p-4 text-sm border rounded-lg outline-none transition-all duration-300 focus:border-primary";
+  const formInputFieldIconStyles =
+    "absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400";
+
   return (
     <section className="relative">
       {/* Existing Reviews */}
-      {reviews.map((review) => (
-        <div key={review.id} className="border-b pb-4 mb-4">
-          <h2 className="text-xl font-semibold">Review for Product</h2>
-          <div className="flex items-center mt-2">
-            <div className="w-10 h-10 rounded-full bg-gray-300"></div>
-            <div className="ml-3">
-              <p className="font-semibold text-gray-800">{review.name}</p>
-              <p className="text-gray-500 text-sm">{review.date}</p>
+      <h2 className="font-semibold">Review for Product</h2>
+      <div className="space-y-6">
+        {reviews.map((review) => (
+          <div key={review.id}>
+            <div className="flex items-center mt-4">
+              <div className="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center">
+                <User size={30} strokeWidth={1.5} />
+              </div>
+              <div className="ml-3">
+                <div className="mt-2 text-yellow-500">
+                  Rating: {review.rating} ★
+                </div>
+                <p className="flex items-center gap-2 text-sm">
+                  <span>{review.name}</span>
+                  <span>--</span>
+                  <span className="text-xs">{review.date}</span>
+                </p>
+              </div>
             </div>
+            <p className="mt-4 text-sm text-gray-600">{review.comment}</p>
           </div>
-          <p className="mt-2 text-gray-600">{review.comment}</p>
-          <div className="mt-2 text-yellow-500">Rating: {review.rating} ★</div>
-        </div>
-      ))}
+        ))}
+      </div>
 
       {/* Add Review */}
-      <h3 className="text-lg font-semibold mt-6">Add a review</h3>
-      <p className="text-gray-500 text-sm">
+      <h3 className="text-lg font-semibold mt-6 border-b pb-4 ">
+        Add a review
+      </h3>
+      <p className="text-gray-500 text-sm mt-4">
         Your email address will not be published. Required fields are marked *
       </p>
 
@@ -98,26 +132,26 @@ export default function ProductReviews() {
       </div>
 
       {/* Review Form */}
-      <form className="mt-4" onSubmit={handleSubmit}>
+      <form className="mt-4 space-y-3" onSubmit={handleSubmit}>
         <textarea
-          className="w-full border p-2 rounded"
-          rows="4"
+          className={`${formInputFieldStyles} w-full h-full`}
+          rows="6"
           placeholder="Your review *"
           value={newReview.comment}
           onChange={(e) =>
             setNewReview({ ...newReview, comment: e.target.value })
           }
-        ></textarea>
+        />
         <input
           type="text"
-          className="w-full border p-2 rounded mt-2"
+          className={formInputFieldStyles}
           placeholder="Name *"
           value={newReview.name}
           onChange={(e) => setNewReview({ ...newReview, name: e.target.value })}
         />
         <input
           type="email"
-          className="w-full border p-2 rounded mt-2"
+          className={formInputFieldStyles}
           placeholder="Email *"
           value={newReview.email}
           onChange={(e) =>
@@ -127,7 +161,7 @@ export default function ProductReviews() {
 
         <button
           type="submit"
-          className="mt-4 bg-gray-800 text-white px-6 py-2 rounded"
+          className="px-12 py-3 bg-gradient-primary text-white rounded-lg text-lg font-semibold"
         >
           Submit
         </button>
