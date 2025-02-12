@@ -4,7 +4,6 @@ import { useMemo, useState } from "react";
 import Filter from "./Filter";
 import ProductContent from "./ProductContent";
 
-// Sample product data
 const initialProducts = [
   {
     id: 1,
@@ -15,7 +14,8 @@ const initialProducts = [
     category: "Outerwear",
     rating: 4,
     reviews: 25,
-    image: "/images/bag.png",
+    stock: 0,
+    image: "/images/products3.png",
   },
   {
     id: 2,
@@ -26,7 +26,8 @@ const initialProducts = [
     category: "Tops",
     rating: 3,
     reviews: 15,
-    image: "/images/show.png",
+    stock: 0,
+    image: "/images/product5.jpg",
   },
   {
     id: 3,
@@ -37,7 +38,8 @@ const initialProducts = [
     category: "Footwear",
     rating: 5,
     reviews: 10,
-    image: "/images/hudi.png",
+    stock: 0,
+    image: "/images/product6.jpg",
   },
   {
     id: 4,
@@ -48,7 +50,8 @@ const initialProducts = [
     category: "Outerwear",
     rating: 4,
     reviews: 20,
-    image: "/images/bag.png",
+    stock: 0,
+    image: "/images/product11.jpg",
   },
   {
     id: 5,
@@ -59,7 +62,56 @@ const initialProducts = [
     category: "Bottoms",
     rating: 4,
     reviews: 30,
-    image: "/images/show.png",
+    stock: 0,
+    image: "/images/product7.jpg",
+  },
+  {
+    id: 6,
+    name: "Women's Jeans",
+    price: 75,
+    size: "Medium",
+    color: "Blue",
+    category: "Bottoms",
+    rating: 4,
+    reviews: 30,
+    stock: 0,
+    image: "/images/product8.jpg",
+  },
+  {
+    id: 7,
+    name: "Women's Jeans",
+    price: 75,
+    size: "Medium",
+    color: "Blue",
+    category: "Bottoms",
+    rating: 4,
+    reviews: 30,
+    stock: 0,
+    image: "/images/product6.jpg",
+  },
+  {
+    id: 8,
+    name: "Women's Jeans",
+    price: 75,
+    size: "Medium",
+    color: "Blue",
+    category: "Bottoms",
+    rating: 4,
+    reviews: 30,
+    stock: 0,
+    image: "/images/product9.jpg",
+  },
+  {
+    id: 9,
+    name: "Women's Jeans",
+    price: 75,
+    size: "Medium",
+    color: "Blue",
+    category: "Bottoms",
+    rating: 4,
+    reviews: 30,
+    stock: 10,
+    image: "/images/product10.jpg",
   },
 ];
 

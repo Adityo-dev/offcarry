@@ -57,8 +57,8 @@ export default function SliderProduct({ products }) {
             spaceBetween: 25,
           },
           1024: {
-            slidesPerView: 5,
-            spaceBetween: 30,
+            slidesPerView: 6,
+            spaceBetween: 24,
           },
         }}
         modules={[Navigation, Autoplay]}

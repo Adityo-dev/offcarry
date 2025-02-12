@@ -2,55 +2,56 @@ import SliderProduct from "@/components/sliderProducts/SliderProducts";
 // FEATURED PRODUCTS
 const featuredProducts = [
   {
-    image: "/images/products1.png",
+    image: "/images/products3.png",
     title: "Men’s full sleeve Jaket",
     oldPrice: "130.00",
     currentPrice: "125.00",
-    url: "",
+    stock: 0,
   },
   {
-    image: "/images/products2.png",
+    image: "/images/product5.jpg",
     title: "Hi quality Men’s Sneakers ",
     oldPrice: "130.00",
     currentPrice: "125.00",
-    url: "",
+    stock: 10,
   },
   {
-    image: "/images/products2.png",
+    image: "/images/product10.jpg",
     title: "Hand made ladies Bag",
     oldPrice: "130.00",
     currentPrice: "125.00",
-    url: "",
+    stock: 0,
   },
   {
-    image: "/images/products2.png",
+    image: "/images/product6.jpg",
     title: "Fashion hi scaling watch",
     oldPrice: "130.00",
     currentPrice: "125.00",
-    url: "",
+    stock: 10,
   },
   {
-    image: "/images/products2.png",
+    image: "/images/product8.jpg",
     title: "Hand made ladies Bag",
     oldPrice: "130.00",
     currentPrice: "125.00",
-    url: "",
+    stock: 20,
   },
   {
-    image: "/images/products2.png",
+    image: "/images/product7.jpg",
     title: "Hi quality Men’s Sneakers ",
     oldPrice: "130.00",
     currentPrice: "125.00",
-    url: "",
+    stock: 5,
   },
   {
-    image: "/images/products2.png",
+    image: "/images/product6.jpg",
     title: "Hi quality Men’s Sneakers ",
     oldPrice: "130.00",
     currentPrice: "125.00",
-    url: "",
+    stock: 10,
   },
 ];
+
 function FeaturedProducts() {
   return (
     <section className="container mx-auto px-4 space-y-7">
