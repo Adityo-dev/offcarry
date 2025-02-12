@@ -21,7 +21,32 @@ export default function CategorySlider({ sliderData }) {
       onMouseLeave={handleMouseLeave}
     >
       <Swiper
-        slidesPerView={6}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          320: {
+            slidesPerView: 2,
+            spaceBetween: 16,
+          },
+          640: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+          },
+          1280: {
+            slidesPerView: 5,
+            spaceBetween: 24,
+          },
+          1536: {
+            slidesPerView: 6,
+            spaceBetween: 24,
+          },
+        }}
         spaceBetween={30}
         loop={true}
         speed={1000}

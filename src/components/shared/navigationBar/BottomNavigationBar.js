@@ -90,7 +90,7 @@ const categoriesData = [
 
 export function BottomNavigationBar() {
   return (
-    <section className="border-y border-[#ebebeb] py-2">
+    <section className="border-y border-[#ebebeb] py-2 hidden sm:block">
       <div className=" container mx-auto px-4 flex items-center justify-between">
         <div className="flex items-center gap-6">
           {/* CATEGORIES SECTION  */}

@@ -18,13 +18,17 @@ const footerBottomData = [
 
 function CopyRight() {
   return (
-    <div className="container mx-auto px-4 flex justify-between">
-      <p className="text-sm text-[#837F74] capitalize">
+    <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between gap-3">
+      <p className="text-xs sm:text-sm text-[#837F74] capitalize text-center sm:text-start">
         All Right Reserved Trust Nest Store © 2025
       </p>
-      <div className="flex items-center gap-8">
+      <div className="flex items-center gap-6 sm:gap-8 justify-center">
         {footerBottomData.map((data, ind) => (
-          <Link href={data?.url} key={ind} className="text-[#ACB5BD] text-sm">
+          <Link
+            href={data?.url}
+            key={ind}
+            className="text-[#ACB5BD] text-xs sm:text-sm"
+          >
             {data?.name}
           </Link>
         ))}

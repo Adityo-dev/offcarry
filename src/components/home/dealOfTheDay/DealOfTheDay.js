@@ -55,10 +55,10 @@ const dealOfTheDayData = [
 
 function DealOfTheDay() {
   return (
-    <main className="container mx-auto px-4 space-y-7">
-      <h2 className="text-4xl">Deal Of The Day</h2>
+    <main className="container mx-auto px-4 space-y-4 sm:space-y-7">
+      <h2 className=" text-2xl sm:text-4xl">Deal Of The Day</h2>
 
-      <div className="grid grid-cols-3 gap-7">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-7">
         {dealOfTheDayData.map((dealData, ind) => (
           <CouponCart key={ind} product={dealData} />
         ))}

@@ -15,7 +15,7 @@ const centerNavRightData = [
 
 function CenterNavigationBar() {
   return (
-    <section className="container mx-auto px-4 flex justify-between">
+    <section className="container mx-auto px-4 flex justify-between py-4 sm:py-0">
       {/* TRUST NEST STORE LOGO */}
       <Link href={"/"}>
         <Image
@@ -23,11 +23,11 @@ function CenterNavigationBar() {
           width={160}
           height={160}
           alt="TrustNest Store Logo"
-          className="max-w-[160px]"
+          className="w-28 sm:w-[160px]"
         />
       </Link>
       {/* SEARCH FIELD SECTION*/}
-      <div className="max-w-[500px] w-full h-[50px] relative">
+      <div className="max-w-[500px] w-full h-[50px] relative  hidden sm:block">
         <input
           type="search"
           id="search"
@@ -40,13 +40,13 @@ function CenterNavigationBar() {
         </button>
       </div>
       {/* WISHLIST AND ACCOUNT SECTION */}
-      <div className="flex items-center">
+      <div className="flex items-center gap-2 sm:gap-0">
         {centerNavRightData.map((data, ind) => (
           <Link href={data?.url} key={ind} className="flex items-center gap-4">
-            <p className="w-10 h-10 bg-[#EEF0F2] text-[#292B49] rounded-full flex items-center justify-center">
+            <p className="w-8 sm:w-10 h-8 sm:h-10 p-1.5 sm:p-0 bg-[#EEF0F2] text-[#292B49] rounded-full flex items-center justify-center">
               {data?.icon}
             </p>
-            <p className="flex flex-col text-sm text-[#837F74]">
+            <p className="hidden sm:flex flex-col text-sm text-[#837F74] ">
               <span>{data?.title}</span>
               <span>{data?.name}</span>
             </p>
