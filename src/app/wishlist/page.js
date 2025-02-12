@@ -1,4 +1,4 @@
-import SectionHeader from "@/components/relativeComponents/SectionHeader";
+import SectionHeader from "@/components/relativeComponents/sectionHeader/SectionHeader";
 
 function Wishlist() {
   return (

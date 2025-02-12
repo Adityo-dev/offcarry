@@ -1,7 +1,7 @@
-import SliderProduct from "@/components/relativeComponents/sliderProducts/SliderProducts";
+import SliderProduct from "../relativeComponents/sliderProducts/SliderProducts";
 
-// FEATURED PRODUCTS
-const featuredProducts = [
+// RELATED PRODUCTS
+const relatedProducts = [
   {
     image: "/images/products3.png",
     title: "Men’s full sleeve Jaket",
@@ -53,12 +53,12 @@ const featuredProducts = [
   },
 ];
 
-function FeaturedProducts() {
+function RelatedProducts() {
   return (
-    <section className="container mx-auto px-4">
-      <SliderProduct title={"Featured Products"} products={featuredProducts} />
+    <section>
+      <SliderProduct title={"Related Products"} products={relatedProducts} />
     </section>
   );
 }
 
-export default FeaturedProducts;
+export default RelatedProducts;
