@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import ProductReviews from "./ProductReviews";
 
 const tabs = [
   {
@@ -16,7 +17,7 @@ const tabs = [
   },
   {
     name: "Reviews (2)",
-    content: `Sed porttitor lectus nibh. Quisque velit nisi, pretium ut lacinia in,  Vivamus suscipit tortor eget felis porttitor volutpat.`,
+    content: <ProductReviews />,
   },
 ];
 
