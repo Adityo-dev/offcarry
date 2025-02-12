@@ -9,6 +9,14 @@ const tabsData = [
     label: "Smart Phone",
     products: [
       {
+        title: "Apple Watch Series 8",
+        image: "/images/products3.png",
+        currentPrice: "50,000",
+        oldPrice: "55,000",
+
+        stock: "3",
+      },
+      {
         title: "TWS Loop Wireless Headphones with charging",
         image: "/images/product5.jpg",
         currentPrice: "1,30,000",
@@ -25,8 +33,24 @@ const tabsData = [
         stock: "5",
       },
       {
-        title: "Samsung Galaxy S23 Ultra",
+        title: "Dell XPS 15",
         image: "/images/product7.jpg",
+        currentPrice: "2,20,000",
+        oldPrice: "2,50,000",
+
+        stock: "5",
+      },
+      {
+        title: "HP Spectre x360",
+        image: "/images/product8.jpg",
+        currentPrice: "1,80,000",
+        oldPrice: "2,00,000",
+
+        stock: "10",
+      },
+      {
+        title: "Samsung Galaxy S23 Ultra",
+        image: "/images/product9.jpg",
         currentPrice: "1,20,000",
         oldPrice: "1,35,000",
 
@@ -34,27 +58,51 @@ const tabsData = [
       },
       {
         title: "Google Pixel 7 Pro",
-        image: "/images/product8.jpg",
+        image: "/images/product10.jpg",
         currentPrice: "85,000",
         oldPrice: "95,000",
 
         stock: "20",
       },
       {
-        title: "OnePlus 11R",
-        image: "/images/product9.jpg",
-        currentPrice: "65,000",
-        oldPrice: "75,000",
+        title: 'MacBook Pro 16"',
+        image: "/images/product11.jpg",
+        currentPrice: "2,50,000",
+        oldPrice: "2,80,000",
+
+        stock: "0",
+      },
+      {
+        title: "Dell XPS 15",
+        image: "/images/products4.png",
+        currentPrice: "2,20,000",
+        oldPrice: "2,50,000",
+
+        stock: "5",
+      },
+      {
+        title: "Dell XPS 15",
+        image: "/images/product10.jpg",
+        currentPrice: "2,20,000",
+        oldPrice: "2,50,000",
+
+        stock: "5",
+      },
+      {
+        title: "HP Spectre x360",
+        image: "/images/product6.jpg",
+        currentPrice: "1,80,000",
+        oldPrice: "2,00,000",
 
         stock: "10",
       },
       {
-        title: "iPhone 14 Pro Max",
-        image: "/images/product6.jpg",
-        currentPrice: "1,30,000",
-        oldPrice: "1,50,000",
+        title: "Asus ZenBook Duo",
+        image: "/images/products4.png",
+        currentPrice: "1,70,000",
+        oldPrice: "1,90,000",
 
-        stock: "0",
+        stock: "10",
       },
     ],
   },
@@ -107,6 +155,94 @@ const tabsData = [
         oldPrice: "55,000",
 
         stock: "3",
+      },
+      {
+        title: "TWS Loop Wireless Headphones with charging",
+        image: "/images/product5.jpg",
+        currentPrice: "1,30,000",
+        oldPrice: "1,50,000",
+
+        stock: "10",
+      },
+      {
+        title: "iPhone 14 Pro Max",
+        image: "/images/product6.jpg",
+        currentPrice: "1,30,000",
+        oldPrice: "1,50,000",
+
+        stock: "5",
+      },
+      {
+        title: "Dell XPS 15",
+        image: "/images/product11.jpg",
+        currentPrice: "2,20,000",
+        oldPrice: "2,50,000",
+
+        stock: "5",
+      },
+      {
+        title: "HP Spectre x360",
+        image: "/images/product9.jpg",
+        currentPrice: "1,80,000",
+        oldPrice: "2,00,000",
+
+        stock: "10",
+      },
+      {
+        title: "Samsung Galaxy S23 Ultra",
+        image: "/images/product7.jpg",
+        currentPrice: "1,20,000",
+        oldPrice: "1,35,000",
+
+        stock: "0",
+      },
+      {
+        title: "Google Pixel 7 Pro",
+        image: "/images/product8.jpg",
+        currentPrice: "85,000",
+        oldPrice: "95,000",
+
+        stock: "20",
+      },
+      {
+        title: 'MacBook Pro 16"',
+        image: "/images/product6.jpg",
+        currentPrice: "2,50,000",
+        oldPrice: "2,80,000",
+
+        stock: "0",
+      },
+      {
+        title: "Dell XPS 15",
+        image: "/images/product11.jpg",
+        currentPrice: "2,20,000",
+        oldPrice: "2,50,000",
+
+        stock: "5",
+      },
+      {
+        title: "Dell XPS 15",
+        image: "/images/product11.jpg",
+        currentPrice: "2,20,000",
+        oldPrice: "2,50,000",
+
+        stock: "5",
+      },
+      {
+        title: "HP Spectre x360",
+        image: "/images/product9.jpg",
+        currentPrice: "1,80,000",
+        oldPrice: "2,00,000",
+
+        stock: "10",
+      },
+      {
+        title: "Asus ZenBook Duo",
+        image: "/images/product10.jpg",
+        currentPrice: "1,70,000",
+        oldPrice: "1,90,000",
+
+        stock: "10",
       },
     ],
   },
