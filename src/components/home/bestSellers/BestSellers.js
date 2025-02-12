@@ -267,9 +267,9 @@ function BestSellers() {
     <section className="container mx-auto px-4">
       <Tabs defaultValue="smartphone" className="w-full">
         {/* TITLE AND TABS LIST */}
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-4xl">Best Sellers</h2>
-          <TabsList className="space-x-7">
+        <div className="flex flex-col sm:flex-row gap-3 justify-between items-center mb-6">
+          <h2 className="text-2xl sm:text-4xl">Best Sellers</h2>
+          <TabsList className="space-x-4 sm:space-x-7">
             {tabsData.map((tab) => (
               <TabsTrigger key={tab.value} value={tab.value}>
                 {tab.label}
@@ -281,7 +281,7 @@ function BestSellers() {
         {/* TABS CONTAINER */}
         {tabsData.map((tab) => (
           <TabsContent key={tab.value} value={tab.value} className="w-full">
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
               {tab.products.map((product, index) => (
                 // PRODUCTS CART
                 <ProductCart product={product} key={index} />

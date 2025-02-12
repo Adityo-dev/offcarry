@@ -7,19 +7,23 @@ import FeaturedProducts from "@/components/home/featuredProducts/FeaturedProduct
 import Hero from "@/components/home/hero/Hero";
 import PreOrder from "@/components/home/preOrder/PreOrder";
 import Service from "@/components/home/service/Service";
+import Newsletter from "@/components/newsletter/Newsletter";
 
 export default function Home() {
   return (
     <main className="space-y-16">
-      <Hero />
+      {/* <Hero /> */}
       <DealOfTheDay />
       <PreOrder />
       <FeaturedProducts />
-      <Banner3 />
+      {/* <Banner3 /> */}
       <BestSellers />
       <Banner4 />
       <Service />
       <Brand />
+      <div className="px-4 block sm:hidden">
+        <Newsletter />
+      </div>
     </main>
   );
 }

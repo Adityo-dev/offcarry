@@ -26,15 +26,23 @@ const serviceData = [
 
 function Service() {
   return (
-    <section className="container mx-auto px-4 flex items-center justify-between">
+    <section className="container mx-auto px-4 grid grid-cols-2 sm:grid-cols-4 text-center gap-6">
       {serviceData.map((service, ind) => (
-        <div key={ind} className="flex items-center gap-3">
+        <div
+          key={ind}
+          className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3"
+        >
           <p className="w-16 h-16 rounded-full border flex items-center justify-center">
             {service?.icon}
           </p>
-          <p className="flex flex-col gap-1">
-            <span className="text-lg font-semibold">{service?.title}</span>
-            <span className="text-[#525258]">{service?.subTitle}</span>
+
+          <p className="flex flex-col sm:gap-1">
+            <span className="text-base sm:text-lg sm:font-semibold">
+              {service?.title}
+            </span>
+            <span className="text-[#525258] text-sm sm:text-base">
+              {service?.subTitle}
+            </span>
           </p>
         </div>
       ))}
