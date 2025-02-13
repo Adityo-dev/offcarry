@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import CopyRight from "./CopyRight";
 import ContactInfo from "./ContactInfo";
-import Newsletter from "@/components/newsletter/Newsletter";
+import Newsletter from "@/components/shared/newsletter/Newsletter";
 
 const footerData = [
   {

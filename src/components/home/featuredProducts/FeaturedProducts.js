@@ -1,4 +1,4 @@
-import SliderProduct from "@/components/relativeComponents/sliderProducts/SliderProducts";
+import SliderProduct from "@/components/sliderProducts/SliderProducts";
 
 // FEATURED PRODUCTS
 const featuredProducts = [

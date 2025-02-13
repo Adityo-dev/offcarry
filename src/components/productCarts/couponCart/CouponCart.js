@@ -1,6 +1,7 @@
 import { Info } from "lucide-react";
 import Image from "next/image";
-import CountdownTimer from "../productCart/CountdownTimer";
+import CountdownTimer from "../productsCart/CountdownTimer";
+import Link from "next/link";
 
 function CouponCart({ product }) {
   return (
@@ -8,7 +9,10 @@ function CouponCart({ product }) {
       {/* LEFT SIDE INFO */}
       <div className="flex items-center col-span-8 sm:p-4">
         {/* CART IMAGE */}
-        <div className="border w-20 h-20 sm:w-24 sm:h-24 rounded-lg overflow-hidden">
+        <Link
+          href={`/product/${product?.title}`}
+          className="border w-20 h-20 sm:w-24 sm:h-24 rounded-lg overflow-hidden"
+        >
           <Image
             src={product?.image}
             alt="Coupon"
@@ -16,10 +20,14 @@ function CouponCart({ product }) {
             height={400}
             className="w-full h-full rounded-md object-contain"
           />
-        </div>
+        </Link>
         {/* CART TEXT */}
         <div className="ml-2 sm:ml-4">
-          <h2 className="text-sm font-semibold">August Gift Voucher</h2>
+          <Link href={`/product/${product?.title}`}>
+            <h3 className="text-sm font-semibold transition-all duration-300 hover:text-primary">
+              {product?.title}
+            </h3>
+          </Link>
           <p className="font-semibold mt-1 mb-2 sm:mb-3 text-sm">
             <span className="text-red-500">{product?.off}%</span>
             <span> Off</span>

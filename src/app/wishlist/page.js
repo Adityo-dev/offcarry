@@ -1,4 +1,4 @@
-import SectionHeader from "@/components/relativeComponents/sectionHeader/SectionHeader";
+import SectionHeader from "@/components/sectionHeader/SectionHeader";
 import WishlistCart from "./_components/WishlistCart";
 
 // data

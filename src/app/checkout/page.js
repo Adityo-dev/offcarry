@@ -2,7 +2,7 @@
 import { Plus } from "lucide-react";
 import { useState } from "react";
 import AddressForm from "./_component/AddressForm";
-import RelativeModal from "../../components/relativeComponents/relativeModal/RelativeModal";
+import RelativeModal from "../../components/relativeModal/RelativeModal";
 import ShoppingCart from "./_component/ShoppingCart";
 import PaymentOptions from "./_component/PaymentOptions";
 import CheckoutCard from "./_component/CheckoutCard";

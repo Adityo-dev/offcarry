@@ -1,6 +1,6 @@
 //Deal Of The Day DATA
 
-import CouponCart from "@/components/couponCart/CouponCart";
+import CouponCart from "@/components/productCarts/couponCart/CouponCart";
 
 const dealOfTheDayData = [
   {

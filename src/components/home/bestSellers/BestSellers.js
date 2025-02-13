@@ -1,5 +1,5 @@
 // TABS COMPONENTS
-import ProductCart from "@/components/productCart/ProductCart";
+import ProductCart from "@/components/productCarts/productsCart/ProductCart";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 // PRODUCTS DATA
