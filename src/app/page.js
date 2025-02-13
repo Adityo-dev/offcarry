@@ -16,7 +16,7 @@ export default function Home() {
       <DealOfTheDay />
       <PreOrder />
       <FeaturedProducts />
-      {/* <Banner3 /> */}
+      <Banner3 />
       <BestSellers />
       <Banner4 />
       <Service />

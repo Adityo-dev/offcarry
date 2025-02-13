@@ -231,7 +231,7 @@ export function BottomNavigationBar() {
 
         {/* PRE ORDER SECTION */}
         <Link
-          href={"#"}
+          href={"/pre-order"}
           className="max-w-[130px] w-full h-11 flex items-center justify-center rounded-md text-lg font-medium bg-gradient-primary text-white"
         >
           Pre Order

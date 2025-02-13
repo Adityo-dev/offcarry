@@ -84,21 +84,23 @@ export default function ProductReviews() {
         {reviews.map((review) => (
           <div key={review.id}>
             <div className="flex items-center mt-4">
-              <div className="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center">
+              <div className="w-12 sm:w-16 h-12 sm:h-16 rounded-full bg-gray-200 flex items-center justify-center">
                 <User size={30} strokeWidth={1.5} />
               </div>
-              <div className="ml-3">
-                <div className="mt-2 text-yellow-500">
+              <div className="ml-2 sm:ml-3">
+                <div className="text-sm sm:text-base text-yellow-500">
                   Rating: {review.rating} ★
                 </div>
-                <p className="flex items-center gap-2 text-sm">
+                <p className="flex items-center gap-2 text-xs sm:text-sm">
                   <span>{review.name}</span>
                   <span>--</span>
                   <span className="text-xs">{review.date}</span>
                 </p>
               </div>
             </div>
-            <p className="mt-4 text-sm text-gray-600">{review.comment}</p>
+            <p className="mt-2 sm:mt-4 text-xs sm:text-sm text-gray-600">
+              {review.comment}
+            </p>
           </div>
         ))}
       </div>

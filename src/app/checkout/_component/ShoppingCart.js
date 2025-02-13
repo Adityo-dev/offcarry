@@ -44,7 +44,7 @@ export default function ShoppingCart() {
   };
 
   return (
-    <div className="mx-auto bg-white shadow-lg rounded-lg p-6 mt-10">
+    <div className="mx-auto bg-white shadow-lg rounded-lg p-4 sm:p-6 mt-10">
       <div className="flex justify-between items-center border-b pb-4">
         <h2 className="text-lg text-[#38311F] font-semibold">
           {items.length} Items In Cart
@@ -60,7 +60,7 @@ export default function ShoppingCart() {
         {items.map((item) => (
           <div
             key={item.id}
-            className="bg-[#FAFAFA] flex items-center justify-between border p-4 rounded-lg"
+            className="bg-[#FAFAFA] flex items-center justify-between border p-4 rounded-lg relative"
           >
             <div className="flex items-center gap-4">
               <div className="w-20 h-20 bg-white p-2 rounded-lg">
@@ -98,7 +98,7 @@ export default function ShoppingCart() {
             </p>
             <button
               onClick={() => removeItem(item.id)}
-              className="text-red-500 hover:text-red-700"
+              className="absolute top-2 right-2 sm:relative text-red-500 hover:text-red-700"
             >
               <Trash size={20} />
             </button>

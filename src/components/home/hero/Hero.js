@@ -28,17 +28,17 @@ const heroData = [
 
 function Hero() {
   return (
-    <main className="w-full pb-4 sm:pb-8 bg-[#F1F1F1]">
-      <section className="container mx-auto px-4 pt-4 sm:pt-6 space-y-4 sm:space-y-7">
+    <main className="w-full pb-4 xl:pb-8 bg-[#F1F1F1]">
+      <section className="container mx-auto px-4 pt-4 xl:pt-6 space-y-4 xl:space-y-7">
         {/* CATEGORY COMPONENTS */}
         <Category />
         <div className="w-full grid grid-cols-12 gap-7">
           {/* HERO SLIDER COMPONENTS */}
-          <div className="w-full h-full sm:h-[500px] col-span-12 sm:col-span-9">
+          <div className="w-full h-full xl:h-[500px] col-span-12 xl:col-span-9">
             <HeroSlider sliderData={heroData} />
           </div>
           {/* BANNER */}
-          <div className="w-full h-full sm:h-[500px] col-span-12 sm:col-span-3 hidden sm:block">
+          <div className="w-full h-full xl:h-[500px] col-span-12 xl:col-span-3 hidden xl:block">
             <Banner2 />
           </div>
         </div>
