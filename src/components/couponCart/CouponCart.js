@@ -3,11 +3,11 @@ import Image from "next/image";
 
 function CouponCart({ product }) {
   return (
-    <div className="w-full bg-white p-2 border z-10 border-gray-300 relative flex">
+    <div className="w-full grid grid-cols-12 bg-white p-2 border rounded-lg z-10 border-gray-300 relative">
       {/* LEFT SIDE INFO */}
-      <div className="flex items-center w-2/3 p-2 sm:p-4">
+      <div className="flex items-center col-span-8 sm:p-4">
         {/* CART IMAGE */}
-        <div className="border p-2 w-16 h-16 sm:w-24 sm:h-24 rounded-lg overflow-hidden">
+        <div className="border w-20 h-20 sm:w-24 sm:h-24 rounded-lg overflow-hidden">
           <Image
             src={product?.image}
             alt="Coupon"
@@ -18,10 +18,8 @@ function CouponCart({ product }) {
         </div>
         {/* CART TEXT */}
         <div className="ml-2 sm:ml-4">
-          <h2 className="font-semibold text-sm sm:text-base">
-            August Gift Voucher
-          </h2>
-          <p className="font-semibold mt-1 mb-2 sm:mb-3 text-xs sm:text-sm">
+          <h2 className="text-sm font-semibold">August Gift Voucher</h2>
+          <p className="font-semibold mt-1 mb-2 sm:mb-3 text-sm">
             <span className="text-red-500">{product?.off}%</span>
             <span> Off</span>
           </p>
@@ -55,21 +53,20 @@ function CouponCart({ product }) {
       </div>
 
       {/* MIDDLE CUT LINE EFFECT */}
-      <div className="absolute -top-[1px] right-[125px] sm:right-[148px] w-6 sm:w-7 h-5 sm:h-6 bg-white rounded-b-full border border-t-0 border-gray-300 z-20"></div>
-      <div className="absolute -bottom-[1px] right-[125px] sm:right-[148px] w-6 sm:w-7 h-5 sm:h-6 bg-white rounded-t-full border border-b-0 border-gray-300 z-20"></div>
+      <div className="absolute  -top-[1px]  right-[calc(33.33%-9px)] w-6 sm:w-7 h-5 sm:h-6 bg-white rounded-b-full border border-t-0 border-gray-300 z-20"></div>
+      <div className="absolute -bottom-[1px] right-[calc(33.33%-9px)] w-6 sm:w-7 h-5 sm:h-6 bg-white rounded-t-full border border-b-0 border-gray-300 z-20"></div>
 
       {/* RIGHT SIDE COUPON */}
-      <div className="w-1/3 border-l border-dashed flex flex-col items-center justify-center p-2 sm:p-4">
+      <div className="col-span-4 border-l border-dashed flex flex-col items-center justify-center">
         <div className="flex items-center gap-1 sm:gap-2">
           <p className="text-[10px] sm:text-xs font-semibold">
-            Coupon{" "}
+            Coupon
             {product?.active ? (
-              <span className="text-primary">Active</span>
+              <span className="text-primary"> Active</span>
             ) : (
-              <span className="text-red-500">Inactive</span>
+              <span className="text-red-500"> Inactive</span>
             )}
           </p>
-
           <p>
             <Info
               size={14}
@@ -79,7 +76,7 @@ function CouponCart({ product }) {
             />
           </p>
         </div>
-        <div className="border-dashed border border-primary text-secondary px-2 sm:px-4 py-1 sm:py-2 rounded-md mt-2 text-[10px] sm:text-sm font-semibold">
+        <div className="border-dashed border border-primary bg-[#E5F2F2] px-4 sm:px-6 py-2 rounded-md mt-2 text-[10px] sm:text-sm font-semibold">
           {product?.coupon}
         </div>
       </div>

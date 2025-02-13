@@ -19,10 +19,10 @@ export default function SliderProduct({ title, products }) {
   const value = title?.split(" ")?.join("");
 
   return (
-    <main className="relative container mx-auto group space-y-4 sm:space-y-7">
+    <main className="relative container mx-auto group space-y-4 md:space-y-6">
       {/* Custom Navigation Buttons */}
       <header>
-        <h2 className="text-2xl sm:text-4xl">{title}</h2>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl">{title}</h2>
       </header>
       <section>
         <div className="absolute xl:static -bottom-16 sm:-bottom-20  flex gap-6 left-1/2 xl:left-auto transform xl:transform-none -translate-x-1/2">

@@ -14,16 +14,14 @@ export default function Home() {
     <main className="space-y-16">
       <Hero />
       <DealOfTheDay />
-      <PreOrder />
+      {/* <PreOrder /> */}
       <FeaturedProducts />
-      <Banner3 />
+      {/* <Banner3 /> */}
       <BestSellers />
-      <Banner4 />
+      {/* <Banner4 /> */}
       <Service />
       <Brand />
-      <div className="px-4 block sm:hidden">
-        <Newsletter />
-      </div>
+      <div className="px-4 block lg:hidden">{/* <Newsletter /> */}</div>
     </main>
   );
 }
