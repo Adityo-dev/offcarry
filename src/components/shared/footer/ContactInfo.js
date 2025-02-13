@@ -22,14 +22,14 @@ const contactInfoData = [
 function ContactInfo() {
   return (
     <section className="container mx-auto px-4 ">
-      <div className="bg-[#2A3A3E] rounded-lg flex flex-col sm:flex-row gap-7 items-center justify-between py-7 px-12">
+      <div className="bg-[#2A3A3E] rounded-lg flex flex-col lg:flex-row gap-7 items-center justify-between py-7 px-12">
         {contactInfoData.map((contact, ind) => (
           <div
             key={ind}
-            className="flex flex-col sm:flex-row items-center gap-4"
+            className="flex flex-col lg:flex-row items-center gap-4"
           >
             <p>{contact?.icon}</p>
-            <p className="flex flex-col text-sm sm:text-base text-[#DDE2E5] whitespace-pre-line text-center sm:text-start">
+            <p className="flex flex-col text-sm md:text-base text-[#DDE2E5] whitespace-pre-line text-center lg:text-start">
               <span>{contact?.title}</span>
               <span>{contact?.text}</span>
             </p>

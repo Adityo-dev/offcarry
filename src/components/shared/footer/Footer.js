@@ -50,7 +50,7 @@ const socialMediaData = [
 
 function Footer() {
   return (
-    <main className="w-full mt-10 lg:mt-64 pt-12 sm:pt-40 pb-10 bg-[#152327] text-white relative">
+    <main className="w-full mt-10 lg:mt-64 pt-12 sm:pt-40 pb-6 bg-[#152327] text-white relative">
       {/* NEWS LETTER COMPONENTS */}
       <section className="relative container mx-auto">
         <div className="w-full absolute -top-72 left-0 right-0 px-4 hidden lg:block">
@@ -58,7 +58,7 @@ function Footer() {
         </div>
       </section>
 
-      <section className="container mx-auto px-4 flex flex-col lg:grid grid-cols-12 gap-10 sm:gap-20 ">
+      <section className="container mx-auto px-4 flex flex-col lg:grid grid-cols-12 gap-10 lg:gap-20 ">
         <div className="col-span-4">
           {/* LOGO AND SUBTITLE */}
           <Image
@@ -106,7 +106,7 @@ function Footer() {
         </div>
       </section>
       {/* CONTACT INFO */}
-      <div className=" mt-12 sm:mt-20 mb-8 sm:mb-16">
+      <div className="mt-12 lg:mt-20 mb-8 sm:mb-12 lg:mb-16">
         <ContactInfo />
       </div>
       {/* COPY RIGHT SECTION */}
