@@ -8,21 +8,21 @@ const cartItems = [
     name: "Men’s full sleeve Jaket",
     category: "Electronic",
     price: 16.3,
-    image: "/images/products1.png",
+    image: "/images/product5.jpg",
   },
   {
     id: 2,
     name: "Apple Watch",
     category: "Electronic",
     price: 16.3,
-    image: "/images/products2.png",
+    image: "/images/product6.jpg",
   },
   {
     id: 3,
     name: "Men’s Jacef’s",
     category: "Electronic",
     price: 16.3,
-    image: "/images/products1.png",
+    image: "/images/product7.jpg",
   },
 ];
 
@@ -63,7 +63,7 @@ export default function ShoppingCart() {
             className="bg-[#FAFAFA] flex items-center justify-between border p-4 rounded-lg relative"
           >
             <div className="flex items-center gap-4">
-              <div className="w-20 h-20 bg-white p-2 rounded-lg">
+              <div className="w-20 h-20 bg-white rounded-lg overflow-hidden">
                 <Image
                   src={item.image}
                   width={400}

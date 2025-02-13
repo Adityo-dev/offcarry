@@ -9,7 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 // import product cart components
-import ProductCart from "@/components/productCart/ProductCart";
+import ProductCart from "@/components/productCarts/productsCart/ProductCart";
 
 const customButtonStyles =
   "static xl:absolute w-7 sm:w-10 h-7 sm:h-10 text-base xl:text-xl bg-gradient-primary text-white flex items-center justify-center border-none xl:top-1/2 transform -translate-y-1/2 z-10 cursor-pointer rounded-full xl:opacity-0 visibility-hidden group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-lg";
@@ -19,10 +19,10 @@ export default function SliderProduct({ title, products }) {
   const value = title?.split(" ")?.join("");
 
   return (
-    <main className="relative container mx-auto group space-y-4 sm:space-y-7">
+    <main className="relative container mx-auto group space-y-4 md:space-y-6">
       {/* Custom Navigation Buttons */}
       <header>
-        <h2 className="text-2xl sm:text-4xl">{title}</h2>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl">{title}</h2>
       </header>
       <section>
         <div className="absolute xl:static -bottom-16 sm:-bottom-20  flex gap-6 left-1/2 xl:left-auto transform xl:transform-none -translate-x-1/2">

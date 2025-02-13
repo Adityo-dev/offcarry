@@ -26,9 +26,11 @@ function ProductCart({ product }) {
         {/* Product Details Section */}
         <div className="mt-4 space-y-2">
           {/* Product Title */}
-          <h3 className="text-sm font-semibold text-gray-800">
-            {product?.title || "Product Title"}
-          </h3>
+          <Link href={`/product/${product?.title}`}>
+            <h3 className="text-sm font-semibold text-gray-800 transition-all duration-300 hover:text-primary">
+              {product?.title || "Product Title"}
+            </h3>
+          </Link>
 
           {/* Product Price */}
           <p className="text-lg text-gray-600 space-x-2">

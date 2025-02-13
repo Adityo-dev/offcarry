@@ -1,4 +1,4 @@
-import ProductCart from "@/components/productCart/ProductCart";
+import ProductCart from "@/components/productCarts/productsCart/ProductCart";
 import NoProductsFound from "./NotFound";
 
 const ProductContent = ({ filteredProducts }) => {
