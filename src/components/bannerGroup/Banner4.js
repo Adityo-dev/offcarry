@@ -4,7 +4,7 @@ import React from "react";
 function Banner4() {
   return (
     <section className="container mx-auto px-4 grid grid-cols-12 gap-4 sm:gap-7">
-      <div className="col-span-8 w-full max-h-[432px]">
+      <div className="col-span-full sm:col-span-8 w-full h-full md:max-h-[432px]">
         <Image
           src={"/images/banner10.png"}
           width={800}
@@ -14,7 +14,7 @@ function Banner4() {
         />
       </div>
 
-      <div className="col-span-4 w-full max-h-[432px]">
+      <div className="col-span-full sm:col-span-4 w-full h-full sm:max-h-[432px]">
         <Image
           src={"/images/banner2.png"}
           width={800}

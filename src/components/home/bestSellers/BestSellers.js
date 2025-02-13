@@ -264,7 +264,7 @@ const tabsData = [
 
 function BestSellers() {
   return (
-    <section className="container mx-auto px-4 pt-6 xl:pt-0">
+    <section className="container mx-auto px-4">
       <Tabs defaultValue="smartphone" className="w-full">
         {/* TITLE AND TABS LIST */}
         <div className="flex flex-col sm:flex-row gap-3 justify-between items-center mb-6">
