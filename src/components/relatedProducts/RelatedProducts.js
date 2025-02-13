@@ -1,4 +1,4 @@
-import SliderProduct from "../relativeComponents/sliderProducts/SliderProducts";
+import SliderProduct from "../sliderProducts/SliderProducts";
 
 // RELATED PRODUCTS
 const relatedProducts = [

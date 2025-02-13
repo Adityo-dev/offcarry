@@ -1,5 +1,5 @@
 // TABS COMPONENTS
-import ProductCart from "@/components/productCart/ProductCart";
+import ProductCart from "@/components/productCarts/productsCart/ProductCart";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 // PRODUCTS DATA
@@ -267,9 +267,9 @@ function BestSellers() {
     <section className="container mx-auto px-4">
       <Tabs defaultValue="smartphone" className="w-full">
         {/* TITLE AND TABS LIST */}
-        <div className="flex flex-col sm:flex-row gap-3 justify-between items-center mb-6">
-          <h2 className="text-2xl sm:text-4xl">Best Sellers</h2>
-          <TabsList className="space-x-4 sm:space-x-7">
+        <div className="flex flex-col sm:flex-row gap-3 justify-between items-center mb-5 md:mb-7">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl">Best Sellers</h2>
+          <TabsList className="space-x-4 md:space-x-5 lg:space-x-7">
             {tabsData.map((tab) => (
               <TabsTrigger key={tab.value} value={tab.value}>
                 {tab.label}
@@ -281,7 +281,7 @@ function BestSellers() {
         {/* TABS CONTAINER */}
         {tabsData.map((tab) => (
           <TabsContent key={tab.value} value={tab.value} className="w-full">
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-5 lg:gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 md:gap-5 xl:gap-6">
               {tab.products.map((product, index) => (
                 // PRODUCTS CART
                 <ProductCart product={product} key={index} />

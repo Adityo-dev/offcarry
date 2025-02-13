@@ -7,27 +7,27 @@ const inputFieldStyles =
 function PreOrder() {
   return (
     <section className="container mx-auto px-4">
-      <div className="w-full sm:max-h-[600px] h-full bg-[#B2E4DB] rounded-md relative flex flex-col md:flex-row overflow-hidden">
-        {/* Image Section */}
-        <div className="w-full md:w-[35%] flex justify-center items-end">
+      <div className="w-full sm:max-h-[600px] h-full bg-[#B2E4DB] rounded-md relative flex flex-col lg:flex-row overflow-hidden sm:pt-6">
+        {/* Image Section (Always Visible) */}
+        <div className="w-full lg:w-[35%] flex justify-center items-end">
           <Image
             src="/images/preOrder.png"
             width={400}
             height={400}
             alt="Pre Order"
-            className="w-auto h-auto object-contain hidden sm:block"
+            className="w-auto h-auto object-contain hidden lg:block"
           />
         </div>
 
         {/* Form Section */}
-        <div className="w-full md:w-[65%] py-6 px-2 sm:px-8">
-          <h2 className="text-2xl sm:text-3xl md:text-[42px] text-center sm:text-start leading-tight text-[#38311F] font-semibold mb-6">
+        <div className="w-full lg:w-[65%] py-6 px-3 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl text-center lg:text-start text-[#38311F] font-semibold mb-6 ">
             Pre-Order Your Favorite <br /> Product Now
           </h2>
 
-          <form className="space-y-2 sm:space-y-4">
+          <form className="space-y-2 lg:space-y-4">
             {/* Input Fields */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 lg:gap-3">
               <input
                 type="text"
                 name="name"
@@ -63,7 +63,7 @@ function PreOrder() {
             />
 
             {/* File Upload & Product Link */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 lg:gap-3">
               {/* File Upload Section */}
               <div className="relative flex items-center border border-gray-300 bg-[#E5E5E5] rounded-md h-12 overflow-hidden">
                 {/* Icon Section */}
@@ -92,7 +92,7 @@ function PreOrder() {
             </div>
 
             {/* Submit Button */}
-            <button className="sm:max-w-[250px] w-full h-11 rounded-md bg-gradient-primary text-white font-semibold shadow-md hover:opacity-90 transition-all">
+            <button className="sm:max-w-[250px] w-full h-11 mx-auto lg:mx-0 flex items-center justify-center rounded-md bg-gradient-primary text-white font-semibold shadow-md hover:opacity-90 transition-all">
               Order Now
             </button>
           </form>

@@ -1,4 +1,4 @@
-import SliderProduct from "@/components/relativeComponents/sliderProducts/SliderProducts";
+import SliderProduct from "@/components/sliderProducts/SliderProducts";
 
 // FEATURED PRODUCTS
 const featuredProducts = [
@@ -55,7 +55,7 @@ const featuredProducts = [
 
 function FeaturedProducts() {
   return (
-    <section className="container mx-auto px-4">
+    <section className="container mx-auto px-4 pb-12 xl:pb-0">
       <SliderProduct title={"Featured Products"} products={featuredProducts} />
     </section>
   );

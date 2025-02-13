@@ -4,7 +4,7 @@ import TopNavigationBar from "./TopNavigationBar";
 
 function MainNavigationBar() {
   return (
-    <main className="sm:space-y-6">
+    <main className="xl:space-y-6">
       <TopNavigationBar />
       <CenterNavigationBar />
       <BottomNavigationBar />
