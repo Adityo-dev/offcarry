@@ -1,5 +1,6 @@
 import { Info } from "lucide-react";
 import Image from "next/image";
+import CountdownTimer from "../productCart/CountdownTimer";
 
 function CouponCart({ product }) {
   return (
@@ -23,32 +24,8 @@ function CouponCart({ product }) {
             <span className="text-red-500">{product?.off}%</span>
             <span> Off</span>
           </p>
-          <div className="flex space-x-2 sm:space-x-4">
-            <div className="text-center">
-              <span className="text-xs sm:text-sm font-semibold">81</span>
-              <span className="text-[10px] sm:text-xs text-gray-500 block">
-                DAY
-              </span>
-            </div>
-            <div className="text-center">
-              <span className="text-xs sm:text-sm font-semibold">20</span>
-              <span className="text-[10px] sm:text-xs text-gray-500 block">
-                HRS
-              </span>
-            </div>
-            <div className="text-center">
-              <span className="text-xs sm:text-sm font-semibold">2</span>
-              <span className="text-[10px] sm:text-xs text-gray-500 block">
-                MIN
-              </span>
-            </div>
-            <div className="text-center">
-              <span className="text-xs sm:text-sm font-semibold">2</span>
-              <span className="text-[10px] sm:text-xs text-gray-500 block">
-                SEC
-              </span>
-            </div>
-          </div>
+          {/* COUPON COUNT DOWN TIME COMPONENTS */}
+          <CountdownTimer hoursInput={product?.hours} />
         </div>
       </div>
 
