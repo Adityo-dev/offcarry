@@ -27,7 +27,7 @@ function CopyRight() {
           <Link
             href={data?.url}
             key={ind}
-            className="text-[#ACB5BD] text-xs lg:text-sm"
+            className="text-[#ACB5BD] text-xs lg:text-sm hover:underline"
           >
             {data?.name}
           </Link>

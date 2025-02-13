@@ -78,7 +78,8 @@ function Footer() {
               <Link
                 href={media?.url}
                 key={ind}
-                className="w-8 md:w-10 h-8 md:h-10 bg-[#203342] flex items-center justify-center rounded-full p-2"
+                target="_blank"
+                className="w-8 md:w-10 h-8 md:h-10 bg-[#203342] flex items-center justify-center rounded-full p-2 "
               >
                 {media?.icon}
               </Link>
@@ -95,7 +96,7 @@ function Footer() {
                   <Link
                     href={data?.url}
                     key={ind}
-                    className="text-sm lg:text-base"
+                    className="text-sm lg:text-base transition-all hover:underline"
                   >
                     {data?.name}
                   </Link>
