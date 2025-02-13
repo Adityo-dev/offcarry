@@ -24,7 +24,7 @@ export default function ProductDetails() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <div className="md:max-w-4xl mx-auto p-6">
       <div className="space-y-6">
         <div className="flex items-center flex-wrap gap-6 text-[#888AA0]">
           <p>
@@ -35,7 +35,7 @@ export default function ProductDetails() {
           </p>
         </div>
 
-        <h1 className="text-4xl tracking-wide leading-[45px]">
+        <h1 className="text-2xl md:text-4xl tracking-wide md:leading-[45px]">
           Anti-Drop AirPods1 2 Silicone Bluetooth Compatible Earphone Cover Air
           Pods
         </h1>

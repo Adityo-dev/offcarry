@@ -20,10 +20,9 @@ export default function PaymentOptions() {
   const [selected, setSelected] = useState(paymentMethods[0].id);
 
   return (
-    <section>
+    <section className="w-full">
       <h2 className="text-lg font-semibold">Payment Options</h2>
-
-      <div className="mt-6 space-y-4 p-6 rounded-lg bg-[#E5F7FF]">
+      <div className="mt-4 sm:mt-6 space-y-4 p-4 sm:p-6 rounded-lg bg-[#E5F7FF]">
         {paymentMethods.map((method) => (
           <div
             key={method.id}

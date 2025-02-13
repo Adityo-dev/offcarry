@@ -29,7 +29,7 @@ const heroData = [
 function Hero() {
   return (
     <main className="w-full pb-4 sm:pb-8 bg-[#F1F1F1]">
-      <section className="container mx-auto px-4 pt-4 sm:pt-6 space-y-4 sm:space-y-7">
+      <section className="container mx-auto px-4 sm:pt-6 space-y-4 sm:space-y-7">
         {/* CATEGORY COMPONENTS */}
         <Category />
         <div className="w-full grid grid-cols-12 gap-7">

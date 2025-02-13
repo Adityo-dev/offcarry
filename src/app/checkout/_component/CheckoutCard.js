@@ -13,7 +13,7 @@ export default function CheckoutCard() {
   };
 
   return (
-    <div className="mx-auto p-6 bg-[#FAFAFA] rounded-lg shadow-lg mt-6">
+    <section className="w-full mx-auto p-4 sm:p-6 bg-[#FAFAFA] rounded-lg shadow-lg mt-6">
       <h2 className="text-gray-700 font-semibold mb-2">Apply Coupon</h2>
       <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden mb-4">
         <input
@@ -55,6 +55,6 @@ export default function CheckoutCard() {
       >
         Checkout
       </button>
-    </div>
+    </section>
   );
 }
