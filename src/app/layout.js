@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
       >
         {/* <MainNavigationBar /> */}
         {children}
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   );

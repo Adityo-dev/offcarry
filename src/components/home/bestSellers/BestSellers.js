@@ -281,7 +281,7 @@ function BestSellers() {
         {/* TABS CONTAINER */}
         {tabsData.map((tab) => (
           <TabsContent key={tab.value} value={tab.value} className="w-full">
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-5 lg:gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 md:gap-5 xl:gap-6">
               {tab.products.map((product, index) => (
                 // PRODUCTS CART
                 <ProductCart product={product} key={index} />

@@ -50,15 +50,15 @@ const socialMediaData = [
 
 function Footer() {
   return (
-    <main className="w-full mt-12 sm:mt-80 pt-12 sm:pt-40 pb-10 bg-[#152327] text-white relative">
+    <main className="w-full mt-10 lg:mt-64 pt-12 sm:pt-40 pb-10 bg-[#152327] text-white relative">
       {/* NEWS LETTER COMPONENTS */}
-      <section className="relative container mx-auto px-4">
-        <div className="w-full absolute -top-72 hidden sm:block">
+      <section className="relative container mx-auto">
+        <div className="w-full absolute -top-72 left-0 right-0 px-4 hidden lg:block">
           <Newsletter />
         </div>
       </section>
 
-      <section className="container mx-auto px-4 flex flex-col sm:grid grid-cols-12 gap-10 sm:gap-20 ">
+      <section className="container mx-auto px-4 flex flex-col lg:grid grid-cols-12 gap-10 sm:gap-20 ">
         <div className="col-span-4">
           {/* LOGO AND SUBTITLE */}
           <Image
@@ -89,13 +89,13 @@ function Footer() {
         <div className="col-span-8 flex flex-col sm:flex-row justify-between gap-7">
           {footerData.map((footer, ind) => (
             <div key={ind}>
-              <h3 className="sm:text-lg">{footer?.title}</h3>
-              <div className="flex flex-col mt-3 sm:mt-7 gap-2 sm:gap-3 text-[#ACB5BD]">
+              <h3 className="lg:text-lg">{footer?.title}</h3>
+              <div className="flex flex-col mt-3 sm:mt-5 lg:mt-7 gap-2 sm:gap-3 text-[#ACB5BD]">
                 {footer?.info.map((data, ind) => (
                   <Link
                     href={data?.url}
                     key={ind}
-                    className="text-sm sm:text-base"
+                    className="text-sm lg:text-base"
                   >
                     {data?.name}
                   </Link>
