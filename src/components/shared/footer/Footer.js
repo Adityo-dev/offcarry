@@ -50,7 +50,7 @@ const socialMediaData = [
 
 function Footer() {
   return (
-    <main className="w-full mt-10 lg:mt-64 pt-12 sm:pt-40 pb-6 bg-[#152327] text-white relative">
+    <main className="w-full mt-10 lg:mt-64 pt-12 lg:pt-40 pb-6 bg-[#152327] text-white relative">
       {/* NEWS LETTER COMPONENTS */}
       <section className="relative container mx-auto">
         <div className="w-full absolute -top-72 left-0 right-0 px-4 hidden lg:block">
@@ -73,12 +73,12 @@ function Footer() {
             co-exist. Great for adding a decorative touch to any room’s decor.
           </p>
           {/* SOCIAL MEDIA */}
-          <div className="flex items-center gap-2 sm:gap-4 mt-4 sm:mt-7">
+          <div className="flex items-center gap-2 md:gap-4 mt-4 md:mt-7">
             {socialMediaData.map((media, ind) => (
               <Link
                 href={media?.url}
                 key={ind}
-                className="w-8 sm:w-10 h-8 sm:h-10 bg-[#203342] flex items-center justify-center rounded-full p-2"
+                className="w-8 md:w-10 h-8 md:h-10 bg-[#203342] flex items-center justify-center rounded-full p-2"
               >
                 {media?.icon}
               </Link>
