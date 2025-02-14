@@ -1,16 +1,12 @@
 import MainNavigationBar from "@/components/shared/navigationBar/MainNavigationBar";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Krub } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/shared/footer/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const krub = Krub({
+  variable: "--font-krub",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600", "700"],
 });
 
 export const metadata = {
@@ -22,7 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased mainContainer overflow-x-auto`}
+        className={` ${krub.variable} antialiased mainContainer overflow-x-auto`}
       >
         <MainNavigationBar />
         {children}

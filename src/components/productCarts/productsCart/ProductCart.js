@@ -43,7 +43,7 @@ function ProductCart({ product }) {
           </p>
 
           <p
-            className={`text-sm flex items-center gap-1 ${
+            className={`text-sm font-semibold flex items-center gap-1 ${
               product?.stock > 5
                 ? "text-green-600"
                 : product?.stock > 0
