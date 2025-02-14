@@ -268,7 +268,9 @@ function BestSellers() {
       <Tabs defaultValue="smartphone" className="w-full">
         {/* TITLE AND TABS LIST */}
         <div className="flex flex-col sm:flex-row gap-3 justify-between items-center mb-5 md:mb-7">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl">Best Sellers</h2>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-medium">
+            Best Sellers
+          </h2>
           <TabsList className="space-x-4 md:space-x-5 lg:space-x-7">
             {tabsData.map((tab) => (
               <TabsTrigger key={tab.value} value={tab.value}>

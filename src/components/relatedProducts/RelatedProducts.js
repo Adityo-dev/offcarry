@@ -55,7 +55,7 @@ const relatedProducts = [
 
 function RelatedProducts() {
   return (
-    <section>
+    <section className="pb-14">
       <SliderProduct title={"Related Products"} products={relatedProducts} />
     </section>
   );

@@ -20,7 +20,7 @@ function Newsletter() {
         </h2>
 
         <div className="flex flex-col gap-2 items-center lg:items-start">
-          <p className="lg:text-lg text-[#DDE2E5]">
+          <p className="lg:text-lg text-[#DDE2E5] font-medium">
             We don’t send spam so don’t worry
           </p>
 

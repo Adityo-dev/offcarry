@@ -40,7 +40,7 @@ function Service() {
             <span className="text-base md:text-lg md:font-semibold">
               {service?.title}
             </span>
-            <span className="text-[#525258] text-sm md:text-base">
+            <span className="text-[#525258] text-sm md:text-base font-medium">
               {service?.subTitle}
             </span>
           </p>

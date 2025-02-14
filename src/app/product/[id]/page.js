@@ -18,11 +18,11 @@ const SingleProductPage = () => {
   return (
     <div className="container mx-auto px-4 pt-6 space-y-16">
       <div className="grid grid-cols-12 gap-6">
-        <div className="col-span-full md:col-span-5 space-y-7">
+        <div className="col-span-full lg:col-span-6 xl:col-span-5 space-y-7">
           <ProductImagesGallery productImages={productImages} />
           <ChatNow />
         </div>
-        <div className="col-span-full md:col-span-7">
+        <div className="col-span-full lg:col-span-6 xl:col-span-7">
           <ProductDetails />
         </div>
       </div>
