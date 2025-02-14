@@ -38,7 +38,7 @@ export default function ProductTabs() {
       </div>
 
       {/* Tab Content */}
-      <div className=" mt-4 sm:mt-8 text-[#888AA0]">
+      <div className=" mt-4 sm:mt-8 text-[#888AA0] text-sm sm:text-base leading-6">
         {tabs.find((tab) => tab.name === activeTab)?.content}
       </div>
     </div>
