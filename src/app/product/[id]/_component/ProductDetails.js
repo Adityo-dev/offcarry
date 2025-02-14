@@ -157,7 +157,7 @@ export default function ProductDetails() {
             <label className="sm:text-lg font-medium">Color: </label>
             <div>
               <select
-                className="w-[200px] px-4 py-2 border rounded-md bg-white outline-none focus:ring-2 focus:ring-[#00bfa6] focus:border-[#00bfa6]"
+                className="w-[200px] px-4 py-2 border rounded-md bg-white outline-none transition-all duration-300 focus:border-primary text-sm sm:text-base"
                 value={selectedColor}
                 onChange={(e) => setSelectedColor(e.target.value)}
               >
