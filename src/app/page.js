@@ -6,7 +6,8 @@ import DealOfTheDay from "@/components/home/dealOfTheDay/DealOfTheDay";
 import FeaturedProducts from "@/components/home/featuredProducts/FeaturedProducts";
 import Hero from "@/components/home/hero/Hero";
 import PreOrder from "@/components/home/preOrder/PreOrder";
-import Service from "@/components/home/service/Service";
+import ServiceType from "@/components/home/service/Service";
+// import Service from "@/components/home/service/Service";
 import Newsletter from "@/components/shared/newsletter/Newsletter";
 
 export default function Home() {
@@ -18,8 +19,14 @@ export default function Home() {
       <FeaturedProducts />
       <Banner3 />
       <BestSellers />
-      <Banner4 />
-      <Service />
+      <div className="container mx-auto px-4 grid grid-cols-12 gap-7">
+        <div className="col-span-3">
+          <ServiceType />
+        </div>
+        <div className="col-span-9">
+          <Banner4 />
+        </div>
+      </div>
       <Brand />
       <div className="px-4 block lg:hidden">
         <Newsletter />

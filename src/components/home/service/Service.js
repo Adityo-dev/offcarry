@@ -1,53 +1,49 @@
-import { Gift, MessageSquareMore } from "lucide-react";
+// SERVICE TYPE DATA
+const ServiceType = () => {
+  const serviceData = [
+    {
+      icon: "",
+      title: "Free Delivery",
+      subTitle: "Free shipping on all order",
+    },
+    {
+      icon: "",
+      title: "Returns",
+      subTitle: "Back guarantee under 7 days",
+    },
+    {
+      icon: "",
+      title: "Support 24/7",
+      subTitle: "Support online 24 hours a day",
+    },
+    {
+      icon: "",
+      title: "Payments",
+      subTitle: "100% payment security",
+    },
+  ];
 
-// SERVICE DATA
-const serviceData = [
-  {
-    icon: <Gift size={28} strokeWidth={1.5} />,
-    title: "Free Shipping",
-    subTitle: "Free Shipping for orders over $120",
-  },
-  {
-    icon: <Gift size={28} strokeWidth={1.5} />,
-    title: "Refund",
-    subTitle: "Within 30 days for an exchange.",
-  },
-  {
-    icon: <MessageSquareMore size={28} strokeWidth={1.5} />,
-    title: "Support",
-    subTitle: "24 hours a day, 7 days a week",
-  },
-  {
-    icon: <Gift size={28} strokeWidth={1.5} />,
-    title: "Payment",
-    subTitle: "Pay with Multiple Credit Cards",
-  },
-];
-
-function Service() {
   return (
-    <section className="container mx-auto px-4 grid grid-cols-2 lg:flex justify-between text-center xl:text-start gap-6">
+    <section className="relative w-full max-h-[380px] h-full flex flex-col justify-between mx-auto border border-gray-300 rounded-lg">
       {serviceData.map((service, ind) => (
         <div
           key={ind}
-          className="flex flex-col xl:flex-row items-center gap-2 xl:gap-3"
+          className="flex items-center gap-3 border-t first:border-0 border-gray-300 p-5"
         >
-          <p className="w-16 h-16 rounded-full border flex items-center justify-center">
-            {service?.icon}
-          </p>
-
-          <p className="flex flex-col md:gap-1">
-            <span className="text-base md:text-lg md:font-semibold">
-              {service?.title}
+          <p className="text-4xl">{service.icon}</p>
+          <p>
+            <span className="text-lg uppercase font-semibold text-black">
+              {service.title}
             </span>
-            <span className="text-[#525258] text-sm md:text-base font-medium">
-              {service?.subTitle}
+            <br />
+            <span className="text-sm leading-7 whitespace-nowrap">
+              {service.subTitle}
             </span>
           </p>
         </div>
       ))}
     </section>
   );
-}
+};
 
-export default Service;
+export default ServiceType;
