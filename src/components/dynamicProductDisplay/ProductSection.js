@@ -49,7 +49,7 @@ const ProductSection = ({
             <div className="relative inline-block w-48">
               <select
                 onChange={handleSortChange}
-                className="block w-full h-7 px-3 py-1 text-sm border border-custom-border bg-white rounded shadow-sm focus:outline-none focus:ring-0 focus:border-blue-500"
+                className="block w-full h-7 px-3 py-1 text-sm border border-custom-border bg-white rounded shadow-sm outline-none cursor-pointer"
               >
                 <option value="default">Default</option>
                 <option value="asc">Price: Low to High</option>

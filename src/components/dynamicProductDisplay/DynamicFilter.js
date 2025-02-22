@@ -56,7 +56,7 @@ const DynamicFilter = ({
             className="border border-custom-border px-4 rounded-lg"
             value={ind + 1}
           >
-            <AccordionTrigger className="no-underline text-lg font-medium">
+            <AccordionTrigger className="font-semibold">
               {key.charAt(0).toUpperCase() + key.slice(1)}
             </AccordionTrigger>
             {values.map((item) => (
@@ -66,7 +66,7 @@ const DynamicFilter = ({
               >
                 <Checkbox
                   id={item.id}
-                  className="shadow-none text-sm w-4 h-6"
+                  className=" w-4 h-4"
                   checked={checkedItems[key]?.includes(item.id) || false}
                   onCheckedChange={() => handleToggle(key, item.id)}
                 />

@@ -141,7 +141,7 @@ const DynamicProductDisplay = ({ params, products }) => {
   return (
     <>
       {products.length > 0 ? (
-        <main className="max-w-[1700px] mx-auto px-3 md:px-6 xl:grid grid-cols-12 gap-5">
+        <main className="container mx-auto px-4 xl:grid grid-cols-12 gap-5">
           <section className="w-full col-span-2 relative hidden xl:block">
             {filterData && (
               <DynamicFilter
