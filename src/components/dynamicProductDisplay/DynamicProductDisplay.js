@@ -20,7 +20,7 @@ const DynamicProductDisplay = ({ params, products }) => {
   const [filterData, setFilterData] = useState({});
   const [checkedItems, setCheckedItems] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 20;
+  const itemsPerPage = 15;
 
   const searchParams = useSearchParams();
   const search = searchParams.get("search");
@@ -102,7 +102,11 @@ const DynamicProductDisplay = ({ params, products }) => {
         Object.entries(checkedItems).every(([key, values]) => {
           if (values.length === 0) return true;
           return product.filters.some(
-            (f) => f.filterName === key && values.includes(f.value)
+            (f) =>
+              f.filterName === key &&
+              values.some(
+                (value) => value.toLowerCase() === f.value.toLowerCase()
+              )
           );
         }) && isWithinPriceRange
       );
@@ -170,6 +174,10 @@ const DynamicProductDisplay = ({ params, products }) => {
             handleMaxPriceChange={(e) => setMaxPrice(Number(e.target.value))}
             handleSortChange={handleSortChange}
             displayedProducts={displayedProducts}
+            // Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            handlePageChange={handlePageChange}
           />
         </main>
       ) : (
