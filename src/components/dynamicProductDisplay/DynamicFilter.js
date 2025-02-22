@@ -19,9 +19,9 @@ const DynamicFilter = ({
   handleMaxPriceChange,
 }) => {
   return (
-    <section>
+    <section className="w-full">
       <div className="space-y-4 p-4 border border-custom-border rounded-lg">
-        <p className="text-lg font-medium ">Price Range</p>
+        <p className="text-lg font-medium">Price Range</p>
         <div className="flex items-center space-x-4">
           <div>
             <label>Min Price</label>

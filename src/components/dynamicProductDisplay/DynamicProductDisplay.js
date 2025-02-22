@@ -143,28 +143,10 @@ const DynamicProductDisplay = ({ params, products }) => {
   );
 
   return (
-    <>
-      {products.length > 0 ? (
-        <main className="container mx-auto px-4 xl:grid grid-cols-12 gap-5">
-          <section className="w-full col-span-2 relative hidden xl:block">
-            {filterData && (
-              <DynamicFilter
-                filterData={filterData}
-                checkedItems={checkedItems}
-                handleToggle={handleToggle}
-                minPrice={minPrice}
-                maxPrice={maxPrice}
-                handleMinPriceChange={(e) =>
-                  setMinPrice(Number(e.target.value))
-                }
-                handleMaxPriceChange={(e) =>
-                  setMaxPrice(Number(e.target.value))
-                }
-              />
-            )}
-          </section>
-
-          <ProductSection
+    <main className="container mx-auto px-4 flex gap-5">
+      <section className="max-w-[250px] relative hidden xl:block">
+        {filterData && (
+          <DynamicFilter
             filterData={filterData}
             checkedItems={checkedItems}
             handleToggle={handleToggle}
@@ -172,24 +154,28 @@ const DynamicProductDisplay = ({ params, products }) => {
             maxPrice={maxPrice}
             handleMinPriceChange={(e) => setMinPrice(Number(e.target.value))}
             handleMaxPriceChange={(e) => setMaxPrice(Number(e.target.value))}
-            handleSortChange={handleSortChange}
-            displayedProducts={displayedProducts}
-            // Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            handlePageChange={handlePageChange}
           />
-        </main>
-      ) : (
-        <div className="flex flex-col h-[50vh] justify-center items-center text-custom-secondary">
-          <span className="w-20 h-20 text-4xl text-custom-white bg-custom-primary flex items-center justify-center rounded-full p-5">
-            <Frown className="w-10 h-10" />
-          </span>
-          <p className="mt-4 mb-2 font-medium"> Sorry! No Product Founds</p>
-          <p>Please try searching for something else</p>
-        </div>
-      )}
-    </>
+        )}
+      </section>
+
+      <section className="w-full">
+        <ProductSection
+          filterData={filterData}
+          checkedItems={checkedItems}
+          handleToggle={handleToggle}
+          minPrice={minPrice}
+          maxPrice={maxPrice}
+          handleMinPriceChange={(e) => setMinPrice(Number(e.target.value))}
+          handleMaxPriceChange={(e) => setMaxPrice(Number(e.target.value))}
+          handleSortChange={handleSortChange}
+          displayedProducts={displayedProducts}
+          // Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          handlePageChange={handlePageChange}
+        />
+      </section>
+    </main>
   );
 };
 
