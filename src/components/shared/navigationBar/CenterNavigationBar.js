@@ -9,20 +9,20 @@ import SearchSection from "./SearchSection";
 const centerNavRightData = [
   {
     icon: <Gift size={22} strokeWidth={1.3} />,
-    name: "Latest Offers",
-    title: "Offer",
+    name: "latest offers",
+    title: "offer",
     url: "/offer",
   },
   {
     icon: <Heart size={22} strokeWidth={1.3} />,
-    name: "My Wishlist",
-    title: "Wishlist",
+    name: "my wishlist",
+    title: "wishlist",
     url: "/wishlist",
   },
   {
     icon: <UserPlus size={22} strokeWidth={1.3} />,
-    name: "My Account",
-    title: "Login or Register ",
+    name: "my account",
+    title: "login or register ",
     url: "/account/login",
   },
 ];
@@ -65,12 +65,18 @@ function CenterNavigationBar() {
               key={ind}
               className="flex items-center gap-2"
             >
-              <p className="w-8 xl:w-10 h-8 xl:h-10 p-1.5 bg-[#EEF0F2] text-[#292B49] rounded-full flex items-center justify-center">
+              <p
+                className={`w-8 xl:w-10 h-8 xl:h-10 p-1.5 bg-[#EEF0F2] rounded-full flex items-center justify-center  ${
+                  data?.title === "offer"
+                    ? "text-secondary animate-pulse"
+                    : "text-[#292B49]"
+                }`}
+              >
                 {data?.icon}
               </p>
-              <p className="hidden xl:flex flex-col text-sm text-[#837F74]">
+              <p className="hidden xl:flex flex-col text-sm text-[#837F74] capitalize">
                 <span>{data?.title}</span>
-                <span>{data?.name}</span>
+                <span className="text-xs">{data?.name}</span>
               </p>
             </Link>
           ))}
