@@ -28,12 +28,12 @@ const ProductSection = ({
         <div className="xl:hidden">
           <Sheet>
             <SheetTrigger asChild>
-              <button className="bg-custom-border px-4  h-7 flex items-center gap-2 justify-center rounded-md">
+              <button className="bg-custom-border flex items-center gap-2 justify-center rounded-md">
                 <Filter className="w-4 h-4" />
                 Filter
               </button>
             </SheetTrigger>
-            <SheetContent className="w-screen overflow-x-auto z-[50000] max-w-[320px] ">
+            <SheetContent className="w-screen overflow-x-auto z-[50000] max-w-[350px]">
               <DynamicFilter
                 filterData={filterData}
                 checkedItems={checkedItems}
@@ -48,12 +48,12 @@ const ProductSection = ({
         </div>
 
         <div className="flex items-center gap-6 text-sm md:text-base">
-          <div className="sm:flex gap-2 items-center min-w-full">
+          <div className="flex gap-2 items-center justify-between">
             <p className="font-medium">Sort By:</p>
-            <div className="relative inline-block w-48">
+            <div className="relative inline-block sm:w-48">
               <select
                 onChange={handleSortChange}
-                className="block w-full h-7 px-3 py-1 text-sm border border-custom-border bg-white rounded shadow-sm focus:outline-none focus:ring-0 focus:border-blue-500"
+                className="block w-36 sm:w-full h-7 px-3 py-1 text-sm border border-custom-border bg-white rounded shadow-sm outline-none cursor-pointer"
               >
                 <option value="default">Default</option>
                 <option value="asc">Price: Low to High</option>

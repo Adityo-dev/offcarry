@@ -28,7 +28,7 @@ const wishlistData = [
 
 function Wishlist() {
   return (
-    <main>
+    <main className="space-y-6 pt-16 xl:pt-0">
       <SectionHeader title={"Wishlist"} linkName={"wishlist"} />
       <section className="container mx-auto px-4 mt-6">
         <header className="grid grid-cols-12 gap-6  border-b pb-4">

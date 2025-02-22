@@ -1,5 +1,6 @@
 import { BottomNavigationBar } from "./BottomNavigationBar";
 import CenterNavigationBar from "./CenterNavigationBar";
+import MobileNavigationBar from "./MobileNavigationBar";
 import TopNavigationBar from "./TopNavigationBar";
 
 function MainNavigationBar() {
@@ -8,6 +9,7 @@ function MainNavigationBar() {
       <TopNavigationBar />
       <CenterNavigationBar />
       <BottomNavigationBar />
+      <MobileNavigationBar />
     </main>
   );
 }

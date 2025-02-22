@@ -286,7 +286,7 @@ const products = [
 
 export default async function ShopPage() {
   return (
-    <main className="space-y-6">
+    <main className="space-y-6 pt-16 xl:pt-0">
       <SectionHeader title={"TrustNest Shop"} linkName={"shop"} />
       <DynamicProductDisplay products={products} />
     </main>
