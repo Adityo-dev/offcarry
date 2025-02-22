@@ -30,7 +30,7 @@ function CenterNavigationBar() {
 
         {/* Justify Menu Icon section */}
         <div className="text-white xl:hidden">
-          <AlignJustify size={28} strokeWidth={1.3} />
+          <AlignJustify size={24} strokeWidth={1.3} />
         </div>
         {/* TRUST NEST STORE LOGO */}
         <Link href={"/"}>
