@@ -8,9 +8,11 @@ const SectionHeader = ({ title, linkName }) => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           {/* Left side content */}
-          <div className="space-y-4">
-            <h1 className="text-[#2d2517] text-4xl font-semibold">{title}</h1>
-            <nav className="flex items-center gap-2 text-gray-600">
+          <div className="space-y-2 sm:space-y-4">
+            <h1 className="text-[#2d2517] text-2xl sm:text-3xl lg:text-4xl  font-semibold">
+              {title}
+            </h1>
+            <nav className="flex items-center gap-2 text-gray-600 text-sm sm:text-base">
               <span>
                 <HomeIcon size={20} strokeWidth={1.5} />
               </span>
