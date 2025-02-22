@@ -11,9 +11,9 @@ const products = [
     oldPrice: "130.00",
     stock: 10,
     filters: [
+      { filterName: "Availability", value: "in stock" },
       { filterName: "brand", value: "Brand A" },
       { filterName: "storage", value: "64GB" },
-      { filterName: "stock", value: "in stock" },
     ],
   },
   {
@@ -25,9 +25,9 @@ const products = [
     oldPrice: "150.00",
     stock: 5,
     filters: [
+      { filterName: "Availability", value: "low stock" },
       { filterName: "brand", value: "Brand B" },
       { filterName: "storage", value: "128GB" },
-      { filterName: "stock", value: "low stock" },
     ],
   },
   {
@@ -39,9 +39,9 @@ const products = [
     oldPrice: "100.00",
     stock: 15,
     filters: [
+      { filterName: "Availability", value: "in stock" },
       { filterName: "brand", value: "Brand C" },
       { filterName: "storage", value: "32GB" },
-      { filterName: "stock", value: "in stock" },
     ],
   },
   {
@@ -53,9 +53,9 @@ const products = [
     oldPrice: "250.00",
     stock: 8,
     filters: [
+      { filterName: "Availability", value: "in stock" },
       { filterName: "brand", value: "Brand D" },
       { filterName: "storage", value: "256GB" },
-      { filterName: "stock", value: "in stock" },
     ],
   },
   {
@@ -67,9 +67,9 @@ const products = [
     oldPrice: "180.00",
     stock: 12,
     filters: [
+      { filterName: "Availability", value: "in stock" },
       { filterName: "brand", value: "Brand E" },
       { filterName: "storage", value: "64GB" },
-      { filterName: "stock", value: "in stock" },
     ],
   },
   {
@@ -81,9 +81,9 @@ const products = [
     oldPrice: "110.00",
     stock: 20,
     filters: [
+      { filterName: "Availability", value: "in stock" },
       { filterName: "brand", value: "Brand F" },
       { filterName: "storage", value: "128GB" },
-      { filterName: "stock", value: "in stock" },
     ],
   },
   {
@@ -95,9 +95,9 @@ const products = [
     oldPrice: "90.00",
     stock: 18,
     filters: [
+      { filterName: "Availability", value: "in stock" },
       { filterName: "brand", value: "Brand G" },
       { filterName: "storage", value: "32GB" },
-      { filterName: "stock", value: "in stock" },
     ],
   },
   {
@@ -109,9 +109,9 @@ const products = [
     oldPrice: "350.00",
     stock: 6,
     filters: [
+      { filterName: "Availability", value: "low stock" },
       { filterName: "brand", value: "Brand H" },
       { filterName: "storage", value: "512GB" },
-      { filterName: "stock", value: "low stock" },
     ],
   },
   {
@@ -123,9 +123,9 @@ const products = [
     oldPrice: "130.00",
     stock: 14,
     filters: [
+      { filterName: "Availability", value: "in stock" },
       { filterName: "brand", value: "Brand I" },
       { filterName: "storage", value: "64GB" },
-      { filterName: "stock", value: "in stock" },
     ],
   },
   {
@@ -137,9 +137,9 @@ const products = [
     oldPrice: "200.00",
     stock: 9,
     filters: [
+      { filterName: "Availability", value: "in stock" },
       { filterName: "brand", value: "Brand J" },
       { filterName: "storage", value: "256GB" },
-      { filterName: "stock", value: "in stock" },
     ],
   },
   {
@@ -151,9 +151,9 @@ const products = [
     oldPrice: "120.00",
     stock: 7,
     filters: [
+      { filterName: "Availability", value: "low stock" },
       { filterName: "brand", value: "Brand K" },
       { filterName: "storage", value: "128GB" },
-      { filterName: "stock", value: "low stock" },
     ],
   },
   {
@@ -165,9 +165,9 @@ const products = [
     oldPrice: "150.00",
     stock: 11,
     filters: [
+      { filterName: "Availability", value: "in stock" },
       { filterName: "brand", value: "Brand L" },
       { filterName: "storage", value: "64GB" },
-      { filterName: "stock", value: "in stock" },
     ],
   },
   {
@@ -179,9 +179,9 @@ const products = [
     oldPrice: "100.00",
     stock: 16,
     filters: [
+      { filterName: "Availability", value: "in stock" },
       { filterName: "brand", value: "Brand M" },
       { filterName: "storage", value: "32GB" },
-      { filterName: "stock", value: "in stock" },
     ],
   },
   {
@@ -193,9 +193,9 @@ const products = [
     oldPrice: "250.00",
     stock: 4,
     filters: [
+      { filterName: "Availability", value: "low stock" },
       { filterName: "brand", value: "Brand a" },
       { filterName: "storage", value: "512GB" },
-      { filterName: "stock", value: "low stock" },
     ],
   },
   {
@@ -207,9 +207,9 @@ const products = [
     oldPrice: "180.00",
     stock: 13,
     filters: [
+      { filterName: "Availability", value: "in stock" },
       { filterName: "brand", value: "Brand a" },
       { filterName: "storage", value: "128GB" },
-      { filterName: "stock", value: "in stock" },
     ],
   },
   {
@@ -221,9 +221,9 @@ const products = [
     oldPrice: "90.00",
     stock: 19,
     filters: [
+      { filterName: "Availability", value: "in stock" },
       { filterName: "brand", value: "Brand a" },
       { filterName: "storage", value: "64GB" },
-      { filterName: "stock", value: "in stock" },
     ],
   },
   {
@@ -235,9 +235,9 @@ const products = [
     oldPrice: "160.00",
     stock: 10,
     filters: [
+      { filterName: "Availability", value: "in stock" },
       { filterName: "brand", value: "Brand Q" },
       { filterName: "storage", value: "256GB" },
-      { filterName: "stock", value: "in stock" },
     ],
   },
   {
@@ -249,9 +249,9 @@ const products = [
     oldPrice: "110.00",
     stock: 17,
     filters: [
+      { filterName: "Availability", value: "in stock" },
       { filterName: "brand", value: "Brand R" },
       { filterName: "storage", value: "32GB" },
-      { filterName: "stock", value: "in stock" },
     ],
   },
   {
@@ -263,9 +263,9 @@ const products = [
     oldPrice: "220.00",
     stock: 8,
     filters: [
+      { filterName: "Availability", value: "low stock" },
       { filterName: "brand", value: "Brand S" },
       { filterName: "storage", value: "128GB" },
-      { filterName: "stock", value: "low stock" },
     ],
   },
   {
@@ -277,9 +277,9 @@ const products = [
     oldPrice: "130.00",
     stock: 14,
     filters: [
+      { filterName: "Availability", value: "in stock" },
       { filterName: "brand", value: "Brand T" },
       { filterName: "storage", value: "64GB" },
-      { filterName: "stock", value: "in stock" },
     ],
   },
 ];

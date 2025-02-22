@@ -56,28 +56,30 @@ const DynamicFilter = ({
             className="border border-custom-border px-4 rounded-lg"
             value={ind + 1}
           >
-            <AccordionTrigger className="font-semibold">
+            <AccordionTrigger className="font-semibold ">
               {key.charAt(0).toUpperCase() + key.slice(1)}
             </AccordionTrigger>
-            {values.map((item) => (
-              <AccordionContent
-                className="flex items-center space-x-3"
-                key={item.id}
-              >
-                <Checkbox
-                  id={item.id}
-                  className=" w-4 h-4"
-                  checked={checkedItems[key]?.includes(item.id) || false}
-                  onCheckedChange={() => handleToggle(key, item.id)}
-                />
-                <label
-                  htmlFor={item.id}
-                  className="w-full text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-nowrap capitalize cursor-pointer"
+            <div className="w-full max-h-80 overflow-auto">
+              {values.map((item) => (
+                <AccordionContent
+                  className=" flex items-center space-x-3"
+                  key={item.id}
                 >
-                  {item.label}
-                </label>
-              </AccordionContent>
-            ))}
+                  <Checkbox
+                    id={item.id}
+                    className=" w-4 h-4"
+                    checked={checkedItems[key]?.includes(item.id) || false}
+                    onCheckedChange={() => handleToggle(key, item.id)}
+                  />
+                  <label
+                    htmlFor={item.id}
+                    className="w-full text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-nowrap capitalize cursor-pointer"
+                  >
+                    {item.label}
+                  </label>
+                </AccordionContent>
+              ))}
+            </div>
           </AccordionItem>
         </Accordion>
       ))}
