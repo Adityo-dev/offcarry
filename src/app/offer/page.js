@@ -3,6 +3,11 @@ import OfferCart from "./OfferCart";
 // OFFER DATA
 const offerData = [
   {
+    image: "/images/offer1.jpg",
+    title: "Bundle Offer",
+    subtitle: "Buy Together, Save More!",
+  },
+  {
     image: "/images/offer4.jpg",
     title: "Bundle Offer",
     subtitle: "Buy Together, Save More!",
@@ -17,11 +22,7 @@ const offerData = [
     title: "Bundle Offer",
     subtitle: "Buy Together, Save More!",
   },
-  {
-    image: "/images/offer1.jpg",
-    title: "Bundle Offer",
-    subtitle: "Buy Together, Save More!",
-  },
+
   {
     image: "/images/offer2.jpg",
     title: "Bundle Offer",

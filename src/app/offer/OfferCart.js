@@ -14,7 +14,7 @@ function OfferCart({ offer }) {
           alt={offer.title}
           width={400}
           height={400}
-          className="w-full h-80 object-cover"
+          className="w-full h-[350px] object-cover"
         />
       </Link>
 
@@ -29,7 +29,7 @@ function OfferCart({ offer }) {
           {offer.subtitle}
         </p>
         <Link
-          href={"/pre-order"}
+          href={`/offer/${offer?.title}`}
           className="w-full h-10 sm:h-11 flex items-center justify-center rounded-md text-sm sm:text-base font-medium bg-gradient-primary text-white mt-3"
         >
           View Details
