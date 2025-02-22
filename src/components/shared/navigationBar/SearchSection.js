@@ -2,7 +2,7 @@ import { Search } from "lucide-react";
 
 function SearchSection() {
   return (
-    <div className="w-full h-[50px] relative text-white">
+    <div className="w-full h-[50px] relative text-black">
       <input
         type="search"
         id="search"

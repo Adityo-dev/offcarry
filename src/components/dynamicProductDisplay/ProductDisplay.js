@@ -5,7 +5,7 @@ import ProductCart from "../productCarts/productsCart/ProductCart";
 
 const ProductDisplay = ({ displayedProducts }) => {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-5 xl:gap-6">
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4 md:gap-5 xl:gap-6">
       {displayedProducts.length > 0 ? (
         displayedProducts.map((data, ind) => (
           <div key={ind}>

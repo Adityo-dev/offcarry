@@ -1,33 +1,42 @@
 "use client";
 import Image from "next/image";
-import { AlignJustify, Heart, Search, UserPlus } from "lucide-react";
+import { AlignJustify, Gift, Heart, Search, UserPlus } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react"; // Import useState
 import SearchSection from "./SearchSection";
 
 // Center nav right section data
 const centerNavRightData = [
-  { icon: <Heart size={22} strokeWidth={1.3} />, url: "/wishlist" },
+  {
+    icon: <Gift size={22} strokeWidth={1.3} />,
+    name: "Latest Offers",
+    title: "Offer",
+    url: "/offer",
+  },
+  {
+    icon: <Heart size={22} strokeWidth={1.3} />,
+    name: "My Wishlist",
+    title: "Wishlist",
+    url: "/wishlist",
+  },
   {
     icon: <UserPlus size={22} strokeWidth={1.3} />,
-    title: "Login or Register ",
     name: "My Account",
+    title: "Login or Register ",
     url: "/account/login",
   },
 ];
 
 function CenterNavigationBar() {
-  const [isSearchVisible, setIsSearchVisible] = useState(false); // State to manage search visibility
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
 
   const toggleSearch = () => {
-    setIsSearchVisible(!isSearchVisible); // Toggle search visibility
+    setIsSearchVisible(!isSearchVisible);
   };
 
   return (
     <section className="fixed xl:relative z-50 shadow-lg xl:shadow-none w-full h-16 xl:h-auto bg-[#152327] xl:bg-white flex items-center">
       <div className="container w-full mx-auto px-4 flex items-center justify-between">
-        {/* Left Section: Menu Icon and Logo */}
-
         {/* Justify Menu Icon section */}
         <div className="text-white xl:hidden">
           <AlignJustify size={24} strokeWidth={1.3} />
@@ -56,7 +65,7 @@ function CenterNavigationBar() {
               key={ind}
               className="flex items-center gap-2"
             >
-              <p className="w-8 xl:w-10 h-8 xl:h-10 p-1.5 xl:p-0 bg-[#EEF0F2] text-[#292B49] rounded-full flex items-center justify-center">
+              <p className="w-8 xl:w-10 h-8 xl:h-10 p-1.5 bg-[#EEF0F2] text-[#292B49] rounded-full flex items-center justify-center">
                 {data?.icon}
               </p>
               <p className="hidden xl:flex flex-col text-sm text-[#837F74]">
