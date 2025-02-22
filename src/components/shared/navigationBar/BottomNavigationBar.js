@@ -18,17 +18,17 @@ import { AlignJustify } from "lucide-react";
 
 const components = [
   {
-    title: "Home",
+    title: "Deal Of The Day",
     href: "#",
     description: " Simply dummy text of the printing and typesetting industry.",
   },
   {
-    title: "Shop",
+    title: "Featured Products",
     href: "#",
     description: "Simply dummy text of the printing and typesetting industry.",
   },
   {
-    title: "Page",
+    title: "Best Sellers",
     href: "#",
     description: "Simply dummy text of the printing and typesetting industry.",
   },
@@ -132,40 +132,13 @@ export function BottomNavigationBar() {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>Shop</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                      <li className="row-span-3">
-                        <NavigationMenuLink asChild>
-                          <Link
-                            className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                            href="/shop"
-                          >
-                            <div className="mb-2 mt-4 text-lg font-medium">
-                              trust Next Store
-                            </div>
-                            <p className="text-sm leading-tight text-muted-foreground">
-                              Simply dummy text of the printing and typesetting
-                              industry. Simply dummy text of the printing and
-                              typesetting industry.
-                            </p>
-                          </Link>
-                        </NavigationMenuLink>
-                      </li>
-                      <ListItem href="/shop" title="Page">
-                        Simply dummy text of the printing and typesetting
-                        industry.
-                      </ListItem>
-                      <ListItem href="/shop" title="Special">
-                        Simply dummy text of the printing and typesetting
-                        industry.
-                      </ListItem>
-                      <ListItem href="/shop" title="Trending">
-                        Simply dummy text of the printing and typesetting
-                        industry.
-                      </ListItem>
-                    </ul>
-                  </NavigationMenuContent>
+                  <Link href="/shop" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={navigationMenuTriggerStyle()}
+                    >
+                      Shop
+                    </NavigationMenuLink>
+                  </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger>Page</NavigationMenuTrigger>
