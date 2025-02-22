@@ -1,30 +1,30 @@
 import Link from "next/link";
-import { Heart, House, Store, User } from "lucide-react";
+import { Gift, Heart, House, Store, User } from "lucide-react";
 
 const mobileNavigationBarData = [
   {
     icon: <House size={20} strokeWidth={1.3} />,
-    name: "Home",
+    name: "home",
     url: "/",
   },
   {
     icon: <Store size={20} strokeWidth={1.3} />,
-    name: "Shop",
+    name: "shop",
     url: "/shop",
   },
   {
+    icon: <Gift size={20} strokeWidth={1.3} />,
+    name: "offer",
+    url: "/offer",
+  },
+  {
     icon: <Heart size={20} strokeWidth={1.3} />,
-    name: "Wishlist",
+    name: "wishlist",
     url: "/wishlist",
   },
   {
     icon: <User size={20} strokeWidth={1.3} />,
-    name: "Offer",
-    url: "/offer",
-  },
-  {
-    icon: <User size={20} strokeWidth={1.3} />,
-    name: "Account",
+    name: "account",
     url: "/account/login",
   },
 ];
@@ -36,10 +36,16 @@ function MobileNavigationBar() {
         <Link
           href={navData.url}
           key={index}
-          className="flex flex-col gap-0.5 items-center justify-center text-[10px] md:text-xs"
+          className="flex flex-col gap-0.5 items-center justify-center text-[10px] md:text-xs capitalize"
           aria-label={navData.name}
         >
-          <span>{navData.icon}</span>
+          <span
+            className={`${
+              navData?.name === "offer" && "text-secondary animate-pulse"
+            }`}
+          >
+            {navData.icon}
+          </span>
           <span>{navData.name}</span>
         </Link>
       ))}
