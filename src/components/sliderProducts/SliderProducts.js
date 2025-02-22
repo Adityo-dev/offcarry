@@ -56,23 +56,23 @@ export default function SliderProduct({ title, products }) {
             },
             320: {
               slidesPerView: 2,
-              spaceBetween: 16,
+              spaceBetween: 12,
             },
             640: {
               slidesPerView: 3,
-              spaceBetween: 20,
+              spaceBetween: 12,
             },
             1024: {
               slidesPerView: 4,
-              spaceBetween: 20,
+              spaceBetween: 12,
             },
             1280: {
               slidesPerView: 5,
-              spaceBetween: 24,
+              spaceBetween: 12,
             },
             1536: {
               slidesPerView: 6,
-              spaceBetween: 24,
+              spaceBetween: 12,
             },
           }}
           modules={[Navigation, Autoplay]}
