@@ -35,7 +35,7 @@ function CenterNavigationBar() {
   };
 
   return (
-    <section className="fixed xl:relative z-50 shadow-lg xl:shadow-none w-full h-16 xl:h-auto bg-[#152327] xl:bg-white flex items-center">
+    <section className="fixed xl:relative z-50 shadow-lg xl:shadow-none w-full h-14 xl:h-auto bg-[#152327] xl:bg-white flex items-center">
       <div className="container w-full mx-auto px-4 flex items-center justify-between">
         {/* Justify Menu Icon section */}
         <div className="text-white xl:hidden">
@@ -48,7 +48,7 @@ function CenterNavigationBar() {
             width={160}
             height={160}
             alt="TrustNest Store Logo"
-            className="w-28 xl:w-[160px]"
+            className="w-24 xl:w-[160px]"
           />
         </Link>
 
