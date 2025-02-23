@@ -90,7 +90,7 @@ function CenterNavigationBar() {
           </button>
           {/* Search Section (Conditionally Rendered) */}
           {isSearchVisible && (
-            <div className="fixed top-16 right-0 z-50 w-full bg-[#152327] p-4 shadow-lg">
+            <div className="fixed top-14 right-0 z-50 w-full bg-[#152327] p-4 shadow-lg">
               <SearchSection />
             </div>
           )}
