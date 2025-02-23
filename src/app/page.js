@@ -16,6 +16,7 @@ export default function Home() {
     <main className="space-y-10 lg:space-y-16 pt-16 xl:pt-0">
       <Hero />
       <DealOfTheDay />
+      <Upcoming />
       <PreOrder />
       <FeaturedProducts />
       <Banner3 />
@@ -28,7 +29,6 @@ export default function Home() {
           <Banner4 />
         </div>
       </div>
-      <Upcoming />
       <Brand />
       <div className="px-4 block lg:hidden">
         <Newsletter />
