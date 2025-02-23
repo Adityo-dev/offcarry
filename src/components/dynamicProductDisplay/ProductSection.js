@@ -22,17 +22,17 @@ const ProductSection = ({
 }) => {
   return (
     <section className="w-full grid-cols-none col-span-10">
-      <div className=" p-2.5 md:p-4 mb-5 flex justify-between items-center gap-6 border border-custom-border rounded-lg">
+      <div className=" p-2.5 md:p-4 mb-5 flex justify-between items-center gap-6 border  rounded-lg">
         <p className="text-lg font-medium hidden xl:block"></p>
         <div className="xl:hidden">
           <Sheet>
             <SheetTrigger asChild>
-              <button className="bg-custom-border flex items-center gap-2 justify-center rounded-md">
+              <button className="bg-secondary text-white px-2 py-1 flex items-center gap-2 justify-center rounded-md">
                 <Filter className="w-4 h-4" />
                 Filter
               </button>
             </SheetTrigger>
-            <SheetContent className="w-screen overflow-x-auto z-[50000] max-w-[350px]">
+            <SheetContent className="w-screen overflow-x-auto z-[50000] max-w-[300px]">
               <DynamicFilter
                 filterData={filterData}
                 checkedItems={checkedItems}

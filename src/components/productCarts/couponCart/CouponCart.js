@@ -1,6 +1,6 @@
 import { Info } from "lucide-react";
 import Image from "next/image";
-import CountdownTimer from "../productsCart/CountdownTimer";
+import CountdownTimer from "./CountdownTimer";
 import Link from "next/link";
 
 function CouponCart({ product }) {

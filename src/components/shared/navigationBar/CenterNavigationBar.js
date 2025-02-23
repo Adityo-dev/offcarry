@@ -4,7 +4,8 @@ import { AlignJustify, Gift, Heart, Search, UserPlus } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react"; // Import useState
 import SearchSection from "./SearchSection";
-
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { BottomNavigationBar } from "./BottomNavigationBar";
 // Center nav right section data
 const centerNavRightData = [
   {
@@ -39,7 +40,15 @@ function CenterNavigationBar() {
       <div className="container w-full mx-auto px-4 flex items-center justify-between">
         {/* Justify Menu Icon section */}
         <div className="text-white xl:hidden">
-          <AlignJustify size={24} strokeWidth={1.3} />
+          <Sheet>
+            <SheetTrigger asChild>
+              <AlignJustify size={24} strokeWidth={1.3} />
+            </SheetTrigger>
+            <SheetContent className="w-screen overflow-x-auto z-[50000] max-w-[300px] flex justify-between">
+              <p>Nav List</p>
+              <p>category</p>
+            </SheetContent>
+          </Sheet>
         </div>
         {/* TRUST NEST STORE LOGO */}
         <Link href={"/"}>
