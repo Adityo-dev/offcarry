@@ -4,7 +4,8 @@ import { AlignJustify, Gift, Heart, Search, UserPlus } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react"; // Import useState
 import SearchSection from "./SearchSection";
-
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { BottomNavigationBar } from "./BottomNavigationBar";
 // Center nav right section data
 const centerNavRightData = [
   {
@@ -35,11 +36,19 @@ function CenterNavigationBar() {
   };
 
   return (
-    <section className="fixed xl:relative z-50 shadow-lg xl:shadow-none w-full h-16 xl:h-auto bg-[#152327] xl:bg-white flex items-center">
+    <section className="fixed xl:relative z-50 shadow-lg xl:shadow-none w-full h-14 xl:h-auto bg-[#152327] xl:bg-white flex items-center">
       <div className="container w-full mx-auto px-4 flex items-center justify-between">
         {/* Justify Menu Icon section */}
         <div className="text-white xl:hidden">
-          <AlignJustify size={24} strokeWidth={1.3} />
+          <Sheet>
+            <SheetTrigger asChild>
+              <AlignJustify size={24} strokeWidth={1.3} />
+            </SheetTrigger>
+            <SheetContent className="w-screen overflow-x-auto z-[50000] max-w-[300px] flex justify-between">
+              <p>Nav List</p>
+              <p>category</p>
+            </SheetContent>
+          </Sheet>
         </div>
         {/* TRUST NEST STORE LOGO */}
         <Link href={"/"}>
@@ -48,7 +57,7 @@ function CenterNavigationBar() {
             width={160}
             height={160}
             alt="TrustNest Store Logo"
-            className="w-28 xl:w-[160px]"
+            className="w-24 xl:w-[160px]"
           />
         </Link>
 
@@ -90,7 +99,7 @@ function CenterNavigationBar() {
           </button>
           {/* Search Section (Conditionally Rendered) */}
           {isSearchVisible && (
-            <div className="fixed top-16 right-0 z-50 w-full bg-[#152327] p-4 shadow-lg">
+            <div className="fixed top-14 right-0 z-50 w-full bg-[#152327] p-4 shadow-lg">
               <SearchSection />
             </div>
           )}

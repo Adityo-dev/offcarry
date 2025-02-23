@@ -9,6 +9,7 @@ import PreOrder from "@/components/home/preOrder/PreOrder";
 import ServiceType from "@/components/home/service/Service";
 // import Service from "@/components/home/service/Service";
 import Newsletter from "@/components/shared/newsletter/Newsletter";
+import Upcoming from "@/components/upcoming/Upcoming";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
           <Banner4 />
         </div>
       </div>
+      <Upcoming />
       <Brand />
       <div className="px-4 block lg:hidden">
         <Newsletter />
