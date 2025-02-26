@@ -21,14 +21,7 @@ export default function Home() {
       <FeaturedProducts />
       <Banner3 />
       <BestSellers />
-      <div className="container mx-auto px-4 grid grid-cols-12 gap-7">
-        <div className="col-span-3">
-          <ServiceType />
-        </div>
-        <div className="col-span-9">
-          <Banner4 />
-        </div>
-      </div>
+      <Banner4 />
       <Brand />
       <div className="px-4 block lg:hidden">
         <Newsletter />

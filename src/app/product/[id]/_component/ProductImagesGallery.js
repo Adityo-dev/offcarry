@@ -1,160 +1,92 @@
 "use client";
-import React, { useRef, useState } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import { Navigation } from "swiper/modules";
+import { useRef, useState } from "react";
 
-export default function ShowProductImageGallery({ productImages }) {
+export default function ProductImagesGallery({ data }) {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [zoomStyle, setZoomStyle] = useState({});
   const containerRef = useRef(null);
   const imageRef = useRef(null);
-  const mainSwiperRef = useRef(null);
-  const thumbnailSwiperRef = useRef(null);
 
   // Handle mouse move to zoom on image
   const handleMouseMove = (e) => {
-    if (!containerRef.current || !imageRef.current) return;
+    if (!containerRef.current || !imageRef.current || !data?.src?.[activeSlide])
+      return;
 
     const { left, top, width, height } =
       containerRef.current.getBoundingClientRect();
-    const x = ((e.clientX - left) / width) * 120;
-    const y = ((e.clientY - top) / height) * 120;
+    const x = ((e.clientX - left) / width) * 100;
+    const y = ((e.clientY - top) / height) * 100;
 
-    imageRef.current.style.transform = "scale(2)";
-    imageRef.current.style.transformOrigin = `${x}% ${y}%`;
+    const imageWidth = imageRef.current.naturalWidth;
+    const imageHeight = imageRef.current.naturalHeight;
+    const containerWidth = containerRef.current.offsetWidth;
+    const containerHeight = containerRef.current.offsetHeight;
+
+    // Calculate zoom based on the image size
+    const zoomLevelX = Math.max(imageWidth / containerWidth, 2);
+    const zoomLevelY = Math.max(imageHeight / containerHeight, 2);
+
+    setZoomStyle({
+      backgroundImage: `url(${data.src[activeSlide].src})`,
+      backgroundSize: `${zoomLevelX * 100}% ${zoomLevelY * 100}%`, // Adjust zoom level here
+      backgroundPosition: `${x}% ${y}%`,
+    });
   };
 
   // Handle mouse leave to reset zoom effect
   const handleMouseLeave = () => {
-    if (imageRef.current) {
-      imageRef.current.style.transform = "scale(1)";
-    }
-  };
-
-  // Sync main Swiper and thumbnail Swiper
-  const handleSlideChange = (swiper) => {
-    setActiveSlide(swiper.activeIndex);
-    if (thumbnailSwiperRef.current) {
-      thumbnailSwiperRef.current.slideTo(swiper.activeIndex);
-    }
+    setZoomStyle({});
   };
 
   const handleThumbnailClick = (index) => {
     setActiveSlide(index);
-    if (mainSwiperRef.current) {
-      mainSwiperRef.current.slideTo(index);
-    }
-  };
-
-  // Handle thumbnail arrow click
-  const handleThumbnailArrowClick = (direction) => {
-    if (thumbnailSwiperRef.current) {
-      if (direction === "prev") {
-        thumbnailSwiperRef.current.slidePrev();
-      } else {
-        thumbnailSwiperRef.current.slideNext();
-      }
-      // Update main Swiper to match the new active thumbnail
-      const newIndex = thumbnailSwiperRef.current.activeIndex;
-      setActiveSlide(newIndex);
-      if (mainSwiperRef.current) {
-        mainSwiperRef.current.slideTo(newIndex);
-      }
-    }
+    setZoomStyle({});
   };
 
   return (
     <main className="relative">
-      {/* Main Image Swiper */}
+      {/* Main Image with Zoom Effect */}
       <div
         ref={containerRef}
-        className="w-full h-[500px] bg-[#F5F5F5] rounded-lg overflow-hidden mb-6 relative cursor-zoom-in"
+        className="w-full h-[400px] sm:h-[450px] max-h-[450px] bg-[#F5F5F5] border rounded-lg overflow-hidden mb-4 relative"
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
-        <Swiper
-          ref={mainSwiperRef}
-          spaceBetween={10}
-          onSlideChange={handleSlideChange}
-          onSwiper={(swiper) => (mainSwiperRef.current = swiper)}
-          className="w-full h-full"
-        >
-          {productImages.map((image, index) => (
-            <SwiperSlide key={image.id}>
-              <div className="w-[400px] mx-auto h-auto">
-                <Image
-                  ref={imageRef}
-                  src={image.src}
-                  width={600}
-                  height={450}
-                  alt={`Image ${index + 1}`}
-                  className="object-contain w-full h-full"
-                />
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        <Image
+          ref={imageRef}
+          src={data.src[activeSlide].src}
+          className="object-contain w-full h-full"
+          width={600}
+          height={450}
+          alt={`Image ${activeSlide + 1}`}
+        />
+        <div
+          style={zoomStyle}
+          className="absolute top-0 left-0 w-full h-full cursor-zoom-in"
+        />
       </div>
 
       {/* Thumbnail Gallery */}
-      <div className="relative flex items-center">
-        {/* Previous Button */}
-        {productImages.length > 5 && (
-          <button
-            className="absolute -left-5 top-1/2 transform -translate-y-1/2 bg-primary hover:bg-secondary text-white p-2 shadow-md rounded-full z-10 transition-all duration-300"
-            onClick={() => handleThumbnailArrowClick("prev")}
+      <div className="grid grid-cols-5 sm:grid-cols-7 gap-2 mt-4">
+        {data.src.map((image, index) => (
+          <div
+            key={image.id}
+            className={`w-full h-full rounded-lg overflow-hidden cursor-pointer border ${
+              activeSlide === index &&
+              "border-primary transition-all duration-300"
+            }`}
+            onClick={() => handleThumbnailClick(index)}
           >
-            <ChevronLeft strokeWidth={1.5} size={22} />
-          </button>
-        )}
-
-        {/* Swiper Thumbnail Gallery */}
-        <Swiper
-          ref={thumbnailSwiperRef}
-          spaceBetween={10}
-          slidesPerView={5}
-          modules={[Navigation]}
-          className="w-full px-10"
-          onSwiper={(swiper) => (thumbnailSwiperRef.current = swiper)}
-          onSlideChange={(swiper) => {
-            setActiveSlide(swiper.activeIndex);
-            if (mainSwiperRef.current) {
-              mainSwiperRef.current.slideTo(swiper.activeIndex);
-            }
-          }}
-        >
-          {productImages.map((image, index) => (
-            <SwiperSlide key={image.id}>
-              <div
-                className={`flex-shrink-0 w-24 h-24 border p-2 rounded-lg overflow-hidden cursor-pointer ${
-                  activeSlide === index ? "border-primary" : ""
-                }`}
-                onClick={() => handleThumbnailClick(index)}
-              >
-                <Image
-                  src={image.src}
-                  alt={`Gallery Image ${index + 1}`}
-                  className="object-contain w-full h-full"
-                  width={100}
-                  height={100}
-                />
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-
-        {/* Next Button */}
-        {productImages.length > 5 && (
-          <button
-            className="absolute -right-1 top-1/2 transform -translate-y-1/2 bg-primary hover:bg-secondary text-white p-2 rounded-full shadow-md z-10 transition-all duration-300"
-            onClick={() => handleThumbnailArrowClick("next")}
-          >
-            <ChevronRight strokeWidth={1.5} size={22} />
-          </button>
-        )}
+            <Image
+              src={image.src}
+              width={64}
+              height={64}
+              alt={`Thumbnail ${index + 1}`}
+              className="object-contain w-full h-full"
+            />
+          </div>
+        ))}
       </div>
     </main>
   );
