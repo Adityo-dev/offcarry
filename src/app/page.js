@@ -1,3 +1,4 @@
+import Banner1 from "@/components/bannerGroup/Banner1";
 import Banner3 from "@/components/bannerGroup/Banner3";
 import Banner4 from "@/components/bannerGroup/Banner4";
 import BestSellers from "@/components/home/bestSellers/BestSellers";
@@ -7,7 +8,6 @@ import FeaturedProducts from "@/components/home/featuredProducts/FeaturedProduct
 import Hero from "@/components/home/hero/Hero";
 import PreOrder from "@/components/home/preOrder/PreOrder";
 import ServiceType from "@/components/home/service/Service";
-// import Service from "@/components/home/service/Service";
 import Newsletter from "@/components/shared/newsletter/Newsletter";
 import Upcoming from "@/components/upcoming/Upcoming";
 
@@ -16,6 +16,14 @@ export default function Home() {
     <main className="space-y-10 lg:space-y-16 pt-16 xl:pt-0">
       <Hero />
       <DealOfTheDay />
+      <section className="container mx-auto px-4 grid grid-cols-12 gap-4 lg:gap-7">
+        <div className="col-span-full lg:col-span-4">
+          <ServiceType />
+        </div>
+        <div className="col-span-full lg:col-span-8">
+          <Banner1 />
+        </div>
+      </section>
       <Upcoming />
       <PreOrder />
       <FeaturedProducts />
@@ -23,9 +31,9 @@ export default function Home() {
       <BestSellers />
       <Banner4 />
       <Brand />
-      <div className="px-4 block lg:hidden">
+      <section className="px-4 block lg:hidden">
         <Newsletter />
-      </div>
+      </section>
     </main>
   );
 }
