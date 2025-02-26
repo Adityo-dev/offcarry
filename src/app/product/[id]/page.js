@@ -3,23 +3,24 @@ import ProductDetails from "./_component/ProductDetails";
 import ProductTabs from "./_component/ProductTabs";
 import ChatNow from "./_component/ChatNow";
 import RelatedProducts from "@/components/relatedProducts/RelatedProducts";
+import Video from "./_component/Video";
 
 const productImages = [
-  { id: 1, src: "/images/products3.png" },
-  { id: 2, src: "/images/products1.png" },
-  { id: 3, src: "/images/products2.png" },
-  { id: 4, src: "/images/products4.png" },
-  { id: 5, src: "/images/products1.png" },
-  { id: 6, src: "/images/products1.png" },
-  { id: 7, src: "/images/products1.png" },
+  { id: 1, src: "/images/product6.jpg" },
+  { id: 2, src: "/images/product8.jpg" },
+  { id: 3, src: "/images/product9.jpg" },
+  { id: 4, src: "/images/product10.jpg" },
+  { id: 5, src: "/images/product11.jpg" },
+  { id: 6, src: "/images/product5.jpg" },
+  { id: 7, src: "/images/product7.jpg" },
 ];
 
 const SingleProductPage = () => {
   return (
-    <div className="container mx-auto px-4 pt-16 xl:pt- space-y-16 ">
+    <div className="container mx-auto px-4 pt-16 xl:pt-6 space-y-16">
       <div className="grid grid-cols-12 gap-6">
         <div className="col-span-full lg:col-span-6 xl:col-span-5 space-y-7">
-          <ProductImagesGallery productImages={productImages} />
+          <ProductImagesGallery data={{ src: productImages }} />
           <ChatNow />
         </div>
         <div className="col-span-full lg:col-span-6 xl:col-span-7">
@@ -27,6 +28,7 @@ const SingleProductPage = () => {
         </div>
       </div>
       <ProductTabs />
+      <Video />
       <RelatedProducts />
     </div>
   );

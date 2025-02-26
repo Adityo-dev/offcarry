@@ -38,7 +38,7 @@ function UpcomingCart({ product }) {
           </p>
 
           {/* Stock Status (Coming Soon) */}
-          <p className="text-sm font-semibold flex items-center gap-1 text-blue-600">
+          <p className="text-sm font-semibold flex items-center gap-1 text-secondary">
             <AlertTriangle size={16} strokeWidth={1.5} />
             <span>Coming Soon</span>
           </p>

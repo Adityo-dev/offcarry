@@ -16,11 +16,11 @@ import { useState } from "react";
 // SOCIAL MEDIA DATA
 const socialMediaData = [
   {
-    icon: <Facebook size={18} strokeWidth={1.5} />,
+    icon: <Facebook size={20} strokeWidth={1.5} />,
     url: "https://www.facebook.com/TrustNestStore",
   },
-  { icon: <Twitter size={18} strokeWidth={1.5} />, url: "" },
-  { icon: <Instagram size={18} strokeWidth={1.5} />, url: "" },
+  { icon: <Twitter size={20} strokeWidth={1.5} />, url: "" },
+  { icon: <Instagram size={20} strokeWidth={1.5} />, url: "" },
 ];
 
 //TAGS DATA

@@ -1,64 +1,49 @@
+import { Trash } from "lucide-react";
 import Image from "next/image";
-import { AlertTriangle, CheckCircle, X, XCircle } from "lucide-react";
+import React from "react";
 
-function WishlistCart({ product }) {
+function WishlistCart({ item }) {
   return (
-    <div className="grid grid-cols-12 items-center gap-6 border-b pb-6 last:border-0">
-      {/* IMAGE AND PRODUCT NAME */}
-      <div className="col-span-4 flex items-center gap-4">
-        <Image
-          src={product?.image}
-          width={400}
-          height={400}
-          alt=""
-          className="w-36 h-36 border rounded-lg"
-        />
-        <p>{product?.name}</p>
+    <div className="bg-[#FAFAFA] grid grid-cols-12 items-center border p-4 rounded-lg relative ">
+      {/* Product Details */}
+      <div className="flex items-center gap-4 col-span-5 lg:col-span-4">
+        <div className="w-20 h-20 bg-white rounded-lg overflow-hidden">
+          <Image
+            src={item.image}
+            width={400}
+            height={400}
+            alt={item.name}
+            className="w-full h-full object-contain"
+          />
+        </div>
+        <div>
+          <h3 className="text-sm font-medium">{item.name}</h3>
+          <p className="text-sm text-gray-500">{item.category}</p>
+        </div>
       </div>
-      {/* UNIT PRICE */}
-      <p className="text-2xl text-gray-600 space-x-3 col-span-3">
-        <span className="line-through text-[80%] text-[#ACB5BD]">
-          ৳{product?.stock > 0 ? product?.oldPrice : "00"}
-        </span>
-        <span className="font-bold text-secondary">
-          ৳{product?.stock > 0 ? product?.currentPrice : "00"}
-        </span>
+
+      {/* Unit Price */}
+      <p className="font-medium col-span-2 lg:col-span-3">
+        ${item.price.toFixed(2)}
       </p>
 
-      {/* STOCK */}
+      {/* Stock Status */}
       <p
-        className={`flex items-center gap-1 col-span-2 ${
-          product?.stock > 5
-            ? "text-green-600"
-            : product?.stock > 0
-            ? "text-yellow-600"
-            : "text-red-600"
+        className={`col-span-2 lg:col-span-3 ${
+          item.stock === "In Stock" ? "text-green-500" : "text-red-500"
         }`}
       >
-        {product?.stock > 5 ? (
-          <>
-            <CheckCircle size={18} strokeWidth={1.5} />
-            <span>In Stock</span>
-          </>
-        ) : product?.stock > 0 ? (
-          <>
-            <AlertTriangle size={18} strokeWidth={1.5} />
-            <span>Low Stock</span>
-          </>
-        ) : (
-          <>
-            <XCircle size={18} strokeWidth={1.5} />
-            <span>Out of Stock</span>
-          </>
-        )}
+        {item.stock}
       </p>
 
-      {/* BUY NOW AND REMOVE BUTTON */}
-      <div className="col-span-3 w-full flex justify-between pl-6">
-        <button className="bg-gradient-primary text-white px-12 py-2.5 rounded-lg text-lg font-semibold">
-          Buy now
+      {/* Action Buttons */}
+      <div className="w-full col-span-3 lg:col-span-2 flex items-center justify-between gap-4">
+        <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+          Add to Cart
         </button>
-        <X size={28} strokeWidth={1.5} />
+        <button className="text-red-500 hover:text-red-700">
+          <Trash size={20} />
+        </button>
       </div>
     </div>
   );
