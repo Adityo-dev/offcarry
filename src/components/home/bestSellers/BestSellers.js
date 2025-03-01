@@ -273,7 +273,11 @@ function BestSellers() {
           </h2>
           <TabsList className="space-x-4 md:space-x-5 lg:space-x-7">
             {tabsData.map((tab) => (
-              <TabsTrigger key={tab.value} value={tab.value}>
+              <TabsTrigger
+                key={tab.value}
+                value={tab.value}
+                className="data-[state=active]:text-primary"
+              >
                 {tab.label}
               </TabsTrigger>
             ))}

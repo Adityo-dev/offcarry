@@ -48,13 +48,13 @@ function MobileMenuAndCategory() {
         <TabsList className="w-full mb-6 space-x-4">
           <TabsTrigger
             value={"a"}
-            className="w-full border py-2 data-[state=active]:bg-gradient-primary rounded-sm"
+            className="w-full border py-2 data-[state=active]:bg-gradient-primary data-[state=active]:text-white rounded-sm"
           >
             Nav Bar List
           </TabsTrigger>
           <TabsTrigger
             value={"category"}
-            className="w-full border py-2 data-[state=active]:bg-gradient-primary rounded-sm"
+            className="w-full border py-2 data-[state=active]:bg-gradient-primary data-[state=active]:text-white rounded-sm"
           >
             Category
           </TabsTrigger>

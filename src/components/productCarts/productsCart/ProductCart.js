@@ -1,23 +1,54 @@
-import { AlertTriangle, CheckCircle, Store, XCircle } from "lucide-react";
+import { AlertTriangle, CheckCircle, XCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 function ProductCart({ product }) {
+  const {
+    title = "Product Title",
+    image = "/default-product-image.png",
+    stock = 0,
+    oldPrice = 0,
+    currentPrice = 0,
+  } = product;
+
+  // Determine stock status
+  let stockStatus;
+  if (stock > 5) {
+    stockStatus = {
+      text: "In Stock",
+      icon: <CheckCircle size={16} strokeWidth={1.5} />,
+      color: "text-green-600",
+    };
+  } else if (stock > 0) {
+    stockStatus = {
+      text: "Low Stock",
+      icon: <AlertTriangle size={16} strokeWidth={1.5} />,
+      color: "text-yellow-600",
+    };
+  } else {
+    stockStatus = {
+      text: "Out of Stock",
+      icon: <XCircle size={16} strokeWidth={1.5} />,
+      color: "text-red-600",
+    };
+  }
+
   return (
     <div className="w-full h-full">
       {/* Product Image Section */}
       <div className="relative">
         <Link
-          href={`/product/${product?.title}`}
-          className="w-full h-52 border shadow-sm rounded-lg flex justify-center items-center overflow-hidden"
+          href={`/product/${title}`}
+          className="w-full h-56 border shadow-sm rounded-lg flex justify-center items-center overflow-hidden"
+          aria-label={`View details of ${title}`}
         >
           <Image
-            src={product?.image}
+            src={image}
             width={200}
             height={200}
-            alt={`Image of ${product?.title || "Product"}`}
-            className={`w-full max-h-52 h-auto object-contain ${
-              product?.stock > 0 ? "opacity-100" : "opacity-40"
+            alt={`Image of ${title}`}
+            className={`w-full max-h-56 h-auto object-contain ${
+              stock > 0 ? "opacity-100" : "opacity-40"
             }`}
             loading="lazy"
           />
@@ -26,52 +57,33 @@ function ProductCart({ product }) {
         {/* Product Details Section */}
         <div className="mt-4 space-y-2">
           {/* Product Title */}
-          <Link href={`/product/${product?.title}`}>
+          <Link href={`/product/${title}`}>
             <h3 className="text-sm font-semibold text-gray-800 transition-all duration-300 hover:text-primary">
-              {product?.title || "Product Title"}
+              {title}
             </h3>
           </Link>
 
           {/* Product Price */}
           <p className="text-lg text-gray-600 space-x-2">
-            <span className="line-through text-[80%] text-[#ACB5BD]">
-              ৳{product?.stock > 0 ? product?.oldPrice : "00"}
-            </span>
-            <span className="font-bold text-secondary">
-              ৳{product?.stock > 0 ? product?.currentPrice : "00"}
-            </span>
+            {oldPrice > 0 && (
+              <span className="line-through text-[80%] text-[#ACB5BD]">
+                ৳{oldPrice}
+              </span>
+            )}
+            <span className="font-bold text-secondary">৳{currentPrice}</span>
           </p>
 
+          {/* Stock Status */}
           <p
-            className={`text-sm font-semibold flex items-center gap-1 ${
-              product?.stock > 5
-                ? "text-green-600"
-                : product?.stock > 0
-                ? "text-yellow-600"
-                : "text-red-600"
-            }`}
+            className={`text-sm font-semibold flex items-center gap-1 ${stockStatus.color}`}
           >
-            {product?.stock > 5 ? (
-              <>
-                <CheckCircle size={16} strokeWidth={1.5} />
-                <span>In Stock</span>
-              </>
-            ) : product?.stock > 0 ? (
-              <>
-                <AlertTriangle size={16} strokeWidth={1.5} />
-                <span>Low Stock</span>
-              </>
-            ) : (
-              <>
-                <XCircle size={16} strokeWidth={1.5} />
-                <span>Out of Stock</span>
-              </>
-            )}
+            {stockStatus.icon}
+            <span>{stockStatus.text}</span>
           </p>
         </div>
       </div>
 
-      {/* Buy Now Button */}
+      {/* Buy Now Button (Uncomment if needed) */}
       {/* <button className="w-full h-10 bg-gradient-primary mt-4 text-white rounded-b-lg font-semibold hover:opacity-90 transition-opacity duration-300">
         Buy Now
       </button> */}
