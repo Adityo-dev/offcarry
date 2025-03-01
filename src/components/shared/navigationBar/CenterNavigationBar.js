@@ -1,35 +1,17 @@
 "use client";
 import Image from "next/image";
-import { AlignJustify, Gift, Heart, Search, UserPlus } from "lucide-react";
+import { AlignJustify, Search } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react"; // Import useState
 import SearchSection from "./SearchSection";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { BottomNavigationBar } from "./BottomNavigationBar";
 import MobileMenuAndCategory from "./MobileMenuAndCategory";
-// Center nav right section data
-const centerNavRightData = [
-  {
-    icon: <Gift size={22} strokeWidth={1.3} />,
-    name: "latest offers",
-    title: "offer",
-    url: "/offer",
-  },
-  {
-    icon: <Heart size={22} strokeWidth={1.3} />,
-    name: "my wishlist",
-    title: "wishlist",
-    url: "/wishlist",
-  },
-  {
-    icon: <UserPlus size={22} strokeWidth={1.3} />,
-    name: "my account",
-    title: "login or register ",
-    url: "/account/login",
-  },
-];
 
-function CenterNavigationBar() {
+function CenterNavigationBar({
+  categoriesData,
+  navigationItems,
+  centerNavRightData,
+}) {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
 
   const toggleSearch = () => {
@@ -46,7 +28,10 @@ function CenterNavigationBar() {
               <AlignJustify size={24} strokeWidth={1.3} />
             </SheetTrigger>
             <SheetContent className="w-screen overflow-x-auto z-[50000] max-w-[300px] flex justify-between">
-              <MobileMenuAndCategory />
+              <MobileMenuAndCategory
+                categoriesData={categoriesData}
+                navigationItems={navigationItems}
+              />
             </SheetContent>
           </Sheet>
         </div>

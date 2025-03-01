@@ -1,5 +1,7 @@
+"use client";
 import Link from "next/link";
 import { Gift, Heart, House, Store, User } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 const mobileNavigationBarData = [
   {
@@ -30,13 +32,17 @@ const mobileNavigationBarData = [
 ];
 
 function MobileNavigationBar() {
+  const pathname = usePathname();
+
   return (
     <nav className="w-full h-14 fixed bottom-0 z-50 xl:hidden bg-[#152327] text-white shadow-lg px-5 flex items-center justify-between ">
       {mobileNavigationBarData.map((navData, index) => (
         <Link
           href={navData.url}
           key={index}
-          className="flex flex-col gap-0.5 items-center justify-center text-[10px] md:text-xs capitalize"
+          className={`flex flex-col gap-0.5 items-center justify-center text-[10px] md:text-xs capitalize ${
+            pathname === navData.url ? "text-secondary" : ""
+          }`}
           aria-label={navData.name}
         >
           <span
