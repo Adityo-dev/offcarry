@@ -6,6 +6,7 @@ import { useState } from "react"; // Import useState
 import SearchSection from "./SearchSection";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { BottomNavigationBar } from "./BottomNavigationBar";
+import MobileMenuAndCategory from "./MobileMenuAndCategory";
 // Center nav right section data
 const centerNavRightData = [
   {
@@ -45,8 +46,7 @@ function CenterNavigationBar() {
               <AlignJustify size={24} strokeWidth={1.3} />
             </SheetTrigger>
             <SheetContent className="w-screen overflow-x-auto z-[50000] max-w-[300px] flex justify-between">
-              <p>Nav List</p>
-              <p>category</p>
+              <MobileMenuAndCategory />
             </SheetContent>
           </Sheet>
         </div>

@@ -13,9 +13,11 @@ import Upcoming from "@/components/upcoming/Upcoming";
 
 export default function Home() {
   return (
-    <main className="space-y-10 lg:space-y-16 pt-16 xl:pt-0">
+    <main className="space-y-10 lg:space-y-16 pt-16 xl:pt-0 ">
       <Hero />
       <DealOfTheDay />
+      <PreOrder />
+      <BestSellers />
       <section className="container mx-auto px-4 grid grid-cols-12 gap-4 lg:gap-7">
         <div className="col-span-full lg:col-span-4">
           <ServiceType />
@@ -24,11 +26,9 @@ export default function Home() {
           <Banner1 />
         </div>
       </section>
-      <Upcoming />
-      <PreOrder />
       <FeaturedProducts />
       <Banner3 />
-      <BestSellers />
+      <Upcoming />
       <Banner4 />
       <Brand />
       <section className="px-4 block lg:hidden">

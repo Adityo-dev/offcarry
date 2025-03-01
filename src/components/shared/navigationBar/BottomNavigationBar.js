@@ -16,40 +16,157 @@ import {
 } from "@/components/ui/navigation-menu";
 import { AlignJustify } from "lucide-react";
 
-const components = [
+// Define the navigation items
+const navigationItems = [
   {
-    title: "Deal Of The Day",
-    href: "#",
-    description: " Simply dummy text of the printing and typesetting industry.",
+    title: "Home",
+    href: "/",
   },
   {
-    title: "Featured Products",
-    href: "#",
-    description: "Simply dummy text of the printing and typesetting industry.",
+    title: "Shop",
+    href: "/shop",
   },
   {
-    title: "Best Sellers",
+    title: "Page",
     href: "#",
-    description: "Simply dummy text of the printing and typesetting industry.",
+    subItems: [
+      {
+        title: "Deal Of The Day",
+        href: "#",
+        description:
+          "Simply dummy text of the printing and typesetting industry.",
+      },
+      {
+        title: "Featured Products",
+        href: "#",
+        description:
+          "Simply dummy text of the printing and typesetting industry.",
+      },
+      {
+        title: "Best Sellers",
+        href: "#",
+        description:
+          "Simply dummy text of the printing and typesetting industry.",
+      },
+      {
+        title: "Trending",
+        href: "#",
+        description:
+          "Simply dummy text of the printing and typesetting industry.",
+      },
+      {
+        title: "New",
+        href: "#",
+        description:
+          "Simply dummy text of the printing and typesetting industry.",
+      },
+      {
+        title: "Winter",
+        href: "#",
+        description:
+          "Simply dummy text of the printing and typesetting industry.",
+      },
+    ],
+  },
+  {
+    title: "Special",
+    href: "#",
+    subItems: [
+      {
+        title: "Deal Of The Day",
+        href: "#",
+        description:
+          "Simply dummy text of the printing and typesetting industry.",
+      },
+      {
+        title: "Featured Products",
+        href: "#",
+        description:
+          "Simply dummy text of the printing and typesetting industry.",
+      },
+      {
+        title: "Best Sellers",
+        href: "#",
+        description:
+          "Simply dummy text of the printing and typesetting industry.",
+      },
+      {
+        title: "Trending",
+        href: "#",
+        description:
+          "Simply dummy text of the printing and typesetting industry.",
+      },
+      {
+        title: "New",
+        href: "#",
+        description:
+          "Simply dummy text of the printing and typesetting industry.",
+      },
+      {
+        title: "Winter",
+        href: "#",
+        description:
+          "Simply dummy text of the printing and typesetting industry.",
+      },
+    ],
   },
   {
     title: "Trending",
     href: "#",
-    description: "Simply dummy text of the printing and typesetting industry.",
+    subItems: [
+      {
+        title: "Deal Of The Day",
+        href: "#",
+        description:
+          "Simply dummy text of the printing and typesetting industry.",
+      },
+      {
+        title: "Featured Products",
+        href: "#",
+        description:
+          "Simply dummy text of the printing and typesetting industry.",
+      },
+      {
+        title: "Best Sellers",
+        href: "#",
+        description:
+          "Simply dummy text of the printing and typesetting industry.",
+      },
+      {
+        title: "Trending",
+        href: "#",
+        description:
+          "Simply dummy text of the printing and typesetting industry.",
+      },
+      {
+        title: "New",
+        href: "#",
+        description:
+          "Simply dummy text of the printing and typesetting industry.",
+      },
+      {
+        title: "Winter",
+        href: "#",
+        description:
+          "Simply dummy text of the printing and typesetting industry.",
+      },
+    ],
   },
   {
     title: "New",
-    href: "#",
-    description: "Simply dummy text of the printing and typesetting industry.",
+    href: "/docs",
   },
   {
-    title: "Winter",
-    href: "#",
-    description: "Simply dummy text of the printing and typesetting industry.",
+    title: "Combo Offer",
+    href: "/combo-offer",
+  },
+  {
+    title: "Upcoming",
+    href: "/upcoming",
   },
 ];
 
-// const Categories
+// Define the categories data
 const categoriesData = [
   {
     icon: <AlignJustify size={22} strokeWidth={1.5} />,
@@ -91,23 +208,23 @@ const categoriesData = [
 export function BottomNavigationBar() {
   return (
     <section className="border-y border-[#ebebeb] py-2 hidden xl:block">
-      <div className=" container mx-auto px-4 flex items-center justify-between">
+      <div className="container mx-auto px-4 flex items-center justify-between">
         <div className="flex items-center gap-6">
-          {/* CATEGORIES SECTION  */}
+          {/* CATEGORIES SECTION */}
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="w-[320px] h-11 flex items-center justify-normal gap-4 ">
+                <NavigationMenuTrigger className="w-[300px] h-11 flex items-center justify-normal gap-4">
                   <AlignJustify size={22} strokeWidth={1.5} />
                   Categories
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="md:w-[320px] p-2">
-                    {categoriesData.map((categories, ind) => (
-                      <ListItem key={ind} href={categories.url}>
+                  <ul className="md:w-[300px] p-2">
+                    {categoriesData.map((category, index) => (
+                      <ListItem key={index} href={category.url}>
                         <span className="flex items-center gap-2">
-                          {categories?.icon}
-                          {categories.name}
+                          {category.icon}
+                          {category.name}
                         </span>
                       </ListItem>
                     ))}
@@ -117,98 +234,44 @@ export function BottomNavigationBar() {
             </NavigationMenuList>
           </NavigationMenu>
 
-          {/* NAVIGATION MENU SECTION*/}
-          <div>
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <Link href="/" legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
-                    >
-                      Home
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
+          {/* NAVIGATION MENU SECTION */}
 
-                <NavigationMenuItem>
-                  <Link href="/shop" legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
-                    >
-                      Shop
-                    </NavigationMenuLink>
-                  </Link>
+          <NavigationMenu>
+            <NavigationMenuList>
+              {navigationItems.map((item, index) => (
+                <NavigationMenuItem key={index}>
+                  {item.subItems ? (
+                    <>
+                      <NavigationMenuTrigger>
+                        {item.title}
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                          {item.subItems.map((subItem, subIndex) => (
+                            <ListItem
+                              key={subIndex}
+                              title={subItem.title}
+                              href={subItem.href}
+                            >
+                              {subItem.description}
+                            </ListItem>
+                          ))}
+                        </ul>
+                      </NavigationMenuContent>
+                    </>
+                  ) : (
+                    <Link href={item.href} legacyBehavior passHref>
+                      <NavigationMenuLink
+                        className={navigationMenuTriggerStyle()}
+                      >
+                        {item.title}
+                      </NavigationMenuLink>
+                    </Link>
+                  )}
                 </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger>Page</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                      {components.map((component) => (
-                        <ListItem
-                          key={component.title}
-                          title={component.title}
-                          href={component.href}
-                        >
-                          {component.description}
-                        </ListItem>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger>Special</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                      {components.map((component) => (
-                        <ListItem
-                          key={component.title}
-                          title={component.title}
-                          href={component.href}
-                        >
-                          {component.description}
-                        </ListItem>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger>Trending</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                      {components.map((component) => (
-                        <ListItem
-                          key={component.title}
-                          title={component.title}
-                          href={component.href}
-                        >
-                          {component.description}
-                        </ListItem>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link href="/docs" legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
-                    >
-                      New
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link href="/upcoming" legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
-                    >
-                      Upcoming
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
-          </div>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
         </div>
 
         {/* PRE ORDER SECTION */}
@@ -223,25 +286,27 @@ export function BottomNavigationBar() {
   );
 }
 
-const ListItem = ({ className, title, children, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  );
-};
+const ListItem = React.forwardRef(
+  ({ className, title, children, ...props }, ref) => {
+    return (
+      <li>
+        <NavigationMenuLink asChild>
+          <a
+            ref={ref}
+            className={cn(
+              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+              className
+            )}
+            {...props}
+          >
+            <div className="text-sm font-medium leading-none">{title}</div>
+            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+              {children}
+            </p>
+          </a>
+        </NavigationMenuLink>
+      </li>
+    );
+  }
+);
 ListItem.displayName = "ListItem";
