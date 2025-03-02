@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 
@@ -16,196 +17,9 @@ import {
 } from "@/components/ui/navigation-menu";
 import { AlignJustify } from "lucide-react";
 
-// Define the navigation items
-const navigationItems = [
-  {
-    title: "Home",
-    href: "/",
-  },
-  {
-    title: "Shop",
-    href: "/shop",
-  },
-  {
-    title: "Page",
-    href: "#",
-    subItems: [
-      {
-        title: "Deal Of The Day",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "Featured Products",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "Best Sellers",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "Trending",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "New",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "Winter",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-    ],
-  },
-  {
-    title: "Special",
-    href: "#",
-    subItems: [
-      {
-        title: "Deal Of The Day",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "Featured Products",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "Best Sellers",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "Trending",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "New",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "Winter",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-    ],
-  },
-  {
-    title: "Trending",
-    href: "#",
-    subItems: [
-      {
-        title: "Deal Of The Day",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "Featured Products",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "Best Sellers",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "Trending",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "New",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "Winter",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-    ],
-  },
-  {
-    title: "New",
-    href: "/docs",
-  },
-  {
-    title: "Combo Offer",
-    href: "/combo-offer",
-  },
-  {
-    title: "Upcoming",
-    href: "/upcoming",
-  },
-];
+export function BottomNavigationBar({ categoriesData, navigationItems }) {
+  const pathname = usePathname();
 
-// Define the categories data
-const categoriesData = [
-  {
-    icon: <AlignJustify size={22} strokeWidth={1.5} />,
-    name: "Phone",
-    url: "#",
-  },
-  {
-    icon: <AlignJustify size={22} strokeWidth={1.5} />,
-    name: "Camera",
-    url: "#",
-  },
-  {
-    icon: <AlignJustify size={22} strokeWidth={1.5} />,
-    name: "Pc",
-    url: "#",
-  },
-  {
-    icon: <AlignJustify size={22} strokeWidth={1.5} />,
-    name: "Headphone",
-    url: "#",
-  },
-  {
-    icon: <AlignJustify size={22} strokeWidth={1.5} />,
-    name: "Television",
-    url: "#",
-  },
-  {
-    icon: <AlignJustify size={22} strokeWidth={1.5} />,
-    name: "Speakers",
-    url: "#",
-  },
-  {
-    icon: <AlignJustify size={22} strokeWidth={1.5} />,
-    name: "Accessories",
-    url: "#",
-  },
-];
-
-export function BottomNavigationBar() {
   return (
     <section className="border-y border-[#ebebeb] py-2 hidden xl:block">
       <div className="container mx-auto px-4 flex items-center justify-between">
@@ -252,6 +66,9 @@ export function BottomNavigationBar() {
                               key={subIndex}
                               title={subItem.title}
                               href={subItem.href}
+                              className={`${
+                                pathname === subItem.href && "text-primary"
+                              }`}
                             >
                               {subItem.description}
                             </ListItem>
@@ -262,7 +79,9 @@ export function BottomNavigationBar() {
                   ) : (
                     <Link href={item.href} legacyBehavior passHref>
                       <NavigationMenuLink
-                        className={navigationMenuTriggerStyle()}
+                        className={`${
+                          pathname === item.href && "text-primary"
+                        } ${navigationMenuTriggerStyle()}`}
                       >
                         {item.title}
                       </NavigationMenuLink>

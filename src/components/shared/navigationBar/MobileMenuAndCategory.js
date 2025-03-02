@@ -1,47 +1,10 @@
 // TABS COMPONENTS
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { AlignJustify } from "lucide-react";
+import { usePathname } from "next/navigation";
 
-// const Categories
-const categoriesData = [
-  {
-    icon: <AlignJustify size={22} strokeWidth={1.5} />,
-    name: "Phone",
-    url: "#",
-  },
-  {
-    icon: <AlignJustify size={22} strokeWidth={1.5} />,
-    name: "Camera",
-    url: "#",
-  },
-  {
-    icon: <AlignJustify size={22} strokeWidth={1.5} />,
-    name: "Pc",
-    url: "#",
-  },
-  {
-    icon: <AlignJustify size={22} strokeWidth={1.5} />,
-    name: "Headphone",
-    url: "#",
-  },
-  {
-    icon: <AlignJustify size={22} strokeWidth={1.5} />,
-    name: "Television",
-    url: "#",
-  },
-  {
-    icon: <AlignJustify size={22} strokeWidth={1.5} />,
-    name: "Speakers",
-    url: "#",
-  },
-  {
-    icon: <AlignJustify size={22} strokeWidth={1.5} />,
-    name: "Accessories",
-    url: "#",
-  },
-];
+function MobileMenuAndCategory({ categoriesData, navigationItems }) {
+  const pathname = usePathname();
 
-function MobileMenuAndCategory() {
   return (
     <section className="container mx-auto px-4">
       <Tabs defaultValue="smartphone" className="w-full">
