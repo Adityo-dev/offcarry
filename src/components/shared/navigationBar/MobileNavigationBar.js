@@ -35,7 +35,7 @@ function MobileNavigationBar() {
   const pathname = usePathname();
 
   return (
-    <nav className="w-full h-14 fixed bottom-0 z-50 xl:hidden bg-[#152327] text-white shadow-lg px-5 flex items-center justify-between ">
+    <nav className="w-full h-14 fixed bottom-0 z-50 xl:hidden bg-[#152327] text-white border-t border-[#213236] shadow-lg px-5 flex items-center justify-between ">
       {mobileNavigationBarData.map((navData, index) => (
         <Link
           href={navData.url}

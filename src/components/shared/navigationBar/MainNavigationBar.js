@@ -164,7 +164,7 @@ const navigationItems = [
   },
   {
     title: "New",
-    href: "/docs",
+    href: "/new",
   },
   {
     title: "Combo Offer",
