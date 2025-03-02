@@ -286,7 +286,7 @@ const products = [
 
 export default async function ComboOffer() {
   return (
-    <main className="space-y-6 pt-16 xl:pt-0">
+    <main className="space-y-6 pt-14 xl:pt-0">
       <SectionHeader title={"Combo Offer"} linkName={"Combo-offer"} />
       <DynamicProductDisplay products={products} />
     </main>

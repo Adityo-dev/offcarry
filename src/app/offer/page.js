@@ -42,7 +42,7 @@ const offerData = [
 
 function Offer() {
   return (
-    <main className="space-y-6 pt-16 xl:pt-0">
+    <main className="space-y-6 pt-14 xl:pt-0">
       <SectionHeader title={"Off"} linkName={"Offer"} />
       <section className="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
         {offerData.map((offer, ind) => (
