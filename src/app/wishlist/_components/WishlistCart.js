@@ -41,8 +41,8 @@ function WishlistCart({ item }) {
       </div>
 
       {/* Action Buttons */}
-      <div className="w-full col-span-full pt-2.5 sm:pt-0 sm:col-span-3 lg:col-span-2 flex items-center justify-between gap-4">
-        <button className="bg-blue-500 text-white w-full sm:w-auto px-4 py-2 rounded-lg hover:bg-blue-600">
+      <div className="w-full col-span-full pt-2.5 sm:pt-0 sm:col-span-3 lg:col-span-2 flex items-center justify-between">
+        <button className="bg-gradient-primary text-white w-full sm:w-auto px-6 h-11 rounded-lg">
           Add to Cart
         </button>
         <button className="text-red-500 hover:text-red-700 hidden md:block">
