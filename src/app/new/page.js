@@ -286,7 +286,7 @@ const products = [
 
 export default async function New() {
   return (
-    <main className="space-y-6 pt-16 xl:pt-0">
+    <main className="space-y-6 pt-14 xl:pt-0">
       <SectionHeader title={"New Products"} linkName={"New"} />
       <DynamicProductDisplay products={products} />
     </main>

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
-import { Frown } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import DynamicFilter from "./DynamicFilter";
 import ProductSection from "./ProductSection";

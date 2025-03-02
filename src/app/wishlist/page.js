@@ -33,7 +33,7 @@ const cartItems = [
 
 function Wishlist() {
   return (
-    <main className="space-y-6 pt-16 xl:pt-0">
+    <main className="space-y-6 pt-14 xl:pt-0">
       <SectionHeader title={"Wishlist"} linkName={"wishlist"} />
       <section className="container mx-auto px-4 mt-6">
         {/* Header */}
