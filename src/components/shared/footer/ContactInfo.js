@@ -25,7 +25,7 @@ const contactInfoData = [
 function ContactInfo() {
   return (
     <section className="container mx-auto px-4">
-      <div className="bg-[#2A3A3E] rounded-lg flex flex-col lg:flex-row gap-7 items-center justify-between py-7 px-12">
+      <div className="bg-[#2A3A3E]  rounded-lg flex flex-col lg:flex-row gap-7 items-center justify-between py-7 px-12">
         {contactInfoData.map((contact, ind) => (
           <div
             key={ind}

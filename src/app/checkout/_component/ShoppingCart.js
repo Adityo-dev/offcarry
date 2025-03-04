@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { Trash } from "lucide-react";
-import Image from "next/image";
+import CheckoutItemsCart from "./CheckoutItemsCart";
 
 const cartItems = [
   {
     id: 1,
-    name: "Men’s full sleeve Jaket",
+    name: "Men’s full sleeve ",
     category: "Electronic",
     price: 16.3,
     image: "/images/product5.jpg",
@@ -44,7 +43,7 @@ export default function ShoppingCart() {
   };
 
   return (
-    <div className="mx-auto bg-white shadow-lg rounded-lg p-4 sm:p-6 mt-10">
+    <div className="mx-auto bg-white shadow-lg rounded-lg p-4 sm:p-6 mt-10 max-w-4xl">
       <div className="flex justify-between items-center border-b pb-4">
         <h2 className="text-lg text-[#38311F] font-semibold">
           {items.length} Items In Cart
@@ -57,52 +56,14 @@ export default function ShoppingCart() {
         </button>
       </div>
       <div className="space-y-4 mt-4">
-        {items.map((item) => (
-          <div
-            key={item.id}
-            className="bg-[#FAFAFA] flex items-center justify-between border p-4 rounded-lg relative"
-          >
-            <div className="flex items-center gap-4">
-              <div className="w-20 h-20 bg-white rounded-lg overflow-hidden">
-                <Image
-                  src={item.image}
-                  width={400}
-                  height={400}
-                  alt={item.name}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <div>
-                <h3 className="font-medium">{item.name}</h3>
-                <p className="text-sm text-gray-500">{item.category}</p>
-              </div>
-            </div>
-            <p className="font-medium">${item.price.toFixed(2)}</p>
-            <div className="flex items-center border rounded-lg overflow-hidden">
-              <button
-                className="px-2 py-1"
-                onClick={() => updateQuantity(item.id, -1)}
-              >
-                -
-              </button>
-              <span className="px-4">{quantities[item.id]}</span>
-              <button
-                className="px-2 py-1"
-                onClick={() => updateQuantity(item.id, 1)}
-              >
-                +
-              </button>
-            </div>
-            <p className="text-green-500 font-semibold">
-              ${(item.price * quantities[item.id]).toFixed(2)}
-            </p>
-            <button
-              onClick={() => removeItem(item.id)}
-              className="absolute top-2 right-2 sm:relative text-red-500 hover:text-red-700"
-            >
-              <Trash size={20} />
-            </button>
-          </div>
+        {items.map((item, ind) => (
+          <CheckoutItemsCart
+            key={ind}
+            item={item}
+            quantities={quantities}
+            updateQuantity={updateQuantity}
+            removeItem={removeItem}
+          />
         ))}
       </div>
     </div>

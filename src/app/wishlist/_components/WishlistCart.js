@@ -1,64 +1,56 @@
+import { Trash, X } from "lucide-react";
 import Image from "next/image";
-import { AlertTriangle, CheckCircle, X, XCircle } from "lucide-react";
+import React from "react";
 
-function WishlistCart({ product }) {
+function WishlistCart({ item }) {
   return (
-    <div className="grid grid-cols-12 items-center gap-6 border-b pb-6 last:border-0">
-      {/* IMAGE AND PRODUCT NAME */}
-      <div className="col-span-4 flex items-center gap-4">
-        <Image
-          src={product?.image}
-          width={400}
-          height={400}
-          alt=""
-          className="w-36 h-36 border rounded-lg"
-        />
-        <p>{product?.name}</p>
+    <div className="bg-[#FAFAFA] grid grid-cols-12 items-center border p-4 rounded-lg relative ">
+      {/* Product Details */}
+      <div className="flex items-center gap-4 col-span-full sm:col-span-5 lg:col-span-4 mb-4 sm:mb-0">
+        <div className="w-20 h-20 bg-white rounded-lg overflow-hidden">
+          <Image
+            src={item.image}
+            width={400}
+            height={400}
+            alt={item.name}
+            className="w-full h-full object-contain"
+          />
+        </div>
+        <div>
+          <h3 className="text-sm font-medium">{item.name}</h3>
+          <p className="text-sm text-gray-500">{item.category}</p>
+        </div>
       </div>
-      {/* UNIT PRICE */}
-      <p className="text-2xl text-gray-600 space-x-3 col-span-3">
-        <span className="line-through text-[80%] text-[#ACB5BD]">
-          ৳{product?.stock > 0 ? product?.oldPrice : "00"}
-        </span>
-        <span className="font-bold text-secondary">
-          ৳{product?.stock > 0 ? product?.currentPrice : "00"}
-        </span>
-      </p>
 
-      {/* STOCK */}
-      <p
-        className={`flex items-center gap-1 col-span-2 ${
-          product?.stock > 5
-            ? "text-green-600"
-            : product?.stock > 0
-            ? "text-yellow-600"
-            : "text-red-600"
-        }`}
-      >
-        {product?.stock > 5 ? (
-          <>
-            <CheckCircle size={18} strokeWidth={1.5} />
-            <span>In Stock</span>
-          </>
-        ) : product?.stock > 0 ? (
-          <>
-            <AlertTriangle size={18} strokeWidth={1.5} />
-            <span>Low Stock</span>
-          </>
-        ) : (
-          <>
-            <XCircle size={18} strokeWidth={1.5} />
-            <span>Out of Stock</span>
-          </>
-        )}
-      </p>
+      {/* Unit Price */}
+      <div className="flex sm:inline items-center justify-between pb-2.5 sm:pb-0 col-span-full sm:col-span-2 lg:col-span-3">
+        <p className="sm:hidden">Price</p>
+        <p className="font-medium">${item.price.toFixed(2)}</p>
+      </div>
 
-      {/* BUY NOW AND REMOVE BUTTON */}
-      <div className="col-span-3 w-full flex justify-between pl-6">
-        <button className="bg-gradient-primary text-white px-12 py-2.5 rounded-lg text-lg font-semibold">
-          Buy now
+      {/* Stock Status */}
+      <div className="flex sm:inline items-center justify-between border-y border-dotted sm:border-none py-2.5 sm:py-0 col-span-full sm:col-span-2 lg:col-span-3">
+        <p className="sm:hidden">Stock</p>
+        <p
+          className={` ${
+            item.stock === "In Stock" ? "text-green-500" : "text-red-500"
+          }`}
+        >
+          {item.stock}
+        </p>
+      </div>
+
+      {/* Action Buttons */}
+      <div className="w-full col-span-full pt-2.5 sm:pt-0 sm:col-span-3 lg:col-span-2 flex items-center justify-between">
+        <button className="bg-gradient-primary text-white w-full sm:w-auto px-6 h-11 rounded-lg">
+          Add to Cart
         </button>
-        <X size={28} strokeWidth={1.5} />
+        <button className="text-red-500 hover:text-red-700 hidden md:block">
+          <Trash size={20} />
+        </button>
+        <button className="text-red-500 hover:text-red-700 absolute md:static top-1.5 right-1.5 block md:hidden">
+          <X size={20} />
+        </button>
       </div>
     </div>
   );

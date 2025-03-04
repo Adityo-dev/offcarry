@@ -16,24 +16,16 @@ import { useState } from "react";
 // SOCIAL MEDIA DATA
 const socialMediaData = [
   {
-    icon: <Facebook size={18} strokeWidth={1.5} />,
+    icon: <Facebook size={20} strokeWidth={1.5} />,
     url: "https://www.facebook.com/TrustNestStore",
   },
-  { icon: <Twitter size={18} strokeWidth={1.5} />, url: "" },
-  { icon: <Instagram size={18} strokeWidth={1.5} />, url: "" },
+  { icon: <Twitter size={20} strokeWidth={1.5} />, url: "" },
+  { icon: <Instagram size={20} strokeWidth={1.5} />, url: "" },
 ];
 
-//TAGS DATA
-const tagsData = [
-  { tag: "Apple iphone", url: "" },
-  { tag: "Cellphone", url: "" },
-  { tag: "Electronic", url: "" },
-  { tag: "Mobile & Tablet", url: "" },
-];
-
-export default function ProductDetails() {
+export default function ProductDetails({ data }) {
   const [quantity, setQuantity] = useState(1);
-  const [selectedSize, setSelectedSize] = useState("S");
+  const [selectedSize, setSelectedSize] = useState("M");
   const [selectedColor, setSelectedColor] = useState("");
 
   const decreaseQuantity = () => {
@@ -50,7 +42,6 @@ export default function ProductDetails() {
     console.log("Selected Color:", selectedColor || "Not Selected");
   };
 
-  //
   const product = [
     {
       stock: 10,
@@ -77,14 +68,9 @@ export default function ProductDetails() {
         {/* PRODUCT NAME AND TITLE  */}
         <div className="space-y-2 sm:space-y-3">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl tracking-wide font-medium md:leading-[50px]">
-            Motorola edge 40
+            {data?.name}
           </h1>
-          <p className="text-sm sm:text-base leading-6">
-            The Motorola Edge 40 Neo features a 6.55-inch OLED display, MediaTek
-            Dimensity 7030 chipset, 8GB RAM, 128GB storage, and a 5000mAh
-            battery. It offers a 50MP main camera, 32MP selfie camera, and 68W
-            fast charging.
-          </p>
+          <p className="text-sm sm:text-base leading-6">{data?.description}</p>
         </div>
         {/* PRODUCT RATING */}
         <div className="flex items-center gap-2">
@@ -113,7 +99,7 @@ export default function ProductDetails() {
             </svg>
           </div>
           <span className="text-[#837F74] text-sm sm:text-base">
-            (4.5) 25 Review
+            (4.5) {data?.Review?.length} Review
           </span>
           {/* PRODUCT STOCK */}
           <p
@@ -145,10 +131,14 @@ export default function ProductDetails() {
         </div>
         {/* PRODUCT PRICE */}
         <div className="flex items-center gap-4 text-2xl sm:text-3xl font-medium">
-          <span className="text-[#837F74] line-through text-[80%]">
-            $130.00
-          </span>
-          <span className="text-primary">$125.00</span>
+          {data?.retail_price && (
+            <span className="text-[#837F74] line-through text-[80%]">
+              ৳{data?.retail_price}
+            </span>
+          )}
+          {data?.purchase_price && (
+            <span className="text-primary">৳{data?.purchase_price}</span>
+          )}
         </div>
 
         {/* COLOR SELECTOR  */}
@@ -162,9 +152,13 @@ export default function ProductDetails() {
                 onChange={(e) => setSelectedColor(e.target.value)}
               >
                 <option value="">Select One</option>
-                <option value="black">Black</option>
-                <option value="white">White</option>
-                <option value="blue">Blue</option>
+                {data?.variations?.map((variation) => {
+                  return (
+                    <option key={variation.id} value={variation.color}>
+                      {variation.color}
+                    </option>
+                  );
+                })}
               </select>
             </div>
           </div>
@@ -177,17 +171,17 @@ export default function ProductDetails() {
         <div className="flex items-center gap-3">
           <label className="sm:text-lg font-medium">Size: </label>
           <div className="flex gap-2">
-            {["S", "M", "L", "XL", "XXL"].map((size) => (
+            {data?.variations?.map((size) => (
               <button
-                key={size}
-                onClick={() => setSelectedSize(size)}
+                key={size?.id}
+                onClick={() => setSelectedSize(size?.size)}
                 className={`w-8 sm:w-10 h-8 sm:h-10 text-xs sm:text-sm rounded-md font-medium transition-all duration-300 ${
-                  selectedSize === size
+                  selectedSize === size?.size
                     ? "bg-primary text-white"
                     : "border border-gray-300 hover:border-primary hover:text-primary"
                 }`}
               >
-                {size}
+                {size?.size}
               </button>
             ))}
           </div>
@@ -222,12 +216,16 @@ export default function ProductDetails() {
 
         <div className="border-t pt-4 space-y-2">
           {/* SKU*/}
-          <p>
-            <span className="text-sm sm:text-base font-medium pr-2">SKU:</span>
-            <span className="text-sm sm:text-base text-secondary">
-              CCFO71-7
-            </span>
-          </p>
+          {data?.sku && (
+            <p>
+              <span className="text-sm sm:text-base font-medium pr-2">
+                SKU:
+              </span>
+              <span className="text-sm sm:text-base text-secondary">
+                {data?.sku}
+              </span>
+            </p>
+          )}
           {/* SOCIAL MEDIA */}
           <div className="flex items-center gap-2">
             <p className="text-sm sm:text-base font-medium">Share:</p>

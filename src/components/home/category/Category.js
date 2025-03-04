@@ -1,56 +1,13 @@
 import CategorySlider from "./CategorySlider";
 
-// CATEGORY DATA
-const categoryData = [
-  {
-    image: "/images/clean.png",
-    title: "T-Shirts",
-    url: "#",
-  },
-  {
-    image: "/images/headphones.png",
-    title: "HeadPhone",
-    url: "#",
-  },
-  {
-    image: "/images/laptop-screen.png",
-    title: "Laptops",
-    url: "#",
-  },
-  {
-    image: "/images/joystick.png",
-    title: "Games",
-    url: "#",
-  },
-  {
-    image: "/images/smartphone.png",
-    title: "SmartPhones",
-    url: "#",
-  },
-  {
-    image: "/images/loud-speaker.png",
-    title: "Speakers",
-    url: "#",
-  },
+async function Category() {
+  // const response = await fetch(
+  //   `${process.env.NEXT_PUBLIC_API_ROUT_URL}/shop/categories`
+  // );
 
-  {
-    image: "/images/tv.png",
-    title: "Television",
-    url: "#",
-  },
-  {
-    image: "/images/ipad.png",
-    title: "Tablets",
-    url: "#",
-  },
-];
+  // const categories = await response.json();
 
-function Category() {
-  return (
-    <section>
-      <CategorySlider sliderData={categoryData} />
-    </section>
-  );
+  return <section>{/* <CategorySlider sliderData={categories} /> */}</section>;
 }
 
 export default Category;

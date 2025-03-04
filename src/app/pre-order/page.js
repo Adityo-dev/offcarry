@@ -1,6 +1,11 @@
+import { ImagePlus } from "lucide-react";
+
+const inputFieldStyles =
+  "w-full h-12 rounded-md outline-none p-3 sm:p-4 text-sm bg-white text-gray-600 border focus:border-primary transition-all duration-300";
+
 export default function PreOrder() {
   return (
-    <div className="flex justify-center items-center py-12 bg-gray-100">
+    <div className="flex justify-center items-center py-14 bg-gray-100 px-4">
       <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg w-full max-w-xl">
         <h2 className="text-2xl font-bold text-center text-gray-800">
           Pre-Order Now
@@ -15,39 +20,76 @@ export default function PreOrder() {
         </div>
 
         <form className="space-y-4 mt-4">
-          <input
-            type="text"
-            placeholder="Your Name"
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          />
-          <input
-            type="email"
-            placeholder="Your Email"
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          />
-          <input
-            type="text"
-            placeholder="Phone Number"
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          />
-          <input
-            type="text"
-            placeholder="Product Name"
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          />
+          {/* Grid Layout for Input Fields */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 lg:gap-3">
+            <input
+              type="text"
+              placeholder="Your Name"
+              className={inputFieldStyles}
+              required
+            />
+            <input
+              type="email"
+              placeholder="Your Email"
+              className={inputFieldStyles}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Phone Number"
+              className={inputFieldStyles}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Your Address"
+              className={inputFieldStyles}
+              required
+            />
+          </div>
+
+          {/* Textarea for Product Details */}
           <textarea
-            placeholder="Your Address"
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            placeholder="Enter Your Product Details"
+            className="w-full p-3 sm:p-4 text-sm rounded-md outline-none border focus:border-primary transition-all duration-300"
+            rows="4"
             required
           ></textarea>
 
+          {/* File Upload and Product Link Section */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 lg:gap-3">
+            {/* File Upload Section */}
+            <div className="relative flex items-center border border-gray-300 bg-[#E5E5E5] rounded-md h-12 overflow-hidden">
+              {/* Icon Section */}
+              <div className="w-[20%] h-full flex items-center justify-center bg-[#D8D8D8]">
+                <ImagePlus
+                  size={24}
+                  strokeWidth={1.75}
+                  className="text-gray-500"
+                />
+              </div>
+              {/* Input Section */}
+              <div className="w-[80%] px-4 text-sm text-gray-600">
+                <label htmlFor="file" className="cursor-pointer block">
+                  No Image Added
+                </label>
+                <input type="file" id="file" name="file" className="hidden" />
+              </div>
+            </div>
+
+            {/* Product Link Input */}
+            <input
+              type="text"
+              name="link"
+              placeholder="Add Product Link"
+              className={inputFieldStyles}
+            />
+          </div>
+
+          {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+            className="w-full h-11 flex items-center justify-center rounded-md bg-gradient-primary text-white font-semibold shadow-md hover:opacity-90 transition-all"
           >
             Pre-Order Now
           </button>
