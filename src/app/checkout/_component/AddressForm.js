@@ -12,7 +12,6 @@ const AddressForm = () => {
       phone: "",
       streetAddress: "",
       email: "",
-      zipCode: "",
     },
   });
 
@@ -89,7 +88,7 @@ const AddressForm = () => {
         </div>
 
         {/* Email Input */}
-        <div>
+        <div className="col-span-full">
           <label
             htmlFor="email"
             className="block text-sm font-semibold text-[#38311F]"
@@ -105,26 +104,6 @@ const AddressForm = () => {
           />
           {errors.email && (
             <span className="text-red-500">{errors.email.message}</span>
-          )}
-        </div>
-
-        {/* Zip Code Input */}
-        <div>
-          <label
-            htmlFor="zipCode"
-            className="block text-sm font-semibold text-[#38311F]"
-          >
-            Zip Code
-          </label>
-          <input
-            id="zipCode"
-            type="text"
-            placeholder="Your Zip Code"
-            {...register("zipCode", { required: "Zip Code is required" })}
-            className="mt-2 h-12 p-4 w-full border border-gray-300 bg-white text-[#ACB5BD] rounded-lg placeholder:text-[#ACB5BD] text-sm outline-none transition-all duration-300 focus:border-primary"
-          />
-          {errors.zipCode && (
-            <span className="text-red-500">{errors.zipCode.message}</span>
           )}
         </div>
       </div>

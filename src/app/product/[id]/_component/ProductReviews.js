@@ -2,33 +2,8 @@
 import { User } from "lucide-react";
 import { useState } from "react";
 
-export default function ProductReviews() {
-  const [reviews, setReviews] = useState([
-    {
-      id: 1,
-      name: "Aditto Dev Barmon (koushik)",
-      date: "November 30, 2022",
-      comment:
-        "Sed perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
-      rating: 4,
-    },
-    {
-      id: 2,
-      name: "Aditto Dev Barmon (koushik)",
-      date: "November 30, 2022",
-      comment:
-        "Sed perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
-      rating: 4,
-    },
-    {
-      id: 3,
-      name: "Aditto Dev Barmon (koushik)",
-      date: "November 30, 2022",
-      comment:
-        "Sed perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
-      rating: 4,
-    },
-  ]);
+export default function ProductReviews({ reviewData }) {
+  const [reviews, setReviews] = useState(reviewData);
 
   const [newReview, setNewReview] = useState({
     name: "",
@@ -89,7 +64,7 @@ export default function ProductReviews() {
               </div>
               <div className="ml-2 sm:ml-3">
                 <div className="text-sm sm:text-base text-yellow-500">
-                  Rating: {review.rating} ★
+                  Rating: {review.rating}
                 </div>
                 <p className="flex items-center gap-2 text-xs sm:text-sm">
                   <span>{review.name}</span>

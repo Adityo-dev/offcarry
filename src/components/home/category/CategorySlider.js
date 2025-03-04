@@ -60,23 +60,21 @@ export default function CategorySlider({ sliderData }) {
       >
         {sliderData.map((category, ind) => (
           <SwiperSlide key={ind}>
-            <div className="max-w-[250px] w-full h-20 md:h-[100px] flex items-center justify-center rounded-lg bg-white shadow-sm transition-all duration-300 hover:border hover:border-primary">
-              <Link
-                href={category?.url}
-                className="flex items-center gap-2 md:gap-3"
-              >
+            <Link
+              href={category?.name}
+              className="max-w-[250px] w-full h-20 md:h-[100px] flex items-center justify-center rounded-lg bg-white shadow-sm transition-all duration-300 hover:border hover:border-primary"
+            >
+              <div className="flex items-center gap-2 md:gap-3">
                 <Image
-                  src={category?.image}
+                  src={"/images/headphones.png"}
                   width={400}
                   height={400}
-                  alt=""
+                  alt={category?.name}
                   className="w-10 md:w-12 h-10 md:h-12 object-cover"
                 />
-                <p className="font-semibold tracking-wider">
-                  {category?.title}
-                </p>
-              </Link>
-            </div>
+                <p className="font-semibold tracking-wider">{category?.name}</p>
+              </div>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>
