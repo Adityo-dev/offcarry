@@ -10,7 +10,7 @@ export default function ProductImagesGallery({ data }) {
 
   // Handle mouse move to zoom on image
   const handleMouseMove = (e) => {
-    if (!containerRef.current || !imageRef.current || !data?.src?.[activeSlide])
+    if (!containerRef.current || !imageRef.current || !data?.[activeSlide]?.img)
       return;
 
     const { left, top, width, height } =
@@ -28,7 +28,7 @@ export default function ProductImagesGallery({ data }) {
     const zoomLevelY = Math.max(imageHeight / containerHeight, 2);
 
     setZoomStyle({
-      backgroundImage: `url(${data.src[activeSlide].src})`,
+      backgroundImage: `url(${data[activeSlide].img})`,
       backgroundSize: `${zoomLevelX * 100}% ${zoomLevelY * 100}%`, // Adjust zoom level here
       backgroundPosition: `${x}% ${y}%`,
     });
@@ -55,7 +55,7 @@ export default function ProductImagesGallery({ data }) {
       >
         <Image
           ref={imageRef}
-          src={data.src[activeSlide].src}
+          src={data[activeSlide].img}
           className="object-contain w-full h-full"
           width={600}
           height={450}
@@ -69,9 +69,9 @@ export default function ProductImagesGallery({ data }) {
 
       {/* Thumbnail Gallery */}
       <div className="grid grid-cols-5 sm:grid-cols-7 gap-2 mt-4">
-        {data.src.map((image, index) => (
+        {data.map((item, index) => (
           <div
-            key={image.id}
+            key={item.id}
             className={`w-full h-full rounded-lg overflow-hidden cursor-pointer border ${
               activeSlide === index &&
               "border-primary transition-all duration-300"
@@ -79,7 +79,7 @@ export default function ProductImagesGallery({ data }) {
             onClick={() => handleThumbnailClick(index)}
           >
             <Image
-              src={image.src}
+              src={item.img}
               width={64}
               height={64}
               alt={`Thumbnail ${index + 1}`}
