@@ -25,7 +25,7 @@ const socialMediaData = [
 
 export default function ProductDetails({ data }) {
   const [quantity, setQuantity] = useState(1);
-  const [selectedSize, setSelectedSize] = useState("S");
+  const [selectedSize, setSelectedSize] = useState("M");
   const [selectedColor, setSelectedColor] = useState("");
 
   const decreaseQuantity = () => {
