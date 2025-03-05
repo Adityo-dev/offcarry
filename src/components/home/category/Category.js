@@ -2,7 +2,10 @@ import CategorySlider from "./CategorySlider";
 
 async function Category() {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_ROUT_URL}/shop/categories`
+    `${process.env.NEXT_PUBLIC_API_ROUT_URL}/shop/categories`,
+    {
+      cache: "no-cache",
+    }
   );
 
   const categoriesData = await response.json();

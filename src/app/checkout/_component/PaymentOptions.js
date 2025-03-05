@@ -4,16 +4,16 @@ import Image from "next/image";
 const paymentMethods = [
   {
     id: "1",
-    type: "MasterCard",
-    lastDigits: "014*****326",
-    icon: "/logo/bkash-logo.png",
+    type: "পণ্য হাতে পেয়ে টাকা পরিশোধ করুন",
+    name: "Cash on delivery",
+    icon: "/logo/cash-on-delivery.png",
   },
-  {
-    id: "2",
-    type: "PayPal",
-    lastDigits: "014*****326",
-    icon: "/logo/nogad-logo.png",
-  },
+  // {
+  //   id: "2",
+  //   type: "PayPal",
+  //   name: "014*****326",
+  //   icon: "/logo/nogad-logo.png",
+  // },
 ];
 
 export default function PaymentOptions() {
@@ -30,23 +30,26 @@ export default function PaymentOptions() {
             onClick={() => setSelected(method.id)}
           >
             <div className="flex items-center gap-4 pb-4">
-              <div className="w-20 h-14 p-3 bg-white rounded-lg">
+              <div className="w-20 h-16 p-3 bg-white rounded-lg">
                 <Image
                   width={400}
                   height={400}
                   src={method.icon}
-                  alt={method.type}
+                  alt={method.name}
                   className="w-full h-full object-contain"
                 />
               </div>
-              <span className="font-medium">{method.lastDigits}</span>
+              <p className="flex flex-col gap-1">
+                <span className="font-medium">{method.name}</span>
+                <span className="font-medium">{method.type}</span>
+              </p>
             </div>
             <input
               type="radio"
               name="payment"
               checked={selected === method.id}
               onChange={() => setSelected(method.id)}
-              className="form-radio text-blue-500"
+              className="form-radio w-5 h-5"
             />
           </div>
         ))}

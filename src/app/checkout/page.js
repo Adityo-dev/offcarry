@@ -6,6 +6,7 @@ import RelativeModal from "../../components/relativeModal/RelativeModal";
 import ShoppingCart from "./_component/ShoppingCart";
 import PaymentOptions from "./_component/PaymentOptions";
 import CheckoutCard from "./_component/CheckoutCard";
+import CheckoutLocation from "./_component/CheckoutLocation";
 
 const CheckoutPage = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,7 +40,10 @@ const CheckoutPage = () => {
               </RelativeModal>
             )}
           </div>
-          <ShoppingCart />
+          <div className="mt-6 space-y-6">
+            <CheckoutLocation />
+            <ShoppingCart />
+          </div>
         </div>
         <div className="col-span-full xl:col-span-5">
           <PaymentOptions />
