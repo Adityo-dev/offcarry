@@ -43,7 +43,7 @@ export default function ShoppingCart() {
   };
 
   return (
-    <div className="mx-auto bg-white shadow-lg rounded-lg p-4 sm:p-6 mt-10 max-w-4xl">
+    <div className="mx-auto bg-white shadow-lg rounded-lg p-4 sm:p-6 max-w-4xl">
       <div className="flex justify-between items-center border-b pb-4">
         <h2 className="text-lg text-[#38311F] font-semibold">
           {items.length} Items In Cart
