@@ -6,6 +6,7 @@ import { AddressProvider } from "@/components/contextApi/context/AddressContext"
 import { CartProvider } from "@/components/contextApi/context/CartContext";
 import { WishlistProvider } from "@/components/contextApi/context/WishlistContext";
 
+
 const krub = Krub({
   variable: "--font-krub",
   subsets: ["latin"],
