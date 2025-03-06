@@ -2,6 +2,7 @@ import MainNavigationBar from "@/components/shared/navigationBar/MainNavigationB
 import { Geist, Geist_Mono, Krub } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/shared/footer/Footer";
+import { AddressProvider } from "@/components/contextApi/context/AddressContext";
 
 const krub = Krub({
   variable: "--font-krub",
@@ -20,9 +21,11 @@ export default function RootLayout({ children }) {
       <body
         className={` ${krub.variable} antialiased mainContainer overflow-x-auto`}
       >
-        <MainNavigationBar />
-        {children}
-        <Footer />
+        <AddressProvider>
+          <MainNavigationBar />
+          {children}
+          <Footer />
+        </AddressProvider>
       </body>
     </html>
   );

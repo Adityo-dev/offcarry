@@ -1,7 +1,9 @@
 "use client";
 import { useForm } from "react-hook-form";
+import { useAddress } from "@/components/contextApi/context/AddressContext";
 
-const AddressForm = () => {
+const AddressForm = ({ setShowForm }) => {
+  const { addAddress } = useAddress();
   const {
     register,
     handleSubmit,
@@ -16,7 +18,8 @@ const AddressForm = () => {
   });
 
   const onSubmit = async (data) => {
-    console.log("Submitted Data:", data);
+    addAddress(data);
+    setShowForm();
   };
 
   return (
