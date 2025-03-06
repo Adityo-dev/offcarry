@@ -21,7 +21,7 @@ const CheckoutPage = () => {
         <div className="col-span-full xl:col-span-7">
           <div className="flex flex-col xl:flex-row justify-between items-center gap-4 rounded-xl ">
             <h1 className="text-2xl font-semibold flex items-center gap-2">
-              Address Book
+              Shipping Address
             </h1>
             <button
               onClick={toggleModal}
