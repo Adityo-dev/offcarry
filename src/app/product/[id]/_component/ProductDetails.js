@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import AddToCartButton from "./AddToCartButton";
 
 // SOCIAL MEDIA DATA
 const socialMediaData = [
@@ -162,10 +163,6 @@ export default function ProductDetails({ data }) {
               </select>
             </div>
           </div>
-          <div className="flex items-center gap-1 text-[#EFAD03] text-sm">
-            <TriangleAlert size={18} strokeWidth={1.5} />
-            <span className="text-[#EFAD03]">Limited quantity available</span>
-          </div>
         </div>
         {/* PRODUCT SIZE */}
         <div className="flex items-center gap-3">
@@ -204,6 +201,9 @@ export default function ProductDetails({ data }) {
               <Plus size={20} strokeWidth={2} />
             </button>
           </div>
+          {/* Add To Cart BTN */}
+          <AddToCartButton />
+
           {/* BUY NOW BTN */}
           <Link
             href={"/checkout"}
