@@ -3,6 +3,9 @@ import { Geist, Geist_Mono, Krub } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/shared/footer/Footer";
 import { AddressProvider } from "@/components/contextApi/context/AddressContext";
+import { CartProvider } from "@/components/contextApi/context/CartContext";
+import { WishlistProvider } from "@/components/contextApi/context/WishlistContext";
+
 
 const krub = Krub({
   variable: "--font-krub",
@@ -22,9 +25,13 @@ export default function RootLayout({ children }) {
         className={` ${krub.variable} antialiased mainContainer overflow-x-auto`}
       >
         <AddressProvider>
-          <MainNavigationBar />
-          {children}
-          <Footer />
+          <CartProvider>
+            <WishlistProvider>
+              <MainNavigationBar />
+              {children}
+              <Footer />
+            </WishlistProvider>
+          </CartProvider>
         </AddressProvider>
       </body>
     </html>
