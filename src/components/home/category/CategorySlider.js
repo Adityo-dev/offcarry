@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/autoplay";
 
 export default function CategorySlider({ sliderData }) {
+  console.log(sliderData);
   const [autoplay, setAutoplay] = useState(true);
 
   const handleMouseEnter = () => setAutoplay(false);
@@ -66,7 +67,7 @@ export default function CategorySlider({ sliderData }) {
             >
               <div className="flex items-center gap-2 md:gap-3">
                 <Image
-                  src={"/images/headphones.png"}
+                  src={category?.logo}
                   width={400}
                   height={400}
                   alt={category?.name}
