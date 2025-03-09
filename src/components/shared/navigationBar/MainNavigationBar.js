@@ -33,135 +33,55 @@ const navigationItems = [
     href: "/",
   },
   {
-    title: "Shop",
-    href: "/shop",
+    title: "T-Shirts",
+    href: "/t-shirts",
   },
   {
-    title: "Page",
-    href: "#",
-    subItems: [
-      {
-        title: "Deal Of The Day",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "Featured Products",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "Best Sellers",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "Trending",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "New",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "Winter",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-    ],
+    title: "Electronics",
+    href: "/electronics",
   },
-  {
-    title: "Special",
-    href: "#",
-    subItems: [
-      {
-        title: "Deal Of The Day",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "Featured Products",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "Best Sellers",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "Trending",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "New",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "Winter",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-    ],
-  },
-  {
-    title: "Trending",
-    href: "#",
-    subItems: [
-      {
-        title: "Deal Of The Day",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "Featured Products",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "Best Sellers",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "Trending",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "New",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-      {
-        title: "Winter",
-        href: "#",
-        description:
-          "Simply dummy text of the printing and typesetting industry.",
-      },
-    ],
-  },
+  // {
+  //   title: "Trending",
+  //   href: "#",
+  //   subItems: [
+  //     {
+  //       title: "Deal Of The Day",
+  //       href: "#",
+  //       description:
+  //         "Simply dummy text of the printing and typesetting industry.",
+  //     },
+  //     {
+  //       title: "Featured Products",
+  //       href: "#",
+  //       description:
+  //         "Simply dummy text of the printing and typesetting industry.",
+  //     },
+  //     {
+  //       title: "Best Sellers",
+  //       href: "#",
+  //       description:
+  //         "Simply dummy text of the printing and typesetting industry.",
+  //     },
+  //     {
+  //       title: "Trending",
+  //       href: "#",
+  //       description:
+  //         "Simply dummy text of the printing and typesetting industry.",
+  //     },
+  //     {
+  //       title: "New",
+  //       href: "#",
+  //       description:
+  //         "Simply dummy text of the printing and typesetting industry.",
+  //     },
+  //     {
+  //       title: "Winter",
+  //       href: "#",
+  //       description:
+  //         "Simply dummy text of the printing and typesetting industry.",
+  //     },
+  //   ],
+  // },
   {
     title: "New",
     href: "/new",

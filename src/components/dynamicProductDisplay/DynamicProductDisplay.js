@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import DynamicFilter from "./DynamicFilter";
@@ -40,7 +39,7 @@ const DynamicProductDisplay = ({ params, products }) => {
           products.flatMap((product) =>
             product.filters
               .filter((f) => f.filterName === key)
-              .map((f) => f.value)
+              .flatMap((f) => (Array.isArray(f.value) ? f.value : [f.value]))
           )
         ),
       ];
@@ -100,13 +99,19 @@ const DynamicProductDisplay = ({ params, products }) => {
       return (
         Object.entries(checkedItems).every(([key, values]) => {
           if (values.length === 0) return true;
-          return product.filters.some(
-            (f) =>
-              f.filterName === key &&
-              values.some(
-                (value) => value.toLowerCase() === f.value.toLowerCase()
-              )
-          );
+
+          return product.filters.some((f) => {
+            if (f.filterName === key) {
+              const filterValues = Array.isArray(f.value) ? f.value : [f.value];
+              return filterValues.some((value) =>
+                values.some(
+                  (checkedValue) =>
+                    checkedValue.toLowerCase() === value.toLowerCase()
+                )
+              );
+            }
+            return false;
+          });
         }) && isWithinPriceRange
       );
     });
