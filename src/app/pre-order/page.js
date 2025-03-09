@@ -1,9 +1,43 @@
-import { ImagePlus } from "lucide-react";
+"use client";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { ImagePlus, Loader2 } from "lucide-react";
 
 const inputFieldStyles =
-  "w-full h-12 rounded-md outline-none p-3 sm:p-4 text-sm bg-white text-gray-600 border focus:border-primary transition-all duration-300";
+  "w-full h-12 rounded-md outline-none p-3 sm:p-4 text-sm bg-white text-gray-600 border focus:border-blue-500 transition-all duration-300";
 
 export default function PreOrder() {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm();
+
+  const [fileName, setFileName] = useState("No Image Added");
+
+  const onSubmit = async (data) => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_ROUT_URL}/shop/pre-order`,
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      if (!response.ok) throw new Error("Failed to submit pre-order");
+
+      alert("✅ Pre-order submitted successfully!");
+      reset();
+      setFileName("No Image Added");
+    } catch (error) {
+      console.error("Error:", error);
+      alert("❌ An error occurred while submitting the pre-order.");
+    }
+  };
+
   return (
     <div className="flex justify-center items-center py-14 bg-gray-100 px-4">
       <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg w-full max-w-xl">
@@ -19,48 +53,54 @@ export default function PreOrder() {
           🔥 Limited Stock Available! Be the first to grab your exclusive deal.
         </div>
 
-        <form className="space-y-4 mt-4">
-          {/* Grid Layout for Input Fields */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 lg:gap-3">
-            <input
-              type="text"
-              placeholder="Your Name"
-              className={inputFieldStyles}
-              required
-            />
-            <input
-              type="email"
-              placeholder="Your Email"
-              className={inputFieldStyles}
-              required
-            />
-            <input
-              type="text"
-              placeholder="Phone Number"
-              className={inputFieldStyles}
-              required
-            />
-            <input
-              type="text"
-              placeholder="Your Address"
-              className={inputFieldStyles}
-              required
-            />
+        <form className="space-y-4 mt-4" onSubmit={handleSubmit(onSubmit)}>
+          {/* Input Fields */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {[
+              { name: "name", type: "text", placeholder: "Your Name" },
+              { name: "email", type: "email", placeholder: "Your Email" },
+              { name: "phone", type: "text", placeholder: "Phone Number" },
+              { name: "address", type: "text", placeholder: "Your Address" },
+            ].map(({ name, type, placeholder }) => (
+              <div key={name}>
+                <input
+                  type={type}
+                  placeholder={placeholder}
+                  className={inputFieldStyles}
+                  {...register(name, {
+                    required: `${placeholder} is required`,
+                  })}
+                />
+                {errors[name] && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors[name].message}
+                  </p>
+                )}
+              </div>
+            ))}
           </div>
 
-          {/* Textarea for Product Details */}
-          <textarea
-            placeholder="Enter Your Product Details"
-            className="w-full p-3 sm:p-4 text-sm rounded-md outline-none border focus:border-primary transition-all duration-300"
-            rows="4"
-            required
-          ></textarea>
+          {/* Product Details */}
+          <div>
+            <textarea
+              placeholder="Enter Your Product Details"
+              className="w-full p-3 sm:p-4 text-sm rounded-md outline-none border focus:border-blue-500 transition-all duration-300"
+              rows="4"
+              {...register("productDetails", {
+                required: "Product details are required",
+              })}
+            ></textarea>
+            {errors.productDetails && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.productDetails.message}
+              </p>
+            )}
+          </div>
 
-          {/* File Upload and Product Link Section */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 lg:gap-3">
-            {/* File Upload Section */}
+          {/* File Upload & Product Link */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {/* File Upload */}
             <div className="relative flex items-center border border-gray-300 bg-[#E5E5E5] rounded-md h-12 overflow-hidden">
-              {/* Icon Section */}
               <div className="w-[20%] h-full flex items-center justify-center bg-[#D8D8D8]">
                 <ImagePlus
                   size={24}
@@ -68,39 +108,60 @@ export default function PreOrder() {
                   className="text-gray-500"
                 />
               </div>
-              {/* Input Section */}
               <div className="w-[80%] px-4 text-sm text-gray-600">
                 <label htmlFor="file" className="cursor-pointer block">
-                  No Image Added
+                  {fileName}
                 </label>
-                <input type="file" id="file" name="file" className="hidden" />
+                <input
+                  type="file"
+                  id="file"
+                  name="file"
+                  className="hidden"
+                  onChange={(e) =>
+                    setFileName(e.target.files[0]?.name || "No Image Added")
+                  }
+                  {...register("file")}
+                />
               </div>
             </div>
 
-            {/* Product Link Input */}
-            <input
-              type="text"
-              name="link"
-              placeholder="Add Product Link"
-              className={inputFieldStyles}
-            />
+            {/* Product Link */}
+            <div>
+              <input
+                type="text"
+                placeholder="Add Product Link"
+                className={inputFieldStyles}
+                {...register("productLink", {
+                  required: "Product link is required",
+                })}
+              />
+              {errors.productLink && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.productLink.message}
+                </p>
+              )}
+            </div>
           </div>
 
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full h-11 flex items-center justify-center rounded-md bg-gradient-primary text-white font-semibold shadow-md hover:opacity-90 transition-all"
+            className="w-full h-11 flex items-center justify-center rounded-md bg-blue-600 text-white font-semibold shadow-md hover:bg-blue-700 transition-all"
+            disabled={isSubmitting}
           >
-            Pre-Order Now
+            {isSubmitting ? (
+              <Loader2 className="animate-spin h-5 w-5" />
+            ) : (
+              "Pre-Order Now"
+            )}
           </button>
         </form>
 
-        <div className="mt-6 text-center">
-          <p className="text-gray-600">
-            ✨ Enjoy Exclusive Discounts on Pre-Orders!
-          </p>
-          <p className="text-gray-600">🚚 Free Shipping for Early Buyers</p>
-          <p className="text-gray-600">📦 Hassle-Free Returns & Easy Refunds</p>
+        {/* Extra Info */}
+        <div className="mt-6 text-center text-gray-600">
+          <p>✨ Enjoy Exclusive Discounts on Pre-Orders!</p>
+          <p>🚚 Free Shipping for Early Buyers</p>
+          <p>📦 Hassle-Free Returns & Easy Refunds</p>
         </div>
       </div>
     </div>

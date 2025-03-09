@@ -19,7 +19,7 @@ function CenterNavigationBar({
   };
 
   return (
-    <section className="fixed xl:relative z-50 shadow-lg xl:shadow-none w-full h-14 xl:h-auto bg-[#152327] xl:bg-white flex items-center">
+    <section className="fixed xl:relative z-50 shadow-lg xl:shadow-none w-full h-14 xl:h-0 py-4 bg-[#152327] xl:bg-white flex items-center">
       <div className="container w-full mx-auto px-4 flex items-center justify-between">
         {/* Justify Menu Icon section */}
         <div className="text-white xl:hidden">
@@ -38,11 +38,11 @@ function CenterNavigationBar({
         {/* TRUST NEST STORE LOGO */}
         <Link href={"/"}>
           <Image
-            src="/logo/trustNestStore.png"
-            width={160}
-            height={160}
-            alt="TrustNest Store Logo"
-            className="w-24 xl:w-[160px]"
+            src="/logo/offcarry.png"
+            width={200}
+            height={200}
+            alt="offCarrt logo"
+            className="w-32 xl:w-[200px]"
           />
         </Link>
 

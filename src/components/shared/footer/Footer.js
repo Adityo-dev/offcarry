@@ -62,10 +62,10 @@ function Footer() {
         <div className="col-span-4">
           {/* LOGO AND SUBTITLE */}
           <Image
-            src={"/logo/trustNestStore.png"}
+            src={"/logo/offcarry.png"}
             width={400}
             height={400}
-            alt="trust nest store logo"
+            alt="offCarry logo"
             className="max-w-40 w-full"
           />
           <p className="mt-4 sm:mt-7 text-[#ACB5BD] leading-6 sm:leading-7 text-sm sm:text-base">

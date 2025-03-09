@@ -6,7 +6,6 @@ import {
   Instagram,
   Minus,
   Plus,
-  TriangleAlert,
   Twitter,
   XCircle,
 } from "lucide-react";
@@ -14,11 +13,15 @@ import Link from "next/link";
 import { useState } from "react";
 import AddToCartButton from "./AddToCartButton";
 
+const currentUrl = typeof window !== "undefined" ? window.location.href : "";
+
 // SOCIAL MEDIA DATA
 const socialMediaData = [
   {
     icon: <Facebook size={20} strokeWidth={1.5} />,
-    url: "https://www.facebook.com/TrustNestStore",
+    url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+      currentUrl
+    )}`,
   },
   { icon: <Twitter size={20} strokeWidth={1.5} />, url: "" },
   { icon: <Instagram size={20} strokeWidth={1.5} />, url: "" },
