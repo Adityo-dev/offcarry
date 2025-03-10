@@ -5,13 +5,15 @@ import ChatNow from "./_component/ChatNow";
 import RelatedProducts from "@/components/relatedProducts/RelatedProducts";
 import Video from "./_component/Video";
 
-const SingleProductPage = async () => {
+const SingleProductPage = async ({ params }) => {
+  const searchParams = params?.id.split("-");
+  const searchId = searchParams.pop();
+
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_ROUT_URL}/shop/products/4`
+    `${process.env.NEXT_PUBLIC_API_ROUT_URL}/shop/products/${searchId}`
   );
 
   const data = await response.json();
-  console.log(data);
 
   return (
     <div className="container mx-auto px-4 pt-16 xl:pt-6 space-y-16">

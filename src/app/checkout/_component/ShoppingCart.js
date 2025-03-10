@@ -62,7 +62,7 @@ export default function ShoppingCart() {
     }
   };
 
-  console.log("Selected Items Data:", selectedItems);
+  // console.log("Selected Items Data:", selectedItems);
 
   return (
     <div className="mx-auto bg-white shadow-lg rounded-lg p-4 sm:p-6 max-w-4xl">

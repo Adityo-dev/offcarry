@@ -38,15 +38,15 @@ function ProductCart({ product }) {
       {/* Product Image Section */}
       <div className="relative">
         <Link
-          href={`/product/${title}`}
+          href={`/product/${product?.name}-${product?.id}`}
           className="w-full h-56 border shadow-sm rounded-lg flex justify-center items-center overflow-hidden"
-          aria-label={`View details of ${title}`}
+          aria-label={`View details of ${product?.name}`}
         >
           <Image
             src={image}
             width={200}
             height={200}
-            alt={`Image of ${title}`}
+            alt={`Image of ${product?.name}`}
             className={`w-full max-h-56 h-auto object-contain ${
               stock > 0 ? "opacity-100" : "opacity-40"
             }`}
@@ -56,10 +56,10 @@ function ProductCart({ product }) {
 
         {/* Product Details Section */}
         <div className="mt-4 space-y-2">
-          {/* Product Title */}
-          <Link href={`/product/${title}`}>
+          {/* Product product  name */}
+          <Link href={`/product/${product?.name}-${product?.id}`}>
             <h3 className="text-sm font-semibold text-gray-800 transition-all duration-300 hover:text-primary">
-              {title}
+              {product?.name}
             </h3>
           </Link>
 
