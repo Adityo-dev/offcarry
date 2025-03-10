@@ -9,7 +9,7 @@ import "swiper/css";
 import "swiper/css/autoplay";
 
 export default function CategorySlider({ sliderData }) {
-  console.log(sliderData);
+  // console.log(sliderData);
   const [autoplay, setAutoplay] = useState(true);
 
   const handleMouseEnter = () => setAutoplay(false);

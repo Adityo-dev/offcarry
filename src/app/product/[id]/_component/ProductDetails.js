@@ -6,28 +6,27 @@ import {
   Instagram,
   Minus,
   Plus,
+  TriangleAlert,
   Twitter,
   XCircle,
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import AddToCartButton from "./AddToCartButton";
-
-const currentUrl = typeof window !== "undefined" ? window.location.href : "";
+import { useCart } from "@/components/contextApi/context/CartContext";
 
 // SOCIAL MEDIA DATA
 const socialMediaData = [
   {
     icon: <Facebook size={20} strokeWidth={1.5} />,
-    url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-      currentUrl
-    )}`,
+    url: "https://www.facebook.com/TrustNestStore",
   },
   { icon: <Twitter size={20} strokeWidth={1.5} />, url: "" },
   { icon: <Instagram size={20} strokeWidth={1.5} />, url: "" },
 ];
 
 export default function ProductDetails({ data }) {
+  const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState("M");
   const [selectedColor, setSelectedColor] = useState("");
@@ -44,6 +43,13 @@ export default function ProductDetails({ data }) {
     console.log("Quantity:", quantity);
     console.log("Selected Size:", selectedSize);
     console.log("Selected Color:", selectedColor || "Not Selected");
+    addToCart({
+      id: data?.id,
+      name: "Men’s full sleeve",
+      category: "Electronic",
+      price: 16.3,
+      image: "/images/product9.jpg",
+    });
   };
 
   const product = [

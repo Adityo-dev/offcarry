@@ -11,7 +11,7 @@ export default async function Electronics() {
   const products = await response.json();
 
   const filtersProducts = products?.products
-    .filter((product) => product?.category === "electronics")
+    .filter((product) => product?.category === "joystick")
     .map((product) => product);
 
   return (
