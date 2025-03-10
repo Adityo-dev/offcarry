@@ -8,61 +8,61 @@ import {
 } from "@/utils/LocalStorageUtils";
 
 export default function ShoppingCart() {
-  const { cart, addToCart, removeFromCart } = useCart();
+  const { cart, removeFromCart } = useCart();
 
-  // লোকাল স্টোরেজ থেকে সিলেক্টেড আইটেম লোড করুন
+  // Load selected items from localStorage
   const [selectedItems, setSelectedItems] = useState(() => {
     return loadFromLocalStorage("selectedItems") || [];
   });
 
-  // সিলেক্টেড আইটেম আপডেট হলে লোকাল স্টোরেজে সংরক্ষণ করুন
+  // Save selected items to localStorage when they change
   useEffect(() => {
     saveToLocalStorage("selectedItems", selectedItems);
   }, [selectedItems]);
 
-  // নতুন আইটেম যোগ হলে সেটি সঠিকভাবে সিলেক্ট করা হবে
+  // Check if any items are already selected on page load or after refreshing
   useEffect(() => {
-    if (cart.length > 0) {
-      const newItems = cart.filter(
-        (item) => !selectedItems.some((selected) => selected.id === item.id)
-      );
+    const storedItems = loadFromLocalStorage("selectedItems") || [];
 
-      if (
-        selectedItems.length > 0 ||
-        loadFromLocalStorage("selectedItems").length > 0
-      ) {
-        // আগে যদি কিছু সিলেক্ট থাকে, তাহলে নতুন আইটেমগুলো সিলেক্ট হবে
-        setSelectedItems([...selectedItems, ...newItems]);
-      } else if (newItems.length > 0) {
-        // সব আনসিলেক্টেড থাকলে, নতুন যোগ করা শুধু একাই সিলেক্ট হবে
-        setSelectedItems([newItems[newItems.length - 1]]);
-      }
+    // If there are selected items in localStorage, set them
+    if (storedItems.length > 0) {
+      setSelectedItems(storedItems);
+    } else {
+      // If no selected items, keep selectedItems empty
+      setSelectedItems([]);
     }
   }, [cart]);
 
+  // Handle individual item selection
   const handleSelectItem = (item) => {
     setSelectedItems((prevSelectedItems) => {
       const isAlreadySelected = prevSelectedItems.some(
         (selected) => selected.id === item.id
       );
 
+      let newSelectedItems;
       if (isAlreadySelected) {
-        return prevSelectedItems.filter((selected) => selected.id !== item.id);
+        newSelectedItems = prevSelectedItems.filter(
+          (selected) => selected.id !== item.id
+        );
       } else {
-        return [...prevSelectedItems, item];
+        newSelectedItems = [...prevSelectedItems, item];
       }
+
+      // Update localStorage with the new selection
+      saveToLocalStorage("selectedItems", newSelectedItems);
+      return newSelectedItems;
     });
   };
 
+  // Handle select/deselect all items
   const handleSelectAll = () => {
     if (selectedItems.length === cart.length) {
-      setSelectedItems([]);
+      setSelectedItems([]); // Deselect all
     } else {
-      setSelectedItems(cart);
+      setSelectedItems(cart); // Select all
     }
   };
-
-  // console.log("Selected Items Data:", selectedItems);
 
   return (
     <div className="mx-auto bg-white shadow-lg rounded-lg p-4 sm:p-6 max-w-4xl">
@@ -80,7 +80,7 @@ export default function ShoppingCart() {
             />
             <label
               htmlFor="selectAll"
-              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
+              className="text-sm font-medium leading-none cursor-pointer"
             >
               Select All ({selectedItems.length} Items)
             </label>
@@ -88,7 +88,10 @@ export default function ShoppingCart() {
         </div>
         <button
           className="text-red-500 hover:underline"
-          onClick={() => setSelectedItems([])}
+          onClick={() => {
+            setSelectedItems([]);
+            saveToLocalStorage("selectedItems", []);
+          }}
         >
           Remove All
         </button>

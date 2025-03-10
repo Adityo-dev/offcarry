@@ -9,9 +9,13 @@ export default async function TShirt() {
     }
   );
   const products = await response.json();
+  console.log(products);
 
   const filtersProducts = products?.products
-    .filter((product) => product?.category === "t-shirts")
+    .filter(
+      (product) =>
+        product?.category.toLowerCase() === "t-shirts".toLocaleLowerCase()
+    )
     .map((product) => product);
 
   return (
