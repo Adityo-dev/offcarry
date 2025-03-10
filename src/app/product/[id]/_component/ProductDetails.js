@@ -45,7 +45,7 @@ export default function ProductDetails({ data }) {
     console.log("Selected Color:", selectedColor || "Not Selected");
     addToCart({
       id: data?.id,
-      name: "Men’s full sleeve",
+      name: data?.name,
       category: "Electronic",
       price: 16.3,
       image: "/images/product9.jpg",
