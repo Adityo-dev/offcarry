@@ -11,7 +11,10 @@ export default async function Electronics() {
   const products = await response.json();
 
   const filtersProducts = products?.products
-    .filter((product) => product?.category === "joystick")
+    .filter(
+      (product) =>
+        product?.category?.toLowerCase() === "electronics".toLocaleLowerCase()
+    )
     .map((product) => product);
 
   return (

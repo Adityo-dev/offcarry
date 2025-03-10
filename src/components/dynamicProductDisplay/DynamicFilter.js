@@ -19,10 +19,10 @@ const DynamicFilter = ({
 }) => {
   return (
     <section className="w-full">
-      <div className="space-y-4 p-4 border border-custom-border rounded-lg">
+      <div className="space-y-2 p-4 border border-custom-border rounded-lg">
         <p className="text-lg font-medium">Price Range</p>
         <div className="flex items-center space-x-4">
-          <div>
+          <div className="space-y-1">
             <label>Min Price</label>
             <Input
               type="text"
@@ -31,7 +31,7 @@ const DynamicFilter = ({
               className="w-full"
             />
           </div>
-          <div>
+          <div className="space-y-1">
             <label>Max Price</label>
             <Input
               type="text"
