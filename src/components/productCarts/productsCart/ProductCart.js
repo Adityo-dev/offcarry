@@ -3,23 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 
 function ProductCart({ product }) {
-  const {
-    title = "Product Title",
-    image = "/default-product-image.png",
-    stock = 0,
-    oldPrice = 0,
-    currentPrice = 0,
-  } = product;
-
   // Determine stock status
   let stockStatus;
-  if (stock > 5) {
+  if (product?.stock > 5) {
     stockStatus = {
       text: "In Stock",
       icon: <CheckCircle size={16} strokeWidth={1.5} />,
       color: "text-green-600",
     };
-  } else if (stock > 0) {
+  } else if (product?.stock > 0) {
     stockStatus = {
       text: "Low Stock",
       icon: <AlertTriangle size={16} strokeWidth={1.5} />,
@@ -43,12 +35,12 @@ function ProductCart({ product }) {
           aria-label={`View details of ${product?.name}`}
         >
           <Image
-            src={image}
+            src={product?.image}
             width={200}
             height={200}
             alt={`Image of ${product?.name}`}
             className={`w-full max-h-56 h-auto object-contain ${
-              stock > 0 ? "opacity-100" : "opacity-40"
+              product?.stock > 0 ? "opacity-100" : "opacity-40"
             }`}
             loading="lazy"
           />
@@ -65,12 +57,14 @@ function ProductCart({ product }) {
 
           {/* Product Price */}
           <p className="text-lg text-gray-600 space-x-2">
-            {oldPrice > 0 && (
+            {product?.oldPrice > 0 && (
               <span className="line-through text-[80%] text-[#ACB5BD]">
-                ৳{oldPrice}
+                ৳{product?.oldPrice}
               </span>
             )}
-            <span className="font-bold text-secondary">৳{currentPrice}</span>
+            <span className="font-bold text-secondary">
+              ৳{product?.currentPrice}
+            </span>
           </p>
 
           {/* Stock Status */}

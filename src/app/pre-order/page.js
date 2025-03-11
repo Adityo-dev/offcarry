@@ -1,22 +1,23 @@
 "use client";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { ImagePlus, Loader2 } from "lucide-react";
+import { ImagePlus } from "lucide-react";
 
 const inputFieldStyles =
   "w-full h-12 rounded-md outline-none p-3 sm:p-4 text-sm bg-white text-gray-600 border focus:border-blue-500 transition-all duration-300";
 
 export default function PreOrder() {
+  const [fileName, setFileName] = useState("No Image Added");
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm();
 
-  const [fileName, setFileName] = useState("No Image Added");
-
   const onSubmit = async (data) => {
+    setLoading(true);
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_ROUT_URL}/shop/pre-order`,
@@ -35,6 +36,8 @@ export default function PreOrder() {
     } catch (error) {
       console.error("Error:", error);
       alert("❌ An error occurred while submitting the pre-order.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -147,13 +150,9 @@ export default function PreOrder() {
           <button
             type="submit"
             className="w-full h-11 flex items-center justify-center rounded-md bg-blue-600 text-white font-semibold shadow-md hover:bg-blue-700 transition-all"
-            disabled={isSubmitting}
+            disabled={loading}
           >
-            {isSubmitting ? (
-              <Loader2 className="animate-spin h-5 w-5" />
-            ) : (
-              "Pre-Order Now"
-            )}
+            {loading ? "Submitting..." : "Pre-Order Now"}
           </button>
         </form>
 
