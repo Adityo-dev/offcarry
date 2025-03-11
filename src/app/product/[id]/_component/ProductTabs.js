@@ -2,7 +2,7 @@
 import { useState } from "react";
 import ProductReviews from "./ProductReviews";
 
-export default function ProductTabs({ review }) {
+export default function ProductTabs({ review, productId }) {
   const tabs = [
     {
       name: "Description",
@@ -14,7 +14,7 @@ export default function ProductTabs({ review }) {
     },
     {
       name: "Reviews (2)",
-      content: <ProductReviews reviewData={review} />,
+      content: <ProductReviews reviewData={review} productId={productId} />,
     },
   ];
 

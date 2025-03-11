@@ -25,7 +25,7 @@ const socialMediaData = [
   { icon: <Instagram size={20} strokeWidth={1.5} />, url: "" },
 ];
 
-export default function ProductDetails({ data }) {
+export default function ProductDetails({ productDetails }) {
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState("M");
@@ -44,19 +44,13 @@ export default function ProductDetails({ data }) {
     console.log("Selected Size:", selectedSize);
     console.log("Selected Color:", selectedColor || "Not Selected");
     addToCart({
-      id: data?.id,
-      name: data?.name,
+      id: productDetails?.id,
+      name: productDetails?.name,
       category: "Electronic",
       price: 16.3,
       image: "/images/product9.jpg",
     });
   };
-
-  const product = [
-    {
-      stock: 10,
-    },
-  ];
 
   return (
     <section>
@@ -65,22 +59,24 @@ export default function ProductDetails({ data }) {
           <p>
             <span>Category : </span>
             <Link href={"#"} className="text-gray-900 text-sm">
-              Mobile Accessories
+              {productDetails?.category?.name}
             </Link>
           </p>
           <p>
             <span>Brand : </span>
             <Link href={"#"} className="text-gray-900 text-sm">
-              Walton
+              {productDetails?.brand?.name}
             </Link>
           </p>
         </div>
         {/* PRODUCT NAME AND TITLE  */}
         <div className="space-y-2 sm:space-y-3">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl tracking-wide font-medium md:leading-[50px]">
-            {data?.name}
+            {productDetails?.name}
           </h1>
-          <p className="text-sm sm:text-base leading-6">{data?.description}</p>
+          <p className="text-sm sm:text-base leading-6">
+            {productDetails?.description}
+          </p>
         </div>
         {/* PRODUCT RATING */}
         <div className="flex items-center gap-2">
@@ -109,24 +105,24 @@ export default function ProductDetails({ data }) {
             </svg>
           </div>
           <span className="text-[#837F74] text-sm sm:text-base">
-            (4.5) {data?.Review?.length} Review
+            (4.5) {productDetails?.Review?.length} Review
           </span>
           {/* PRODUCT STOCK */}
           <p
             className={`flex items-center flex-wrap gap-1 ms-2 sm:ms-3 text-sm sm:text-base ${
-              product?.stock > 5
+              productDetails?.stock > 5
                 ? "text-green-600"
-                : product?.stock > 0
+                : productDetails?.stock > 0
                 ? "text-yellow-600"
                 : "text-red-600"
             }`}
           >
-            {product?.stock > 5 ? (
+            {productDetails?.stock > 5 ? (
               <>
                 <CheckCircle size={18} strokeWidth={1.5} />
                 <span>In Stock</span>
               </>
-            ) : product?.stock > 0 ? (
+            ) : productDetails?.stock > 0 ? (
               <>
                 <AlertTriangle size={18} strokeWidth={1.5} />
                 <span>Low Stock</span>
@@ -141,13 +137,15 @@ export default function ProductDetails({ data }) {
         </div>
         {/* PRODUCT PRICE */}
         <div className="flex items-center gap-4 text-2xl sm:text-3xl font-medium">
-          {data?.retail_price && (
+          {productDetails?.retail_price && (
             <span className="text-[#837F74] line-through text-[80%]">
-              ৳{data?.retail_price}
+              ৳{productDetails?.retail_price}
             </span>
           )}
-          {data?.purchase_price && (
-            <span className="text-primary">৳{data?.purchase_price}</span>
+          {productDetails?.purchase_price && (
+            <span className="text-primary">
+              ৳{productDetails?.purchase_price}
+            </span>
           )}
         </div>
 
@@ -162,7 +160,7 @@ export default function ProductDetails({ data }) {
                 onChange={(e) => setSelectedColor(e.target.value)}
               >
                 <option value="">Select One</option>
-                {data?.variations?.map((variation) => {
+                {productDetails?.variations?.map((variation) => {
                   return (
                     <option key={variation.id} value={variation.color}>
                       {variation.color}
@@ -177,7 +175,7 @@ export default function ProductDetails({ data }) {
         <div className="flex items-center gap-3">
           <label className="sm:text-lg font-medium">Size: </label>
           <div className="flex gap-2">
-            {data?.variations?.map((size) => (
+            {productDetails?.variations?.map((size) => (
               <button
                 key={size?.id}
                 onClick={() => setSelectedSize(size?.size)}
@@ -225,13 +223,13 @@ export default function ProductDetails({ data }) {
 
         <div className="border-t pt-4 space-y-2">
           {/* SKU*/}
-          {data?.sku && (
+          {productDetails?.sku && (
             <p>
               <span className="text-sm sm:text-base font-medium pr-2">
                 SKU:
               </span>
               <span className="text-sm sm:text-base text-secondary">
-                {data?.sku}
+                {productDetails?.sku}
               </span>
             </p>
           )}

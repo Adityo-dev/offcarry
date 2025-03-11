@@ -9,14 +9,11 @@ export default async function TShirt() {
     }
   );
   const products = await response.json();
-  console.log(products);
 
-  const filtersProducts = products?.products
-    .filter(
-      (product) =>
-        product?.category.toLowerCase() === "t-shirts".toLocaleLowerCase()
-    )
-    .map((product) => product);
+  const filtersProducts = products?.products.filter(
+    (product) =>
+      product?.category.toLowerCase() === "t-shirts".toLocaleLowerCase()
+  );
 
   return (
     <main className="space-y-6 pt-14 xl:pt-0">
