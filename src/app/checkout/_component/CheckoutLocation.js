@@ -6,6 +6,7 @@ import { Trash, X } from "lucide-react";
 function CheckoutLocation({ data }) {
   const { addresses, deleteAddress } = useAddress();
   const [selectedAddress, setSelectedAddress] = useState(0);
+  console.log(addresses);
 
   const handleSelectAddress = (index) => {
     setSelectedAddress(index === selectedAddress ? 0 : index);
@@ -60,7 +61,11 @@ function CheckoutLocation({ data }) {
                 </p>
                 <p className="flex items-center gap-2">
                   <span className="font-semibold">Address: </span>
-                  <span>{address?.address}</span>
+                  <span>
+                    {address?.streetAddress}, {address?.union?.name},{" "}
+                    {address?.upazila?.name}, {address?.district?.name},{" "}
+                    {address?.division?.name} Bangladesh
+                  </span>
                 </p>
               </div>
             </section>
