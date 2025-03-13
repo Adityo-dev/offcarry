@@ -135,6 +135,7 @@ export default function ProductDetails({ productDetails }) {
             )}
           </p>
         </div>
+
         {/* PRODUCT PRICE */}
         <div className="flex items-center gap-4 text-2xl sm:text-3xl font-medium">
           {productDetails?.retail_price && (
@@ -142,9 +143,13 @@ export default function ProductDetails({ productDetails }) {
               ৳{productDetails?.retail_price}
             </span>
           )}
-          {productDetails?.purchase_price && (
+          {productDetails?.retail_price && (
             <span className="text-primary">
-              ৳{productDetails?.purchase_price}
+              ৳
+              {productDetails?.retail_price -
+                (
+                  productDetails?.retail_price / productDetails?.discount
+                ).toFixed(2)}
             </span>
           )}
         </div>
@@ -159,7 +164,6 @@ export default function ProductDetails({ productDetails }) {
                 value={selectedColor}
                 onChange={(e) => setSelectedColor(e.target.value)}
               >
-                <option value="">Select One</option>
                 {productDetails?.variations?.map((variation) => {
                   return (
                     <option key={variation.id} value={variation.color}>

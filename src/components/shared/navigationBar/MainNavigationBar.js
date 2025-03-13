@@ -135,7 +135,16 @@ const categoriesData = [
   },
 ];
 
-function MainNavigationBar() {
+async function MainNavigationBar() {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_ROUT_URL}/shop/categories`,
+    {
+      cache: "no-cache",
+    }
+  );
+
+  const categoriesData = await response.json();
+
   return (
     <main className="xl:space-y-6">
       <TopNavigationBar />

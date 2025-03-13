@@ -8,9 +8,10 @@ export default async function Electronics() {
       cache: "no-cache",
     }
   );
-  const products = await response.json();
+  const data = await response.json();
+  const productsData = data?.products || [];
 
-  const filtersProducts = products?.products.filter(
+  const electronicsProducts = productsData.filter(
     (product) =>
       product?.category?.toLowerCase() === "electronics".toLocaleLowerCase()
   );
@@ -18,7 +19,7 @@ export default async function Electronics() {
   return (
     <main className="space-y-6 pt-14 xl:pt-0">
       <SectionHeader title={"Off Carry Electronics"} linkName={"electronics"} />
-      <DynamicProductDisplay products={filtersProducts} />
+      <DynamicProductDisplay products={electronicsProducts} />
     </main>
   );
 }
