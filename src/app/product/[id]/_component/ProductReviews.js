@@ -3,8 +3,6 @@ import Toast from "@/components/toast/Toast";
 import { User } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 export default function ProductReviews({ initialReviewData, productId }) {
   const [rating, setRating] = useState(1);
@@ -148,9 +146,6 @@ export default function ProductReviews({ initialReviewData, productId }) {
           {loading ? "Submitting..." : "Submit"}
         </button>
       </form>
-
-      {/* Toast Container */}
-      <ToastContainer />
     </section>
   );
 }
