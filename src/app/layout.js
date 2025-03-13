@@ -5,6 +5,9 @@ import Footer from "@/components/shared/footer/Footer";
 import { AddressProvider } from "@/components/contextApi/context/AddressContext";
 import { CartProvider } from "@/components/contextApi/context/CartContext";
 import { WishlistProvider } from "@/components/contextApi/context/WishlistContext";
+// react-toastify
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const krub = Krub({
   variable: "--font-krub",
@@ -32,6 +35,7 @@ export default function RootLayout({ children }) {
             </WishlistProvider>
           </CartProvider>
         </AddressProvider>
+        <ToastContainer />
       </body>
     </html>
   );

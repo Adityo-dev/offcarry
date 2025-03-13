@@ -13,8 +13,10 @@ export default function ProductTabs({ review, productId }) {
       content: `Sed porttitor lectus nibh. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Nulla porttitor accumsan tincidunt.`,
     },
     {
-      name: "Reviews (2)",
-      content: <ProductReviews reviewData={review} productId={productId} />,
+      name: `Reviews (${review?.length})`,
+      content: (
+        <ProductReviews initialReviewData={review} productId={productId} />
+      ),
     },
   ];
 
