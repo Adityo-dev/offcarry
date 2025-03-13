@@ -61,7 +61,7 @@ export default function CategorySlider({ sliderData }) {
         {sliderData.map((category, ind) => (
           <SwiperSlide key={ind}>
             <Link
-              href={category?.name}
+              href={`category/${(category?.name).toLowerCase()}`}
               className="max-w-[250px] w-full h-20 md:h-[100px] flex items-center justify-center rounded-lg bg-white shadow-sm transition-all duration-300 hover:border hover:border-primary"
             >
               <div className="flex items-center gap-2 md:gap-3">

@@ -63,7 +63,7 @@ export default function AddressForm({ setShowForm = () => {} }) {
   useEffect(() => {
     if (selected.division.id) {
       fetch(
-        `https://locator-api.declives.com/api/v1/districts/${selected.division.id}`
+        `https://locator-api.declives.com/api/v1/districts/${selected?.division?.id}`
       )
         .then((res) => res.json())
         .then((data) =>
@@ -78,9 +78,9 @@ export default function AddressForm({ setShowForm = () => {} }) {
   }, [selected.division.id]);
 
   useEffect(() => {
-    if (selected.district.id) {
+    if (selected?.district?.id) {
       fetch(
-        `https://locator-api.declives.com/api/v1/upazilas/${selected.district.id}`
+        `https://locator-api.declives.com/api/v1/upazilas/${selected?.district?.id}`
       )
         .then((res) => res.json())
         .then((data) =>
@@ -90,14 +90,14 @@ export default function AddressForm({ setShowForm = () => {} }) {
   }, [selected.district.id]);
 
   useEffect(() => {
-    if (selected.upazila.id) {
+    if (selected?.upazila?.id) {
       fetch(
-        `https://locator-api.declives.com/api/v1/unions/${selected.upazila.id}`
+        `https://locator-api.declives.com/api/v1/unions/${selected?.upazila?.id}`
       )
         .then((res) => res.json())
         .then((data) => setData((prev) => ({ ...prev, unions: data?.data })));
     }
-  }, [selected.upazila.id]);
+  }, [selected?.upazila?.id]);
 
   const onSubmit = (formData) => {
     const addressData = { ...formData, ...selected };

@@ -1,5 +1,7 @@
 // TABS COMPONENTS
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 function MobileMenuAndCategory({ categoriesData, navigationItems }) {
@@ -27,13 +29,22 @@ function MobileMenuAndCategory({ categoriesData, navigationItems }) {
         <TabsContent value={"a"} className="w-full">
           a
         </TabsContent>
-        <TabsContent value={"category"} className="w-full space-y-4">
+        <TabsContent value={"category"} className="w-full space-y-6">
           {categoriesData.map((categories, ind) => (
-            <div key={ind} href={categories.url}>
-              <span className="flex items-center gap-2">
-                {categories?.icon}
+            <div key={ind}>
+              <Link
+                href={`/category/${(categories?.name).toLowerCase()}`}
+                className="flex items-center gap-2 md:gap-3"
+              >
+                <Image
+                  src={categories?.logo}
+                  width={400}
+                  height={400}
+                  alt={categories?.name}
+                  className="w-5 sm:w-6 h-5 sm:h-6"
+                />
                 {categories.name}
-              </span>
+              </Link>
             </div>
           ))}
         </TabsContent>

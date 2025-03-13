@@ -8,9 +8,10 @@ export default async function TShirt() {
       cache: "no-cache",
     }
   );
-  const products = await response.json();
+  const data = await response.json();
+  const productsData = data?.products || [];
 
-  const filtersProducts = products?.products.filter(
+  const tShirtProducts = productsData.filter(
     (product) =>
       product?.category.toLowerCase() === "t-shirts".toLocaleLowerCase()
   );
@@ -18,7 +19,7 @@ export default async function TShirt() {
   return (
     <main className="space-y-6 pt-14 xl:pt-0">
       <SectionHeader title={"Off Carry T-Shirt"} linkName={"t-shirt"} />
-      <DynamicProductDisplay products={filtersProducts} />
+      <DynamicProductDisplay products={tShirtProducts} />
     </main>
   );
 }

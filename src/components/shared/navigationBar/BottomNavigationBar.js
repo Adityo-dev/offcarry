@@ -16,6 +16,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { AlignJustify } from "lucide-react";
+import Image from "next/image";
 
 export function BottomNavigationBar({ categoriesData, navigationItems }) {
   const pathname = usePathname();
@@ -36,10 +37,19 @@ export function BottomNavigationBar({ categoriesData, navigationItems }) {
                   <ul className="md:w-[300px] p-2">
                     {categoriesData.map((category, index) => (
                       <ListItem key={index} href={category.url}>
-                        <span className="flex items-center gap-2">
-                          {category.icon}
+                        <Link
+                          href={`category/${(category?.name).toLowerCase()}`}
+                          className="flex items-center gap-2"
+                        >
+                          <Image
+                            src={category?.logo}
+                            width={400}
+                            height={400}
+                            className="w-6 h-6"
+                            alt=""
+                          />
                           {category.name}
-                        </span>
+                        </Link>
                       </ListItem>
                     ))}
                   </ul>
