@@ -1,7 +1,7 @@
 import DynamicProductDisplay from "@/components/dynamicProductDisplay/DynamicProductDisplay";
 import SectionHeader from "@/components/sectionHeader/SectionHeader";
 
-export default async function New() {
+export default async function TShirt() {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_ROUT_URL}/shop/products`,
     {
@@ -11,12 +11,15 @@ export default async function New() {
   const data = await response.json();
   const productsData = data?.products || [];
 
-  const newProducts = productsData.filter((product) => product?.isNew);
+  const tShirtProducts = productsData.filter(
+    (product) =>
+      product?.category.toLowerCase() === "t-shirts".toLocaleLowerCase()
+  );
 
   return (
     <main className="space-y-6 pt-14 xl:pt-0">
-      <SectionHeader title={"New Products"} linkName={"New"} />
-      <DynamicProductDisplay products={newProducts} />
+      <SectionHeader title={"Off Carry T-Shirt"} linkName={"t-shirt"} />
+      <DynamicProductDisplay products={tShirtProducts} />
     </main>
   );
 }

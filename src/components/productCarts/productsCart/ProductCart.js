@@ -3,23 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 
 function ProductCart({ product }) {
-  const {
-    title = "Product Title",
-    image = "/default-product-image.png",
-    stock = 0,
-    oldPrice = 0,
-    currentPrice = 0,
-  } = product;
-
   // Determine stock status
   let stockStatus;
-  if (stock > 5) {
+  if (product?.stock > 5) {
     stockStatus = {
       text: "In Stock",
       icon: <CheckCircle size={16} strokeWidth={1.5} />,
       color: "text-green-600",
     };
-  } else if (stock > 0) {
+  } else if (product?.stock > 0) {
     stockStatus = {
       text: "Low Stock",
       icon: <AlertTriangle size={16} strokeWidth={1.5} />,
@@ -38,17 +30,17 @@ function ProductCart({ product }) {
       {/* Product Image Section */}
       <div className="relative">
         <Link
-          href={`/product/${title}`}
+          href={`/product/${product?.name}-${product?.id}`}
           className="w-full h-56 border shadow-sm rounded-lg flex justify-center items-center overflow-hidden"
-          aria-label={`View details of ${title}`}
+          aria-label={`View details of ${product?.name}`}
         >
           <Image
-            src={image}
+            src={product?.image}
             width={200}
             height={200}
-            alt={`Image of ${title}`}
+            alt={`Image of ${product?.name}`}
             className={`w-full max-h-56 h-auto object-contain ${
-              stock > 0 ? "opacity-100" : "opacity-40"
+              product?.stock > 0 ? "opacity-100" : "opacity-40"
             }`}
             loading="lazy"
           />
@@ -56,21 +48,23 @@ function ProductCart({ product }) {
 
         {/* Product Details Section */}
         <div className="mt-4 space-y-2">
-          {/* Product Title */}
-          <Link href={`/product/${title}`}>
+          {/* Product product  name */}
+          <Link href={`/product/${product?.name}-${product?.id}`}>
             <h3 className="text-sm font-semibold text-gray-800 transition-all duration-300 hover:text-primary">
-              {title}
+              {product?.name}
             </h3>
           </Link>
 
           {/* Product Price */}
           <p className="text-lg text-gray-600 space-x-2">
-            {oldPrice > 0 && (
+            {product?.oldPrice > 0 && (
               <span className="line-through text-[80%] text-[#ACB5BD]">
-                ৳{oldPrice}
+                ৳{product?.oldPrice}
               </span>
             )}
-            <span className="font-bold text-secondary">৳{currentPrice}</span>
+            <span className="font-bold text-secondary">
+              ৳{product?.currentPrice}
+            </span>
           </p>
 
           {/* Stock Status */}

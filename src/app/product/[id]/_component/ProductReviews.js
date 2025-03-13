@@ -1,48 +1,48 @@
 "use client";
 import { User } from "lucide-react";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 
-export default function ProductReviews({ reviewData }) {
-  const [reviews, setReviews] = useState(reviewData);
-
-  const [newReview, setNewReview] = useState({
-    name: "",
-    email: "",
-    comment: "",
-    rating: 1,
-  });
-
+export default function ProductReviews({ reviewData, productId }) {
   const [rating, setRating] = useState(1);
   const [hover, setHover] = useState(0);
+  const [loading, setLoading] = useState(false);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setNewReview({
-      ...newReview,
-      [name]: value,
-    });
-  };
+  const { register, handleSubmit, reset } = useForm();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const review = {
-      id: reviews.length + 1,
-      name: newReview.name,
-      date: new Date().toLocaleDateString(),
-      comment: newReview.comment,
+  const onSubmit = async (data) => {
+    setLoading(true);
+    const newReview = {
+      email: data.email,
+      name: data.name,
+      userId: 4,
+      productId: productId,
       rating: rating,
+      comment: data.comment,
     };
 
-    setReviews([...reviews, review]);
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_ROUT_URL}/shop/reviews`,
+        {
+          method: "POST",
+          body: JSON.stringify(newReview),
+          headers: { "Content-Type": "application/json" },
+        }
+      );
 
-    setNewReview({
-      name: "",
-      email: "",
-      comment: "",
-      rating: 1,
-    });
-    setRating(1);
+      if (response.ok) {
+        alert("Review submitted successfully!");
+        reset();
+        setRating(1);
+      } else {
+        alert("Failed to submit review.");
+      }
+    } catch (error) {
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   // FORM INPUT FIELD STYLES
@@ -56,7 +56,7 @@ export default function ProductReviews({ reviewData }) {
       {/* Existing Reviews */}
       <h2 className="font-semibold">Review for Product</h2>
       <div className="space-y-6">
-        {reviews.map((review) => (
+        {reviewData.map((review) => (
           <div key={review.id}>
             <div className="flex items-center mt-4">
               <div className="w-12 sm:w-16 h-12 sm:h-16 rounded-full bg-gray-200 flex items-center justify-center">
@@ -109,38 +109,34 @@ export default function ProductReviews({ reviewData }) {
       </div>
 
       {/* Review Form */}
-      <form className="mt-4 space-y-3" onSubmit={handleSubmit}>
+      <form className="mt-4 space-y-3" onSubmit={handleSubmit(onSubmit)}>
         <textarea
+          name="comment"
           className={`${formInputFieldStyles} w-full h-full`}
           rows="6"
           placeholder="Your review *"
-          value={newReview.comment}
-          onChange={(e) =>
-            setNewReview({ ...newReview, comment: e.target.value })
-          }
+          {...register("comment", { required: true })}
         />
         <input
+          name="name"
           type="text"
           className={formInputFieldStyles}
           placeholder="Name *"
-          value={newReview.name}
-          onChange={(e) => setNewReview({ ...newReview, name: e.target.value })}
+          {...register("name", { required: true })}
         />
         <input
+          name="email"
           type="email"
           className={formInputFieldStyles}
           placeholder="Email *"
-          value={newReview.email}
-          onChange={(e) =>
-            setNewReview({ ...newReview, email: e.target.value })
-          }
+          {...register("email", { required: true })}
         />
-
         <button
           type="submit"
           className="px-12 py-3 bg-gradient-primary text-white rounded-lg text-lg font-semibold"
+          disabled={loading}
         >
-          Submit
+          {loading ? "Submitting..." : "Submit"}
         </button>
       </form>
     </section>
