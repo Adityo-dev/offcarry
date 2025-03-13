@@ -1,12 +1,16 @@
 "use client";
+import Toast from "@/components/toast/Toast";
 import { User } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-export default function ProductReviews({ reviewData, productId }) {
+export default function ProductReviews({ initialReviewData, productId }) {
   const [rating, setRating] = useState(1);
   const [hover, setHover] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [reviewData, setReviewData] = useState(initialReviewData);
 
   const { register, handleSubmit, reset } = useForm();
 
@@ -19,6 +23,7 @@ export default function ProductReviews({ reviewData, productId }) {
       productId: productId,
       rating: rating,
       comment: data.comment,
+      date: new Date().toLocaleDateString(),
     };
 
     try {
@@ -32,14 +37,22 @@ export default function ProductReviews({ reviewData, productId }) {
       );
 
       if (response.ok) {
-        alert("Review submitted successfully!");
+        Toast({
+          type: "success",
+          message: "🎉 Review submitted successfully!",
+        });
         reset();
         setRating(1);
+        // Add the new review to the existing reviews
+        setReviewData([...reviewData, newReview]);
       } else {
-        alert("Failed to submit review.");
+        Toast({ type: "error", message: "❌ Failed to submit review." });
       }
     } catch (error) {
-      alert("Something went wrong. Please try again.");
+      Toast({
+        type: "error",
+        message: "⚠️ Something went wrong. Please try again.",
+      });
     } finally {
       setLoading(false);
     }
@@ -48,16 +61,14 @@ export default function ProductReviews({ reviewData, productId }) {
   // FORM INPUT FIELD STYLES
   const formInputFieldStyles =
     "w-full h-12 p-4 text-sm border rounded-lg outline-none transition-all duration-300 focus:border-primary";
-  const formInputFieldIconStyles =
-    "absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400";
 
   return (
     <section className="relative">
       {/* Existing Reviews */}
       <h2 className="font-semibold">Review for Product</h2>
       <div className="space-y-6">
-        {reviewData.map((review) => (
-          <div key={review.id}>
+        {reviewData.map((review, ind) => (
+          <div key={ind}>
             <div className="flex items-center mt-4">
               <div className="w-12 sm:w-16 h-12 sm:h-16 rounded-full bg-gray-200 flex items-center justify-center">
                 <User size={30} strokeWidth={1.5} />
@@ -81,9 +92,7 @@ export default function ProductReviews({ reviewData, productId }) {
       </div>
 
       {/* Add Review */}
-      <h3 className="text-lg font-semibold mt-6 border-b pb-4 ">
-        Add a review
-      </h3>
+      <h3 className="text-lg font-semibold mt-6 border-b pb-4">Add a review</h3>
       <p className="text-gray-500 text-sm mt-4">
         Your email address will not be published. Required fields are marked *
       </p>
@@ -139,6 +148,9 @@ export default function ProductReviews({ reviewData, productId }) {
           {loading ? "Submitting..." : "Submit"}
         </button>
       </form>
+
+      {/* Toast Container */}
+      <ToastContainer />
     </section>
   );
 }
