@@ -146,10 +146,10 @@ export default function ProductDetails({ productDetails }) {
           {productDetails?.retail_price && (
             <span className="text-primary">
               ৳
-              {productDetails?.retail_price -
-                (
-                  productDetails?.retail_price / productDetails?.discount
-                ).toFixed(2)}
+              {(
+                productDetails?.retail_price -
+                productDetails?.retail_price * (productDetails?.discount / 100)
+              ).toFixed(2)}
             </span>
           )}
         </div>
