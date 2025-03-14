@@ -29,9 +29,11 @@ export function BottomNavigationBar({ categoriesData, navigationItems }) {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="w-[300px] h-11 flex items-center justify-normal gap-4">
-                  <AlignJustify size={22} strokeWidth={1.5} />
-                  Categories
+                <NavigationMenuTrigger className="w-[300px] flex items-center justify-between gap-4 border-r">
+                  <div className="flex items-center gap-4">
+                    <AlignJustify size={22} strokeWidth={1.5} />
+                    Shop Categories
+                  </div>
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="md:w-[300px] p-2">

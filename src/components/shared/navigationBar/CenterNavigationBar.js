@@ -4,7 +4,12 @@ import { AlignJustify, Search } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react"; // Import useState
 import SearchSection from "./SearchSection";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetClose,
+} from "@/components/ui/sheet";
 import MobileMenuAndCategory from "./MobileMenuAndCategory";
 
 function CenterNavigationBar({
@@ -27,10 +32,11 @@ function CenterNavigationBar({
             <SheetTrigger asChild>
               <AlignJustify size={24} strokeWidth={1.3} />
             </SheetTrigger>
-            <SheetContent className="w-screen overflow-x-auto z-[50000] max-w-[300px] flex justify-between">
+            <SheetContent className="w-full overflow-x-auto z-[50000] max-w-[300px] flex justify-between">
               <MobileMenuAndCategory
                 categoriesData={categoriesData}
                 navigationItems={navigationItems}
+                SheetClose={SheetClose}
               />
             </SheetContent>
           </Sheet>
