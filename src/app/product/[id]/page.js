@@ -28,7 +28,7 @@ const SingleProductPage = async ({ params }) => {
       </div>
       <ProductTabs review={singleProductData?.Review} productId={searchId} />
       <Video />
-      <RelatedProducts />
+      <RelatedProducts products={singleProductData?.relatedProducts} />
     </div>
   );
 };
