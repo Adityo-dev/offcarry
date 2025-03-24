@@ -2,7 +2,7 @@ import { AlertTriangle, CheckCircle, XCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-function ProductCart({ product }) {
+function ProductCartR({ product }) {
   // Determine stock status
   let stockStatus;
   if (product?.stock > 5) {
@@ -57,13 +57,17 @@ function ProductCart({ product }) {
 
           {/* Product Price */}
           <p className="text-lg text-gray-600 space-x-2">
-            {product?.oldPrice > 0 && (
+            {parseInt(product?.discount) > 0 && (
               <span className="line-through text-[80%] text-[#ACB5BD]">
-                ৳{product?.oldPrice}
+                ৳
+                {(
+                  (product?.retail_price * 100) /
+                  (100 - parseInt(product?.discount))
+                ).toFixed(2)}
               </span>
             )}
             <span className="font-bold text-secondary">
-              ৳{product?.currentPrice}
+              ৳{product?.retail_price}
             </span>
           </p>
 
@@ -85,4 +89,4 @@ function ProductCart({ product }) {
   );
 }
 
-export default ProductCart;
+export default ProductCartR;

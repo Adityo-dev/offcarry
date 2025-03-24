@@ -2,25 +2,23 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const data = [
-  {
-    image: "/images/banner2.png",
-    url: "#",
-  },
-  {
-    image: "/images/banner1.png",
-    url: "#",
-  },
-];
 
-function Banner2() {
+
+async function Banner2() {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_ROUT_URL}/pbanners`, {
+    cache: "no-cache",
+  });
+  const banner = await response.json();
+  const type=['slider-up','slider-down']
+  const selectedBanner = banner?.filter((item) => type.includes(item?.type));
+
   return (
     <div className="space-y-7">
-      {data.map((banner2, ind) => (
+      {selectedBanner.map((banner, ind) => (
         <div key={ind} className="w-full h-[235px]">
-          <Link href={banner2?.url}>
+          <Link href={banner?.url || ""}>
             <Image
-              src={banner2?.image}
+              src={banner?.banner.image}
               width={400}
               height={400}
               alt=""

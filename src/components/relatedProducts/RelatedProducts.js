@@ -53,10 +53,10 @@ const relatedProducts = [
   },
 ];
 
-function RelatedProducts() {
+function RelatedProducts({ products = [] }) {
   return (
     <section className="pb-14">
-      <SliderProduct title={"Related Products"} products={relatedProducts} />
+      <SliderProduct title={"Related Products"} products={products} />
     </section>
   );
 }

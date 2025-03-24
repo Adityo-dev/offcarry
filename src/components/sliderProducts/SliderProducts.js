@@ -10,6 +10,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 // import product cart components
 import ProductCart from "@/components/productCarts/productsCart/ProductCart";
+import ProductCartR from "../productCarts/productsCart/ProductCartR";
 
 const customButtonStyles =
   "static xl:absolute w-7 sm:w-10 h-7 sm:h-10 text-base xl:text-xl bg-gradient-primary text-white flex items-center justify-center border-none xl:top-1/2 transform -translate-y-1/2 z-10 cursor-pointer rounded-full xl:opacity-0 visibility-hidden group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-lg";
@@ -78,9 +79,9 @@ export default function SliderProduct({ title, products }) {
           modules={[Navigation, Autoplay]}
           className="w-full h-full"
         >
-          {products.map((product, ind) => (
+          {products.filter((product) => product.id !== null).map((product, ind) => (
             <SwiperSlide key={ind}>
-              <ProductCart product={product} />
+              <ProductCartR product={product} />
             </SwiperSlide>
           ))}
         </Swiper>
