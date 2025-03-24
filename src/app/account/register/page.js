@@ -2,6 +2,7 @@
 
 import { useForm } from "react-hook-form";
 import { LockKeyhole, Mail, User } from "lucide-react";
+
 import Link from "next/link";
 
 export default function Register() {
@@ -21,6 +22,16 @@ export default function Register() {
 
   const onSubmit = async (data) => {
     console.log("Submitted Data:", data);
+    try {
+      const response = await signIn("credentials", data);
+      if (response) {
+        console.log("User registered successfully:", response);
+      } else {
+        console.error("Failed to register user:", response.error);
+      }
+    } catch (error) {
+      console.error("Error during registration:", error);
+    }
   };
 
   // FORM INPUT FIELD STYLES
