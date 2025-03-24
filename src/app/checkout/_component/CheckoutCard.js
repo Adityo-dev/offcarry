@@ -33,21 +33,21 @@ export default function CheckoutCard() {
       <div className="space-y-2 text-gray-700">
         <div className="flex justify-between">
           <span>Subtotal (3 Items)</span>
-          <span>${subtotal.toFixed(2)}</span>
+          <span>৳{subtotal.toFixed(2)}</span>
         </div>
         <div className="flex justify-between">
           <span>Discount</span>
-          <span className="text-red-500">-${discount.toFixed(2)}</span>
+          <span className="text-red-500">-৳{discount.toFixed(2)}</span>
         </div>
         <div className="flex justify-between">
           <span>Shipping Charge</span>
-          <span>${shipping.toFixed(2)}</span>
+          <span>৳{shipping.toFixed(2)}</span>
         </div>
       </div>
       <hr className="my-3" />
       <div className="flex justify-between text-lg font-semibold">
         <span>Total</span>
-        <span className="text-teal-500 font-semibold">${total.toFixed(2)}</span>
+        <span className="text-teal-500 font-semibold">৳{total.toFixed(2)}</span>
       </div>
       <button
         className="mt-4 w-full bg-gradient-to-r from-teal-400 to-green-400 text-white py-2 rounded-xl text-lg shadow-md hover:opacity-90"

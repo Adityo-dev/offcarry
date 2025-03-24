@@ -8,6 +8,7 @@ import { WishlistProvider } from "@/components/contextApi/context/WishlistContex
 // react-toastify
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { SessionProvider } from "next-auth/react";
 
 const krub = Krub({
   variable: "--font-krub",
@@ -26,16 +27,18 @@ export default function RootLayout({ children }) {
       <body
         className={` ${krub.variable} antialiased mainContainer overflow-x-auto`}
       >
-        <AddressProvider>
-          <CartProvider>
-            <WishlistProvider>
-              <MainNavigationBar />
-              {children}
-              <Footer />
-            </WishlistProvider>
-          </CartProvider>
-        </AddressProvider>
-        <ToastContainer />
+        <SessionProvider>
+          <AddressProvider>
+            <CartProvider>
+              <WishlistProvider>
+                <MainNavigationBar />
+                {children}
+                <Footer />
+              </WishlistProvider>
+            </CartProvider>
+          </AddressProvider>
+          <ToastContainer />
+        </SessionProvider>
       </body>
     </html>
   );

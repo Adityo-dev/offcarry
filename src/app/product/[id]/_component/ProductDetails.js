@@ -46,9 +46,12 @@ export default function ProductDetails({ productDetails }) {
     addToCart({
       id: productDetails?.id,
       name: productDetails?.name,
-      category: "Electronic",
-      price: 16.3,
-      image: "/images/product9.jpg",
+      category: productDetails?.category?.name,
+      price: productDetails?.retail_price,
+      image: productDetails?.thumbnail,
+      quantity: quantity,
+      size: selectedSize,
+      color: selectedColor,
     });
   };
 

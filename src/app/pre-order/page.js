@@ -37,7 +37,7 @@ export default function PreOrder() {
 
     if (response.ok) {
       const data = await response.json();
-      return data.url; // সার্ভার থেকে ফিরে আসা URL
+      return data.fileUrl; // সার্ভার থেকে ফিরে আসা URL
     } else {
       throw new Error("Failed to upload file");
     }
@@ -233,3 +233,5 @@ export default function PreOrder() {
     </div>
   );
 }
+
+
