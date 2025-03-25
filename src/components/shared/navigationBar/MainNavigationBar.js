@@ -96,45 +96,6 @@ const navigationItems = [
   },
 ];
 
-// Define the categories data
-const categoriesData = [
-  {
-    icon: <AlignJustify size={22} strokeWidth={1.5} />,
-    name: "Phone",
-    url: "#",
-  },
-  {
-    icon: <AlignJustify size={22} strokeWidth={1.5} />,
-    name: "Camera",
-    url: "#",
-  },
-  {
-    icon: <AlignJustify size={22} strokeWidth={1.5} />,
-    name: "Pc",
-    url: "#",
-  },
-  {
-    icon: <AlignJustify size={22} strokeWidth={1.5} />,
-    name: "Headphone",
-    url: "#",
-  },
-  {
-    icon: <AlignJustify size={22} strokeWidth={1.5} />,
-    name: "Television",
-    url: "#",
-  },
-  {
-    icon: <AlignJustify size={22} strokeWidth={1.5} />,
-    name: "Speakers",
-    url: "#",
-  },
-  {
-    icon: <AlignJustify size={22} strokeWidth={1.5} />,
-    name: "Accessories",
-    url: "#",
-  },
-];
-
 async function MainNavigationBar() {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_ROUT_URL}/shop/categories`,

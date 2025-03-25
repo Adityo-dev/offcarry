@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Trash, X } from "lucide-react";
 import Image from "next/image";
