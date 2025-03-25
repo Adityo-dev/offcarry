@@ -18,11 +18,10 @@ export default function PreOrder() {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      file: null, // Set default value for file input
+      file: null,
     },
   });
 
-  // ফাইল আপলোড ফাংশন
   const uploadFile = async (file) => {
     const formData = new FormData();
     formData.append("file", file);
@@ -37,35 +36,31 @@ export default function PreOrder() {
 
     if (response.ok) {
       const data = await response.json();
-      return data.url; // সার্ভার থেকে ফিরে আসা URL
+      return data.url;
     } else {
       throw new Error("Failed to upload file");
     }
   };
 
-  // ফর্ম সাবমিট হ্যান্ডলার
   const onSubmit = async (data) => {
     setLoading(true);
     try {
       let productImageUrl = "";
 
-      // ফাইল আপলোড করুন যদি থাকে
       if (data.file) {
         productImageUrl = await uploadFile(data.file);
       }
 
-      // ফর্ম ডাটা প্রস্তুত করুন
       const formData = {
         name: data.name,
         email: data.email,
         phone: data.phone,
         address: data.address,
         productDetails: data.productDetails,
-        productImage: productImageUrl, // আপলোড করা ফাইলের URL
+        productImage: productImageUrl,
         productLink: data.productLink,
       };
 
-      // প্রি-অর্ডার সাবমিট করুন
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_ROUT_URL}/shop/pre-order`,
         {
@@ -182,11 +177,11 @@ export default function PreOrder() {
                       onChange={(e) => {
                         const file = e.target.files[0];
                         if (file) {
-                          setFileName(file.name); // ফাইলের নাম সেট করুন
-                          field.onChange(file); // react-hook-form-এ ফাইল ডাটা সেট করুন
+                          setFileName(file.name);
+                          field.onChange(file);
                         } else {
                           setFileName("No Image Added");
-                          field.onChange(null); // ফাইল ডাটা রিসেট করুন
+                          field.onChange(null);
                         }
                       }}
                     />

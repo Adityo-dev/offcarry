@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import CheckoutItemsCart from "./CheckoutItemsCart";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useCart } from "@/components/contextApi/context/CartContext";
@@ -15,22 +15,72 @@ export default function ShoppingCart() {
     return loadFromLocalStorage("selectedItems") || [];
   });
 
+  // Use a ref to track the previous cart state
+  const prevCartRef = useRef([]);
+
   // Save selected items to localStorage when they change
   useEffect(() => {
     saveToLocalStorage("selectedItems", selectedItems);
+    console.log("Selected Items Updated:", selectedItems);
   }, [selectedItems]);
 
-  // Check if any items are already selected on page load or after refreshing
+  // Sync selectedItems with cart and auto-select only the latest new item
   useEffect(() => {
-    const storedItems = loadFromLocalStorage("selectedItems") || [];
+    console.log("Current Cart:", cart);
+    console.log("Previous Cart:", prevCartRef.current);
 
-    // If there are selected items in localStorage, set them
-    if (storedItems.length > 0) {
-      setSelectedItems(storedItems);
-    } else {
-      // If no selected items, keep selectedItems empty
+    if (cart.length === 0) {
       setSelectedItems([]);
+      prevCartRef.current = [];
+      console.log("Cart is empty, cleared selected items");
+      return;
     }
+
+    // First render - Sync with localStorage but do not auto-select anything
+    if (prevCartRef.current.length === 0 && cart.length > 0) {
+      setSelectedItems((prevSelectedItems) =>
+        prevSelectedItems.filter((item) =>
+          cart.some((cartItem) => cartItem.id === item.id)
+        )
+      );
+      prevCartRef.current = [...cart];
+      console.log("First render, synced with localStorage, no auto-select");
+      return;
+    }
+
+    // Detect only newly added items
+    const newItems = cart.filter(
+      (cartItem) =>
+        !prevCartRef.current.some((prevItem) => prevItem.id === cartItem.id)
+    );
+
+    console.log("New Items Detected:", newItems);
+
+    if (newItems.length > 0) {
+      const lastNewItem = newItems[newItems.length - 1]; // Latest added item
+      console.log("Last New Item:", lastNewItem);
+
+      // Auto-select ONLY the latest new item
+      setSelectedItems((prevSelectedItems) => {
+        const filteredPrevItems = prevSelectedItems.filter((item) =>
+          cart.some((cartItem) => cartItem.id === item.id)
+        );
+        return [...filteredPrevItems, lastNewItem]; // Only add latest new item
+      });
+      console.log("Auto-selected the latest new item:", lastNewItem);
+    } else {
+      // No new items, just sync existing selections
+      setSelectedItems((prevSelectedItems) =>
+        prevSelectedItems.filter((item) =>
+          cart.some((cartItem) => cartItem.id === item.id)
+        )
+      );
+      console.log("No new items, synced selected items with cart");
+    }
+
+    // Update previous cart reference
+    prevCartRef.current = [...cart];
+    console.log("Updated Previous Cart:", prevCartRef.current);
   }, [cart]);
 
   // Handle individual item selection
@@ -48,9 +98,6 @@ export default function ShoppingCart() {
       } else {
         newSelectedItems = [...prevSelectedItems, item];
       }
-
-      // Update localStorage with the new selection
-      saveToLocalStorage("selectedItems", newSelectedItems);
       return newSelectedItems;
     });
   };
@@ -63,6 +110,9 @@ export default function ShoppingCart() {
       setSelectedItems(cart); // Select all
     }
   };
+
+  // Reverse the cart array to show the latest item at the top (index 0)
+  const displayedCart = [...cart].reverse();
 
   return (
     <div className="mx-auto bg-white shadow-lg rounded-lg p-4 sm:p-6 max-w-4xl">
@@ -97,7 +147,7 @@ export default function ShoppingCart() {
         </button>
       </div>
 
-      {cart.map((item, ind) => (
+      {displayedCart.map((item, ind) => (
         <CheckoutItemsCart
           key={ind}
           item={item}
