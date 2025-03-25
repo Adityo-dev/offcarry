@@ -1,7 +1,46 @@
+"use client";
 import Image from "next/image";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
 // Newsletter Component
 function Newsletter() {
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
+
+  const handleChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_ROUT_URL}/newsletters`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
+      const data = await response.json();
+      if (response.status === 200) {
+        toast.success("You have successfully subscribed to our newsletter!");
+        setSuccess(true);
+        setError(null);
+        setEmail("");
+      } else {
+        setError(data.error);
+      }
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
   return (
     <section className="w-full bg-gradient-primary px-6 lg:px-28  py-10 lg:py-16  rounded-lg relative">
       <div className="lg:absolute lg:-top-16 lg:left-16 flex justify-center lg:block mb-4 lg:mb-0">
@@ -29,11 +68,23 @@ function Newsletter() {
               type="email"
               placeholder="Enter your email"
               className="w-full lg:w-80 py-3 px-4 rounded-md sm:rounded-r-none text-black placeholder-[#ACB5BD] focus:outline-none"
+              value={email}
+              onChange={handleChange}
             />
-            <button className="bg-primary text-white px-6 py-3 mt-2 sm:mt-0 rounded-md sm:rounded-r-md sm:rounded-l-none font-semibold hover:bg-secondary transition duration-300">
+            <button
+              className="bg-primary text-white px-6 py-3 mt-2 sm:mt-0 rounded-md sm:rounded-r-md sm:rounded-l-none font-semibold hover:bg-secondary transition duration-300"
+              onClick={handleSubmit}
+            >
               Subscribe
             </button>
           </div>
+
+          {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+          {success && (
+            <p className="text-green-500 text-sm mt-2">
+              Thank you for subscribing to our newsletter!
+            </p>
+          )}
         </div>
       </div>
     </section>

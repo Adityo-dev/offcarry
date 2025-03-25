@@ -25,7 +25,7 @@ const CheckoutPage = () => {
             </h1>
             <button
               onClick={toggleModal}
-              className="inline-flex items-center text-[#837F74] font-medium border-b-2"
+              className="inline-flex items-center text-[#837F74] font-medium border-b-2 p-2 gap-2"
             >
               <Plus className="text-[#07B7C5]" /> Add New Address
             </button>

@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form";
 import { LockKeyhole, User } from "lucide-react";
 import Link from "next/link";
-
+import { signIn } from "next-auth/react";
 export default function Login() {
   const {
     register,
@@ -18,6 +18,16 @@ export default function Login() {
 
   const onSubmit = async (data) => {
     console.log("Submitted Data:", data);
+    try {
+      const response = await signIn("credentials", data);
+      if (response) {
+        console.log("User logged in successfully:", response);
+      } else {
+        console.error("Failed to log in user:", response.error);
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+    }
   };
 
   // FORM INPUT FIELD STYLES
