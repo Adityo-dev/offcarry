@@ -116,7 +116,7 @@ export default function AddressForm({ setShowForm = () => {} }) {
           role="combobox"
           aria-expanded={open[type]}
           disabled={disabledCondition}
-          className="mt-2 h-12 p-4 w-full border border-gray-300 bg-white text-[#ACB5BD] rounded-lg placeholder:text-[#ACB5BD] text-sm outline-none transition-all duration-300 focus:border-primary"
+          className="mt-2 h-12 p-4 w-full border border-gray-300  bg-white text-[#ACB5BD] rounded-lg placeholder:text-[#ACB5BD] text-sm outline-none transition-all duration-300 focus:border-primary"
         >
           {selected[type].name || `Select ${type}`}
           <ChevronsUpDown className="opacity-50" />
