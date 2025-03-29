@@ -79,11 +79,13 @@ export default function SliderProduct({ title, products }) {
           modules={[Navigation, Autoplay]}
           className="w-full h-full"
         >
-          {products.filter((product) => product.id !== null).map((product, ind) => (
-            <SwiperSlide key={ind}>
-              <ProductCartR product={product} />
-            </SwiperSlide>
-          ))}
+          {products
+            .filter((product) => product.id !== null)
+            .map((product, ind) => (
+              <SwiperSlide key={ind}>
+                <ProductCart product={product} />
+              </SwiperSlide>
+            ))}
         </Swiper>
       </section>
     </main>
