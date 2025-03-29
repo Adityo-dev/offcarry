@@ -1,15 +1,37 @@
 import { MoveRight } from "lucide-react";
 import { useState } from "react";
 
-export default function CheckoutCard() {
+export default function CheckoutCard({ selectedItems }) {
+  const selectedItemsCount = selectedItems.length;
+  const subtotal = selectedItems.reduce(
+    (acc, item) => acc + parseFloat(item.price) * item.quantity,
+    0
+  );
+
+  const coupons = {
+    SAVE10: 10,
+    SAVE20: 20,
+    SAVE50: 50,
+  };
+
   const [coupon, setCoupon] = useState("");
-  const [subtotal, setSubtotal] = useState(48.9);
-  const [discount, setDiscount] = useState(5.0);
-  const [shipping, setShipping] = useState(0.0);
+  const [discount, setDiscount] = useState(0);
+  const shipping = selectedItemsCount > 0 ? 70 : 0;
+
+  // Apply Coupon Function
+  const applyCoupon = () => {
+    if (coupons[coupon]) {
+      setDiscount(coupons[coupon]);
+    } else {
+      setDiscount(0);
+    }
+  };
+
+  // Total Price
   const total = subtotal - discount + shipping;
 
   const handleSubmit = () => {
-    console.log({ coupon, subtotal, discount, shipping, total });
+    // console.log({ coupon, subtotal, discount, shipping, total });
   };
 
   return (
@@ -25,14 +47,14 @@ export default function CheckoutCard() {
         />
         <button
           className="w-16 h-12 flex items-center justify-center bg-teal-500  text-white"
-          onClick={handleSubmit}
+          onClick={applyCoupon}
         >
           <MoveRight size={20} strokeWidth={2} />
         </button>
       </div>
       <div className="space-y-2 text-gray-700">
         <div className="flex justify-between">
-          <span>Subtotal (3 Items)</span>
+          <span>Subtotal ({selectedItemsCount} Items)</span>
           <span>৳{subtotal.toFixed(2)}</span>
         </div>
         <div className="flex justify-between">

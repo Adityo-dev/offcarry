@@ -11,6 +11,9 @@ import CheckoutLocation from "./_component/CheckoutLocation";
 const CheckoutPage = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const [selectedItems, setSelectedItems1] = useState([]);
+  console.log("selectedItems000", selectedItems);
+
   const toggleModal = () => {
     setIsOpen(!isOpen);
   };
@@ -29,7 +32,6 @@ const CheckoutPage = () => {
             >
               <Plus className="text-[#07B7C5]" /> Add New Address
             </button>
-
             {isOpen && (
               <RelativeModal
                 setShowForm={toggleModal}
@@ -41,12 +43,12 @@ const CheckoutPage = () => {
           </div>
           <div className="mt-6 space-y-6">
             <CheckoutLocation />
-            <ShoppingCart />
+            <ShoppingCart setSelectedItems1={setSelectedItems1} />
           </div>
         </div>
         <div className="col-span-full xl:col-span-5">
           <PaymentOptions />
-          <CheckoutCard />
+          <CheckoutCard selectedItems={selectedItems} />
         </div>
       </div>
     </div>

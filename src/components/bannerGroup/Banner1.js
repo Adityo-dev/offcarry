@@ -9,8 +9,8 @@ async function Banner1() {
     }
   );
   const banner = await response.json();
-  const selectedBanner = banner?.find((item) => item?.type == 'promo-sec');
-console.log(selectedBanner)
+  const selectedBanner = banner?.find((item) => item?.type == "promo-sec");
+
   return (
     <div className="w-full max-h-[380px] h-full">
       <Image

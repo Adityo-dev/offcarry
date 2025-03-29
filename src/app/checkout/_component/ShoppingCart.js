@@ -7,7 +7,7 @@ import {
   loadFromLocalStorage,
 } from "@/utils/LocalStorageUtils";
 
-export default function ShoppingCart() {
+export default function ShoppingCart({ setSelectedItems1 }) {
   const { cart, removeFromCart } = useCart();
 
   // Load selected items from localStorage
@@ -15,12 +15,15 @@ export default function ShoppingCart() {
     return loadFromLocalStorage("selectedItems") || [];
   });
 
+  console.log("selectedItems1111", selectedItems);
+
   // Use a ref to track the previous cart state
   const prevCartRef = useRef([]);
 
   // Save selected items to localStorage when they change
   useEffect(() => {
     saveToLocalStorage("selectedItems", selectedItems);
+    setSelectedItems1(selectedItems);
     console.log("Selected Items Updated:", selectedItems);
   }, [selectedItems]);
 
@@ -44,7 +47,6 @@ export default function ShoppingCart() {
         )
       );
       prevCartRef.current = [...cart];
-      console.log("First render, synced with localStorage, no auto-select");
       return;
     }
 

@@ -16,7 +16,6 @@ export default async function AccountPage() {
   );
 
   const user = await reponse.json();
-console.log(user);
 
   return (
     <div className="min-h-screen bg-gray-100">
