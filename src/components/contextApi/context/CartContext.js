@@ -25,8 +25,14 @@ export const CartProvider = ({ children }) => {
     dispatch({ type: "REMOVE_FROM_CART", payload: productId });
   };
 
+  const updateQuantity = (productId, amount) => {
+    dispatch({ type: "UPDATE_QUANTITY", payload: { productId, amount } });
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+    <CartContext.Provider
+      value={{ cart, addToCart, removeFromCart, updateQuantity }}
+    >
       {children}
     </CartContext.Provider>
   );

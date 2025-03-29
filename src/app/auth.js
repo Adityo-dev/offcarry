@@ -31,8 +31,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             }
           );
 
-          console.log(res);
-
           if (!res.ok) {
             console.error("Failed to log in:", res.statusText);
             return null;
