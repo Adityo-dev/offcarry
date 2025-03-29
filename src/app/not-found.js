@@ -9,7 +9,7 @@ function NotFound() {
           src={"/gif/404.gif"}
           width={300}
           height={300}
-          alt="404 image..."
+          alt="404 Error - The page you are looking for does not exist."
           className="max-w-[450px] w-full h-auto"
         />
       </div>

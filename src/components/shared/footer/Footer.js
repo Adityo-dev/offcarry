@@ -65,7 +65,7 @@ function Footer() {
             src={"/logo/offcarry.png"}
             width={400}
             height={400}
-            alt="offCarry logo"
+            alt="OffCarry Logo - Your Trusted Shopping Partner"
             className="max-w-40 w-full"
           />
           <p className="mt-4 sm:mt-7 text-[#ACB5BD] leading-6 sm:leading-7 text-sm sm:text-base">

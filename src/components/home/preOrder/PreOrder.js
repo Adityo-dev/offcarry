@@ -105,7 +105,7 @@ function PreOrder() {
             src="/images/preOrder.png"
             width={400}
             height={400}
-            alt="Pre Order"
+            alt="Pre Order Illustration - Order Your Products Before Release"
             className="w-auto h-auto object-contain hidden lg:block"
           />
         </div>

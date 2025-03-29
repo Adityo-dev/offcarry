@@ -12,7 +12,6 @@ const CheckoutPage = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const [selectedItems, setSelectedItems1] = useState([]);
-  console.log("selectedItems000", selectedItems);
 
   const toggleModal = () => {
     setIsOpen(!isOpen);

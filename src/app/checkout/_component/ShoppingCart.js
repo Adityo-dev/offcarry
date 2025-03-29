@@ -149,15 +149,17 @@ export default function ShoppingCart({ setSelectedItems1 }) {
         </button>
       </div>
 
-      {displayedCart.map((item, ind) => (
-        <CheckoutItemsCart
-          key={ind}
-          item={item}
-          removeFromCart={removeFromCart}
-          handleSelectItem={handleSelectItem}
-          selectedItems={selectedItems}
-        />
-      ))}
+      <div className="space-y-2 pt-4">
+        {displayedCart.map((item, ind) => (
+          <CheckoutItemsCart
+            key={ind}
+            item={item}
+            removeFromCart={removeFromCart}
+            handleSelectItem={handleSelectItem}
+            selectedItems={selectedItems}
+          />
+        ))}
+      </div>
     </div>
   );
 }

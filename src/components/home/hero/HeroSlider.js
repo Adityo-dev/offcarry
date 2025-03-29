@@ -59,7 +59,7 @@ function HeroSlider({ sliderData }) {
                 src={slider?.image}
                 width={1600}
                 height={600}
-                alt=""
+                alt={`${slider?.title || "Slider"} - Promotional Image`}
               />
             </Link>
           </SwiperSlide>

@@ -10,12 +10,14 @@ function CheckoutItemsCart({
   selectedItems,
 }) {
   const { updateQuantity } = useCart();
-  const isSelected = selectedItems.some((selected) => selected.id === item.id);
+  const isSelected = selectedItems.some(
+    (selected) => selected?.id === item?.id
+  );
 
   return (
     <div className="bg-[#FAFAFA] flex flex-col sm:flex-row gap-4 items-center justify-between border p-4 rounded-lg relative">
       <Checkbox
-        id={`select-${item.id}`}
+        id={`select-${item?.id}`}
         className="w-4 h-4"
         checked={isSelected}
         onCheckedChange={() => handleSelectItem(item)}
@@ -24,16 +26,16 @@ function CheckoutItemsCart({
       <div className="flex items-center gap-4 w-full">
         <div className="w-20 h-20 bg-white rounded-lg overflow-hidden">
           <Image
-            src={item.image}
+            src={item?.image}
             width={400}
             height={400}
-            alt={item.name}
+            alt={`${item?.name} - ${item?.size} Size | ${item?.category} | $${item?.price}`}
             className="w-full h-full object-contain"
           />
         </div>
         <div>
-          <h3 className="font-medium text-sm">{item.name}</h3>
-          <p className="text-sm text-gray-500 mt-1">{item.category}</p>
+          <h3 className="font-medium text-sm">{item?.name}</h3>
+          <p className="text-sm text-gray-500 mt-1">{item?.category}</p>
         </div>
       </div>
       {/*  */}
@@ -47,14 +49,14 @@ function CheckoutItemsCart({
           <div className="flex items-center border rounded-lg overflow-hidden">
             <button
               className="px-2 py-1"
-              onClick={() => updateQuantity(item.id, -1)}
+              onClick={() => updateQuantity(item?.id, -1)}
             >
               -
             </button>
-            <span className="px-4">{item.quantity}</span>
+            <span className="px-4">{item?.quantity}</span>
             <button
               className="px-2 py-1"
-              onClick={() => updateQuantity(item.id, 1)}
+              onClick={() => updateQuantity(item?.id, 1)}
             >
               +
             </button>
@@ -67,13 +69,13 @@ function CheckoutItemsCart({
           </p>
         </div>
         <button
-          onClick={() => removeFromCart(item.id)}
+          onClick={() => removeFromCart(item?.id)}
           className="text-red-500 hover:text-red-700 ml-4 hidden md:block"
         >
           <Trash size={20} />
         </button>
         <button
-          onClick={() => removeFromCart(item.id)}
+          onClick={() => removeFromCart(item?.id)}
           className="absolute top-1.5 right-1.5 md:relative text-red-500 hover:text-red-700 ml-4 block md:hidden"
         >
           <X size={20} />
