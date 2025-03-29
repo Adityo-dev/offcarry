@@ -48,7 +48,7 @@ export function BottomNavigationBar({ categoriesData, navigationItems }) {
                             width={400}
                             height={400}
                             className="w-6 h-6"
-                            alt={`${category?.name} - ${category?.description}`}
+                            alt={`Logo for ${category?.name}: ${category?.description}`}
                           />
                           {category.name}
                         </Link>
