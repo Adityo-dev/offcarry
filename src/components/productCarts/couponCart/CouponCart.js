@@ -15,7 +15,7 @@ function CouponCart({ product }) {
         >
           <Image
             src={product?.image}
-            alt="Coupon"
+            alt={`Image of ${product?.title || "Product"}`}
             width={400}
             height={400}
             className="w-full h-full rounded-md object-contain"

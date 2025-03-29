@@ -8,12 +8,6 @@ const paymentMethods = [
     name: "Cash on delivery",
     icon: "/logo/cash-on-delivery.png",
   },
-  // {
-  //   id: "2",
-  //   type: "PayPal",
-  //   name: "014*****326",
-  //   icon: "/logo/nogad-logo.png",
-  // },
 ];
 
 export default function PaymentOptions() {
@@ -35,7 +29,7 @@ export default function PaymentOptions() {
                   width={400}
                   height={400}
                   src={method.icon}
-                  alt={method.name}
+                  alt={`${method.name} - ${method.type}`}
                   className="w-full h-full object-contain"
                 />
               </div>

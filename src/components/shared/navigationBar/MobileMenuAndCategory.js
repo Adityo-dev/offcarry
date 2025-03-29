@@ -58,7 +58,7 @@ function MobileMenuAndCategory({
                   src={categories?.logo}
                   width={400}
                   height={400}
-                  alt={categories?.name}
+                  alt={`${categories?.name} - ${categories?.description}`}
                   className="w-5 sm:w-6 h-5 sm:h-6"
                 />
                 {categories.name}
