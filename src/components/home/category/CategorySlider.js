@@ -69,7 +69,7 @@ export default function CategorySlider({ sliderData }) {
                   src={category?.logo}
                   width={400}
                   height={400}
-                  alt={category?.name}
+                  alt={`Logo for ${category?.name}: ${category?.description}`}
                   className="w-10 md:w-12 h-10 md:h-12 object-cover"
                 />
                 <p className="font-semibold tracking-wider">{category?.name}</p>
