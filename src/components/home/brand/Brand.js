@@ -35,7 +35,7 @@ const Brand = () => {
               src={data}
               width={400}
               height={400}
-              alt=""
+              alt={`Logo of ${data?.name || "Brand"}`}
               className="w-20 lg:w-28 xl:w-36"
             />
           </div>
@@ -52,7 +52,7 @@ const Brand = () => {
               src={data}
               width={400}
               height={400}
-              alt=""
+              alt={`Logo of ${data?.name || "Brand"}`}
               className="w-20 lg:w-28 xl:w-36"
             />
           </div>

@@ -32,7 +32,7 @@ const SectionHeader = ({ title, linkName }) => {
               width={500}
               height={500}
               src="/images/bg-header.png"
-              alt="Shopping illustration"
+              alt="Online Shopping Illustration - E-commerce Header Background"
               className="absolute right-0 top-1/2 -translate-y-1/2 w-full h-auto object-contain"
             />
           </div>

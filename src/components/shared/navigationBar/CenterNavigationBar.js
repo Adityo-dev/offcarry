@@ -47,7 +47,7 @@ function CenterNavigationBar({
             src="/logo/offcarry.png"
             width={200}
             height={200}
-            alt="offCarrt logo"
+            alt="OffCarry Logo - Your Trusted Shopping Partner"
             className="w-32 xl:w-[200px]"
           />
         </Link>

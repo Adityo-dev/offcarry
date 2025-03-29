@@ -40,9 +40,9 @@ export default function ProductDetails({ productDetails }) {
   };
 
   const handleBuyNow = () => {
-    console.log("Quantity:", quantity);
-    console.log("Selected Size:", selectedSize);
-    console.log("Selected Color:", selectedColor || "Not Selected");
+    // console.log("Quantity:", quantity);
+    // console.log("Selected Size:", selectedSize);
+    // console.log("Selected Color:", selectedColor || "Not Selected");
     addToCart({
       id: productDetails?.id,
       name: productDetails?.name,
@@ -72,6 +72,7 @@ export default function ProductDetails({ productDetails }) {
             </Link>
           </p>
         </div>
+
         {/* PRODUCT NAME AND TITLE  */}
         <div className="space-y-2 sm:space-y-3">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl tracking-wide font-medium md:leading-[50px]">

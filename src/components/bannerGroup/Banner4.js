@@ -13,6 +13,7 @@ async function Banner4() {
   const selectedBanner = banner
     ?.filter((item) => type.includes(item?.type))
     .sort((a, b) => a?.position - b?.position);
+
   return (
     <section className="container mx-auto px-4 grid grid-cols-12 gap-4 lg:gap-7">
       <div className="col-span-full sm:col-span-8 w-full max-h-[420px] h-full">
@@ -20,7 +21,9 @@ async function Banner4() {
           src={selectedBanner?.[0]?.banner?.image}
           width={800}
           height={800}
-          alt=""
+          alt={`Banner for ${
+            selectedBanner?.[0]?.banner?.title || "Promotion"
+          }`}
           className="w-full h-full object-cover rounded-lg"
         />
       </div>
@@ -30,7 +33,9 @@ async function Banner4() {
           src={selectedBanner?.[1]?.banner?.image}
           width={800}
           height={800}
-          alt=""
+          alt={`Banner for ${
+            selectedBanner?.[1]?.banner?.title || "Promotion"
+          }`}
           className="w-full h-full object-cover rounded-lg"
         />
       </div>

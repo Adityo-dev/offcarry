@@ -2,7 +2,6 @@ import { ShoppingBagIcon } from "lucide-react";
 import Link from "next/link";
 
 export default function OrderHistory({ user }) {
-  // console.log(user.orders);
   if (user?.orders?.length == 0) {
     return (
       <div className="bg-white shadow overflow-hidden sm:rounded-lg mb-8 h-20 p-4 inline-flex items-center w-full gap-4">
