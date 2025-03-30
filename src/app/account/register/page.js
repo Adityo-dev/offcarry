@@ -21,7 +21,6 @@ export default function Register() {
   });
 
   const onSubmit = async (data) => {
-    console.log("Submitted Data:", data);
     try {
       const response = await signIn("credentials", data);
       if (response) {

@@ -13,7 +13,6 @@ const SingleProductPage = async ({ params }) => {
     `${process.env.NEXT_PUBLIC_API_ROUT_URL}/shop/products/${searchId}`
   );
   const singleProductData = await response.json();
-  console.log(singleProductData);
 
   return (
     <div className="container mx-auto px-4 pt-16 xl:pt-6 space-y-16">

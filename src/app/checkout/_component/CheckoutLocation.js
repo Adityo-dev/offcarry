@@ -6,7 +6,6 @@ import { Trash, X } from "lucide-react";
 function CheckoutLocation({ data }) {
   const { addresses, deleteAddress } = useAddress();
   const [selectedAddress, setSelectedAddress] = useState(0);
-  console.log(addresses);
 
   const handleSelectAddress = (index) => {
     setSelectedAddress(index === selectedAddress ? 0 : index);

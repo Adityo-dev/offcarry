@@ -11,25 +11,43 @@ import {
   XCircle,
 } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddToCartButton from "./AddToCartButton";
 import { useCart } from "@/components/contextApi/context/CartContext";
 
-// SOCIAL MEDIA DATA
+const currentURL = typeof window !== "undefined" ? window.location.href : "";
+
 const socialMediaData = [
   {
     icon: <Facebook size={20} strokeWidth={1.5} />,
-    url: "https://www.facebook.com/TrustNestStore",
+    url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+      currentURL
+    )}`,
   },
-  { icon: <Twitter size={20} strokeWidth={1.5} />, url: "" },
-  { icon: <Instagram size={20} strokeWidth={1.5} />, url: "" },
+  {
+    icon: <Twitter size={20} strokeWidth={1.5} />,
+    url: `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+      currentURL
+    )}`,
+  },
+  {
+    icon: <Instagram size={20} strokeWidth={1.5} />,
+    url: "#",
+  },
 ];
 
 export default function ProductDetails({ productDetails }) {
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
-  const [selectedSize, setSelectedSize] = useState("M");
+  const [selectedSize, setSelectedSize] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
+
+  useEffect(() => {
+    if (productDetails?.variations?.length > 0) {
+      setSelectedColor(productDetails.variations[0].color);
+      setSelectedSize(productDetails.variations[0].size);
+    }
+  }, [productDetails]);
 
   const decreaseQuantity = () => {
     if (quantity > 1) setQuantity(quantity - 1);
@@ -40,9 +58,9 @@ export default function ProductDetails({ productDetails }) {
   };
 
   const handleBuyNow = () => {
-    // console.log("Quantity:", quantity);
-    // console.log("Selected Size:", selectedSize);
-    // console.log("Selected Color:", selectedColor || "Not Selected");
+    console.log("Quantity:", quantity);
+    console.log("Selected Size:", selectedSize);
+    console.log("Selected Color:", selectedColor || "Not Selected");
     addToCart({
       id: productDetails?.id,
       name: productDetails?.name,
@@ -217,7 +235,7 @@ export default function ProductDetails({ productDetails }) {
             </button>
           </div>
           {/* Add To Cart BTN */}
-          <AddToCartButton />
+          <AddToCartButton onClick={handleBuyNow} />
 
           {/* BUY NOW BTN */}
           <Link
