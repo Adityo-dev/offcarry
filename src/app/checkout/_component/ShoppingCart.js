@@ -15,8 +15,6 @@ export default function ShoppingCart({ setSelectedItems1 }) {
     return loadFromLocalStorage("selectedItems") || [];
   });
 
-  console.log("selectedItems1111", selectedItems);
-
   // Use a ref to track the previous cart state
   const prevCartRef = useRef([]);
 
