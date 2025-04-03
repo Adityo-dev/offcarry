@@ -38,7 +38,7 @@ function PreOrder() {
 
     if (response.ok) {
       const data = await response.json();
-      return data.fileUrl; // সার্ভার থেকে ফিরে আসা URL
+      return data.fileUrl;
     } else {
       throw new Error("Failed to upload file");
     }
