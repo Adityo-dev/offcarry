@@ -42,7 +42,7 @@ const footerData = [
 const socialMediaData = [
   {
     icon: <Facebook size={20} strokeWidth={1.5} />,
-    url: "https://www.facebook.com/TrustNestStore",
+    url: "https://www.facebook.com/OffCarry",
   },
   { icon: <Twitter size={20} strokeWidth={1.5} />, url: "" },
   { icon: <Instagram size={20} strokeWidth={1.5} />, url: "" },
