@@ -58,9 +58,6 @@ export default function ProductDetails({ productDetails }) {
   };
 
   const handleBuyNow = () => {
-    console.log("Quantity:", quantity);
-    console.log("Selected Size:", selectedSize);
-    console.log("Selected Color:", selectedColor || "Not Selected");
     addToCart({
       id: productDetails?.id,
       name: productDetails?.name,
@@ -79,13 +76,19 @@ export default function ProductDetails({ productDetails }) {
         <div className="flex items-center flex-wrap gap-6 text-[#888AA0]">
           <p>
             <span>Category : </span>
-            <Link href={"#"} className="text-gray-900 text-sm">
+            <Link
+              href={`/category/${(productDetails?.category?.name).toLowerCase()}`}
+              className="text-gray-900 text-sm"
+            >
               {productDetails?.category?.name}
             </Link>
           </p>
           <p>
             <span>Brand : </span>
-            <Link href={"#"} className="text-gray-900 text-sm">
+            <Link
+              href={`/brand/${(productDetails?.brand?.name).toLowerCase()}`}
+              className="text-gray-900 text-sm"
+            >
               {productDetails?.brand?.name}
             </Link>
           </p>

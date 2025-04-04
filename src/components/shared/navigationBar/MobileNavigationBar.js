@@ -11,8 +11,8 @@ const mobileNavigationBarData = [
   },
   {
     icon: <Store size={20} strokeWidth={1.3} />,
-    name: "shop",
-    url: "/shop",
+    name: "New",
+    url: "/new",
   },
   {
     icon: <Gift size={20} strokeWidth={1.3} />,
