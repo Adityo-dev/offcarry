@@ -34,7 +34,7 @@ export default function CheckoutCard({ selectedItems }) {
         userId: 1,
         products: selectedItems.map((item) => ({
           productId: item.id,
-          variationId: item.variationId || 1,
+          variationId: item.variationId || 2,
           quantity: item.quantity,
         })),
         subtotal: subtotal.toFixed(2),
