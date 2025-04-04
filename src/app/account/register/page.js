@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { LockKeyhole, Mail, User } from "lucide-react";
 
 import Link from "next/link";
+import { signIn } from "next-auth/react";
 
 export default function Register() {
   const {
@@ -19,7 +20,7 @@ export default function Register() {
       confirmPassword: "",
     },
   });
-
+  console.log("Form submitted:");
   const onSubmit = async (data) => {
     try {
       const response = await signIn("credentials", data);
