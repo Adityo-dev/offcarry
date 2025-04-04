@@ -4,15 +4,15 @@ import Link from "next/link";
 const footerBottomData = [
   {
     name: "Terms & Condition",
-    url: "#",
+    url: "terms-and-conditions",
   },
   {
     name: "Privacy Policy ",
-    url: "#",
+    url: "privacy-policy",
   },
   {
     name: "Contact Us",
-    url: "#",
+    url: "contacts",
   },
 ];
 

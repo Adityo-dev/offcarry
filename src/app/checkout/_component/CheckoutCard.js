@@ -1,12 +1,19 @@
+import Toast from "@/components/toast/Toast";
 import { MoveRight } from "lucide-react";
 import { useState } from "react";
 
 export default function CheckoutCard({ selectedItems }) {
+  const [loading, setLoading] = useState(false);
+  const [coupon, setCoupon] = useState("");
+  const [discount, setDiscount] = useState(0);
+
   const selectedItemsCount = selectedItems.length;
   const subtotal = selectedItems.reduce(
     (acc, item) => acc + parseFloat(item.price) * item.quantity,
     0
   );
+  const shipping = selectedItemsCount > 0 ? 70 : 0;
+  const total = subtotal - discount + shipping;
 
   const coupons = {
     SAVE10: 10,
@@ -14,24 +21,53 @@ export default function CheckoutCard({ selectedItems }) {
     SAVE50: 50,
   };
 
-  const [coupon, setCoupon] = useState("");
-  const [discount, setDiscount] = useState(0);
-  const shipping = selectedItemsCount > 0 ? 70 : 0;
-
   // Apply Coupon Function
   const applyCoupon = () => {
-    if (coupons[coupon]) {
-      setDiscount(coupons[coupon]);
-    } else {
-      setDiscount(0);
-    }
+    setDiscount(coupons[coupon] || 0);
   };
 
-  // Total Price
-  const total = subtotal - discount + shipping;
+  // Handle Order Submission
+  const onSubmit = async () => {
+    setLoading(true);
+    try {
+      const orderData = {
+        userId: 1,
+        products: selectedItems.map((item) => ({
+          productId: item.id,
+          variationId: item.variationId || 2,
+          quantity: item.quantity,
+        })),
+        subtotal: subtotal.toFixed(2),
+        tax: 0,
+        discount: discount.toFixed(2),
+        shippingCost: shipping.toFixed(2),
+        paymentMethod: "cash-on-delivery",
+        shippingAddress: "biljani,khoksa,kushtia",
+        remarks: "Urgent delivery",
+      };
 
-  const handleSubmit = () => {
-    // console.log({ coupon, subtotal, discount, shipping, total });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_ROUT_URL}/shop/orders`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(orderData),
+        }
+      );
+
+      if (response.ok) {
+        Toast({ type: "success", message: "🎉 Order placed successfully!" });
+      } else {
+        Toast({ type: "error", message: "❌ Failed to place order" });
+      }
+    } catch (error) {
+      Toast({
+        type: "error",
+        message: "⚠️ Something went wrong. Please try again.",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -46,12 +82,13 @@ export default function CheckoutCard({ selectedItems }) {
           className="w-full h-12 p-4 outline-none text-gray-700"
         />
         <button
-          className="w-16 h-12 flex items-center justify-center bg-teal-500  text-white"
+          className="w-16 h-12 flex items-center justify-center bg-teal-500 text-white"
           onClick={applyCoupon}
         >
           <MoveRight size={20} strokeWidth={2} />
         </button>
       </div>
+
       <div className="space-y-2 text-gray-700">
         <div className="flex justify-between">
           <span>Subtotal ({selectedItemsCount} Items)</span>
@@ -66,16 +103,18 @@ export default function CheckoutCard({ selectedItems }) {
           <span>৳{shipping.toFixed(2)}</span>
         </div>
       </div>
+
       <hr className="my-3" />
       <div className="flex justify-between text-lg font-semibold">
         <span>Total</span>
         <span className="text-teal-500 font-semibold">৳{total.toFixed(2)}</span>
       </div>
+
       <button
-        className="mt-4 w-full bg-gradient-to-r from-teal-400 to-green-400 text-white py-2 rounded-xl text-lg shadow-md hover:opacity-90"
-        onClick={handleSubmit}
+        className="mt-4 w-full bg-gradient-to-r from-teal-400 to-green-400 text-white py-2 rounded-xl text-lg shadow-md hover:opacity-90 disabled:opacity-50"
+        onClick={onSubmit}
       >
-        Checkout
+        {loading ? "Processing..." : "Checkout"}
       </button>
     </section>
   );

@@ -13,7 +13,10 @@ function CheckoutItemsCart({
   const isSelected = selectedItems.some(
     (selected) => selected?.id === item?.id
   );
-  console.log(item, "item in checkout cart");
+
+  const handleQuantityChange = (change) => {
+    updateQuantity(item?.id, change);
+  };
 
   return (
     <div className="bg-[#FAFAFA] flex flex-col sm:flex-row gap-4 items-center justify-between border p-4 rounded-lg relative">
@@ -55,14 +58,14 @@ function CheckoutItemsCart({
           <div className="flex items-center border rounded-lg overflow-hidden">
             <button
               className="px-2 py-1"
-              onClick={() => updateQuantity(item?.id, -1)}
+              onClick={() => handleQuantityChange(-1)}
             >
               -
             </button>
             <span className="px-4">{item?.quantity}</span>
             <button
               className="px-2 py-1"
-              onClick={() => updateQuantity(item?.id, 1)}
+              onClick={() => handleQuantityChange(1)}
             >
               +
             </button>

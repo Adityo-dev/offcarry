@@ -25,7 +25,6 @@ export default function ShoppingCart({ setSelectedItems1 }) {
     console.log("Selected Items Updated:", selectedItems);
   }, [selectedItems]);
 
-  // Sync selectedItems with cart and auto-select only the latest new item
   useEffect(() => {
     console.log("Current Cart:", cart);
     console.log("Previous Cart:", prevCartRef.current);
@@ -37,7 +36,7 @@ export default function ShoppingCart({ setSelectedItems1 }) {
       return;
     }
 
-    // First render - Sync with localStorage but do not auto-select anything
+    // First render - Sync with localStorage
     if (prevCartRef.current.length === 0 && cart.length > 0) {
       setSelectedItems((prevSelectedItems) =>
         prevSelectedItems.filter((item) =>
@@ -48,7 +47,7 @@ export default function ShoppingCart({ setSelectedItems1 }) {
       return;
     }
 
-    // Detect only newly added items
+    // Detect only newly added items (not quantity changes)
     const newItems = cart.filter(
       (cartItem) =>
         !prevCartRef.current.some((prevItem) => prevItem.id === cartItem.id)
@@ -57,30 +56,30 @@ export default function ShoppingCart({ setSelectedItems1 }) {
     console.log("New Items Detected:", newItems);
 
     if (newItems.length > 0) {
-      const lastNewItem = newItems[newItems.length - 1]; // Latest added item
+      const lastNewItem = newItems[newItems.length - 1];
       console.log("Last New Item:", lastNewItem);
 
-      // Auto-select ONLY the latest new item
       setSelectedItems((prevSelectedItems) => {
         const filteredPrevItems = prevSelectedItems.filter((item) =>
           cart.some((cartItem) => cartItem.id === item.id)
         );
-        return [...filteredPrevItems, lastNewItem]; // Only add latest new item
+        return [...filteredPrevItems, lastNewItem];
       });
-      console.log("Auto-selected the latest new item:", lastNewItem);
     } else {
-      // No new items, just sync existing selections
+      // For quantity changes, update the selected items with the new quantities
       setSelectedItems((prevSelectedItems) =>
-        prevSelectedItems.filter((item) =>
-          cart.some((cartItem) => cartItem.id === item.id)
-        )
+        prevSelectedItems
+          .map((selectedItem) => {
+            const updatedItem = cart.find(
+              (item) => item.id === selectedItem.id
+            );
+            return updatedItem ? updatedItem : selectedItem;
+          })
+          .filter((item) => cart.some((cartItem) => cartItem.id === item.id))
       );
-      console.log("No new items, synced selected items with cart");
     }
 
-    // Update previous cart reference
     prevCartRef.current = [...cart];
-    console.log("Updated Previous Cart:", prevCartRef.current);
   }, [cart]);
 
   // Handle individual item selection
