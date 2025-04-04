@@ -113,6 +113,7 @@ export default function CheckoutCard({ selectedItems }) {
       <button
         className="mt-4 w-full bg-gradient-to-r from-teal-400 to-green-400 text-white py-2 rounded-xl text-lg shadow-md hover:opacity-90 disabled:opacity-50"
         onClick={onSubmit}
+        disabled={loading || selectedItemsCount === 0}
       >
         {loading ? "Processing..." : "Checkout"}
       </button>
