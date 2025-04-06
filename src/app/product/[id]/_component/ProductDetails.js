@@ -132,9 +132,6 @@ export default function ProductDetails({ productDetails }) {
           <h1 className="text-2xl sm:text-3xl lg:text-4xl tracking-wide font-medium md:leading-[50px]">
             {productDetails?.name}
           </h1>
-          <p className="text-sm sm:text-base leading-6">
-            {productDetails?.description}
-          </p>
         </div>
 
         {/* Reviews & Stock Status */}
@@ -258,11 +255,6 @@ export default function ProductDetails({ productDetails }) {
               <Plus size={20} strokeWidth={2} />
             </button>
           </div>
-
-          <AddToCartButton
-            onClick={handleBuyNow}
-            disabled={selectedStock === 0}
-          />
 
           <Link
             href={selectedStock > 0 ? "/checkout" : "#"}

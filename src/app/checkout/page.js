@@ -19,7 +19,7 @@ const CheckoutPage = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 pt-6">
+    <div className="container mx-auto px-2 pt-6">
       <div className="grid grid-cols-12 gap-6">
         <div className="col-span-full xl:col-span-7">
           <div className="flex flex-col xl:flex-row justify-between items-center gap-4 rounded-xl ">

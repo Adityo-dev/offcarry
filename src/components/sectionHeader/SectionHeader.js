@@ -5,7 +5,7 @@ import Link from "next/link";
 const SectionHeader = ({ title, linkName }) => {
   return (
     <header className="bg-[#D7FDEC] w-full h-40 flex items-center relative overflow-hidden">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-2">
         <div className="flex justify-between items-center">
           {/* Left side content */}
           <div className="space-y-2 sm:space-y-4">

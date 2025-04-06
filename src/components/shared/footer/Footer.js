@@ -58,7 +58,7 @@ function Footer() {
         </div>
       </section>
 
-      <section className="container mx-auto px-4 flex flex-col lg:grid grid-cols-12 gap-10 lg:gap-20 ">
+      <section className="container mx-auto px-2 flex flex-col lg:grid grid-cols-12 gap-10 lg:gap-20 ">
         <div className="col-span-4">
           {/* LOGO AND SUBTITLE */}
           <Image

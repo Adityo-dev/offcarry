@@ -27,14 +27,17 @@ import Banner2 from "@/components/bannerGroup/Banner2";
 // ];
 
 async function Hero() {
-  const heroSliderData = await fetch(`${process.env.NEXT_PUBLIC_API_ROUT_URL}/sliders`, {
-    cache: "no-cache",
-  });
+  const heroSliderData = await fetch(
+    `${process.env.NEXT_PUBLIC_API_ROUT_URL}/sliders`,
+    {
+      cache: "no-cache",
+    }
+  );
   const data = await heroSliderData.json();
   const heroData = data || [];
   return (
     <main className="w-full pb-4 xl:pb-8 bg-[#F1F1F1]">
-      <section className="container mx-auto px-4 pt-4 xl:pt-6 space-y-4 xl:space-y-7">
+      <section className="container mx-auto px-2 pt-4 xl:pt-6 space-y-4 xl:space-y-7">
         {/* CATEGORY COMPONENTS */}
         <Category />
         <div className="w-full grid grid-cols-12 gap-7">

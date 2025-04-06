@@ -15,7 +15,7 @@ async function Upcoming() {
   );
 
   return (
-    <section className="container mx-auto px-4">
+    <section className="container mx-auto px-2">
       {/* TITLE AND TABS LIST */}
       <div className="flex flex-col sm:flex-row gap-3 justify-between items-center mb-5 md:mb-7">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-medium">

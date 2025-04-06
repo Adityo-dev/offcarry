@@ -18,7 +18,7 @@ const footerBottomData = [
 
 function CopyRight() {
   return (
-    <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between gap-3">
+    <div className="container mx-auto px-2 flex flex-col sm:flex-row justify-between gap-3 pb-14 xl:pb-0">
       <p className="text-xs md:text-sm text-[#837F74] capitalize text-center lg:text-start">
         All Right Reserved Trust Nest Store © 2025
       </p>

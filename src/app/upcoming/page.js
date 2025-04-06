@@ -18,7 +18,7 @@ async function Upcoming() {
   return (
     <main className="space-y-6 pt-14 xl:pt-0">
       <SectionHeader title={"Upcoming Products"} linkName={"upcoming"} />
-      <div className="container mx-auto px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3">
+      <div className="container mx-auto px-2 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3">
         {upcomingProducts.map((upcoming, ind) => (
           <UpcomingCart key={ind} product={upcoming} />
         ))}

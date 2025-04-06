@@ -23,7 +23,7 @@ export function BottomNavigationBar({ categoriesData, navigationItems }) {
 
   return (
     <section className="border-y border-[#ebebeb] py-2 hidden xl:block">
-      <div className="container mx-auto px-4 flex items-center justify-between">
+      <div className="container mx-auto px-2 flex items-center justify-between">
         <div className="flex items-center gap-6">
           {/* CATEGORIES SECTION */}
           <NavigationMenu>

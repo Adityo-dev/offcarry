@@ -35,7 +35,7 @@ function Wishlist() {
   return (
     <main className="space-y-6 pt-14 xl:pt-0">
       <SectionHeader title={"Wishlist"} linkName={"wishlist"} />
-      <section className="container mx-auto px-4 mt-6">
+      <section className="container mx-auto px-2 mt-6">
         {/* Header */}
         <header className="hidden lg:grid grid-cols-12 gap-4 border-b pb-4">
           <p className="col-span-4 font-semibold">Product Name</p>
