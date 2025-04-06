@@ -22,17 +22,17 @@ export default function ShoppingCart({ setSelectedItems1 }) {
   useEffect(() => {
     saveToLocalStorage("selectedItems", selectedItems);
     setSelectedItems1(selectedItems);
-    console.log("Selected Items Updated:", selectedItems);
+    // console.log("Selected Items Updated:", selectedItems);
   }, [selectedItems]);
 
   useEffect(() => {
-    console.log("Current Cart:", cart);
-    console.log("Previous Cart:", prevCartRef.current);
+    // console.log("Current Cart:", cart);
+    // console.log("Previous Cart:", prevCartRef.current);
 
     if (cart.length === 0) {
       setSelectedItems([]);
       prevCartRef.current = [];
-      console.log("Cart is empty, cleared selected items");
+      // console.log("Cart is empty, cleared selected items");
       return;
     }
 
@@ -53,11 +53,11 @@ export default function ShoppingCart({ setSelectedItems1 }) {
         !prevCartRef.current.some((prevItem) => prevItem.id === cartItem.id)
     );
 
-    console.log("New Items Detected:", newItems);
+    // console.log("New Items Detected:", newItems);
 
     if (newItems.length > 0) {
       const lastNewItem = newItems[newItems.length - 1];
-      console.log("Last New Item:", lastNewItem);
+      // console.log("Last New Item:", lastNewItem);
 
       setSelectedItems((prevSelectedItems) => {
         const filteredPrevItems = prevSelectedItems.filter((item) =>

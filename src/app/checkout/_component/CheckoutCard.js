@@ -2,10 +2,11 @@ import Toast from "@/components/toast/Toast";
 import { MoveRight } from "lucide-react";
 import { useState } from "react";
 
-export default function CheckoutCard({ selectedItems }) {
+export default function CheckoutCard({ selectedItems, selectedLocation }) {
   const [loading, setLoading] = useState(false);
   const [coupon, setCoupon] = useState("");
   const [discount, setDiscount] = useState(0);
+  const [remarks, setRemarks] = useState("");
 
   const selectedItemsCount = selectedItems.length;
   const subtotal = selectedItems.reduce(
@@ -32,9 +33,10 @@ export default function CheckoutCard({ selectedItems }) {
     try {
       const orderData = {
         userId: 1,
+        user: { selectedLocation },
         products: selectedItems.map((item) => ({
           productId: item.id,
-          variationId: item.variationId || 2,
+          variationId: item.variationId || null,
           quantity: item.quantity,
         })),
         subtotal: subtotal.toFixed(2),
@@ -43,7 +45,7 @@ export default function CheckoutCard({ selectedItems }) {
         shippingCost: shipping.toFixed(2),
         paymentMethod: "cash-on-delivery",
         shippingAddress: "biljani,khoksa,kushtia",
-        remarks: "Urgent delivery",
+        remarks: remarks,
       };
 
       const response = await fetch(
@@ -79,7 +81,7 @@ export default function CheckoutCard({ selectedItems }) {
           placeholder="Coupon Code"
           value={coupon}
           onChange={(e) => setCoupon(e.target.value)}
-          className="w-full h-12 p-4 outline-none text-gray-700"
+          className="w-full h-12 p-4 outline-none text-sm text-gray-700"
         />
         <button
           className="w-16 h-12 flex items-center justify-center bg-teal-500 text-white"
@@ -105,10 +107,19 @@ export default function CheckoutCard({ selectedItems }) {
       </div>
 
       <hr className="my-3" />
+
       <div className="flex justify-between text-lg font-semibold">
         <span>Total</span>
         <span className="text-teal-500 font-semibold">৳{total.toFixed(2)}</span>
       </div>
+
+      <textarea
+        placeholder="Add any remarks (e.g. delivery instructions)"
+        value={remarks}
+        onChange={(e) => setRemarks(e.target.value)}
+        rows={2}
+        className="mt-4 w-full p-3 rounded-lg border border-gray-300 outline-none text-gray-700 text-sm"
+      />
 
       <button
         className="mt-4 w-full bg-gradient-to-r from-teal-400 to-green-400 text-white py-2 rounded-xl text-lg shadow-md hover:opacity-90 disabled:opacity-50"
