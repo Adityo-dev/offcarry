@@ -38,7 +38,7 @@ const contacts = [
 function TopNavigationBar() {
   return (
     <section className="w-full h-[40px] hidden xl:flex items-center bg-[#282828] text-white">
-      <div className="container mx-auto px-4 flex items-center justify-between">
+      <div className="container mx-auto px-2 flex items-center justify-between">
         <p className="text-sm">Enjoy free shipping on orders up to $100</p>
         {/* SOCIAL MEDIA SECTION */}
         <div className="flex items-center gap-7">

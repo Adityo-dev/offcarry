@@ -287,7 +287,7 @@ function OfferDetails() {
   return (
     <main className="space-y-6 pt-14 xl:pt-0">
       <SectionHeader title={"Offer Details"} linkName={"offer details"} />
-      <header className="container mx-auto px-4 text-center">
+      <header className="container mx-auto px-2 text-center">
         <h4 className="text-3xl">চলছে স্টার টেক ১৮ বর্ষপূর্তি Mega Deal!!</h4>
         <p className="text-lg mt-4">
           স্টার টেকের ১৮তম বর্ষপূর্তিতে দারুণ অফার! যেকোনো প্রযুক্তি পণ্যে থাকছে
@@ -308,7 +308,7 @@ function OfferDetails() {
         <span>10 days 20 hours 30 minutes 40 seconds</span>
       </header>
 
-      <section className="container mx-auto px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3">
+      <section className="container mx-auto px-2 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3">
         {OfferProduct.map((OfferProduct, ind) => (
           <ProductCart product={OfferProduct} key={ind} />
         ))}

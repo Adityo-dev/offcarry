@@ -101,7 +101,7 @@ export default function PreOrder() {
           run out!
         </p>
 
-        <div className="bg-blue-100 text-blue-800 p-3 rounded-lg text-center font-medium">
+        <div className="bg-secondary  p-3 rounded-lg text-center font-medium">
           🔥 Limited Stock Available! Be the first to grab your exclusive deal.
         </div>
 
@@ -136,7 +136,7 @@ export default function PreOrder() {
           <div>
             <textarea
               placeholder="Enter Your Product Details"
-              className="w-full p-3 sm:p-4 text-sm rounded-md outline-none border focus:border-blue-500 transition-all duration-300"
+              className="w-full p-3 sm:p-4 text-sm rounded-md outline-none border focus:border-primary transition-all duration-300"
               rows="4"
               {...register("productDetails", {
                 required: "Product details are required",
@@ -211,7 +211,7 @@ export default function PreOrder() {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full h-11 flex items-center justify-center rounded-md bg-blue-600 text-white font-semibold shadow-md hover:bg-blue-700 transition-all"
+            className="w-full h-11 flex items-center justify-center rounded-md bg-primary text-white font-semibold shadow-md transition-all"
             disabled={loading}
           >
             {loading ? "Submitting..." : "Pre-Order Now"}

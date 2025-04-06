@@ -18,7 +18,7 @@ export default function Home() {
       <DealOfTheDay />
       <PreOrder />
       <BestSellers />
-      <section className="container mx-auto px-4 grid grid-cols-12 gap-4 lg:gap-7">
+      <section className="container mx-auto px-2 grid grid-cols-12 gap-4 lg:gap-7">
         <div className="col-span-full lg:col-span-4">
           <ServiceType />
         </div>

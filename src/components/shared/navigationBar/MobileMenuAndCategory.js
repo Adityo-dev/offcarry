@@ -18,14 +18,14 @@ function MobileMenuAndCategory({
         <TabsList className="w-full h-12 bg-[#152327] grid grid-cols-12">
           <TabsTrigger
             value={"menu"}
-            className="col-span-3 w-full border-b-2 border-[#152327] data-[state=active]:border-b-2 data-[state=active]:border-red-500 data-[state=active]:text-white "
+            className="col-span-3 w-full border-b-2 border-[#152327] data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:text-white "
           >
             <AlignJustify size={22} strokeWidth={1.5} />
           </TabsTrigger>
 
           <TabsTrigger
             value={"category"}
-            className="col-span-7 w-full border-b-2 border-[#152327] data-[state=active]:border-b-2 data-[state=active]:border-red-500 data-[state=active]:text-white "
+            className="col-span-7 w-full border-b-2 border-[#152327] data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:text-white "
           >
             Category
           </TabsTrigger>

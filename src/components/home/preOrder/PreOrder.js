@@ -97,7 +97,7 @@ function PreOrder() {
   };
 
   return (
-    <section className="container mx-auto px-4">
+    <section className="container mx-auto px-2">
       <div className="w-full sm:max-h-[600px] h-full bg-[#B2E4DB] rounded-md relative flex flex-col lg:flex-row overflow-hidden sm:pt-6">
         {/* Image Section (Always Visible) */}
         <div className="w-full lg:w-[35%] flex justify-center items-end">
