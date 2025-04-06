@@ -29,7 +29,7 @@ const ProductSection = ({
 }) => {
   return (
     <section className="w-full grid-cols-none col-span-10">
-      <div className=" p-2.5 md:p-4 mb-5 flex justify-between items-center gap-6 border  rounded-lg">
+      <div className="p-2.5 md:p-4 mb-5 flex justify-between items-center gap-6 border  rounded-lg">
         <p className="text-lg font-medium hidden xl:block"></p>
         <div className="xl:hidden">
           <Sheet>

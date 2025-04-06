@@ -15,7 +15,7 @@ async function Banner4() {
     .sort((a, b) => a?.position - b?.position);
 
   return (
-    <section className="container mx-auto px-4 grid grid-cols-12 gap-4 lg:gap-7">
+    <section className="container mx-auto px-2 grid grid-cols-12 gap-4 lg:gap-7">
       <div className="col-span-full sm:col-span-8 w-full max-h-[420px] h-full">
         <Image
           src={selectedBanner?.[0]?.banner?.image}

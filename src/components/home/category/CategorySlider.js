@@ -62,7 +62,7 @@ export default function CategorySlider({ sliderData }) {
           <SwiperSlide key={ind}>
             <Link
               href={`category/${(category?.name).toLowerCase()}`}
-              className="max-w-[250px] w-full h-20 md:h-[100px] flex items-center justify-center rounded-lg bg-white shadow-sm transition-all duration-300 hover:border hover:border-primary"
+              className="w-full h-20 md:h-[100px] flex items-center justify-center rounded-lg bg-white shadow-sm transition-all duration-300 hover:border hover:border-primary"
             >
               <div className="flex items-center gap-2 md:gap-3">
                 <Image
@@ -70,9 +70,11 @@ export default function CategorySlider({ sliderData }) {
                   width={400}
                   height={400}
                   alt={`Logo for ${category?.name}: ${category?.description}`}
-                  className="w-10 md:w-12 h-10 md:h-12 object-cover"
+                  className="w-10 md:w-12 h-full  md:h-12 object-cover"
                 />
-                <p className="font-semibold tracking-wider">{category?.name}</p>
+                <p className="text-sm sm:text-base font-semibold tracking-wider">
+                  {category?.name}
+                </p>
               </div>
             </Link>
           </SwiperSlide>

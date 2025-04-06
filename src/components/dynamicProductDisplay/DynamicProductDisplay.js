@@ -4,7 +4,7 @@ import { useSearchParams } from "next/navigation";
 import DynamicFilter from "./DynamicFilter";
 import ProductSection from "./ProductSection";
 
-const DynamicProductDisplay = ({ params, products }) => {
+const DynamicProductDisplay = ({ products }) => {
   const initialMinPrice = products.length
     ? Math.min(...products.map((product) => product.currentPrice))
     : 0;
@@ -157,7 +157,7 @@ const DynamicProductDisplay = ({ params, products }) => {
   );
 
   return (
-    <main className="container mx-auto px-4 flex gap-5">
+    <main className="container mx-auto px-2 flex gap-5">
       <section className="max-w-[250px] relative hidden xl:block">
         {filterData && (
           <DynamicFilter

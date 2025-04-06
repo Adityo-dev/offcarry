@@ -22,7 +22,7 @@ async function BestSellers() {
   ];
 
   return (
-    <section className="container mx-auto px-4">
+    <section className="container mx-auto px-2">
       <Tabs defaultValue={categories[0] || ""} className="w-full">
         {/* TITLE AND TABS LIST */}
         <div className="flex flex-col sm:flex-row gap-3 justify-between items-center mb-5 md:mb-7">
