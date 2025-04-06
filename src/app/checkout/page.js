@@ -12,6 +12,7 @@ const CheckoutPage = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const [selectedItems, setSelectedItems1] = useState([]);
+  const [selectedLocation, setSelectedLocation] = useState("");
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
@@ -41,13 +42,16 @@ const CheckoutPage = () => {
             )}
           </div>
           <div className="mt-6 space-y-6">
-            <CheckoutLocation />
+            <CheckoutLocation setSelectedLocation={setSelectedLocation} />
             <ShoppingCart setSelectedItems1={setSelectedItems1} />
           </div>
         </div>
         <div className="col-span-full xl:col-span-5">
           <PaymentOptions />
-          <CheckoutCard selectedItems={selectedItems} />
+          <CheckoutCard
+            selectedItems={selectedItems}
+            selectedLocation={selectedLocation}
+          />
         </div>
       </div>
     </div>

@@ -6,7 +6,6 @@ import {
   Instagram,
   Minus,
   Plus,
-  TriangleAlert,
   Twitter,
   XCircle,
 } from "lucide-react";
@@ -41,43 +40,77 @@ export default function ProductDetails({ productDetails }) {
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
+  const [uniqueColors, setUniqueColors] = useState([]);
+  const [uniqueSizes, setUniqueSizes] = useState([]);
+  const [selectedStock, setSelectedStock] = useState(0);
+  const [selectedVariationId, setSelectedVariationId] = useState(null);
 
   useEffect(() => {
-    if (productDetails?.variations?.length > 0) {
-      setSelectedColor(productDetails.variations[0].color);
-      setSelectedSize(productDetails.variations[0].size);
-    }
+    const colorSet = new Set();
+    const sizeSet = new Set();
+
+    productDetails?.variations?.forEach((variation) => {
+      if (variation.color) colorSet.add(variation.color);
+      if (variation.size) sizeSet.add(variation.size);
+    });
+
+    const colorArray = Array.from(colorSet);
+    const sizeArray = Array.from(sizeSet);
+
+    setUniqueColors(colorArray);
+    setUniqueSizes(sizeArray);
+
+    setSelectedColor(colorArray[0] || "");
+    setSelectedSize(sizeArray[0] || "");
   }, [productDetails]);
+
+  useEffect(() => {
+    const matchedVariation = productDetails?.variations?.find(
+      (v) => v.color === selectedColor && v.size === selectedSize
+    );
+    setSelectedStock(matchedVariation?.stock || 0);
+    setSelectedVariationId(matchedVariation?.id || null); // set variation id
+    setQuantity(1); // Reset quantity
+  }, [selectedColor, selectedSize, productDetails]);
 
   const decreaseQuantity = () => {
     if (quantity > 1) setQuantity(quantity - 1);
   };
 
   const increaseQuantity = () => {
-    setQuantity(quantity + 1);
+    if (quantity < selectedStock) setQuantity(quantity + 1);
   };
 
   const handleBuyNow = () => {
+    if (selectedStock === 0) return;
     addToCart({
       id: productDetails?.id,
       name: productDetails?.name,
       category: productDetails?.category?.name,
       price: productDetails?.retail_price,
       image: productDetails?.thumbnail,
-      quantity: quantity,
+      quantity,
       size: selectedSize,
       color: selectedColor,
+      variationId: selectedVariationId,
     });
+  };
+
+  const calculateDiscountPrice = () => {
+    const { retail_price, discount } = productDetails || {};
+    if (!retail_price) return null;
+    return (retail_price - retail_price * (discount / 100)).toFixed(2);
   };
 
   return (
     <section>
       <div className="space-y-4 sm:space-y-6">
+        {/* Category & Brand */}
         <div className="flex items-center flex-wrap gap-6 text-[#888AA0]">
           <p>
             <span>Category : </span>
             <Link
-              href={`/category/${(productDetails?.category?.name).toLowerCase()}`}
+              href={`/category/${productDetails?.category?.name?.toLowerCase()}`}
               className="text-gray-900 text-sm"
             >
               {productDetails?.category?.name}
@@ -86,7 +119,7 @@ export default function ProductDetails({ productDetails }) {
           <p>
             <span>Brand : </span>
             <Link
-              href={`/brand/${(productDetails?.brand?.name).toLowerCase()}`}
+              href={`/brand/${productDetails?.brand?.name?.toLowerCase()}`}
               className="text-gray-900 text-sm"
             >
               {productDetails?.brand?.name}
@@ -94,7 +127,7 @@ export default function ProductDetails({ productDetails }) {
           </p>
         </div>
 
-        {/* PRODUCT NAME AND TITLE  */}
+        {/* Title & Description */}
         <div className="space-y-2 sm:space-y-3">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl tracking-wide font-medium md:leading-[50px]">
             {productDetails?.name}
@@ -103,14 +136,14 @@ export default function ProductDetails({ productDetails }) {
             {productDetails?.description}
           </p>
         </div>
-        {/* PRODUCT RATING */}
+
+        {/* Reviews & Stock Status */}
         <div className="flex items-center gap-2">
           <div className="flex">
             {[1, 2, 3, 4].map((_, i) => (
               <svg
                 key={i}
                 className="w-4 sm:w-5 h-4 sm:h-5 text-[#EFAD03] fill-[#EFAD03]"
-                xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
               >
                 <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
@@ -118,13 +151,12 @@ export default function ProductDetails({ productDetails }) {
             ))}
             <svg
               className="w-4 sm:w-5 h-4 sm:h-5 text-[#888AA0]"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
+              viewBox="0 0 24 24"
             >
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
             </svg>
@@ -132,22 +164,21 @@ export default function ProductDetails({ productDetails }) {
           <span className="text-[#837F74] text-sm sm:text-base">
             (4.5) {productDetails?.Review?.length} Review
           </span>
-          {/* PRODUCT STOCK */}
           <p
-            className={`flex items-center flex-wrap gap-1 ms-2 sm:ms-3 text-sm sm:text-base ${
-              productDetails?.stock > 5
+            className={`flex items-center gap-1 ms-2 sm:ms-3 text-sm sm:text-base ${
+              selectedStock > 5
                 ? "text-green-600"
-                : productDetails?.stock > 0
+                : selectedStock > 0
                 ? "text-yellow-600"
                 : "text-red-600"
             }`}
           >
-            {productDetails?.stock > 5 ? (
+            {selectedStock > 5 ? (
               <>
                 <CheckCircle size={18} strokeWidth={1.5} />
                 <span>In Stock</span>
               </>
-            ) : productDetails?.stock > 0 ? (
+            ) : selectedStock > 0 ? (
               <>
                 <AlertTriangle size={18} strokeWidth={1.5} />
                 <span>Low Stock</span>
@@ -161,97 +192,93 @@ export default function ProductDetails({ productDetails }) {
           </p>
         </div>
 
-        {/* PRODUCT PRICE */}
+        {/* Price */}
         <div className="flex items-center gap-4 text-2xl sm:text-3xl font-medium">
           {productDetails?.retail_price && (
             <span className="text-[#837F74] line-through text-[80%]">
               ৳{productDetails?.retail_price}
             </span>
           )}
-          {productDetails?.retail_price && (
-            <span className="text-primary">
-              ৳
-              {(
-                productDetails?.retail_price -
-                productDetails?.retail_price * (productDetails?.discount / 100)
-              ).toFixed(2)}
-            </span>
-          )}
+          <span className="text-primary">৳{calculateDiscountPrice()}</span>
         </div>
 
-        {/* COLOR SELECTOR  */}
+        {/* Color Selector */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
           <div className="flex items-center gap-3">
             <label className="sm:text-lg font-medium">Color: </label>
-            <div>
-              <select
-                className="w-[200px] px-4 py-2 border rounded-md bg-white outline-none transition-all duration-300 focus:border-primary text-sm sm:text-base"
-                value={selectedColor}
-                onChange={(e) => setSelectedColor(e.target.value)}
-              >
-                {productDetails?.variations?.map((variation) => {
-                  return (
-                    <option key={variation.id} value={variation.color}>
-                      {variation.color}
-                    </option>
-                  );
-                })}
-              </select>
-            </div>
+            <select
+              className="w-[200px] px-4 py-2 border rounded-md bg-white outline-none transition-all duration-300 focus:border-primary text-sm sm:text-base"
+              value={selectedColor}
+              onChange={(e) => setSelectedColor(e.target.value)}
+            >
+              {uniqueColors.map((color, i) => (
+                <option key={i} value={color}>
+                  {color}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
-        {/* PRODUCT SIZE */}
+
+        {/* Size Selector */}
         <div className="flex items-center gap-3">
           <label className="sm:text-lg font-medium">Size: </label>
           <div className="flex gap-2">
-            {productDetails?.variations?.map((size) => (
+            {uniqueSizes.map((size, i) => (
               <button
-                key={size?.id}
-                onClick={() => setSelectedSize(size?.size)}
+                key={i}
+                onClick={() => setSelectedSize(size)}
                 className={`w-8 sm:w-10 h-8 sm:h-10 text-xs sm:text-sm rounded-md font-medium transition-all duration-300 ${
-                  selectedSize === size?.size
+                  selectedSize === size
                     ? "bg-primary text-white"
                     : "border border-gray-300 hover:border-primary hover:text-primary"
                 }`}
               >
-                {size?.size}
+                {size}
               </button>
             ))}
           </div>
         </div>
 
-        {/* PRODUCT COUNTER AND BUY NOW BTN */}
+        {/* Quantity + Buttons */}
         <div className="flex gap-2 sm:gap-4 items-center">
           <div className="flex items-center border rounded-md">
             <button
               onClick={decreaseQuantity}
-              className="w-12 h-12 flex items-center justify-center text-gray-600 hover:bg-gray-50 transition-colors"
+              className="w-12 h-12 flex items-center justify-center text-gray-600 hover:bg-gray-50"
             >
               <Minus size={20} strokeWidth={2} />
             </button>
             <div className="w-16 text-center text-lg">{quantity}</div>
             <button
               onClick={increaseQuantity}
-              className="w-12 h-12 flex items-center justify-center text-gray-600 hover:bg-gray-50 transition-colors"
+              disabled={quantity >= selectedStock}
+              className="w-12 h-12 flex items-center justify-center text-gray-600 hover:bg-gray-50 disabled:opacity-50"
             >
               <Plus size={20} strokeWidth={2} />
             </button>
           </div>
-          {/* Add To Cart BTN */}
-          <AddToCartButton onClick={handleBuyNow} />
 
-          {/* BUY NOW BTN */}
-          <Link
-            href={"/checkout"}
+          <AddToCartButton
             onClick={handleBuyNow}
-            className="w-full sm:w-auto h-12 sm:px-20 flex items-center justify-center text-white font-semibold rounded-lg bg-gradient-primary outline-none"
+            disabled={selectedStock === 0}
+          />
+
+          <Link
+            href={selectedStock > 0 ? "/checkout" : "#"}
+            onClick={handleBuyNow}
+            className={`w-full sm:w-auto h-12 sm:px-20 flex items-center justify-center text-white font-semibold rounded-lg ${
+              selectedStock > 0
+                ? "bg-gradient-primary"
+                : "bg-gray-400 cursor-not-allowed"
+            }`}
           >
             Buy Now
           </Link>
         </div>
 
+        {/* SKU & Share */}
         <div className="border-t pt-4 space-y-2">
-          {/* SKU*/}
           {productDetails?.sku && (
             <p>
               <span className="text-sm sm:text-base font-medium pr-2">
@@ -262,7 +289,6 @@ export default function ProductDetails({ productDetails }) {
               </span>
             </p>
           )}
-          {/* SOCIAL MEDIA */}
           <div className="flex items-center gap-2">
             <p className="text-sm sm:text-base font-medium">Share:</p>
             <p className="flex items-center gap-3">

@@ -1,15 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAddress } from "@/components/contextApi/context/AddressContext";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Trash, X } from "lucide-react";
 
-function CheckoutLocation({ data }) {
+function CheckoutLocation({ setSelectedLocation }) {
   const { addresses, deleteAddress } = useAddress();
-  const [selectedAddress, setSelectedAddress] = useState(0);
+  const [selectedAddress, setSelectedAddress] = useState(null);
 
   const handleSelectAddress = (index) => {
-    setSelectedAddress(index === selectedAddress ? 0 : index);
+    if (index === selectedAddress) {
+      setSelectedAddress(null);
+      setSelectedLocation(null);
+    } else {
+      setSelectedAddress(index);
+      setSelectedLocation(addresses[index]);
+    }
   };
+
+  useEffect(() => {
+    if (addresses.length > 0 && selectedAddress === null) {
+      setSelectedAddress(0);
+      setSelectedLocation(addresses[0]);
+    }
+  }, [addresses]);
 
   return (
     <main className="space-y-4">
