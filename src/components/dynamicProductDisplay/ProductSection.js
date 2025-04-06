@@ -1,6 +1,12 @@
 "use client";
-import { Filter } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Filter, X } from "lucide-react";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetFooter,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import DynamicFilter from "./DynamicFilter";
 import ProductDisplay from "./ProductDisplay";
 import Pagination from "./Pagination";
@@ -19,6 +25,7 @@ const ProductSection = ({
   currentPage,
   totalPages,
   handlePageChange,
+  handleResetFilters,
 }) => {
   return (
     <section className="w-full grid-cols-none col-span-10">
@@ -27,21 +34,41 @@ const ProductSection = ({
         <div className="xl:hidden">
           <Sheet>
             <SheetTrigger asChild>
-              <button className="bg-secondary text-white px-2 py-1 flex items-center gap-2 justify-center rounded-md">
+              <button className="bg-secondary text-white px-2 py-1 flex items-center gap-1.5 sm:gap-2 justify-center rounded-md text-sm sm:text-base">
                 <Filter className="w-4 h-4" />
                 Filter
               </button>
             </SheetTrigger>
-            <SheetContent className="w-screen overflow-x-auto z-[50000] max-w-[300px]">
-              <DynamicFilter
-                filterData={filterData}
-                checkedItems={checkedItems}
-                handleToggle={handleToggle}
-                minPrice={minPrice}
-                maxPrice={maxPrice}
-                handleMinPriceChange={handleMinPriceChange}
-                handleMaxPriceChange={handleMaxPriceChange}
-              />
+            <SheetContent
+              className="w-screen overflow-x-auto z-[50000] max-w-[300px] "
+              side="right"
+            >
+              <div className="flex items-center justify-between px-4 py-2 ">
+                <button
+                  className="bg-secondary text-white px-2 py-1 rounded-md text-sm sm:text-base"
+                  onClick={handleResetFilters}
+                >
+                  Reset All
+                </button>
+
+                <SheetClose asChild>
+                  <button type="submit">
+                    <X size={26} strokeWidth={1.2} color="red" />
+                  </button>
+                </SheetClose>
+              </div>
+
+              <div>
+                <DynamicFilter
+                  filterData={filterData}
+                  checkedItems={checkedItems}
+                  handleToggle={handleToggle}
+                  minPrice={minPrice}
+                  maxPrice={maxPrice}
+                  handleMinPriceChange={handleMinPriceChange}
+                  handleMaxPriceChange={handleMaxPriceChange}
+                />
+              </div>
             </SheetContent>
           </Sheet>
         </div>

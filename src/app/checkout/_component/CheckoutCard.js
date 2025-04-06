@@ -29,6 +29,14 @@ export default function CheckoutCard({ selectedItems, selectedLocation }) {
 
   // Handle Order Submission
   const onSubmit = async () => {
+    if (!selectedLocation || Object.keys(selectedLocation).length === 0) {
+      Toast({
+        type: "error",
+        message: "📍 Please select a shipping location before checkout.",
+      });
+      return;
+    }
+
     setLoading(true);
     try {
       const orderData = {

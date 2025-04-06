@@ -117,6 +117,16 @@ const DynamicProductDisplay = ({ params, products }) => {
     });
   }, [products, minPrice, maxPrice, checkedItems]);
 
+  const handleResetFilters = () => {
+    const resetChecked = Object.keys(filterData).reduce((acc, key) => {
+      acc[key] = [];
+      return acc;
+    }, {});
+    setCheckedItems(resetChecked);
+    setMinPrice(initialMinPrice);
+    setMaxPrice(initialMaxPrice);
+  };
+
   const searchFilteredData = products.filter((product) =>
     product?.name.toLowerCase().includes(search?.toLowerCase())
   );
@@ -177,6 +187,7 @@ const DynamicProductDisplay = ({ params, products }) => {
           currentPage={currentPage}
           totalPages={totalPages}
           handlePageChange={handlePageChange}
+          handleResetFilters={handleResetFilters}
         />
       </section>
     </main>
