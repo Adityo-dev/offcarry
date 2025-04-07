@@ -13,7 +13,7 @@ export default function RelativeModal({ setShowForm, title, children }) {
       onClick={() => setShowForm(false)}
     >
       <section
-        className="w-[40rem] bg-background animate-scale rounded-lg shadow-lg"
+        className="w-full sm:w-[40rem] bg-background animate-scale rounded-lg shadow-lg"
         onClick={(e) => e.stopPropagation()}
       >
         <header className="modal-header flex justify-between rounded-t-md items-center p-6 pb-0  text-[#38311F]">

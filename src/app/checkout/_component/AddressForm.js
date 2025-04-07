@@ -39,6 +39,7 @@ export default function AddressForm({ setShowForm = () => {} }) {
     upazilas: [],
     unions: [],
   });
+  const [loading, setLoading] = useState(true); // Add loading state
 
   const {
     register,
@@ -50,9 +51,11 @@ export default function AddressForm({ setShowForm = () => {} }) {
 
   useEffect(() => {
     const fetchData = async (url, setter) => {
+      setLoading(true); // Set loading to true when data is being fetched
       const response = await fetch(url);
       const json = await response.json();
       setter(json?.data);
+      setLoading(false); // Set loading to false after data is fetched
     };
 
     fetchData("https://locator-api.declives.com/api/v1/divisions", (data) =>
@@ -116,7 +119,7 @@ export default function AddressForm({ setShowForm = () => {} }) {
           role="combobox"
           aria-expanded={open[type]}
           disabled={disabledCondition}
-          className="mt-2 h-12 p-4 w-full border border-gray-300  bg-white text-[#ACB5BD] rounded-lg placeholder:text-[#ACB5BD] text-sm outline-none transition-all duration-300 focus:border-primary"
+          className="mt-2 h-12 p-4 w-full border border-gray-300 bg-white text-[#ACB5BD] rounded-lg placeholder:text-[#ACB5BD] text-sm outline-none transition-all duration-300 focus:border-primary"
         >
           {selected[type].name || `Select ${type}`}
           <ChevronsUpDown className="opacity-50" />
@@ -163,83 +166,105 @@ export default function AddressForm({ setShowForm = () => {} }) {
       onSubmit={handleSubmit(onSubmit)}
       className="space-y-6 text-left rounded-md min-w-[30rem] xs:min-w-full dark:text-gray-400"
     >
-      <div className="grid grid-cols-2 gap-5">
-        {["name", "phone"].map((field) => (
-          <div key={field}>
-            <label
-              htmlFor={field}
-              className="block text-sm font-semibold text-[#38311F]"
-            >
-              {field.charAt(0).toUpperCase() + field.slice(1)}{" "}
-              <span className="text-red-500">*</span>
-            </label>
-            <input
-              id={field}
-              type="text"
-              placeholder={`Enter your ${field}`}
-              {...register(field, {
-                required: `${
-                  field.charAt(0).toUpperCase() + field.slice(1)
-                } is required`,
-              })}
-              className="mt-2 h-12 p-4 w-full border border-gray-300 bg-white text-[#ACB5BD] rounded-lg placeholder:text-[#ACB5BD] text-sm outline-none transition-all duration-300 focus:border-primary"
-            />
-            {errors[field] && (
-              <span className="text-red-500">{errors[field].message}</span>
-            )}
+      {loading ? (
+        <div className="flex justify-center items-center">loading...</div>
+      ) : (
+        <>
+          <div className="grid grid-cols-2 gap-5">
+            {["name", "phone"].map((field) => (
+              <div key={field}>
+                <label
+                  htmlFor={field}
+                  className="block text-sm font-semibold text-[#38311F]"
+                >
+                  {field.charAt(0).toUpperCase() + field.slice(1)}{" "}
+                  <span className="text-red-500">*</span>
+                </label>
+                <input
+                  id={field}
+                  type="text"
+                  placeholder={`Enter your ${field}`}
+                  {...register(field, {
+                    required: `${
+                      field.charAt(0).toUpperCase() + field.slice(1)
+                    } is required`,
+                  })}
+                  className="mt-2 h-12 p-4 w-full border border-gray-300 bg-white text-[#ACB5BD] rounded-lg placeholder:text-[#ACB5BD] text-sm outline-none transition-all duration-300 focus:border-primary"
+                />
+                {errors[field] && (
+                  <span className="text-red-500">{errors[field].message}</span>
+                )}
+              </div>
+            ))}
+            <div>
+              <label
+                htmlFor="division"
+                className="block text-sm font-semibold text-[#38311F]"
+              >
+                Division <span className="text-red-500">*</span>
+              </label>
+              {renderSelector("division", "Division", false)}
+            </div>
+            <div>
+              <label
+                htmlFor="district"
+                className="block text-sm font-semibold text-[#38311F]"
+              >
+                District <span className="text-red-500">*</span>
+              </label>
+              {renderSelector("district", "District", !selected.division.id)}
+            </div>
+            <div>
+              <label
+                htmlFor="upazila"
+                className="block text-sm font-semibold text-[#38311F]"
+              >
+                Upazila
+              </label>
+              {renderSelector("upazila", "Upazila", !selected.district.id)}
+            </div>
+            <div>
+              <label
+                htmlFor="union"
+                className="block text-sm font-semibold text-[#38311F]"
+              >
+                Union
+              </label>
+              {renderSelector("union", "Union", !selected.upazila.id)}
+            </div>
+            <div className="col-span-2">
+              <label
+                htmlFor="streetAddress"
+                className="block text-sm font-semibold text-[#38311F]"
+              >
+                Street Address <span className="text-red-500">*</span>
+              </label>
+              <textarea
+                id="streetAddress"
+                rows="4"
+                placeholder="Your Street Address"
+                {...register("streetAddress", {
+                  required: "Street Address is required",
+                })}
+                className="mt-2 h-auto p-4 w-full border border-gray-300 bg-white text-[#ACB5BD] rounded-lg placeholder:text-[#ACB5BD] text-sm outline-none transition-all duration-300 focus:border-primary"
+              />
+              {errors.streetAddress && (
+                <span className="text-red-500">
+                  {errors.streetAddress.message}
+                </span>
+              )}
+            </div>
           </div>
-        ))}
-        {renderSelector("division", "Division", false)}
-        {renderSelector("district", "District", !selected.division.id)}
-        {renderSelector("upazila", "Upazila", !selected.district.id)}
-        {renderSelector("union", "Union", !selected.upazila.id)}
-        <div className="col-span-2">
-          <label
-            htmlFor="streetAddress"
-            className="block text-sm font-semibold text-[#38311F]"
-          >
-            Street Address <span className="text-red-500">*</span>
-          </label>
-          <textarea
-            id="streetAddress"
-            rows="4"
-            placeholder="Your Street Address"
-            {...register("streetAddress", {
-              required: "Street Address is required",
-            })}
-            className="mt-2 h-auto p-4 w-full border border-gray-300 bg-white text-[#ACB5BD] rounded-lg placeholder:text-[#ACB5BD] text-sm outline-none transition-all duration-300 focus:border-primary"
-          />
-          {errors.streetAddress && (
-            <span className="text-red-500">{errors.streetAddress.message}</span>
-          )}
-        </div>
-        <div className="col-span-full">
-          <label
-            htmlFor="email"
-            className="block text-sm font-semibold text-[#38311F]"
-          >
-            Email
-          </label>
-          <input
-            id="email"
-            type="email"
-            placeholder="Your Email"
-            {...register("email", { required: "Email is required" })}
-            className="mt-2 h-12 p-4 w-full border border-gray-300 bg-white text-[#ACB5BD] rounded-lg placeholder:text-[#ACB5BD] text-sm outline-none transition-all duration-300 focus:border-primary"
-          />
-          {errors.email && (
-            <span className="text-red-500">{errors.email.message}</span>
-          )}
-        </div>
-      </div>
-      <div className="flex items-center justify-center">
-        <button
-          type="submit"
-          className="h-12 px-16 text-[#F8F9FA] font-semibold rounded-md bg-gradient-primary outline-none transition-all duration-300 text-center"
-        >
-          Save Location
-        </button>
-      </div>
+          <div className="flex items-center justify-center">
+            <button
+              type="submit"
+              className="h-12 px-16 text-[#F8F9FA] font-semibold rounded-md bg-gradient-primary outline-none transition-all duration-300 text-center"
+            >
+              Save Location
+            </button>
+          </div>
+        </>
+      )}
     </form>
   );
 }
