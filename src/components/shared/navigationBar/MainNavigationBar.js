@@ -104,6 +104,7 @@ async function MainNavigationBar() {
     }
   );
 
+
   const categoriesData = await response.json();
 
   return (

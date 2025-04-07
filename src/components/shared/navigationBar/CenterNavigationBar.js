@@ -11,6 +11,7 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 import MobileMenuAndCategory from "./MobileMenuAndCategory";
+import { useSession } from "next-auth/react";
 
 function CenterNavigationBar({
   categoriesData,
@@ -18,7 +19,9 @@ function CenterNavigationBar({
   centerNavRightData,
 }) {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
-
+  const { data} = useSession();
+  console.log(data);
+  
   const toggleSearch = () => {
     setIsSearchVisible(!isSearchVisible);
   };
@@ -60,17 +63,17 @@ function CenterNavigationBar({
         {/* Right Section: Wishlist and Account */}
         <div className="hidden xl:flex items-center gap-4">
           {centerNavRightData.map((data, ind) => (
+          
             <Link
               href={data?.url}
               key={ind}
               className="flex items-center gap-2"
             >
               <p
-                className={`w-8 xl:w-10 h-8 xl:h-10 p-1.5 bg-[#EEF0F2] rounded-full flex items-center justify-center  ${
-                  data?.title === "offer"
+                className={`w-8 xl:w-10 h-8 xl:h-10 p-1.5 bg-[#EEF0F2] rounded-full flex items-center justify-center  ${data?.title === "offer"
                     ? "text-secondary animate-pulse"
                     : "text-[#292B49]"
-                }`}
+                  }`}
               >
                 {data?.icon}
               </p>
