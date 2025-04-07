@@ -60,7 +60,7 @@ function DealOfTheDay() {
         Deal Of The Day
       </h2>
       {/* COUPON CART COMPONENTS */}
-      <div className="w-full h-[300px] sm:h-full overflow-y-scroll grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4 md:gap-5 xl:gap-6">
+      <div className="w-full h-[300px] sm:h-full overflow-y-scroll sm:overflow-hidden grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4 md:gap-5 xl:gap-6">
         {dealOfTheDayData.map((dealData, ind) => (
           <CouponCart key={ind} product={dealData} />
         ))}
