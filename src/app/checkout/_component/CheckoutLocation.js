@@ -52,7 +52,6 @@ function CheckoutLocation({ setSelectedLocation }) {
 
                 {/* ACTION CONTAINER */}
                 <div className="flex items-center gap-2">
-                  <p>Edit</p>
                   <button className="text-red-500 hover:text-red-700 ml-4 hidden md:block">
                     <Trash size={20} onClick={() => deleteAddress(ind)} />
                   </button>

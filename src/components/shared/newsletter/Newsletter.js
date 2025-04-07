@@ -81,7 +81,7 @@ function Newsletter() {
 
           {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
           {success && (
-            <p className="text-green-500 text-sm mt-2">
+            <p className="text-white text-sm mt-2">
               Thank you for subscribing to our newsletter!
             </p>
           )}
