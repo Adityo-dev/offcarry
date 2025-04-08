@@ -1,7 +1,6 @@
 import Banner1 from "@/components/bannerGroup/Banner1";
 import Banner3 from "@/components/bannerGroup/Banner3";
 import Banner4 from "@/components/bannerGroup/Banner4";
-import { ChatButton } from "@/components/bot/chat-button";
 import BestSellers from "@/components/home/bestSellers/BestSellers";
 import Brand from "@/components/home/brand/Brand";
 import DealOfTheDay from "@/components/home/dealOfTheDay/DealOfTheDay";
@@ -35,9 +34,6 @@ export default function Home() {
       <section className="px-4 block lg:hidden">
         <Newsletter />
       </section>
-
-      <ChatButton />
-
     </main>
   );
 }

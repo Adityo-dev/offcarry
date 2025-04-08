@@ -1,5 +1,6 @@
 import Toast from "@/components/toast/Toast";
 import { MoveRight } from "lucide-react";
+import { useSession } from "next-auth/react";
 import { useState } from "react";
 
 export default function CheckoutCard({ selectedItems, selectedLocation }) {
@@ -26,6 +27,7 @@ export default function CheckoutCard({ selectedItems, selectedLocation }) {
   const applyCoupon = () => {
     setDiscount(coupons[coupon] || 0);
   };
+  const { data: isUser } = useSession();
 
   // Handle Order Submission
   const onSubmit = async () => {
@@ -40,8 +42,15 @@ export default function CheckoutCard({ selectedItems, selectedLocation }) {
     setLoading(true);
     try {
       const orderData = {
-        userId: 1,
-        user: { selectedLocation },
+        userId: isUser?.user?.sub || null,
+        user: {
+          name: selectedLocation?.name || null,
+          email: selectedLocation?.email || null,
+          phone: selectedLocation?.phone || null,
+          address:
+            `${selectedLocation?.streetAddress}, ${selectedLocation?.union?.name}, ${selectedLocation?.upazila?.name}, ${selectedLocation?.district?.name}, 
+            ${selectedLocation?.division?.name} Bangladesh` || null,
+        },
         products: selectedItems.map((item) => ({
           productId: item.id,
           variationId: item.variationId || null,
