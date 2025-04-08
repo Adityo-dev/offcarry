@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { AlignJustify, Search } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react"; // Import useState
+import { useState } from "react";
 import SearchSection from "./SearchSection";
 import {
   Sheet,
@@ -11,6 +11,7 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 import MobileMenuAndCategory from "./MobileMenuAndCategory";
+import { useSession } from "next-auth/react";
 
 function CenterNavigationBar({
   categoriesData,
@@ -18,6 +19,7 @@ function CenterNavigationBar({
   centerNavRightData,
 }) {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
+  const { data: isUser } = useSession();
 
   const toggleSearch = () => {
     setIsSearchVisible(!isSearchVisible);
@@ -74,8 +76,13 @@ function CenterNavigationBar({
               >
                 {data?.icon}
               </p>
+
               <p className="hidden xl:flex flex-col text-sm text-[#837F74] capitalize">
-                <span>{data?.title}</span>
+                <span>
+                  {isUser && data?.name === "my account"
+                    ? isUser?.user?.name
+                    : data?.title}
+                </span>
                 <span className="text-xs">{data?.name}</span>
               </p>
             </Link>

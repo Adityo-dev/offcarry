@@ -13,7 +13,7 @@ import Upcoming from "@/components/upcoming/Upcoming";
 
 export default function Home() {
   return (
-    <main className="space-y-10 lg:space-y-16 pt-14 xl:pt-0">
+    <main className="space-y-10 lg:space-y-16 pt-14 xl:pt-0 relative">
       <Hero />
       <DealOfTheDay />
       <PreOrder />
