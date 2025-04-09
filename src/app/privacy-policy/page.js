@@ -7,7 +7,7 @@ async function PrivacyPolicy() {
 
   return (
     <main
-      className="container mx-auto px-2 pt-16 xl:pt-6"
+      className="container mx-auto px-2 pt-24 xl:pt-6"
       dangerouslySetInnerHTML={{
         __html: privacyPolicyPage?.content || "<p>No content found.</p>",
       }}
