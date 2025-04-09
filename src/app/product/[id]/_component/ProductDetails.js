@@ -11,7 +11,6 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import AddToCartButton from "./AddToCartButton";
 import { useCart } from "@/components/contextApi/context/CartContext";
 
 const currentURL = typeof window !== "undefined" ? window.location.href : "";
@@ -28,10 +27,6 @@ const socialMediaData = [
     url: `https://twitter.com/intent/tweet?url=${encodeURIComponent(
       currentURL
     )}`,
-  },
-  {
-    icon: <Instagram size={20} strokeWidth={1.5} />,
-    url: "#",
   },
 ];
 
@@ -69,7 +64,7 @@ export default function ProductDetails({ productDetails }) {
       (v) => v.color === selectedColor && v.size === selectedSize
     );
     setSelectedStock(matchedVariation?.stock || 0);
-    setSelectedVariationId(matchedVariation?.id || null); // set variation id
+    setSelectedVariationId(matchedVariation?.id || null);
     setQuantity(1); // Reset quantity
   }, [selectedColor, selectedSize, productDetails]);
 
@@ -163,12 +158,13 @@ export default function ProductDetails({ productDetails }) {
             (4.5) {productDetails?.Review?.length} Review
           </span>
           <p
-            className={`flex items-center gap-1 ms-2 sm:ms-3 text-sm sm:text-base ${selectedStock > 5
-              ? "text-green-600"
-              : selectedStock > 0
+            className={`flex items-center gap-1 ms-2 sm:ms-3 text-sm sm:text-base ${
+              selectedStock > 5
+                ? "text-green-600"
+                : selectedStock > 0
                 ? "text-yellow-600"
                 : "text-red-600"
-              }`}
+            }`}
           >
             {selectedStock > 5 ? (
               <>
@@ -218,23 +214,26 @@ export default function ProductDetails({ productDetails }) {
         </div>
 
         {/* Size Selector */}
-        {productDetails.category.name === "T-Shirts" && <div className="flex items-center gap-3">
-          <label className="sm:text-lg font-medium">Size: </label>
-          <div className="flex gap-2">
-            {uniqueSizes.map((size, i) => (
-              <button
-                key={i}
-                onClick={() => setSelectedSize(size)}
-                className={`w-8 sm:w-10 h-8 sm:h-10 text-xs sm:text-sm rounded-md font-medium transition-all duration-300 ${selectedSize === size
-                  ? "bg-primary text-white"
-                  : "border border-gray-300 hover:border-primary hover:text-primary"
+        {productDetails.category.name === "T-Shirts" && (
+          <div className="flex items-center gap-3">
+            <label className="sm:text-lg font-medium">Size: </label>
+            <div className="flex gap-2">
+              {uniqueSizes.map((size, i) => (
+                <button
+                  key={i}
+                  onClick={() => setSelectedSize(size)}
+                  className={`w-8 sm:w-10 h-8 sm:h-10 text-xs sm:text-sm rounded-md font-medium transition-all duration-300 ${
+                    selectedSize === size
+                      ? "bg-primary text-white"
+                      : "border border-gray-300 hover:border-primary hover:text-primary"
                   }`}
-              >
-                {size}
-              </button>
-            ))}
+                >
+                  {size}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>}
+        )}
 
         {/* Quantity + Buttons */}
         <div className="flex gap-2 sm:gap-4 items-center">
@@ -258,10 +257,11 @@ export default function ProductDetails({ productDetails }) {
           <Link
             href={selectedStock > 0 ? "/checkout" : "#"}
             onClick={handleBuyNow}
-            className={`w-full sm:w-auto h-12 sm:px-20 flex items-center justify-center text-white font-semibold rounded-lg ${selectedStock > 0
-              ? "bg-gradient-primary"
-              : "bg-gray-400 cursor-not-allowed"
-              }`}
+            className={`w-full sm:w-auto h-12 sm:px-20 flex items-center justify-center text-white font-semibold rounded-lg ${
+              selectedStock > 0
+                ? "bg-gradient-primary"
+                : "bg-gray-400 cursor-not-allowed"
+            }`}
           >
             Buy Now
           </Link>
