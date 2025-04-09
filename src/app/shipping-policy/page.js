@@ -7,7 +7,7 @@ async function ShippingPolicy() {
 
   return (
     <main
-      className="container mx-auto px-2 pt-16 xl:pt-6"
+      className="container mx-auto px-2 pt-24 xl:pt-6"
       dangerouslySetInnerHTML={{
         __html: shippingPage?.content || "<p>No content found.</p>",
       }}
