@@ -5,14 +5,14 @@ const contactInfoData = [
   {
     icon: <PhoneCall size={30} strokeWidth={1.5} />,
     title: "Request A Call:",
-    text: "+8801973239675",
-    link: "https://wa.me/+8801973239675",
+    text: "+8801937270044",
+    link: "https://wa.me/+8801937270044",
   },
   {
     icon: <Clock7 size={30} strokeWidth={1.5} />,
     title: "Sunday To Friday:",
-    text: "+8801973239675",
-    link: "https://wa.me/+8801973239675",
+    text: "+8801937270044",
+    link: "https://wa.me/+8801937270044",
   },
   {
     icon: <MapPinned size={30} strokeWidth={1.5} />,
