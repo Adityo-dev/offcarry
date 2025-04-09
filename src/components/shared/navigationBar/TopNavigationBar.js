@@ -25,13 +25,13 @@ const socialMediaData = [
 const contacts = [
   {
     icon: <Mail size={20} strokeWidth={1.5} />,
-    text: "support@offcarry.com",
-    url: "mailto:support@offcarry.com",
+    text: "sup.offcarry@gmail.com",
+    url: "mailto:sup.offcarry@gmail.com",
   },
   {
     icon: <Phone size={20} strokeWidth={1.5} />,
     text: "+8801973239675",
-    url: "https://wa.me/+8801973239675",
+    url: "https://wa.me/+8801937270044",
   },
 ];
 
