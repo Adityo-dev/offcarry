@@ -1,10 +1,13 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { LockKeyhole, Mail, User } from "lucide-react";
+import { LockKeyhole, Mail, User, Phone, Eye, EyeOff } from "lucide-react";
 
 import Link from "next/link";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { registration } from "@/utils/register";
 
 export default function Register() {
   const {
@@ -16,29 +19,55 @@ export default function Register() {
     defaultValues: {
       name: "",
       email: "",
+      mobile: "",
       password: "",
       confirmPassword: "",
     },
   });
-  console.log("Form submitted:");
+  const router = useRouter();
+  const session = useSession();
+  const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const onSubmit = async (data) => {
     try {
-      const response = await signIn("credentials", data);
-      if (response) {
+      setLoading(true);
+      const response = await registration(data);
+      if (response?.user) {
+        setLoading(false);
         console.log("User registered successfully:", response);
+
+        await signIn('credentials', {
+          email: data.email,
+          password: data.password,
+          redirect: false,
+        });
+        router.push("/account")
+
       } else {
+        setLoading(false);
+
         console.error("Failed to register user:", response.error);
       }
     } catch (error) {
+      setLoading(false);
       console.error("Error during registration:", error);
     }
   };
+
+  useEffect(() => {
+    if (session?.data?.user) {
+      router.push("/account");
+    }
+  }, [session?.data?.user, router]);
 
   // FORM INPUT FIELD STYLES
   const formInputFieldStyles =
     "w-full h-12 pl-10 text-sm border rounded-lg outline-none transition-all duration-300 focus:border-primary";
   const formInputFieldIconStyles =
     "absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400";
+  const eyeIconStyles = "absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer";
 
   return (
     <section className="flex items-center justify-center py-28 xl:py-20 px-4 ">
@@ -88,13 +117,39 @@ export default function Register() {
 
           <div>
             <div className="relative">
+              <Phone size={20} className={formInputFieldIconStyles} />
+              <input
+                type="text"
+                placeholder="Enter your phone number"
+                {...register("mobile", {
+                  required: "Phone number is required",
+                })}
+                className={formInputFieldStyles}
+              />
+            </div>
+            {errors.mobile && (
+              <p className="text-red-500 text-sm text-start mt-2">
+                {errors.mobile.message}
+              </p>
+            )}
+          </div>
+
+          <div>
+            <div className="relative">
               <LockKeyhole size={20} className={formInputFieldIconStyles} />
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="Password"
                 {...register("password", { required: "Password is required" })}
                 className={formInputFieldStyles}
               />
+              <div onClick={() => setShowPassword(!showPassword)}>
+                {showPassword ? (
+                  <EyeOff size={20} className={eyeIconStyles} />
+                ) : (
+                  <Eye size={20} className={eyeIconStyles} />
+                )}
+              </div>
             </div>
             {errors.password && (
               <p className="text-red-500 text-sm text-start mt-2">
@@ -107,7 +162,7 @@ export default function Register() {
             <div className="relative">
               <LockKeyhole size={20} className={formInputFieldIconStyles} />
               <input
-                type="password"
+                type={showConfirmPassword ? "text" : "password"}
                 placeholder="Confirm Password"
                 {...register("confirmPassword", {
                   required: "Confirm Password is required",
@@ -116,6 +171,15 @@ export default function Register() {
                 })}
                 className={formInputFieldStyles}
               />
+              <div
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              >
+                {showConfirmPassword ? (
+                  <EyeOff size={20} className={eyeIconStyles} />
+                ) : (
+                  <Eye size={20} className={eyeIconStyles} />
+                )}
+              </div>
             </div>
             {errors.confirmPassword && (
               <p className="text-red-500 text-sm text-start mt-2">
@@ -128,7 +192,7 @@ export default function Register() {
             type="submit"
             className="w-full bg-gradient-primary text-white py-3 rounded-lg text-lg font-semibold"
           >
-            Sign In
+            {loading ? "Registering..." : "Register"}
           </button>
         </form>
 
