@@ -12,7 +12,10 @@ export function ChatInput({ onSendMessage }) {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (message.trim()) {
+
       onSendMessage(message)
+      console.log(message);
+      
       setMessage("")
     }
   }

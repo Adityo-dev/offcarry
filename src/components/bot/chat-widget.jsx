@@ -7,46 +7,65 @@ import { ChatInterface } from "./chat-interface"
 
 export function ChatWidget({ onClose }) {
   const [chatState, setChatState] = useState(() => {
-    // Check if customer info exists in localStorage
     if (typeof window !== 'undefined') {
-      const savedInfo = localStorage.getItem('customerInfo')
-      if (savedInfo) {
-        const parsedInfo = JSON.parse(savedInfo)
-        if (parsedInfo.name || parsedInfo.email || parsedInfo.mobile) {
-          return "chat"
-        }
-      }
+      const savedChat = localStorage.getItem('chatSession')
+      return savedChat ? "chat" : "form"
     }
     return "form"
   })
 
-  const [customerInfo, setCustomerInfo] = useState(() => {
-    // Initialize state from localStorage if available
+  const [chatSession, setChatSession] = useState(() => {
     if (typeof window !== 'undefined') {
-      const savedInfo = localStorage.getItem('customerInfo')
-      return savedInfo ? JSON.parse(savedInfo) : {
-        name: "",
-        email: "",
+      const savedChat = localStorage.getItem('chatSession')
+      return savedChat ? JSON.parse(savedChat) : {
+        senderId: null,
+        chatId: null,
         mobile: "",
       }
     }
     return {
-      name: "",
-      email: "",
+      senderId: null,
+      chatId: null,
       mobile: "",
     }
   })
 
-  // Save to localStorage whenever customerInfo changes
   useEffect(() => {
-    if (customerInfo.name || customerInfo.email || customerInfo.mobile) {
-      localStorage.setItem('customerInfo', JSON.stringify(customerInfo))
+    if (chatSession.senderId) {
+      localStorage.setItem('chatSession', JSON.stringify(chatSession))
     }
-  }, [customerInfo])
+  }, [chatSession])
 
-  const handleFormSubmit = (data) => {
-    setCustomerInfo(data)
-    setChatState("chat")
+  const handleFormSubmit = async (data) => {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_ROUT_URL}/chat/anonymous`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: data.name,
+          mobile: data.mobile,
+          email: data.email,
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to create chat')
+      }
+
+      const result = await response.json()
+      const updatedData={
+        senderId: result.user.id,
+        chatId: result.chatRoom.id,
+        mobile: data.mobile,
+      }
+      setChatSession(updatedData)
+      localStorage.setItem('chatSession', JSON.stringify(updatedData))
+      setChatState("chat")
+    } catch (error) {
+      console.error('Error creating chat:', error)
+    }
   }
 
   return (
@@ -65,7 +84,7 @@ export function ChatWidget({ onClose }) {
           {chatState === "form" ? (
             <CustomerForm onSubmit={handleFormSubmit} />
           ) : (
-            <ChatInterface customerInfo={customerInfo} />
+            <ChatInterface chatSession={chatSession} />
           )}
         </div>
       </div>

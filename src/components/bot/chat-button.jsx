@@ -4,6 +4,7 @@ import { useState } from "react"
 import { MessageSquare } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ChatWidget } from "./chat-widget"
+import { useSocket } from "./useSocket"
 
 export function ChatButton() {
   const [isOpen, setIsOpen] = useState(false)

@@ -18,7 +18,11 @@ export default function Login() {
 
   const onSubmit = async (data) => {
     try {
-      const response = await signIn("credentials", data);
+      const response = await signIn("credentials", {
+        email: data.email,
+        password: data.password,
+        redirect: false,
+      });
       if (response) {
         console.log("User logged in successfully:", response);
       } else {
