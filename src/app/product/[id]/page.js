@@ -15,7 +15,7 @@ const SingleProductPage = async ({ params }) => {
   const singleProductData = await response.json();
 
   return (
-    <div className="container mx-auto px-2 pt-16 xl:pt-6 space-y-16">
+    <div className="container mx-auto px-2 pt-20 xl:pt-6 space-y-16">
       <div className="grid grid-cols-12 gap-6">
         <div className="col-span-full lg:col-span-6 xl:col-span-5 space-y-7">
           <ProductImagesGallery data={singleProductData?.variations} />
