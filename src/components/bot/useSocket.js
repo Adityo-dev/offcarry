@@ -7,7 +7,7 @@ export function useSocket(roomId, userId) {
 
   useEffect(() => {
 
-    console.log(roomId,userId);
+    console.log(roomId, userId);
     const newSocket = io(process.env.NEXT_PUBLIC_SOCKET_URL, {
       transports: ["websocket"],
       path: "/socket",
@@ -17,8 +17,9 @@ export function useSocket(roomId, userId) {
     setSocket(newSocket);
 
     newSocket.on("connect", () => {
-      console.log("Socket connected");
       newSocket.emit("join_room", roomId.toString());
+      // newSocket.emit("join_room", "9");
+      console.log("Socket connected");
     });
 
     newSocket.on("disconnect", () => {
@@ -55,13 +56,19 @@ export function useSocket(roomId, userId) {
   const sendMessage = (input) => {
     if (input.trim() && socket) {
       const messageData = {
-        chatRoomId: parseInt(roomId),
-        senderId: parseInt(userId),
+        chatRoomId: roomId.toString(),
+        senderId: userId.toString(),
         content: input,
       };
       socket.emit("send_message", messageData);
     }
   };
 
-  return { socket, messages, sendMessage };
+  const connectTORoom = (roomId) => {
+    if (socket) {
+      socket.emit("join_room", roomId.toString());
+    }
+  }
+
+  return { socket, messages, sendMessage, connectTORoom };
 }

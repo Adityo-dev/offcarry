@@ -14,7 +14,7 @@ export function ChatInterface({ chatSession }) {
   //     timestamp: new Date(),
   //   },
   // ])
-  const { messages, sendMessage } = useSocket(parseInt(chatSession.chatId),parseInt(chatSession.senderId));
+  const { messages, sendMessage } = useSocket(chatSession.chatId,chatSession.senderId);
   const messagesEndRef = useRef(null)
 
   const scrollToBottom = () => {
