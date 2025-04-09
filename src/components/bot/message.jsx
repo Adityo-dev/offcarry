@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils"
 import { formatTime } from "./chat-utils"
 
 export function Message({ message }) {
-  const isAgent = message.sender === "agent"
+  const isAgent = message.senderId == 1
 
   return (
     <div className={cn("flex", isAgent ? "justify-start" : "justify-end")}>
