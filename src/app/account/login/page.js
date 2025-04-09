@@ -4,6 +4,11 @@ import { useForm } from "react-hook-form";
 import { LockKeyhole, User } from "lucide-react";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
+
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+
 export default function Login() {
   const {
     register,
@@ -15,21 +20,31 @@ export default function Login() {
       password: "",
     },
   });
-
+  const [loading, setLoading] = useState(false)
+  const router = useRouter();
   const onSubmit = async (data) => {
     try {
+      setLoading(true);
       const response = await signIn("credentials", {
         email: data.email,
         password: data.password,
         redirect: false,
       });
-      if (response) {
-        console.log("User logged in successfully:", response);
+      console.log("response", response);
+
+      if (!response.error) {
+        setLoading(false)
+        console.log("User logged in successfully:", response.error);
+        toast.success("You have successfully logged in!");
+        router.push("/account");
       } else {
-        console.error("Failed to log in user:", response.error);
+        setLoading(false)
+        toast.error("Failed to log in user:", response.error);
       }
     } catch (error) {
+      setLoading(false)
       console.error("Error during login:", error);
+      toast.error(`Failed to log in user. ${error}`);
     }
   };
 
@@ -98,7 +113,7 @@ export default function Login() {
             type="submit"
             className="w-full bg-gradient-primary text-white py-3 rounded-lg text-lg font-semibold"
           >
-            Login In
+            {loading ? "Logging in..." : "Login In"}
           </button>
         </form>
 

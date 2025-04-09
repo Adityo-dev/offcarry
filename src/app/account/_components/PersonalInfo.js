@@ -8,7 +8,7 @@ export default function PersonalInfo({ user }) {
   const router = useRouter();
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
-    id: user?._id,
+    id: user?.id,
     name: user?.name || "",
     email: user?.email || "",
     phone_number: user?.mobile || "",
@@ -26,7 +26,7 @@ export default function PersonalInfo({ user }) {
   const handleSave = async () => {
     // Here, you would call an API to update the user's data
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_ROUT_URL}/api/users/${user.id}`,
+      `${process.env.NEXT_PUBLIC_API_ROUT_URL}/users/${user.id}`,
       {
         method: "put",
         body: JSON.stringify(formData),
@@ -35,7 +35,7 @@ export default function PersonalInfo({ user }) {
     if (res.ok) {
       router.refresh();
 
-      alert("data updated");
+      toast.success("Data updated successfully!");
     }
     setIsEditing(false);
   };
@@ -94,7 +94,7 @@ export default function PersonalInfo({ user }) {
               />
             </dd>
           </div>
-          <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          {/* <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt className="text-sm font-medium text-gray-500">Address</dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
               <input
@@ -106,9 +106,9 @@ export default function PersonalInfo({ user }) {
                 className="border border-gray-300 rounded-md p-2 w-full"
               />
             </dd>
-          </div>
+          </div> */}
         </dl>
-        <div className="flex justify-end mt-4 px-10 py-5">
+        {/* <div className="flex justify-end mt-4 px-10 py-5">
           {isEditing ? (
             <div className="space-x-2">
               <button
@@ -132,7 +132,7 @@ export default function PersonalInfo({ user }) {
               Edit
             </button>
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );

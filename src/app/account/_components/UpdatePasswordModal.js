@@ -15,7 +15,7 @@ const UpdatePasswordModal = ({ isOpen, onClose, id }) => {
       try {
         // Add password update logic here
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_ROUT_URL}/api/customerProfile`,
+          `${process.env.NEXT_PUBLIC_API_ROUT_URL}/users/${id}`,
           {
             method: "PUT",
             headers: {
