@@ -9,6 +9,7 @@ import { WishlistProvider } from "@/components/contextApi/context/WishlistContex
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { SessionProvider } from "next-auth/react";
+import { ChatButton } from "@/components/bot/chat-button";
 
 const krub = Krub({
   variable: "--font-krub",
@@ -40,6 +41,7 @@ export default function RootLayout({ children }) {
           </AddressProvider>
           <ToastContainer />
         </SessionProvider>
+        <ChatButton />
       </body>
     </html>
   );
