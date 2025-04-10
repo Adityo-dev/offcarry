@@ -39,6 +39,7 @@ export default function ProductDetails({ productDetails }) {
   const [uniqueSizes, setUniqueSizes] = useState([]);
   const [selectedStock, setSelectedStock] = useState(0);
   const [selectedVariationId, setSelectedVariationId] = useState(null);
+  const [selectedImage, setSelectedImage] = useState("");
 
   useEffect(() => {
     const colorSet = new Set();
@@ -65,7 +66,9 @@ export default function ProductDetails({ productDetails }) {
     );
     setSelectedStock(matchedVariation?.stock || 0);
     setSelectedVariationId(matchedVariation?.id || null);
-    setQuantity(1); // Reset quantity
+
+    setSelectedImage(matchedVariation?.img || productDetails?.thumbnail);
+    setQuantity(1);
   }, [selectedColor, selectedSize, productDetails]);
 
   const decreaseQuantity = () => {
@@ -83,11 +86,12 @@ export default function ProductDetails({ productDetails }) {
       name: productDetails?.name,
       category: productDetails?.category?.name,
       price: productDetails?.retail_price,
-      image: productDetails?.thumbnail,
+      image: selectedImage,
       quantity,
       size: selectedSize,
       color: selectedColor,
       variationId: selectedVariationId,
+      stock: selectedStock,
     });
   };
 
@@ -96,7 +100,6 @@ export default function ProductDetails({ productDetails }) {
     if (!retail_price) return null;
     return (retail_price - retail_price * (discount / 100)).toFixed(2);
   };
-  console.log(productDetails);
 
   return (
     <section>
