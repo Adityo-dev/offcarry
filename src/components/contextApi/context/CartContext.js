@@ -21,12 +21,18 @@ export const CartProvider = ({ children }) => {
     dispatch({ type: "ADD_TO_CART", payload: product });
   };
 
-  const removeFromCart = (productId) => {
-    dispatch({ type: "REMOVE_FROM_CART", payload: productId });
+  const removeFromCart = (productId, variationId) => {
+    dispatch({
+      type: "REMOVE_FROM_CART",
+      payload: { productId, variationId },
+    });
   };
 
-  const updateQuantity = (productId, amount) => {
-    dispatch({ type: "UPDATE_QUANTITY", payload: { productId, amount } });
+  const updateQuantity = (productId, variationId, amount) => {
+    dispatch({
+      type: "UPDATE_QUANTITY",
+      payload: { productId, variationId, amount },
+    });
   };
 
   return (

@@ -10,17 +10,19 @@ import {
   X,
   Youtube,
 } from "lucide-react";
-import TiktokIcon from "@/app/TiktokIcon";
+import TiktokIcon from "@/components/icon/TiktokIcon";
+import WhatsAppIcon from "@/components/icon/WhatsAppIcon";
 
 // SOCIAL MEDIA DATA
 const iconMap = {
-  Facebook: <Facebook size={20} strokeWidth={1.5} />,
-  Instagram: <Instagram size={20} strokeWidth={1.5} />,
-  Twitter: <Twitter size={20} strokeWidth={1.5} />,
-  X: <X size={20} strokeWidth={1.5} />,
-  YouTube: <Youtube size={20} strokeWidth={1.5} />,
-  LinkedIn: <Linkedin size={20} strokeWidth={1.5} />,
+  facebook: <Facebook size={20} strokeWidth={1.5} />,
+  instagram: <Instagram size={20} strokeWidth={1.5} />,
+  twitter: <Twitter size={20} strokeWidth={1.5} />,
+  x: <X size={20} strokeWidth={1.5} />,
+  youtube: <Youtube size={20} strokeWidth={1.5} />,
+  linkedin: <Linkedin size={20} strokeWidth={1.5} />,
   tiktok: <TiktokIcon size={20} strokeWidth={1.5} />,
+  whatsapp: <WhatsAppIcon size={20} strokeWidth={1.5} />,
 };
 
 const contacts = [
@@ -49,7 +51,8 @@ async function TopNavigationBar() {
         {/* SOCIAL MEDIA SECTION */}
         <div className="flex items-center gap-7">
           {socialMedia?.map((media, ind) => {
-            const icon = iconMap[media.name];
+            const icon = iconMap[media?.name.toLowerCase()];
+
             if (!icon) return null;
             return (
               <Link href={media.link} key={ind} target="_blank">
