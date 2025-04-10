@@ -11,7 +11,8 @@ import Link from "next/link";
 import CopyRight from "./CopyRight";
 import ContactInfo from "./ContactInfo";
 import Newsletter from "@/components/shared/newsletter/Newsletter";
-import TiktokIcon from "@/app/TiktokIcon";
+import TiktokIcon from "@/components/icon/TiktokIcon";
+import WhatsAppIcon from "@/components/icon/WhatsAppIcon";
 
 const footerData = [
   {
@@ -51,13 +52,14 @@ const footerData = [
 // SOCIAL MEDIA DATA
 
 const iconMap = {
-  Facebook: <Facebook size={20} strokeWidth={1.5} />,
-  Instagram: <Instagram size={20} strokeWidth={1.5} />,
-  Twitter: <Twitter size={20} strokeWidth={1.5} />,
-  X: <X size={20} strokeWidth={1.5} />,
-  YouTube: <Youtube size={20} strokeWidth={1.5} />,
-  LinkedIn: <Linkedin size={20} strokeWidth={1.5} />,
+  facebook: <Facebook size={20} strokeWidth={1.5} />,
+  instagram: <Instagram size={20} strokeWidth={1.5} />,
+  twitter: <Twitter size={20} strokeWidth={1.5} />,
+  x: <X size={20} strokeWidth={1.5} />,
+  youtube: <Youtube size={20} strokeWidth={1.5} />,
+  linkedin: <Linkedin size={20} strokeWidth={1.5} />,
   tiktok: <TiktokIcon size={20} strokeWidth={1.5} />,
+  whatsapp: <WhatsAppIcon size={20} strokeWidth={1.5} />,
 };
 
 async function Footer() {
@@ -93,11 +95,11 @@ async function Footer() {
           {/* SOCIAL MEDIA */}
           <div className="flex items-center gap-2 md:gap-4 mt-4 md:mt-7">
             {socialMedia?.map((media, ind) => {
-              const icon = iconMap[media.name];
+              const icon = iconMap[media?.name.toLowerCase()];
               if (!icon) return null;
               return (
                 <Link
-                  href={media.link}
+                  href={media?.link}
                   key={ind}
                   target="_blank"
                   className="w-8 md:w-10 h-8 md:h-10 bg-[#203342] flex items-center justify-center rounded-full p-2"
