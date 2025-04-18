@@ -2,15 +2,15 @@
 import { useState } from "react";
 import ProductReviews from "./ProductReviews";
 
-export default function ProductTabs({ review, productId }) {
+export default function ProductTabs({ review, productId, product }) {
   const tabs = [
     {
       name: "Description",
-      content: `Sed porttitor lectus nibh. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Nulla quis lorem ut libero malesuada feugiat. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Vivamus suscipit tortor eget felis porttitor volutpat.`,
+      content: product?.description,
     },
     {
       name: "Specification",
-      content: `Sed porttitor lectus nibh. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Nulla porttitor accumsan tincidunt.`,
+      content: product.specification,
     },
     {
       name: `Reviews (${review?.length})`,
@@ -21,6 +21,8 @@ export default function ProductTabs({ review, productId }) {
   ];
 
   const [activeTab, setActiveTab] = useState(tabs[0].name);
+  console.log(activeTab);
+
   return (
     <div className="w-full mx-auto mt-16">
       {/* Tab Headers */}
@@ -39,9 +41,18 @@ export default function ProductTabs({ review, productId }) {
       </div>
 
       {/* Tab Content */}
-      <div className=" mt-4 sm:mt-8 text-[#888AA0] text-sm sm:text-base leading-6">
+      {/* add typography */}
+
+      {activeTab !== `Reviews (${review?.length})` ? (
+        <div
+          className="prose mt-4 sm:mt-8 text-[#888AA0] text-sm sm:text-base leading-6"
+          dangerouslySetInnerHTML={{
+            __html: tabs.find((tab) => tab.name === activeTab)?.content,
+          }}
+        ></div>
+      ) : <div>
         {tabs.find((tab) => tab.name === activeTab)?.content}
-      </div>
+        </div>}
     </div>
   );
 }

@@ -6,7 +6,7 @@ import RelatedProducts from "@/components/relatedProducts/RelatedProducts";
 import Video from "./_component/Video";
 
 const SingleProductPage = async ({ params }) => {
-  const searchParams = params?.id.split("-");
+  const searchParams = await params?.id.split("-");
   const searchId = parseInt(searchParams.pop());
 
   const response = await fetch(
@@ -15,17 +15,17 @@ const SingleProductPage = async ({ params }) => {
   const singleProductData = await response.json();
 
   return (
-    <div className="container mx-auto px-2 pt-20 xl:pt-6 space-y-16">
+    <div className="container mx-auto px-2 pt-16 xl:pt-6 space-y-16">
       <div className="grid grid-cols-12 gap-6">
         <div className="col-span-full lg:col-span-6 xl:col-span-5 space-y-7">
           <ProductImagesGallery data={singleProductData?.variations} />
-          <ChatNow />
+          {/* <ChatNow /> */}
         </div>
         <div className="col-span-full lg:col-span-6 xl:col-span-7">
           <ProductDetails productDetails={singleProductData} />
         </div>
       </div>
-      <ProductTabs review={singleProductData?.Review} productId={searchId} />
+      <ProductTabs review={singleProductData?.Review} productId={searchId} product={singleProductData} />
       <Video videoSrc={singleProductData?.videoLink} />
       <RelatedProducts products={singleProductData?.relatedProducts} />
     </div>

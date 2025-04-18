@@ -11,18 +11,17 @@ function CheckoutItemsCart({
 }) {
   const { updateQuantity } = useCart();
   const isSelected = selectedItems.some(
-    (selected) =>
-      selected?.id === item?.id && selected?.variationId === item?.variationId
+    (selected) => selected?.id === item?.id
   );
 
   const handleQuantityChange = (change) => {
-    updateQuantity(item?.id, item?.variationId, change);
+    updateQuantity(item?.id, change);
   };
 
   return (
     <div className="bg-[#FAFAFA] flex flex-col sm:flex-row gap-4 items-center justify-between border p-4 rounded-lg relative">
       <Checkbox
-        id={`select-${item?.id}-${item?.variationId}`}
+        id={`select-${item?.id}`}
         className="w-4 h-4"
         checked={isSelected}
         onCheckedChange={() => handleSelectItem(item)}
@@ -44,10 +43,11 @@ function CheckoutItemsCart({
               item?.color ? `- ${item.color}` : ""
             } ${item?.size ? `- ${item.size} Size` : ""}`}
           </p>
+
           <p className="text-sm text-gray-500 mt-1">{item?.category}</p>
         </div>
       </div>
-
+      {/*  */}
       <div className="w-full sm:flex items-center justify-between mt-4 sm:mt-0">
         <div className="flex items-center justify-between pb-2.5 sm:pb-0">
           <p className="sm:hidden">Price</p>
@@ -78,13 +78,13 @@ function CheckoutItemsCart({
           </p>
         </div>
         <button
-          onClick={() => removeFromCart(item?.id, item?.variationId)}
+          onClick={() => removeFromCart(item?.id)}
           className="text-red-500 hover:text-red-700 ml-4 hidden md:block"
         >
           <Trash size={20} />
         </button>
         <button
-          onClick={() => removeFromCart(item?.id, item?.variationId)}
+          onClick={() => removeFromCart(item?.id)}
           className="absolute top-1.5 right-1.5 md:relative text-red-500 hover:text-red-700 ml-4 block md:hidden"
         >
           <X size={20} />
