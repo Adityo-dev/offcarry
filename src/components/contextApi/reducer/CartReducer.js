@@ -1,57 +1,35 @@
 export const cartReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_CART": {
-      const { id, variationId, quantity = 1, stock } = action.payload;
-
-      const existingItem = state.find(
-        (item) => item.id === id && item.variationId === variationId
-      );
+      const { id, quantity = 1 } = action.payload;
+      const existingItem = state.find((item) => item.id === id);
 
       if (existingItem) {
-        const updatedQuantity = existingItem.quantity + quantity;
-
-        // Stock exceed korle update korbe na
-        if (updatedQuantity > stock) return state;
-
         return state.map((item) =>
-          item.id === id && item.variationId === variationId
-            ? { ...item, quantity: updatedQuantity }
+          item.id === id
+            ? { ...item, quantity: item.quantity + quantity }
             : item
         );
       } else {
-        // Stock check korbo ager thekei
-        if (quantity > stock) return state;
-
         return [...state, { ...action.payload, quantity }];
       }
     }
 
     case "REMOVE_FROM_CART":
-      return state.filter(
-        (item) =>
-          !(
-            item.id === action.payload.productId &&
-            item.variationId === action.payload.variationId
-          )
+      return state.filter((item) => item.id !== action.payload);
+
+    case "UPDATE_QUANTITY":
+      return state.map((item) =>
+        item.id === action.payload.productId
+          ? {
+              ...item,
+              quantity: Math.max(1, item.quantity + action.payload.amount),
+            }
+          : item
       );
 
-    case "UPDATE_QUANTITY": {
-      return state.map((item) => {
-        if (
-          item.id === action.payload.productId &&
-          item.variationId === action.payload.variationId
-        ) {
-          const newQuantity = item.quantity + action.payload.amount;
-
-          // Quantity কমপক্ষে 1 এবং সর্বোচ্চ stock এর সমান হতে হবে
-          if (newQuantity >= 1 && newQuantity <= item.stock) {
-            return { ...item, quantity: newQuantity };
-          }
-        }
-        return item;
-      });
-    }
-
+    case "CLEAR_CART":
+      return [];
     default:
       return state;
   }

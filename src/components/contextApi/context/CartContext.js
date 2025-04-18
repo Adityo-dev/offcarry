@@ -21,23 +21,21 @@ export const CartProvider = ({ children }) => {
     dispatch({ type: "ADD_TO_CART", payload: product });
   };
 
-  const removeFromCart = (productId, variationId) => {
-    dispatch({
-      type: "REMOVE_FROM_CART",
-      payload: { productId, variationId },
-    });
+  const removeFromCart = (productId) => {
+    dispatch({ type: "REMOVE_FROM_CART", payload: productId });
   };
 
-  const updateQuantity = (productId, variationId, amount) => {
-    dispatch({
-      type: "UPDATE_QUANTITY",
-      payload: { productId, variationId, amount },
-    });
+  const updateQuantity = (productId, amount) => {
+    dispatch({ type: "UPDATE_QUANTITY", payload: { productId, amount } });
+  };
+
+  const clearCart = () => {
+    dispatch({ type: "CLEAR_CART" });
   };
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, updateQuantity }}
+      value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart }}
     >
       {children}
     </CartContext.Provider>

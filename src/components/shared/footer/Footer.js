@@ -1,18 +1,9 @@
-import {
-  Facebook,
-  Instagram,
-  Linkedin,
-  Twitter,
-  X,
-  Youtube,
-} from "lucide-react";
+import { Facebook, Instagram, Twitter } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import CopyRight from "./CopyRight";
 import ContactInfo from "./ContactInfo";
 import Newsletter from "@/components/shared/newsletter/Newsletter";
-import TiktokIcon from "@/components/icon/TiktokIcon";
-import WhatsAppIcon from "@/components/icon/WhatsAppIcon";
 
 const footerData = [
   {
@@ -28,19 +19,17 @@ const footerData = [
   {
     title: "Quick Links",
     info: [
-      { name: "Privacy Policy", url: "/privacy-policy" },
-      { name: "Terms and Conditions", url: "/terms-and-conditions" },
-      { name: "Return & Refund Policy", url: "/return-refund-policy" },
-      { name: "Shipping Policy", url: "/shipping-policy" },
-      { name: "Cancellation Policy", url: "/cancellation-policy" },
-      { name: "Payment Policy", url: "/payment-policy" },
-      { name: "Disclaimer", url: "/disclaimer" },
+      { name: "Support Center", url: "#" },
+      { name: "Terms & Condition", url: "#" },
+      { name: "Shipping", url: "#" },
+      { name: "Privacy Policy", url: "#" },
+      { name: "Products Returns", url: "#" },
     ],
   },
   {
     title: "About Us",
     info: [
-      { name: "about us", url: "/about-us" },
+      { name: "Support Center", url: "#" },
       { name: "Terms & Condition", url: "#" },
       { name: "Shipping", url: "#" },
       { name: "Privacy Policy", url: "#" },
@@ -50,25 +39,16 @@ const footerData = [
 ];
 
 // SOCIAL MEDIA DATA
+const socialMediaData = [
+  {
+    icon: <Facebook size={20} strokeWidth={1.5} />,
+    url: "https://www.facebook.com/OffCarry",
+  },
+  { icon: <Twitter size={20} strokeWidth={1.5} />, url: "" },
+  { icon: <Instagram size={20} strokeWidth={1.5} />, url: "" },
+];
 
-const iconMap = {
-  facebook: <Facebook size={20} strokeWidth={1.5} />,
-  instagram: <Instagram size={20} strokeWidth={1.5} />,
-  twitter: <Twitter size={20} strokeWidth={1.5} />,
-  x: <X size={20} strokeWidth={1.5} />,
-  youtube: <Youtube size={20} strokeWidth={1.5} />,
-  linkedin: <Linkedin size={20} strokeWidth={1.5} />,
-  tiktok: <TiktokIcon size={20} strokeWidth={1.5} />,
-  whatsapp: <WhatsAppIcon size={20} strokeWidth={1.5} />,
-};
-
-async function Footer() {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_ROUT_URL}/social-media`
-  );
-
-  const socialMedia = await response.json();
-
+function Footer() {
   return (
     <main className="w-full mt-10 lg:mt-64 pt-12 lg:pt-40 pb-6 bg-[#152327] text-white relative">
       {/* NEWS LETTER COMPONENTS */}
@@ -94,20 +74,16 @@ async function Footer() {
           </p>
           {/* SOCIAL MEDIA */}
           <div className="flex items-center gap-2 md:gap-4 mt-4 md:mt-7">
-            {socialMedia?.map((media, ind) => {
-              const icon = iconMap[media?.name.toLowerCase()];
-              if (!icon) return null;
-              return (
-                <Link
-                  href={media?.link}
-                  key={ind}
-                  target="_blank"
-                  className="w-8 md:w-10 h-8 md:h-10 bg-[#203342] flex items-center justify-center rounded-full p-2"
-                >
-                  {icon}
-                </Link>
-              );
-            })}
+            {socialMediaData.map((media, ind) => (
+              <Link
+                href={media?.url}
+                key={ind}
+                target="_blank"
+                className="w-8 md:w-10 h-8 md:h-10 bg-[#203342] flex items-center justify-center rounded-full p-2 "
+              >
+                {media?.icon}
+              </Link>
+            ))}
           </div>
         </div>
         {/* FOOTER MENU LINK */}
@@ -120,7 +96,7 @@ async function Footer() {
                   <Link
                     href={data?.url}
                     key={ind}
-                    className="text-sm lg:text-base transition-all hover:underline capitalize"
+                    className="text-sm lg:text-base transition-all hover:underline"
                   >
                     {data?.name}
                   </Link>

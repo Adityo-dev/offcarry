@@ -1,5 +1,4 @@
-"use client";
-import Image from "next/image";
+'use client';
 // import lucide icons
 import { ChevronLeft, ChevronRight } from "lucide-react";
 // Import Swiper React components
@@ -9,7 +8,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 // import product cart components
-import ProductCart from "@/components/productCarts/productsCart/ProductCart";
 import ProductCartR from "../productCarts/productsCart/ProductCartR";
 
 const customButtonStyles =
@@ -83,7 +81,7 @@ export default function SliderProduct({ title, products }) {
             .filter((product) => product.id !== null)
             .map((product, ind) => (
               <SwiperSlide key={ind}>
-                <ProductCart product={product} />
+                <ProductCartR product={product} />
               </SwiperSlide>
             ))}
         </Swiper>

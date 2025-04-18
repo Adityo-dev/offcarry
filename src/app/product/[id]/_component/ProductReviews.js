@@ -1,6 +1,7 @@
 "use client";
 import Toast from "@/components/toast/Toast";
 import { User } from "lucide-react";
+import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -9,19 +10,26 @@ export default function ProductReviews({ initialReviewData, productId }) {
   const [hover, setHover] = useState(0);
   const [loading, setLoading] = useState(false);
   const [reviewData, setReviewData] = useState(initialReviewData);
+const session = useSession();
+console.log(session);
 
-  const { register, handleSubmit, reset } = useForm();
-
+  const { register, handleSubmit, reset } = useForm({
+    defaultValues: {
+      name: session?.data?.user?.name,
+      email: session?.data?.user?.email,
+      userId: session?.data?.user?.sub,
+    },
+  });
   const onSubmit = async (data) => {
     setLoading(true);
     const newReview = {
       email: data.email,
       name: data.name,
-      userId: 4,
+      userId: data.userId,
       productId: productId,
       rating: rating,
       comment: data.comment,
-      date: new Date().toLocaleDateString(),
+      createdAt: new Date().toISOString(),
     };
 
     try {
@@ -78,7 +86,7 @@ export default function ProductReviews({ initialReviewData, productId }) {
                 <p className="flex items-center gap-2 text-xs sm:text-sm">
                   <span>{review.name}</span>
                   <span>--</span>
-                  <span className="text-xs">{review.date}</span>
+                  <span className="text-xs">{review?.createdAt?.split("T")[0]}</span>
                 </p>
               </div>
             </div>
