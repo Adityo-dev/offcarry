@@ -24,7 +24,7 @@ export default async function OrderView({ params }) {
         <Print orderData={data} />
       </div>
       <div
-        className="flex flex-col items-center justify-center space-y-4"
+        className="flex flex-col items-center justify-center space-y-4 container mx-auto"
         dangerouslySetInnerHTML={{
           __html: VoucherTemplateOrder(data),
         }}

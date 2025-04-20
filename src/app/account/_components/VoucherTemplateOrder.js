@@ -4,15 +4,24 @@ export function VoucherTemplateOrder(order = {}) {
       <style>
         .voucher-container {
           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-          padding: 30px;
+          // padding: 30px;
           width: 100%;
-          max-width: 1200px;
+          // max-width: 1200px;
           margin: 0 auto;
           border-radius: 12px;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+          // box-shadow: 0 4px 20px rgba(0,0,0,0.08);
           background: linear-gradient(to bottom, #ffffff, #f9f9f9);
         }
-        
+        .logo-container {
+          display: flex;
+          justify-content: center;
+          // margin-bottom: 10px;
+        }
+        .logo {
+          width: 420px;
+          height: 100px;
+          object-fit: contain;
+        }
         .voucher-header {
           text-align: center;
           margin-bottom: 25px;
@@ -22,7 +31,7 @@ export function VoucherTemplateOrder(order = {}) {
         
         .voucher-title {
           color: #2c3e50;
-          font-size: 28px;
+          font-size: 18px;
           margin: 0;
           font-weight: 600;
         }
@@ -216,6 +225,7 @@ export function VoucherTemplateOrder(order = {}) {
           border-radius: 4px;
           font-size: 14px;
           margin-right: 5px;
+          text-transform: uppercase;
         }
         
         .quantity-cell {
@@ -225,7 +235,7 @@ export function VoucherTemplateOrder(order = {}) {
         
         .price-cell {
           text-align: right;
-          font-weight: 600;
+          font-weight: 700;
           color: #2c3e50;
         }
         
@@ -352,7 +362,10 @@ export function VoucherTemplateOrder(order = {}) {
       <body>
         <div class="voucher-container">
           <div class="voucher-header">
-            <h1 class="voucher-title">ORDER VOUCHER</h1>
+             <div class="logo-container">
+             <img  src="https://res.cloudinary.com/dubdyoo1r/image/upload/v1741775590/uploads/product/offcarry.png" alt="Logo" class="logo">
+             </div>
+            <h3 class="voucher-title">ORDER VOUCHER</h3>
             <p class="voucher-subtitle">Thank you for your purchase</p>
           </div>
   
@@ -405,12 +418,14 @@ export function VoucherTemplateOrder(order = {}) {
                   <tr class="table-header">
                     <th>Product</th>
                     <th>Variation</th>
-                    <th>Qty</th>
                     <th>Price</th>
+                    <th>Qty</th>
+                    <th>Total Price</th>
                   </tr>
                 </thead>
                 <tbody>
                   ${order.OrderItem.map((item, index) => {
+                    const variationSize= item?.variation?.variationSize.find((size) => size.id === item?.sizeId)
                     return `
                       <tr class="${index % 2 === 0 ? 'table-row-even' : 'table-row-odd'}">
                         <td class="table-cell">
@@ -421,13 +436,16 @@ export function VoucherTemplateOrder(order = {}) {
                         </td>
                         <td class="table-cell">
                           <span class="variant-tag">${item.variation.color}</span>
-                          <span class="variant-tag">${item.variation.size}</span>
+                          <span class="variant-tag">${variationSize.name}</span>
+                        </td>
+                        <td class="table-cell quantity-cell quantity-cell">
+                          <span class="variant-tag">৳${item.price}</span>
                         </td>
                         <td class="table-cell quantity-cell">
                           ${item.quantity}
                         </td>
                         <td class="table-cell price-cell">
-                          ৳${item.product.retail_price}
+                          ৳${item.price * item.quantity}
                         </td>
                       </tr>
                     `;

@@ -1,6 +1,8 @@
+import { useCart } from "@/components/contextApi/context/CartContext";
 import Toast from "@/components/toast/Toast";
 import { MoveRight } from "lucide-react";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function CheckoutCard({ selectedItems, selectedLocation }) {
@@ -8,8 +10,9 @@ export default function CheckoutCard({ selectedItems, selectedLocation }) {
   const [coupon, setCoupon] = useState("");
   const [discount, setDiscount] = useState(0);
   const [remarks, setRemarks] = useState("");
-
+  const router = useRouter();
   const selectedItemsCount = selectedItems.length;
+  const { clearCart } = useCart();
   const subtotal = selectedItems.reduce(
     (acc, item) => acc + parseFloat(item.price) * item.quantity,
     0
@@ -55,13 +58,14 @@ export default function CheckoutCard({ selectedItems, selectedLocation }) {
           productId: item.id,
           variationId: item.variationId || null,
           quantity: item.quantity,
+          price: item.price,
         })),
         subtotal: subtotal.toFixed(2),
         tax: 0,
         discount: discount.toFixed(2),
         shippingCost: shipping.toFixed(2),
         paymentMethod: "cash-on-delivery",
-        shippingAddress: "biljani,khoksa,kushtia",
+        shippingAddress: selectedLocation?.address || null,
         remarks: remarks,
       };
 
@@ -76,6 +80,12 @@ export default function CheckoutCard({ selectedItems, selectedLocation }) {
 
       if (response.ok) {
         Toast({ type: "success", message: "🎉 Order placed successfully!" });
+        const data = await response.json();
+        console.log(data);
+        if(data.order.status) {
+          clearCart();
+          router.push(`/order-status?orderId=${data.order.id}&status=${data.order.status}`);
+        }
       } else {
         Toast({ type: "error", message: "❌ Failed to place order" });
       }

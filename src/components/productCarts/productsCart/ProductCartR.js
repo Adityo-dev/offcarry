@@ -2,6 +2,14 @@ import { AlertTriangle, CheckCircle, XCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+
+const calculateDiscountPrice = (productDetails) => {
+  const { retail_price, discount } = productDetails || {};
+  if (!retail_price) return null;
+  return (retail_price - retail_price * (discount / 100)).toFixed(0);
+};
+
+
 function ProductCartR({ product }) {
   // Determine stock status
   let stockStatus;
@@ -59,15 +67,11 @@ function ProductCartR({ product }) {
           <p className="text-lg text-gray-600 space-x-2">
             {parseInt(product?.discount) > 0 && (
               <span className="line-through text-[80%] text-[#ACB5BD]">
-                ৳
-                {(
-                  (product?.retail_price * 100) /
-                  (100 - parseInt(product?.discount))
-                ).toFixed(2)}
+                ৳{product?.retail_price}
               </span>
             )}
             <span className="font-bold text-secondary">
-              ৳{product?.retail_price}
+              ৳{calculateDiscountPrice(product)}
             </span>
           </p>
 

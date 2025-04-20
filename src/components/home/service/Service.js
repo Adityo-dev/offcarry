@@ -2,24 +2,24 @@
 const ServiceType = () => {
   const serviceData = [
     {
-      icon: "🚚",
+      icon: "",
       title: "Free Delivery",
-      subTitle: "Free shipping on all orders",
+      subTitle: "Free shipping on all order",
     },
     {
-      icon: "🔄",
+      icon: "",
       title: "Returns",
-      subTitle: "7-day money-back guarantee",
+      subTitle: "Back guarantee under 7 days",
     },
     {
-      icon: "📞",
-      title: "24/7 Support",
-      subTitle: "Online assistance anytime",
+      icon: "",
+      title: "Support 24/7",
+      subTitle: "Support online 24 hours a day",
     },
     {
-      icon: "💳",
-      title: "Secure Payments",
-      subTitle: "100% payment protection",
+      icon: "",
+      title: "Payments",
+      subTitle: "100% payment security",
     },
   ];
 
@@ -28,11 +28,11 @@ const ServiceType = () => {
       {serviceData.map((service, ind) => (
         <div
           key={ind}
-          className="flex items-center gap-3 border-t first:border-0 border-gray-300 p-2.5 sm:p-4 lg:p-5"
+          className="flex items-center gap-3 border-t first:border-0 border-gray-300 p-5"
         >
-          <p className="text-2xl sm:text-3xl">{service.icon}</p>
+          <p className="text-4xl">{service.icon}</p>
           <p>
-            <span className="text-sm sm:text-base uppercase font-semibold text-black">
+            <span className="text-lg uppercase font-semibold text-black">
               {service.title}
             </span>
             <br />

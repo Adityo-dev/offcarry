@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
           </AddressProvider>
           <ToastContainer />
         </SessionProvider>
-        <ChatButton />
+        {/* <ChatButton /> */}
       </body>
     </html>
   );
